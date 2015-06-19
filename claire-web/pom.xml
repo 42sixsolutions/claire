@@ -30,7 +30,7 @@
 					<!-- http port -->
 					<port>8080</port>
 					<!-- application path always starts with / -->
-					<path>/</path>
+					<path>/claire</path>
 				</configuration>
 			</plugin>
 		</plugins>
