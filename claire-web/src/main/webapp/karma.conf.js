@@ -3,11 +3,15 @@ module.exports = function(config){
 
     basePath : './',
 
+    frameworks: ['jasmine'],
+
     files : [
-      'webappapp/bower_components/angular/angular.js',
-      'webappapp/bower_components/angular-route/angular-route.js',
-      'webappapp/bower_components/angular-mocks/angular-mocks.js',
-      'webappapp/view*/**/*.js'
+      'bower_components/angular/angular.js',
+      'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+      'scripts/*.js',
+      'scripts/**/*.js',
+      'test/**/*.js'
     ],
 
     autoWatch : false,
