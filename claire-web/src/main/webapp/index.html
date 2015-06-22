@@ -13,12 +13,15 @@
 </head>
 <body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
   <div ng-view></div>
-  <div bubble-chart chart-data="data"></div>
+  <div line-chart chart-data="data"></div>
+  <div timeseries chart-data="timeData"></div>
 
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
   <script src="scripts/claire.js"></script>
   <script src="scripts/controllers/ClaireCtrl.js"></script>
   <script src="scripts/directives/chartDirectives.js"></script>
