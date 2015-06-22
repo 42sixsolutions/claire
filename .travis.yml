@@ -1,0 +1,8 @@
+language: java
+script: mvn clean compile package
+
+deploy:
+  provider: openshift
+  user: Bearer
+  password: e17b0ffd4c23a94b8091b31ec167c0eeadcacf52ce40c733524ac77e9567eb5d
+  domain: claire-42six.rhcloud.com

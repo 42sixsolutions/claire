@@ -1,6 +1,24 @@
 'use strict';
 
 angular.module('claire.directives').
+directive('scatterPlot', ["$window", function($window) {
+    return {
+        restrict: "A",
+        template: "<svg></svg>",
+        link: function(scope, element, attrs) {
+            
+
+            var d3 = $window.d3;
+            var rawSvg = element.find("svg")[0];
+            var svg = d3.select(rawSvg);
+
+            var margin = {top: 20, right: 20, bottom: 30, left: 40};
+            var width = 960 - margin.left - margin.right;
+            var height = 500 - margin.top - margin.bottom;
+
+        }
+    };
+}]).
 directive('bubbleChart', ["$window", function($window) {
     return {
         restrict: "A",
