@@ -1,4 +1,4 @@
-package com._42six.fda.openfda;
+package com._42six.claire.openfda;
 
 import java.io.IOException;
 
@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import com._42six.claire.openfda.OpenFDAClient;
 
 /**
  * Unit test for simple App.

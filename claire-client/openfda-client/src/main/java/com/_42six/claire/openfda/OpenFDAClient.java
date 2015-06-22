@@ -1,4 +1,4 @@
-package com._42six.fda.openfda;
+package com._42six.claire.openfda;
 
 import java.io.IOException;
 
