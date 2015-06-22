@@ -4,7 +4,7 @@
 
 	<parent>
 		<groupId>com._42six</groupId>
-		<artifactId>fda-app</artifactId>
+		<artifactId>claire-client</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>openfda-client</artifactId>
