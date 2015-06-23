@@ -32,31 +32,19 @@
 		<div class="trend">
 			<h2>Positive Trending</h2>
 			<ul>
-				<li><a href="#">Synthroid</a></li>
-				<li><a href="#">Crestor</a></li>
-				<li><a href="#">Nexium</a></li>
-				<li><a href="#">Ventolin HFA</a></li>
-				<li><a href="#">Advair Diskus</a></li>
+                <li ng-repeat="drug in trends.topPositive"><a href="#">{{drug.brandName}}</a></li>
 			</ul>
 		</div>
 		<div class="trend">
 			<h2>Negative Trending</h2>
 			<ul>
-				<li><a href="#">Abilify</a></li>
-				<li><a href="#">Humira</a></li>
-				<li><a href="#">Nexium</a></li>
-				<li><a href="#">Crestor</a></li>
-				<li><a href="#">Enbrel</a></li>
+                <li ng-repeat="drug in trends.topNegative"><a href="#">{{drug.brandName}}</a></li>
 			</ul>
 		</div>
 		<div class="trend">
 			<h2>Adverse Event Trending</h2>
 			<ul>
-				<li><a href="#">Alzheimer’s Diseas</a></li>
-				<li><a href="#">Amyotrophic Lateral Sclerosis</a></li>
-				<li><a href="#">Arrhythmia</a></li>
-				<li><a href="#">Arthritis</a></li>
-				<li><a href="#">Atrial Fibrillation</a></li>
+                <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#">{{drug.brandName}}</a></li>
 			</ul>
 		</div>
 	</div>
