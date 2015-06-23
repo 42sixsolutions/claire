@@ -1,8 +1,11 @@
 language: java
 script: mvn clean compile package
-
 deploy:
   provider: openshift
-  user: Bearer
-  password: e17b0ffd4c23a94b8091b31ec167c0eeadcacf52ce40c733524ac77e9567eb5d
-  domain: claire-42six.rhcloud.com
+  user: jpercivall@42six.com
+  password:
+    secure: aKkWh2duAEtQfiYwEtc5W/UxZWhD9WA2ZdLD/REVGJNSqgsil8K6zsAVEk4g6kJsQgndQTLCI9+AH7UF1Ic+zwmR2LWn4YkfIU3lXeM3dM3+umIFxgz6VsFYpQM3RhBTVXhQ4WiPyYVFIeWOzEJohfndYMcp7FSG+3euXnS9OfTKwBxqu+4TiPfQiB3yLqlQPcgnbAhN/lG91CeDTHG2NLleF3rpnTEBfZeGAxWrrJSZWHWYooukx8A9CyDRAsBelXMDZO7z+VFKDl+iqBX/M3QMSx8RAA7C7+8S/bnDlC/+F+ogN3x0138hJ8gWzBU5oWza4rhNza7jiGcMiQKB9KqB+vXI7Q0Zu4VjO3NZpcsmKgrzwWQEmhBvxUtMPgQFLPtjVH/kt5HTbQBJDRXXgwAhVs9QL8VxEizncKv9RZ41MRt74OONtImYIz6dqpUI4+RhF/pQbExLRuN+rNTh7bb5hC5iC4JE3AS7WCTVoReZYyfLXKqQpC/A4WkVH9yroWPhjlxUV89meEVNTvbh3pg1VJEvpUvWSyZDpIzpAEst8Zeyv48EeJLDgBmlJtzL4n76sK+hMZijNK5AbchLz7S/n2BhV8mb58RnXQn/LxErKq/9iTQbF2BbTa5mKvTACim9YyxIsy/U3gsSCSmMHfq1WxtOLrtu3ljg5iV8sq0=
+  app: claire
+  domain: 42six
+  on:
+    repo: 42sixsolutions/claire
