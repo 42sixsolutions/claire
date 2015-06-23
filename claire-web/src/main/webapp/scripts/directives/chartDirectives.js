@@ -5,8 +5,8 @@ directive('pieChart', ["$window", function($window) {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
-            scope.$watch("twitterStats", function(newValue) {
-                if (newValue) {
+            scope.$watch("twitterStats", function(newValue, oldValue) {
+                if (newValue && newValue !== oldValue) {
                     radialProgress(element[0])
                         .id('cumulativeBlue')
                         .diameter('200')
@@ -87,8 +87,8 @@ directive('lineChart', [function() {
                 }
             };
 
-            scope.$watch('mainChartData', function(newValue) {
-                if (newValue) {
+            scope.$watch('mainChartData', function(newValue, oldValue) {
+                if (newValue && newValue !== oldValue) {
                     $.plot(element[0], newValue, options);                    
                 }
             });
