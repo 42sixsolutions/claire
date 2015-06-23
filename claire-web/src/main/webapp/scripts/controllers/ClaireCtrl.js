@@ -3,7 +3,6 @@
 angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugInfo",
         function($scope, DrugInfo) {
 
-
     // Convert the string dates into javascript Dates
     var transformDates = function(data) {
         for (var i = 0; i < data.length; i++) {

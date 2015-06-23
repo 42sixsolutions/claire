@@ -13,4 +13,7 @@ angular.module('claire', [
   'claire.mockREST'
 ]).
 config(['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/', { templateUrl: 'partials/home.html', controller: 'ClaireCtrl' });
+    $routeProvider.when('/detail/:drug', { templateUrl: 'partials/detail.html', controller: 'ClaireCtrl' });
+    $routeProvider.otherwise({redirectTo: '/'});
 }]);

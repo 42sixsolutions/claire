@@ -9,21 +9,22 @@
   <title>Claire</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/chosen/chosen.min.css">
   <link rel="stylesheet" href="styles/claire.css">
-  <link rel="stylesheet" href="lib/radial-progress/radial_style.css">
 </head>
 <body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
-  <h2>Claire</h2>
-  <div ng-view></div>
-  <div id="line-chart" line-chart chart-data="data" style="width: 680px; height: 420px;"></div>
-  <div id="cumulativeBlue" pie-chart class="chart"></div>
+  <div class="wrapper" ng-view></div>
 
   <script src="bower_components/jquery/jquery.js"></script>
   <script src="bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/chosen/chosen.jquery.min.js"></script>
   <script src="lib/radial-progress/radialProgress.js"></script>
   <script src="lib/flot/jquery.flot.js"></script>
   <script src="lib/flot/jquery.flot.categories.js"></script>
@@ -33,9 +34,10 @@
   <script src="scripts/claire.js"></script>
   <script src="scripts/controllers/ClaireCtrl.js"></script>
   <script src="scripts/directives/chartDirectives.js"></script>
-  <script src="scripts/services/data.js"></script>
   <script src="scripts/services/drugInfo.js"></script>
   <script src="scripts/services/search.js"></script>
   <script src="scripts/services/trends.js"></script>
+  <script src="scripts/services/mockRest.js"></script>
+  <script src="scripts/services/data.js"></script>
 </body>
 </html>

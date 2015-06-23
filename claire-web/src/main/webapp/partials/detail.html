@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Claire</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="favicon.ico">
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="bower_components/chosen/chosen.min.css">
-  <link rel="stylesheet" href="styles/claire.css">
-</head>
-<body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
-  
-  <div ng-view></div>
-  
+<div>
   <header>
     <div class="container">
       <a href="home.html" class="logo">Claire</a>
@@ -112,43 +93,4 @@
     </footer>
     
   </div>
-  
-
-
-  <script src="bower_components/jquery/jquery.js"></script>
-  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/d3/d3.js"></script>
-  <script src="bower_components/chosen/chosen.jquery.min.js"></script>
-  <script src="lib/radial-progress/radialProgress.js"></script>
-  <script src="lib/flot/jquery.flot.js"></script>
-  <script src="lib/flot/jquery.flot.categories.js"></script>
-  <script src="lib/flot/jquery.flot.symbol.js"></script>
-  <script src="lib/flot/jquery.flot.stack.js"></script>
-  <script src="lib/flot/jquery.flot.time.js"></script>
-  <script src="scripts/claire.js"></script>
-  <script src="scripts/controllers/ClaireCtrl.js"></script>
-  <script src="scripts/directives/chartDirectives.js"></script>
-  <script src="scripts/services/drugInfo.js"></script>
-  <script src="scripts/services/search.js"></script>
-  <script src="scripts/services/trends.js"></script>
-  <script src="scripts/services/mockRest.js"></script>
-  <script src="scripts/services/data.js"></script>
-
-  <script type="text/javascript">
-  	
-  	$(document).ready(function () {
-  		var config = {
-        '.chosen-select': {}
-      }
-      for (var selector in config) {
-        $(selector).chosen(config[selector]);
-      }
-  	});
-  	
-  </script>
-</body>
-</html>
+</div>
