@@ -426,14 +426,11 @@ aside {
   position: relative;
   height: 100%;
   width: 100%;
+  padding: 50px 40px;
   
   .holder {
-    position: absolute;
-		top: 50%;
-		left: 50%;
-    @include transform(translate(-50%, -50%));
-		width: 600px;
-    text-align: left;
+		width: 100%;
+		text-align: center;
 
 		h1 {
 			font-size: 40px;
@@ -446,6 +443,7 @@ aside {
 		
 		h2 {
   		margin-top: 20px;
+      text-align: left;
 		}
 		
 		h2.subtitle {
@@ -457,22 +455,30 @@ aside {
 			text-transform: inherit;
 		}
 		
+		p {
+      text-align: left;
+    }
+		
 		.selection {
 			background: #fff;
 			border: $border-default;
 			padding: 20px;
 			margin: 0 0 15px 0;
+      text-align: left;
 		}
 		
 		.trending {
+  		display: inline-block;
   		@extend %clearfix;
+  		width: auto;
+  		margin: 0 auto;
   		
   		.trend {
-    		float: left;
+    		float: none;
     		text-align: left;
     		margin: 20px 0;
-    		height: 100%;
-    		@include calc('width','100% / 3');
+    		height: auto;
+    		width: 100%;
     		
     		h2 {
       		margin-top: 0;
@@ -522,10 +528,42 @@ aside {
       }
     }
   }
+
+  .wrapper {
+    
+    .holder {
+  		max-width: 600px;
+  		margin: 0 auto;
+      text-align: left;
+
+    	.trending {
+      	width: 100%;
+
+    		.trend {
+      		float: left;
+      		height: 100%;
+      		@include calc('width','100% / 3');
+    		}
+      }
+    }
+  }
+
 }
 
 @media (min-width: 1025px) {
 
+  .wrapper {
+    padding: 0;
+    
+    .holder {
+      position: absolute;
+  		top: 50%;
+  		left: 50%;
+      @include transform(translate(-50%, -50%));
+      width: 600px;
+    }
+  }
+  
   .container {
     max-width: 1200px;
   }
