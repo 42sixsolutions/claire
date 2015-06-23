@@ -7,7 +7,6 @@ directive('pieChart', ["$window", function($window) {
         link: function(scope, element, attrs) {
             radialProgress(element[0])
                 .id('cumulativeBlue')
-                .label('Radial Label')
                 .diameter('200')
                 .showLegend(false)
 
@@ -22,7 +21,6 @@ directive('pieChart', ["$window", function($window) {
 
                 .theme('blue')
                 .style('cumulative')
-                .description('Radial Description?')
                 .render();
         }
     };
@@ -74,9 +72,7 @@ directive('lineChart', ["$window", function($window) {
                     font: { color: '#999' }
                 }
             }
-            console.log(data);
             var plot = $.plot("#line-chart", data, options);
-            console.log(plot);
         }
     };
 }]);

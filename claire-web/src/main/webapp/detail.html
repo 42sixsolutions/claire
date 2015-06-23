@@ -12,6 +12,7 @@
   <link rel="icon" type="image/png" href="favicon.ico">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="styles/claire.css">
+  <link rel="stylesheet" href="lib/radial-progress/radial_style.css">
 </head>
 <body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
   
@@ -57,7 +58,7 @@
           <h2>Tweets</h2>
           <div class="box">
             <div class="graph donut">
-              <img src="http://placehold.it/385x250/FFFFFF.png" width="100%" >
+              <div id="cumulativeBlue" pie-chart class="chart" style="margin-top:40px;"></div>
             </div>
             <ul class="percentages">
               <li class="positive"><span>XX%</span> Positive</li>
@@ -70,7 +71,7 @@
           <h2>Stats</h2>
           <div class="box">
             <ul class="stats">
-              <li><span>XX%</span> Total Recals</li>
+              <li><span>XX%</span> Total Recalls</li>
               <li><span>XX%</span> Total Adverse Effects</li>
             </ul>
           </div>
@@ -97,11 +98,16 @@
 
 
   <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/d3/d3.js"></script>
-  <script src="bower_components/moment/moment.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="lib/radial-progress/radialProgress.js"></script>
+  <script src="lib/flot/jquery.flot.js"></script>
+  <script src="lib/flot/jquery.flot.categories.js"></script>
+  <script src="lib/flot/jquery.flot.symbol.js"></script>
+  <script src="lib/flot/jquery.flot.stack.js"></script>
+  <script src="lib/flot/jquery.flot.time.js"></script>
   <script src="scripts/claire.js"></script>
   <script src="scripts/controllers/ClaireCtrl.js"></script>
   <script src="scripts/directives/chartDirectives.js"></script>
