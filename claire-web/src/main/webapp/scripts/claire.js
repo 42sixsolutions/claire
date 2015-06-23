@@ -9,7 +9,8 @@ angular.module('claire', [
   'ngRoute',
   'claire.controllers',
   'claire.directives',
-  'claire.services'
+  'claire.services',
+  'claire.mockREST'
 ]).
 config(['$routeProvider', function($routeProvider) {
 }]);
