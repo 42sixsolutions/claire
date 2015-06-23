@@ -1,0 +1,351 @@
+/* Variables */
+
+$primary:         #ec13da;
+$textcolor:       #444444;
+$negative:        #e79090;
+$positive:        #bee76f;
+$neutral:         #999999;
+
+$bordercolor:     #e0e0e0;
+
+/* Mixins */
+
+@mixin calc($property, $expression) {
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+@mixin boxshadow($bshadow) {
+  -webkit-box-shadow: $bshadow;
+  -moz-box-shadow: $bshadow;
+  -ms-box-shadow: $bshadow;
+  box-shadow: $bshadow;
+}
+
+@mixin borderradius($bradius) {
+  -webkit-border-radius: $bradius;
+  -moz-border-radius: $bradius;
+  -ms-border-radius: $bradius;
+  border-radius: $bradius;
+}
+
+@mixin transition($trans...) {
+  -webkit-transition: $trans;
+  -moz-transition: $trans;
+  -ms-transition: $trans;
+  transition: $trans;
+}
+
+@mixin transform($trans...) {
+  -webkit-transform: $trans;
+  -moz-transform: $trans;
+  -ms-transform: $trans;
+  transform: $trans;
+}
+
+@mixin opacity($opacity) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
+  filter: alpha(opacity=$opacity);
+  -webkit-opacity: $opacity/100;
+  -moz-opacity: $opacity/100;
+  opacity: $opacity/100;
+}
+
+
+@mixin multicolumn($columns,$gap) {
+  -webkit-column-count: $columns;
+  -moz-column-count: $columns;
+  column-count: $columns;
+  -webkit-column-gap: $gap;
+  -moz-column-gap: $gap;
+  column-gap: $gap;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+/* Base Reset */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; 
+  height: 100%;
+}
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+  blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  display: block;
+  height: 100%;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+
+/* Claire Styling */
+
+body {
+  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6em;
+  color: $textcolor;
+  text-align: center;
+  background: white;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: left;
+  padding: 0 20px;
+}
+
+a {
+  color: $primary;
+  @include transition(all 350ms ease);
+  
+  &:hover {
+    color: darken($primary,15%);
+  }
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 0.5em;
+  
+  span {
+    font-size: 16px;
+    color: $primary;
+    text-transform: uppercase;
+  }
+}
+
+h2 {
+  color: $primary;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+img {
+  margin-bottom: -6px;
+}
+
+.box {
+  background: white;
+  border: 1px solid $bordercolor;
+  margin-bottom: 20px;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid $bordercolor;
+  padding: 10px 0;
+  text-align: left;
+  margin: 0 0 40px 0;
+  
+  
+  .logo {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 20px;
+    line-height: 30px;
+  }
+}
+
+section {
+  
+  .information {
+    margin-bottom: 40px;
+    
+    .trends {
+      margin-bottom: 20px;
+      line-height: 15px;
+      
+      ul {
+        
+        li {
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 15px;
+          color: lighten($textcolor,30%);
+          margin-right: 20px;
+          
+          .graph.trend { 
+            margin-right: 3px;
+            
+            img {
+              height: 12px;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+aside {
+  
+  .element {
+    @extend %clearfix;
+    
+    ul {
+      border-top: 1px solid $bordercolor;
+      
+      li {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        height: 100%;
+        padding: 15px 5px;
+        font-size: 11px;
+        line-height: 12px;
+        text-transform: uppercase;
+        text-align: center;
+        border-left: 1px solid $bordercolor;
+        color: lighten($textcolor,40%);
+        font-weight: 700;
+        
+        &:first-child { border-left: 0; }
+        
+        span {
+          font-size: 24px;
+          display: block;
+          line-height: 30px;
+          font-weight: 500;
+          color: lighten($textcolor,0%);
+        }
+        
+        &:after {
+          content: '';
+          height: 0;
+          width: 0;
+          position: absolute;
+          top: 3px;
+          right: 3px;
+          border-top: 10px solid $bordercolor;
+          border-left: 10px solid transparent;
+        }
+      }
+
+      &.stats {
+        border-top: 0;
+        
+        li { 
+          @include calc('width','50% - 2px');
+        }
+      }
+
+      &.percentages {
+        
+        li { 
+          @include calc('width','(100% / 3) - 3px');
+          
+          &.negative:after { border-top-color: $negative; }
+          &.positive:after { border-top-color: $positive; }
+        }
+      }
+    }
+  }
+}
+
+
+/* Media Queries */
+
+@media (min-width: 568px) {
+  
+  body { 
+    background: white url(../images/bg.gif) no-repeat 0 0;
+    background-size: 100% 470px; 
+  }
+
+  aside {
+    
+    .group {
+      float: left;
+      @include calc('width','50% - 22px');
+      
+      &:first-child {
+        margin-right: 40px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+
+  body { 
+    background-size: 100% 400px;
+  }
+
+  .container {
+    max-width: 1200px;
+  }
+  
+  section {
+    float: left;
+      @include calc('width','100% - 425px');
+  }
+
+  aside {
+    float: left;
+    width: 385px;
+    margin-left: 40px;
+    
+    .group {
+      float: none;
+      width: 100%;
+      
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
