@@ -14,8 +14,14 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     var isDetailsPage = pathParts.length > 1;
 
     $scope.onSearch = function(drug) {
-        $location.path("/detail/" + drug);
+        if (drug) {
+            $location.path("/detail/" + drug);            
+        }
     };
+
+    DrugInfo.getDrugList().then(function(response) {
+        $scope.drugList = response.data;
+    });
 
     if (!isDetailsPage) {
         Trends.getTopPositive(5).then(function(response) {
