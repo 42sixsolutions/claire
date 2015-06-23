@@ -1,7 +1,13 @@
 'use strict';
 
-angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugInfo",
-        function($scope, DrugInfo) {
+angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$location", "DrugInfo",
+        function($scope, $location, DrugInfo) {
+
+    $scope.drug = {};
+
+    $scope.onSearch = function(drug) {
+        $location.path("/detail/" + drug);
+    };
 
     // Convert the string dates into javascript Dates
     var transformDates = function(data) {

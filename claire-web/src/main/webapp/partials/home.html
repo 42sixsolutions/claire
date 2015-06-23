@@ -5,9 +5,9 @@
 	
 	<h2>Drug Selection</h2>
 	<div class="selection">
-		<select data-placeholder="Please Select a Drug..." class="chosen-select">
+		<select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected">
             <option value=""></option>
-            <option value="United States">United States</option>
+            <option value="Crestor">Crestor</option>
             <option value="United Kingdom">United Kingdom</option>
             <option value="Afghanistan">Afghanistan</option>
             <option value="United States">United States</option>
@@ -24,7 +24,7 @@
             <option value="Afghanistan">Afghanistan</option>
 		</select>
 		<div class="controls">
-			<button type="button" name="search">Search</button>
+			<button type="button" name="search" ng-click="onSearch(drug.selected)">Search</button>
 		</div>
 	</div>
 	
