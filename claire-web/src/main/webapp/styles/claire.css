@@ -311,17 +311,11 @@ aside .element ul {
 .wrapper {
   position: relative;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  padding: 50px 40px; }
   .wrapper .holder {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 600px;
-    text-align: left; }
+    width: 100%;
+    text-align: center; }
     .wrapper .holder h1 {
       font-size: 40px;
       text-transform: uppercase;
@@ -330,7 +324,8 @@ aside .element ul {
       font-weight: 200;
       color: #2b2b2b; }
     .wrapper .holder h2 {
-      margin-top: 20px; }
+      margin-top: 20px;
+      text-align: left; }
     .wrapper .holder h2.subtitle {
       font-size: 16px;
       color: #777777;
@@ -338,26 +333,30 @@ aside .element ul {
       margin-top: 0;
       font-weight: 500;
       text-transform: inherit; }
+    .wrapper .holder p {
+      text-align: left; }
     .wrapper .holder .selection {
       background: #fff;
       border: 1px solid #e0e0e0;
       padding: 20px;
-      margin: 0 0 15px 0; }
-    .wrapper .holder .trending .trend {
-      float: left;
-      text-align: left;
-      margin: 20px 0;
-      height: 100%;
-      width: -moz-calc(100% / 3);
-      width: -o-calc(100% / 3);
-      width: -webkit-calc(100% / 3);
-      width: calc(100% / 3); }
-      .wrapper .holder .trending .trend h2 {
-        margin-top: 0; }
-      .wrapper .holder .trending .trend a {
-        color: #848484; }
-        .wrapper .holder .trending .trend a:hover {
-          color: #444444; }
+      margin: 0 0 15px 0;
+      text-align: left; }
+    .wrapper .holder .trending {
+      display: inline-block;
+      width: auto;
+      margin: 0 auto; }
+      .wrapper .holder .trending .trend {
+        float: none;
+        text-align: left;
+        margin: 20px 0;
+        height: auto;
+        width: 100%; }
+        .wrapper .holder .trending .trend h2 {
+          margin-top: 0; }
+        .wrapper .holder .trending .trend a {
+          color: #848484; }
+          .wrapper .holder .trending .trend a:hover {
+            color: #444444; }
 
 .controls {
   width: 100%;
@@ -384,8 +383,34 @@ aside .element ul {
     width: -webkit-calc(50% - 22px);
     width: calc(50% - 22px); }
     aside .group:first-child {
-      margin-right: 40px; } }
+      margin-right: 40px; }
+
+  .wrapper .holder {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left; }
+    .wrapper .holder .trending {
+      width: 100%; }
+      .wrapper .holder .trending .trend {
+        float: left;
+        height: 100%;
+        width: -moz-calc(100% / 3);
+        width: -o-calc(100% / 3);
+        width: -webkit-calc(100% / 3);
+        width: calc(100% / 3); } }
 @media (min-width: 1025px) {
+  .wrapper {
+    padding: 0; }
+    .wrapper .holder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 600px; }
+
   .container {
     max-width: 1200px; }
 
