@@ -1,6 +1,6 @@
 /* Variables */
 /* Mixins */
-aside .element:after {
+aside .element:after, .wrapper .holder .trending:after {
   content: "";
   display: table;
   clear: both; }
@@ -56,7 +56,7 @@ body {
   line-height: 1.6em;
   color: #444444;
   text-align: center;
-  background: white; }
+  background: #fafafa; }
 
 .container {
   margin: 0 auto;
@@ -76,15 +76,11 @@ h1 {
   font-weight: 500;
   font-size: 24px;
   margin-bottom: 0.5em; }
-  h1 span {
-    font-size: 16px;
-    color: #ec13da;
-    text-transform: uppercase; }
 
 h2 {
   color: #ec13da;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px; }
 
@@ -99,37 +95,165 @@ img {
   border: 1px solid #e0e0e0;
   margin-bottom: 20px; }
 
+/* Chosen Dropdown Styles */
+.chosen-container,
+.chosen-container-active {
+  width: 100% !important;
+  height: auto;
+  text-align: left; }
+  .chosen-container .chosen-single,
+  .chosen-container .chosen-single:hover,
+  .chosen-container .chosen-single:focus,
+  .chosen-container .chosen-single:visited,
+  .chosen-container-active .chosen-single,
+  .chosen-container-active .chosen-single:hover,
+  .chosen-container-active .chosen-single:focus,
+  .chosen-container-active .chosen-single:visited {
+    width: 100%;
+    height: 40px;
+    background: whitesmoke !important;
+    border: 1px solid #e0e0e0 !important;
+    padding: 0;
+    margin: 0;
+    outline: none !important;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 0 white inset, 0 0 0 transparent;
+    font-size: 14px; }
+    .chosen-container .chosen-single div,
+    .chosen-container .chosen-single:hover div,
+    .chosen-container .chosen-single:focus div,
+    .chosen-container .chosen-single:visited div,
+    .chosen-container-active .chosen-single div,
+    .chosen-container-active .chosen-single:hover div,
+    .chosen-container-active .chosen-single:focus div,
+    .chosen-container-active .chosen-single:visited div {
+      display: none; }
+    .chosen-container .chosen-single span,
+    .chosen-container .chosen-single:hover span,
+    .chosen-container .chosen-single:focus span,
+    .chosen-container .chosen-single:visited span,
+    .chosen-container-active .chosen-single span,
+    .chosen-container-active .chosen-single:hover span,
+    .chosen-container-active .chosen-single:focus span,
+    .chosen-container-active .chosen-single:visited span {
+      color: #444444;
+      padding: 0 20px 0 20px;
+      line-height: 40px;
+      margin: 0;
+      -webkit-transition: all 350ms ease;
+      -moz-transition: all 350ms ease;
+      -ms-transition: all 350ms ease;
+      transition: all 350ms ease;
+      color: #6a6a6a; }
+  .chosen-container .chosen-drop,
+  .chosen-container-active .chosen-drop {
+    background: whitesmoke;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    padding: 0;
+    margin: -3px 0 0 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+    z-index: 5; }
+    .chosen-container .chosen-drop .chosen-search,
+    .chosen-container-active .chosen-drop .chosen-search {
+      padding: 10px 20px; }
+      .chosen-container .chosen-drop .chosen-search input,
+      .chosen-container-active .chosen-drop .chosen-search input {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        padding: 6px 20px 7px 20px;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        -ms-border-radius: 50px;
+        border-radius: 50px; }
+    .chosen-container .chosen-drop .chosen-results,
+    .chosen-container-active .chosen-drop .chosen-results {
+      padding: 0;
+      margin: 0; }
+      .chosen-container .chosen-drop .chosen-results li,
+      .chosen-container-active .chosen-drop .chosen-results li {
+        background: #fff;
+        border-top: 1px solid #e0e0e0;
+        padding: 11px 20px 13px 20px;
+        font-size: 14px;
+        color: #848484; }
+      .chosen-container .chosen-drop .chosen-results li:hover,
+      .chosen-container-active .chosen-drop .chosen-results li:hover {
+        color: #ec13da; }
+      .chosen-container .chosen-drop .chosen-results li:last-child,
+      .chosen-container-active .chosen-drop .chosen-results li:last-child {
+        -webkit-border-radius: 5px 5px 0 0;
+        -moz-border-radius: 5px 5px 0 0;
+        -ms-border-radius: 5px 5px 0 0;
+        border-radius: 5px 5px 0 0; }
+  .chosen-container.chosen-container-active.chosen-with-drop a span, .chosen-container.chosen-container-active a span,
+  .chosen-container-active.chosen-container-active.chosen-with-drop a span,
+  .chosen-container-active.chosen-container-active a span {
+    color: #444444; }
+
+/* Header Styling */
 header {
   background: white;
   border-bottom: 1px solid #e0e0e0;
   padding: 10px 0;
   text-align: left;
   margin: 0 0 40px 0; }
+  header .chosen-container {
+    width: 40% !important; }
+    header .chosen-container .chosen-single,
+    header .chosen-container .chosen-single:hover,
+    header .chosen-container .chosen-single:focus,
+    header .chosen-container .chosen-single:visited {
+      height: 30px;
+      margin-top: -5px; }
+      header .chosen-container .chosen-single span,
+      header .chosen-container .chosen-single:hover span,
+      header .chosen-container .chosen-single:focus span,
+      header .chosen-container .chosen-single:visited span {
+        line-height: 30px; }
   header .logo {
+    display: inline-block;
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     margin-right: 20px;
-    line-height: 30px; }
+    line-height: 30px;
+    color: #2b2b2b; }
 
+/* Main Section Styling */
 section .information {
   margin-bottom: 40px; }
+  section .information h1 .name {
+    font-size: 16px;
+    color: #ec13da;
+    text-transform: uppercase;
+    margin-left: 5px; }
   section .information .trends {
     margin-bottom: 20px;
     line-height: 15px; }
     section .information .trends ul li {
       display: inline-block;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 500;
       line-height: 15px;
-      color: #919191;
+      color: #848484;
       margin-right: 20px; }
       section .information .trends ul li .graph.trend {
         margin-right: 3px; }
         section .information .trends ul li .graph.trend img {
-          height: 12px;
+          height: 11px;
           margin-bottom: 0; }
 
+/* Aside Styling */
 aside .element ul {
   border-top: 1px solid #e0e0e0; }
   aside .element ul li {
@@ -144,7 +268,7 @@ aside .element ul {
     text-align: center;
     border-left: 1px solid #e0e0e0;
     color: #aaaaaa;
-    font-weight: 700; }
+    font-weight: 600; }
     aside .element ul li:first-child {
       border-left: 0; }
     aside .element ul li span {
@@ -179,12 +303,79 @@ aside .element ul {
     aside .element ul.percentages li.positive:after {
       border-top-color: #bee76f; }
 
+/* Homepage */
+.home {
+  background: whitesmoke url(../images/bg.gif) no-repeat 0 0;
+  background-size: 100% 100%; }
+
+.wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 50px 40px; }
+  .wrapper .holder {
+    width: 100%;
+    text-align: center; }
+    .wrapper .holder h1 {
+      font-size: 40px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 0 20px 0;
+      font-weight: 200;
+      color: #2b2b2b; }
+    .wrapper .holder h2 {
+      margin-top: 20px;
+      text-align: left; }
+    .wrapper .holder h2.subtitle {
+      font-size: 16px;
+      color: #777777;
+      padding: 0 0 10px 0;
+      margin-top: 0;
+      font-weight: 500;
+      text-transform: inherit; }
+    .wrapper .holder p {
+      text-align: left; }
+    .wrapper .holder .selection {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      padding: 20px;
+      margin: 0 0 15px 0;
+      text-align: left; }
+    .wrapper .holder .trending {
+      display: inline-block;
+      width: auto;
+      margin: 0 auto; }
+      .wrapper .holder .trending .trend {
+        float: none;
+        text-align: left;
+        margin: 20px 0;
+        height: auto;
+        width: 100%; }
+        .wrapper .holder .trending .trend h2 {
+          margin-top: 0; }
+        .wrapper .holder .trending .trend a {
+          color: #848484; }
+          .wrapper .holder .trending .trend a:hover {
+            color: #444444; }
+
+.controls {
+  width: 100%;
+  padding: 20px 0 0 0;
+  text-align: center; }
+  .controls button {
+    border: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    background: #ec13da;
+    padding: 8px 20px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600; }
+
 /* Media Queries */
 @media (min-width: 568px) {
-  body {
-    background: white url(../images/bg.gif) no-repeat 0 0;
-    background-size: 100% 470px; }
-
   aside .group {
     float: left;
     width: -moz-calc(50% - 22px);
@@ -192,10 +383,33 @@ aside .element ul {
     width: -webkit-calc(50% - 22px);
     width: calc(50% - 22px); }
     aside .group:first-child {
-      margin-right: 40px; } }
+      margin-right: 40px; }
+
+  .wrapper .holder {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left; }
+    .wrapper .holder .trending {
+      width: 100%; }
+      .wrapper .holder .trending .trend {
+        float: left;
+        height: 100%;
+        width: -moz-calc(100% / 3);
+        width: -o-calc(100% / 3);
+        width: -webkit-calc(100% / 3);
+        width: calc(100% / 3); } }
 @media (min-width: 1025px) {
-  body {
-    background-size: 100% 400px; }
+  .wrapper {
+    padding: 0; }
+    .wrapper .holder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 600px; }
 
   .container {
     max-width: 1200px; }

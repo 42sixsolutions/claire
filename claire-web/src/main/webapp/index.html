@@ -10,20 +10,26 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/claire.css">
-  <h2>Claire</h2>
+  <link rel="stylesheet" href="lib/radial-progress/radial_style.css">
 </head>
 <body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
+  <h2>Claire</h2>
   <div ng-view></div>
-  <div line-chart chart-data="data"></div>
-  <div timeseries chart-data="timeData"></div>
+  <div id="line-chart" line-chart chart-data="data" style="width: 680px; height: 420px;"></div>
+  <div id="cumulativeBlue" pie-chart class="chart"></div>
 
   <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/d3/d3.js"></script>
-  <script src="bower_components/moment/moment.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="lib/radial-progress/radialProgress.js"></script>
+  <script src="lib/flot/jquery.flot.js"></script>
+  <script src="lib/flot/jquery.flot.categories.js"></script>
+  <script src="lib/flot/jquery.flot.symbol.js"></script>
+  <script src="lib/flot/jquery.flot.stack.js"></script>
+  <script src="lib/flot/jquery.flot.time.js"></script>
   <script src="scripts/claire.js"></script>
   <script src="scripts/controllers/ClaireCtrl.js"></script>
   <script src="scripts/directives/chartDirectives.js"></script>

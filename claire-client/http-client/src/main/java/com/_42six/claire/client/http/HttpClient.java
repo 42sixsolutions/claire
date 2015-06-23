@@ -21,9 +21,9 @@ public class HttpClient {
 		this.httpClient = HttpClients.createDefault();
 	}
 
-	public String execute(String endpoint) throws ClientProtocolException, IOException {
-		HttpGet httpGet = new HttpGet(endpoint);
-		CloseableHttpResponse response = this.httpClient.execute(httpGet);
+	public String execute(HttpGet request) throws ClientProtocolException, IOException {
+		
+		CloseableHttpResponse response = this.httpClient.execute(request);
 
 		try {
 			int status = response.getStatusLine().getStatusCode();

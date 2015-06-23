@@ -48,5 +48,8 @@ local.properties
 *.war
 *.ear
 
+.idea
+*.iml
+
 # Build
 target/
