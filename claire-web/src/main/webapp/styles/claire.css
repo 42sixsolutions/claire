@@ -275,7 +275,7 @@ aside .element ul {
       font-size: 24px;
       display: block;
       line-height: 30px;
-      font-weight: 500;
+      font-weight: 300;
       color: #444444; }
     aside .element ul li:after {
       content: '';
@@ -373,6 +373,103 @@ aside .element ul {
     text-transform: uppercase;
     color: #fff;
     font-weight: 600; }
+
+/* Radius Progress Chart */
+.radial_chart_legend {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bot: 10px;
+  vertical-align: top;
+  border-style: solid;
+  border-width: 1px;
+  padding: 3px;
+  background-color: white; }
+
+.radial_legend_bullet {
+  text-align: left;
+  font-family: 'Raleway', Helvetica, Arial; }
+  .radial_legend_bullet .svg {
+    border-style: solid;
+    border-width: 1px; }
+
+.background {
+  fill: #FFFFFF;
+  fill-opacity: 0.01; }
+
+.component {
+  fill: #e1e1e1; }
+
+.component .label {
+  font-family: 'Raleway', Helvetica, Arial;
+  text-anchor: middle;
+  fill: #0a182d; }
+
+.radial_outline {
+  text-shadow: #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px; }
+
+.arc0-blue {
+  /* Positive */
+  stroke-weight: 0.1;
+  fill: #bee76f; }
+
+.arc1-blue {
+  /* Negative */
+  stroke-weight: 0.1;
+  fill: #e79090; }
+
+.arc2-blue {
+  /* Neutral */
+  stroke-weight: 0.1;
+  fill: #e0e0e0; }
+
+.arc3-blue {
+  stroke-weight: 0.1;
+  fill: #87CEEB; }
+
+.arc4-blue {
+  stroke-weight: 0.1;
+  fill: #BFEFFF; }
+
+.arc0-green {
+  stroke-weight: 0.1;
+  fill: #00611C; }
+
+.arc1-green {
+  stroke-weight: 0.1;
+  fill: #329555; }
+
+.arc2-green {
+  stroke-weight: 0.1;
+  fill: #4c9e54; }
+
+.arc3-green {
+  stroke-weight: 0.1;
+  fill: #90d18a; }
+
+.arc4-green {
+  stroke-weight: 0.1;
+  fill: #BDFCC9; }
+
+.white {
+  fill: #FFFFFF; }
+
+.label {
+  font-family: 'Raleway', Helvetica, Arial;
+  text-anchor: middle; }
+  .label.central {
+    font-size: 40px !important;
+    font-weight: 300;
+    fill: #444444; }
+  .label.description {
+    font-size: 12px !important;
+    font-weight: 600;
+    fill: #aaaaaa;
+    margin-top: 5px;
+    text-transform: uppercase; }
+
+.radial-svg {
+  display: block;
+  margin: 0 auto; }
 
 /* Media Queries */
 @media (min-width: 568px) {
