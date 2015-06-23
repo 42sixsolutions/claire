@@ -40,4 +40,8 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugIn
         });
         $scope.mainChartData = chartData;
     });
+
+    DrugInfo.getFDAStats().then(function(response) {
+        $scope.fdaStats = response.data;
+    });
 }]);
