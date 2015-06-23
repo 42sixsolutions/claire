@@ -11,6 +11,10 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugIn
         }
     };
 
+    DrugInfo.getTwitterStats().then(function(response) {
+        $scope.twitterStats = response.data;
+    });
+
     DrugInfo.getChart().then(function(response) {
         var chartData = [];
         transformDates(response.data.positiveTweets);

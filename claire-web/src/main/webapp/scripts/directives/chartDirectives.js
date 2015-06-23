@@ -5,23 +5,25 @@ directive('pieChart', ["$window", function($window) {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
-            radialProgress(element[0])
-                .id('cumulativeBlue')
-                .diameter('200')
-                .showLegend(false)
+            scope.$watch("twitterStats", function(newValue) {
+                radialProgress(element[0])
+                    .id('cumulativeBlue')
+                    .diameter('200')
+                    .showLegend(false)
 
-                .value(35, 0)
-                .arcDesc('Positive', 0)
+                    .value(newValue.percentPositive, 0)
+                    .arcDesc('Positive', 0)
 
-                .value(15, 1)
-                .arcDesc('Negative', 1)
+                    .value(newValue.percentNegative, 1)
+                    .arcDesc('Negative', 1)
 
-                .value(50, 2)
-                .arcDesc('Neutral', 2)
+                    .value(newValue.percentUnknown, 2)
+                    .arcDesc('Neutral', 2)
 
-                .theme('blue')
-                .style('cumulative')
-                .render();
+                    .theme('blue')
+                    .style('cumulative')
+                    .render();
+            });
         }
     };
 }]).
