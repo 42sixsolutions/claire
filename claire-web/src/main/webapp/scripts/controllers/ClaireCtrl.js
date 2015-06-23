@@ -31,7 +31,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugIn
         transformDates(response.data.adverseEvents);
         chartData.push({
             data: response.data.adverseEvents,
-            points: { show: true }
+            points: { show: true, radius: 7 }
         });
         transformDates(response.data.recalls);
         chartData.push({
