@@ -36,7 +36,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugIn
         transformDates(response.data.recalls);
         chartData.push({
             data: response.data.recalls,
-            bars: { show: true }
+            bars: { show: true, barWidth: 3 * 12 * 24 * 60 * 60 }
         });
         $scope.mainChartData = chartData;
     });
