@@ -2,106 +2,10 @@
 
 angular.module('claire.services').factory('Data', [function() {
     var getLineData = function() {
-        return [{
-            "type": "val1",
-            "date": "1/1/00",
-            "Line 1": "11.361",
-            "Line 2": "40.863",
-            "Line 3": "106.118",
-            "Line 4": "33.896"
-          }, {
-            "type": "val1",
-            "date": "1/1/01",
-            "Line 1": "9.552",
-            "Line 2": "39.713",
-            "Line 3": "123.521",
-            "Line 4": "32.408"
-          }, {
-            "type": "val1",
-            "date": "1/1/02",
-            "Line 1": "8.576",
-            "Line 2": "38.091",
-            "Line 3": "137.61",
-            "Line 4": "33.204"
-          }, {
-            "type": "val1",
-            "date": "1/1/03",
-            "Line 1": "7.549",
-            "Line 2": "35.853",
-            "Line 3": "140.896",
-            "Line 4": "34.865"
-          }, {
-            "type": "val1",
-            "date": "1/1/04",
-            "Line 1": "6.716",
-            "Line 2": "32.109",
-            "Line 3": "156.805",
-            "Line 4": "36.044"
-          }, {
-            "type": "val1",
-            "date": "1/1/05",
-            "Line 1": "6.312",
-            "Line 2": "30.235",
-            "Line 3": "164.498",
-            "Line 4": "36.149"
-          }, {
-            "type": "val1",
-            "date": "1/1/06",
-            "Line 1": "5.76",
-            "Line 2": "27.934",
-            "Line 3": "161.806",
-            "Line 4": "36.039"
-          }, {
-            "type": "val1",
-            "date": "1/1/07",
-            "Line 1": "5.181",
-            "Line 2": "25.183",
-            "Line 3": "164.546",
-            "Line 4": "35.703"
-          }, {
-            "type": "val1",
-            "date": "1/1/08",
-            "Line 1": "4.922",
-            "Line 2": "28.642",
-            "Line 3": "180.783",
-            "Line 4": "40.183"
-          }, {
-            "type": "val1",
-            "date": "1/1/09",
-            "Line 1": "8.195",
-            "Line 2": "35.716",
-            "Line 3": "183.53",
-            "Line 4": "53.573"
-          }, {
-            "type": "val1",
-            "date": "1/1/10",
-            "Line 1": "10.966",
-            "Line 2": "36.073",
-            "Line 3": "183.53",
-            "Line 4": "61.274"
-        }];
-    }
-
-    var getTimeData = function() {
-      return [
-        {
-          'value': 1380854103662
-        }, {
-          'value': 1363641921283
-        }, {
-          'value': 1373641921283
-        }, {
-          'value': 1369641921283
-        }, {
-          'value': 1362641921283
-        }, {
-          'value': 1373841921283
-        }
-      ];
+        return [{"label":"GETS","data":[["2014-01-01T05:00:00.000Z",37622,{"event":{"EventId":10,"EventName":"PEERS For Jan-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-01-01T00:00:00.000Z","EndDateTime":"2014-01-31T23:59:59.000Z"},"eventDate":"2014-01-01T05:00:00.000Z","columnName":"Jan 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jan 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 37622</span>"}],["2014-02-01T05:00:00.000Z",40396,{"event":{"EventId":11,"EventName":"PEERS For Feb-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-02-01T00:00:00.000Z","EndDateTime":"2014-02-28T23:59:59.000Z"},"eventDate":"2014-02-01T05:00:00.000Z","columnName":"Feb 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Feb 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 40396</span>"}],["2014-03-01T05:00:00.000Z",48618,{"event":{"EventId":12,"EventName":"PEERS For Mar-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-03-01T00:00:00.000Z","EndDateTime":"2014-03-31T23:59:59.000Z"},"eventDate":"2014-03-01T05:00:00.000Z","columnName":"Mar 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Mar 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 48618</span>"}],["2014-04-01T04:00:00.000Z",46055,{"event":{"EventId":13,"EventName":"PEERS For Apr-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-04-01T00:00:00.000Z","EndDateTime":"2014-04-30T23:59:59.000Z"},"eventDate":"2014-04-01T04:00:00.000Z","columnName":"Apr 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Apr 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 46055</span>"}],["2014-05-01T04:00:00.000Z",50557,{"event":{"EventId":14,"EventName":"PEERS For May-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-05-01T00:00:00.000Z","EndDateTime":"2014-05-31T23:59:59.000Z"},"eventDate":"2014-05-01T04:00:00.000Z","columnName":"May 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>May 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 50557</span>"}],["2014-06-01T04:00:00.000Z",41974,{"event":{"EventId":15,"EventName":"PEERS For Jun-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-06-01T00:00:00.000Z","EndDateTime":"2014-06-30T23:59:59.000Z"},"eventDate":"2014-06-01T04:00:00.000Z","columnName":"Jun 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jun 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 41974</span>"}],["2014-07-01T04:00:00.000Z",37971,{"event":{"EventId":16,"EventName":"PEERS For Jul-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-07-01T00:00:00.000Z","EndDateTime":"2014-07-31T23:59:59.000Z"},"eventDate":"2014-07-01T04:00:00.000Z","columnName":"Jul 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jul 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 37971</span>"}],["2014-08-01T04:00:00.000Z",41536,{"event":{"EventId":17,"EventName":"PEERS For Aug-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-08-01T00:00:00.000Z","EndDateTime":"2014-08-31T23:59:59.000Z"},"eventDate":"2014-08-01T04:00:00.000Z","columnName":"Aug 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Aug 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 41536</span>"}],["2014-09-01T04:00:00.000Z",39957,{"event":{"EventId":18,"EventName":"PEERS For Sep-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-09-01T00:00:00.000Z","EndDateTime":"2014-09-30T23:59:59.000Z"},"eventDate":"2014-09-01T04:00:00.000Z","columnName":"Sep 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Sep 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 39957</span>"}]]},{"label":"WPS","data":[["2014-01-01T05:00:00.000Z",95080,{"event":{"EventId":10,"EventName":"PEERS For Jan-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-01-01T00:00:00.000Z","EndDateTime":"2014-01-31T23:59:59.000Z"},"eventDate":"2014-01-01T05:00:00.000Z","columnName":"Jan 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jan 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 95080</span>"}],["2014-02-01T05:00:00.000Z",78922,{"event":{"EventId":11,"EventName":"PEERS For Feb-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-02-01T00:00:00.000Z","EndDateTime":"2014-02-28T23:59:59.000Z"},"eventDate":"2014-02-01T05:00:00.000Z","columnName":"Feb 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Feb 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 78922</span>"}],["2014-03-01T05:00:00.000Z",138884,{"event":{"EventId":12,"EventName":"PEERS For Mar-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-03-01T00:00:00.000Z","EndDateTime":"2014-03-31T23:59:59.000Z"},"eventDate":"2014-03-01T05:00:00.000Z","columnName":"Mar 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Mar 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 138884</span>"}],["2014-04-01T04:00:00.000Z",108601,{"event":{"EventId":13,"EventName":"PEERS For Apr-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-04-01T00:00:00.000Z","EndDateTime":"2014-04-30T23:59:59.000Z"},"eventDate":"2014-04-01T04:00:00.000Z","columnName":"Apr 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Apr 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 108601</span>"}],["2014-05-01T04:00:00.000Z",111503,{"event":{"EventId":14,"EventName":"PEERS For May-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-05-01T00:00:00.000Z","EndDateTime":"2014-05-31T23:59:59.000Z"},"eventDate":"2014-05-01T04:00:00.000Z","columnName":"May 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>May 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 111503</span>"}],["2014-06-01T04:00:00.000Z",44270,{"event":{"EventId":15,"EventName":"PEERS For Jun-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-06-01T00:00:00.000Z","EndDateTime":"2014-06-30T23:59:59.000Z"},"eventDate":"2014-06-01T04:00:00.000Z","columnName":"Jun 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jun 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 44270</span>"}],["2014-07-01T04:00:00.000Z",81386,{"event":{"EventId":16,"EventName":"PEERS For Jul-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-07-01T00:00:00.000Z","EndDateTime":"2014-07-31T23:59:59.000Z"},"eventDate":"2014-07-01T04:00:00.000Z","columnName":"Jul 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jul 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 81386</span>"}],["2014-08-01T04:00:00.000Z",96525,{"event":{"EventId":17,"EventName":"PEERS For Aug-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-08-01T00:00:00.000Z","EndDateTime":"2014-08-31T23:59:59.000Z"},"eventDate":"2014-08-01T04:00:00.000Z","columnName":"Aug 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Aug 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 96525</span>"}],["2014-09-01T04:00:00.000Z",54818,{"event":{"EventId":18,"EventName":"PEERS For Sep-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-09-01T00:00:00.000Z","EndDateTime":"2014-09-30T23:59:59.000Z"},"eventDate":"2014-09-01T04:00:00.000Z","columnName":"Sep 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Sep 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 54818</span>"}]]},{"label":"Events","points":{"show":true,"symbol":"square"},"lines":{"show":false},"data":[["2014-08-14T04:00:00.000Z",0,{"event":{"EventId":19,"EventName":"Napa Earthquake 2014","EventDesc":"Napa Earthquake Aug 24 2014","StartDatetime":"2014-08-14T00:00:00.000Z","EndDateTime":"2014-08-14T23:59:59.000Z"},"eventDate":"2014-08-14T04:00:00.000Z","columnName":"Napa Earthquake 2014","tooltipContent":"<span class='tooltipLabel'>Napa Earthquake 2014: Aug 14 </span><br><span class='tooltipValue'>Attempted Calls</span><br><span class='tooltipValue'>GETS: 39957</span><br><span class='tooltipValue'>WPS: 54818</span>"}],["2014-08-20T04:00:00.000Z",0,{"event":{"EventId":20,"EventName":"HI Hurricanes 2014","EventDesc":"HI Hurricanes Aug 2014","StartDatetime":"2014-08-20T00:00:00.000Z","EndDateTime":"2014-08-27T23:59:59.000Z"},"eventDate":"2014-08-20T04:00:00.000Z","columnName":"HI Hurricanes 2014","tooltipContent":"<span class='tooltipLabel'>HI Hurricanes 2014: Aug 20 </span><br><span class='tooltipValue'>Attempted Calls</span><br><span class='tooltipValue'>GETS: 39957</span><br><span class='tooltipValue'>WPS: 54818</span>"}]]}];
     }
 
     return {
-        getLineData: getLineData,
-        getTimeData: getTimeData
+        getLineData: getLineData
     };
 }]);
