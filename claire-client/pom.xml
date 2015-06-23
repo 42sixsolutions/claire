@@ -13,5 +13,6 @@
 	<modules>
 		<module>http-client</module>
 		<module>openfda-client</module>
+		<module>topsy-client</module>
 	</modules>
 </project>
