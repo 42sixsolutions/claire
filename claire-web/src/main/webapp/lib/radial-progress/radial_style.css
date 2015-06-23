@@ -59,7 +59,9 @@
 }
 
 .radial_outline {
-    text-shadow: #005B9A 0px 0px 1px,   #005B9A 0px 0px 1px,   #005B9A 0px 0px 1px,
+    text-shadow: #005B9A 0px 0px 1px,   
+    #005B9A 0px 0px 1px,   
+    #005B9A 0px 0px 1px,
     #005B9A 0px 0px 1px;
 }
 

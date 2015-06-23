@@ -7,19 +7,19 @@
 		<artifactId>claire-client</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>http-client</artifactId>
+	<artifactId>client-commons</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.5</version>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.8.5</version>
 		</dependency>
 		<dependency>
-			<groupId>com._42six.claire</groupId>
-			<artifactId>client-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
 		</dependency>
 	</dependencies>
 </project>
