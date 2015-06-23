@@ -1,5 +1,5 @@
 language: java
-script: mvn clean compile package
+
 deploy:
   provider: openshift
   user: jpercivall@42six.com
