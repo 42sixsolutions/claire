@@ -12,6 +12,7 @@
     "d3": "3.5.5",
     "jquery": "1.10.2",
     "moment": "2.10.3",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "chosen": "1.4.2"
   }
 }

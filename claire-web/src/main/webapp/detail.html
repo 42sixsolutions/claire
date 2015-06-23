@@ -10,7 +10,8 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="favicon.ico">
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/chosen/chosen.min.css">
   <link rel="stylesheet" href="styles/claire.css">
 </head>
 <body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
@@ -19,8 +20,27 @@
   
   <header>
     <div class="container">
-      <span class="logo">Claire</span>
-      <span class="search"><input type="search" /></span>
+      <a class="logo" href="home.html">Claire</a>
+      <span class="search">
+        <select data-placeholder="Please Select a Drug..." class="chosen-select">
+          <option value=""></option>
+          <option value="United States">United States</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="United States">United States</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="United States">United States</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="United States">United States</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="United States">United States</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="Afghanistan">Afghanistan</option>
+				</select>
+      </span>
     </div>
   </header>
   
@@ -102,9 +122,26 @@
   <script src="bower_components/d3/d3.js"></script>
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/chosen/chosen.jquery.min.js"></script>
   <script src="scripts/claire.js"></script>
   <script src="scripts/controllers/ClaireCtrl.js"></script>
   <script src="scripts/directives/chartDirectives.js"></script>
   <script src="scripts/services/data.js"></script>
+
+
+  <script type="text/javascript">
+  	
+  	$(document).ready(function () {
+  		var config = {
+        '.chosen-select': {}
+      }
+      for (var selector in config) {
+        $(selector).chosen(config[selector]);
+      }
+  	});
+  	
+  </script>
+  
+
 </body>
 </html>
