@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('claire.services').factory('Data', [function() {
+angular.module('claire.services', ['ngResource']).factory('Data', [function() {
     var getLineData = function() {
         return [{
             "type": "val1",
