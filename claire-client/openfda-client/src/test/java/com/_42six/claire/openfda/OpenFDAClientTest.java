@@ -8,8 +8,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import com._42six.claire.openfda.OpenFDAClient;
-
 /**
  * Unit test for simple App.
  */
