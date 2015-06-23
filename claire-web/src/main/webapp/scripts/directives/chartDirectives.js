@@ -71,30 +71,48 @@ directive('lineChart', ["DrugInfo", function(DrugInfo) {
                 }
             }
 
+            options = {
+                xaxis: {
+                    mode: "time",
+                    tickLength: 0
+                }
+            };
+
+            // Convert the string dates into javascript Dates
+            var transformDates = function(data) {
+                for (var i = 0; i < data.length; i++) {
+                    data[i][0] = new Date(data[i][0]);
+                }
+            };
+
             DrugInfo.getChart().then(function(response) {
-                console.log(response.data);
                 var chartData = [];
+                transformDates(response.data.positiveTweets);
                 chartData.push({
                     data: response.data.positiveTweets,
                     lines: { show: true }
                 });
+                transformDates(response.data.negativeTweets);
                 chartData.push({
                     data: response.data.negativeTweets,
                     lines: { show: true }
                 });
+                transformDates(response.data.unknownTweets);
                 chartData.push({
                     data: response.data.unknownTweets,
                     lines: { show: true }
                 });
+                transformDates(response.data.adverseEvents);
                 chartData.push({
                     data: response.data.adverseEvents,
                     points: { show: true }
                 });
+                transformDates(response.data.recalls);
                 chartData.push({
                     data: response.data.recalls,
                     bars: { show: true }
                 });
-                $.plot(element[0], chartData);
+                $.plot(element[0], chartData, options);
             });
         }
     };
