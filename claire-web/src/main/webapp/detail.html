@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Claire</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,500,700,800' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/claire.css">
+</head>
+<body id="ng-app" ng-app="claire" ng-controller="ClaireCtrl">
+  
+  <div ng-view></div>
+  
+  <header>
+    <div class="container">
+      <span class="logo">Claire</span>
+      <span class="search"><input type="search" /></span>
+    </div>
+  </header>
+  
+  <div class="container">
+    
+    <section>
+      
+      <div class="information">
+        <h1>Crestor <span class="name">Rosuvastatin</span></h1>
+        <div class="description">
+          <p>Rosuvastatin (marketed by AstraZeneca as Crestor, In India marketed by (Cipla)as "rosulip" is a member of the drug class of statins, used in combination with exercise, diet, and weight-loss to treat high cholesterol and related conditions, and to prevent cardiovascular disease. It was developed by Shionogi. Crestor is the fourth-highest selling drug in the United States, accounting for approx. $5.2 billion in sales in 2013.</p>
+          <p>The primary use of rosuvastatin is for the treatment of dyslipidemia.[3] It is recommended to be used only after other measures such as diet, exercise, and weight reduction have not improved cholesterol levels </p>
+        </div>
+        <div class="trend"></div>
+      </div>
+      
+      <div class="graph">
+        <div class="box">
+          <img src="http://placehold.it/770x350/FFFFFF.png" width="100%" >
+          <img src="http://placehold.it/770x50/FFFFFF.png"  width="100%" style="border-top:1px solid #e0e0e0;">
+        </div>
+      </div>
+      
+    </section>
+
+    <aside>
+      <div class="group">
+        <div class="element tweets">
+          <h2>Tweets</h2>
+          <div class="box">
+            <div class="graph donut">
+              <img src="http://placehold.it/385x250/FFFFFF.png" width="100%" >
+            </div>
+            <ul class="percentages">
+              <li class="positive"><span>XX%</span> Positive</li>
+              <li class="neutral"><span>XX%</span> Neutral</li>
+              <li class="negative"><span>XX%</span> Negative</li>
+            </ul>
+          </div>
+        </div>
+        <div class="element stats">
+          <h2>Stats</h2>
+          <div class="box">
+            <ul class="stats">
+              <li><span>XX%</span> Total Recals</li>
+              <li><span>XX%</span> Total Adverse Effects</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="group">
+        <div class="element ranking">
+          <h2>Ranking</h2>
+          <div class="box">
+            <div class="graph ranking">
+              <img src="http://placehold.it/385x400/FFFFFF.png" width="100%" >
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    
+    <footer>
+      
+    </footer>
+    
+  </div>
+  
+
+
+  <script src="bower_components/jquery/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/d3/d3.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="scripts/claire.js"></script>
+  <script src="scripts/controllers/ClaireCtrl.js"></script>
+  <script src="scripts/directives/chartDirectives.js"></script>
+  <script src="scripts/services/data.js"></script>
+</body>
+</html>
