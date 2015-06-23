@@ -29,8 +29,8 @@ public class TopsyClientTest {
 	@Ignore
 	@Test
 	public void testClient() throws Exception {
-		String startDateStr = "2014-07-01 000000";
-		String endDateStr = "2014-07-30 235959";
+		String startDateStr = "2014-06-01 000000";
+		String endDateStr = "2014-06-30 235959";
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HHmmss");
 		Date startDate = dateFormat.parse(startDateStr);
