@@ -25,7 +25,7 @@ directive('pieChart', ["$window", function($window) {
         }
     };
 }]).
-directive('lineChart', ["$window", function($window) {
+directive('lineChart', ["DrugInfo", function(DrugInfo) {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
@@ -70,7 +70,32 @@ directive('lineChart', ["$window", function($window) {
                     font: { color: '#999' }
                 }
             }
-            var plot = $.plot("#drug-line-chart", data);
+
+            DrugInfo.getChart().then(function(response) {
+                console.log(response.data);
+                var chartData = [];
+                chartData.push({
+                    data: response.data.positiveTweets,
+                    lines: { show: true }
+                });
+                chartData.push({
+                    data: response.data.negativeTweets,
+                    lines: { show: true }
+                });
+                chartData.push({
+                    data: response.data.unknownTweets,
+                    lines: { show: true }
+                });
+                chartData.push({
+                    data: response.data.adverseEvents,
+                    points: { show: true }
+                });
+                chartData.push({
+                    data: response.data.recalls,
+                    bars: { show: true }
+                });
+                $.plot(element[0], chartData);
+            });
         }
     };
 }]);

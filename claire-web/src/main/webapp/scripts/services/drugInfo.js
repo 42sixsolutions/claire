@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('claire.services').factory('DrugInfo', ['$http', function($http){
+angular.module('claire.services').factory('DrugInfo', ['$http', function($http) {
     var getDrug = function(drugName) {
         return $http.get('api/drug/detail', {name: drugName});
     };
