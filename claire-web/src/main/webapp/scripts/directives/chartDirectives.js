@@ -63,16 +63,14 @@ directive('lineChart', ["$window", function($window) {
                 },
                 xaxis: {
                     mode: "time",
-                    tickLength: 0,
-                    min: 1388552400000,
-                    max: 1417410000000
+                    tickLength: 0
                 },
                 yaxis: {
                     min: 0,
                     font: { color: '#999' }
                 }
             }
-            var plot = $.plot("#line-chart", data, options);
+            var plot = $.plot("#drug-line-chart", data);
         }
     };
 }]);

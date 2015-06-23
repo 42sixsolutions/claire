@@ -2,7 +2,54 @@
 
 angular.module('claire.services').factory('Data', [function() {
     var getLineData = function() {
-        return [{"label":"GETS","data":[["2014-01-01T05:00:00.000Z",37622,{"event":{"EventId":10,"EventName":"PEERS For Jan-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-01-01T00:00:00.000Z","EndDateTime":"2014-01-31T23:59:59.000Z"},"eventDate":"2014-01-01T05:00:00.000Z","columnName":"Jan 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jan 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 37622</span>"}],["2014-02-01T05:00:00.000Z",40396,{"event":{"EventId":11,"EventName":"PEERS For Feb-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-02-01T00:00:00.000Z","EndDateTime":"2014-02-28T23:59:59.000Z"},"eventDate":"2014-02-01T05:00:00.000Z","columnName":"Feb 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Feb 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 40396</span>"}],["2014-03-01T05:00:00.000Z",48618,{"event":{"EventId":12,"EventName":"PEERS For Mar-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-03-01T00:00:00.000Z","EndDateTime":"2014-03-31T23:59:59.000Z"},"eventDate":"2014-03-01T05:00:00.000Z","columnName":"Mar 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Mar 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 48618</span>"}],["2014-04-01T04:00:00.000Z",46055,{"event":{"EventId":13,"EventName":"PEERS For Apr-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-04-01T00:00:00.000Z","EndDateTime":"2014-04-30T23:59:59.000Z"},"eventDate":"2014-04-01T04:00:00.000Z","columnName":"Apr 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Apr 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 46055</span>"}],["2014-05-01T04:00:00.000Z",50557,{"event":{"EventId":14,"EventName":"PEERS For May-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-05-01T00:00:00.000Z","EndDateTime":"2014-05-31T23:59:59.000Z"},"eventDate":"2014-05-01T04:00:00.000Z","columnName":"May 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>May 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 50557</span>"}],["2014-06-01T04:00:00.000Z",41974,{"event":{"EventId":15,"EventName":"PEERS For Jun-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-06-01T00:00:00.000Z","EndDateTime":"2014-06-30T23:59:59.000Z"},"eventDate":"2014-06-01T04:00:00.000Z","columnName":"Jun 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jun 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 41974</span>"}],["2014-07-01T04:00:00.000Z",37971,{"event":{"EventId":16,"EventName":"PEERS For Jul-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-07-01T00:00:00.000Z","EndDateTime":"2014-07-31T23:59:59.000Z"},"eventDate":"2014-07-01T04:00:00.000Z","columnName":"Jul 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jul 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 37971</span>"}],["2014-08-01T04:00:00.000Z",41536,{"event":{"EventId":17,"EventName":"PEERS For Aug-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-08-01T00:00:00.000Z","EndDateTime":"2014-08-31T23:59:59.000Z"},"eventDate":"2014-08-01T04:00:00.000Z","columnName":"Aug 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Aug 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 41536</span>"}],["2014-09-01T04:00:00.000Z",39957,{"event":{"EventId":18,"EventName":"PEERS For Sep-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-09-01T00:00:00.000Z","EndDateTime":"2014-09-30T23:59:59.000Z"},"eventDate":"2014-09-01T04:00:00.000Z","columnName":"Sep 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Sep 2014 : Attempted Calls</span><br><span class='tooltipValue'>GETS: 39957</span>"}]]},{"label":"WPS","data":[["2014-01-01T05:00:00.000Z",95080,{"event":{"EventId":10,"EventName":"PEERS For Jan-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-01-01T00:00:00.000Z","EndDateTime":"2014-01-31T23:59:59.000Z"},"eventDate":"2014-01-01T05:00:00.000Z","columnName":"Jan 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jan 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 95080</span>"}],["2014-02-01T05:00:00.000Z",78922,{"event":{"EventId":11,"EventName":"PEERS For Feb-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-02-01T00:00:00.000Z","EndDateTime":"2014-02-28T23:59:59.000Z"},"eventDate":"2014-02-01T05:00:00.000Z","columnName":"Feb 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Feb 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 78922</span>"}],["2014-03-01T05:00:00.000Z",138884,{"event":{"EventId":12,"EventName":"PEERS For Mar-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-03-01T00:00:00.000Z","EndDateTime":"2014-03-31T23:59:59.000Z"},"eventDate":"2014-03-01T05:00:00.000Z","columnName":"Mar 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Mar 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 138884</span>"}],["2014-04-01T04:00:00.000Z",108601,{"event":{"EventId":13,"EventName":"PEERS For Apr-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-04-01T00:00:00.000Z","EndDateTime":"2014-04-30T23:59:59.000Z"},"eventDate":"2014-04-01T04:00:00.000Z","columnName":"Apr 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Apr 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 108601</span>"}],["2014-05-01T04:00:00.000Z",111503,{"event":{"EventId":14,"EventName":"PEERS For May-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-05-01T00:00:00.000Z","EndDateTime":"2014-05-31T23:59:59.000Z"},"eventDate":"2014-05-01T04:00:00.000Z","columnName":"May 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>May 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 111503</span>"}],["2014-06-01T04:00:00.000Z",44270,{"event":{"EventId":15,"EventName":"PEERS For Jun-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-06-01T00:00:00.000Z","EndDateTime":"2014-06-30T23:59:59.000Z"},"eventDate":"2014-06-01T04:00:00.000Z","columnName":"Jun 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jun 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 44270</span>"}],["2014-07-01T04:00:00.000Z",81386,{"event":{"EventId":16,"EventName":"PEERS For Jul-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-07-01T00:00:00.000Z","EndDateTime":"2014-07-31T23:59:59.000Z"},"eventDate":"2014-07-01T04:00:00.000Z","columnName":"Jul 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Jul 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 81386</span>"}],["2014-08-01T04:00:00.000Z",96525,{"event":{"EventId":17,"EventName":"PEERS For Aug-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-08-01T00:00:00.000Z","EndDateTime":"2014-08-31T23:59:59.000Z"},"eventDate":"2014-08-01T04:00:00.000Z","columnName":"Aug 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Aug 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 96525</span>"}],["2014-09-01T04:00:00.000Z",54818,{"event":{"EventId":18,"EventName":"PEERS For Sep-2014","Monthly":true,"EventDesc":"Monthly","StartDatetime":"2014-09-01T00:00:00.000Z","EndDateTime":"2014-09-30T23:59:59.000Z"},"eventDate":"2014-09-01T04:00:00.000Z","columnName":"Sep 2014 ","spacing":2,"stacked":false,"tooltipContent":"<span class='tooltipLabel'>Sep 2014 : Attempted Calls</span><br><span class='tooltipValue'>WPS: 54818</span>"}]]},{"label":"Events","points":{"show":true,"symbol":"square"},"lines":{"show":false},"data":[["2014-08-14T04:00:00.000Z",0,{"event":{"EventId":19,"EventName":"Napa Earthquake 2014","EventDesc":"Napa Earthquake Aug 24 2014","StartDatetime":"2014-08-14T00:00:00.000Z","EndDateTime":"2014-08-14T23:59:59.000Z"},"eventDate":"2014-08-14T04:00:00.000Z","columnName":"Napa Earthquake 2014","tooltipContent":"<span class='tooltipLabel'>Napa Earthquake 2014: Aug 14 </span><br><span class='tooltipValue'>Attempted Calls</span><br><span class='tooltipValue'>GETS: 39957</span><br><span class='tooltipValue'>WPS: 54818</span>"}],["2014-08-20T04:00:00.000Z",0,{"event":{"EventId":20,"EventName":"HI Hurricanes 2014","EventDesc":"HI Hurricanes Aug 2014","StartDatetime":"2014-08-20T00:00:00.000Z","EndDateTime":"2014-08-27T23:59:59.000Z"},"eventDate":"2014-08-20T04:00:00.000Z","columnName":"HI Hurricanes 2014","tooltipContent":"<span class='tooltipLabel'>HI Hurricanes 2014: Aug 20 </span><br><span class='tooltipValue'>Attempted Calls</span><br><span class='tooltipValue'>GETS: 39957</span><br><span class='tooltipValue'>WPS: 54818</span>"}]]}];
+
+        var d1 = [];
+        for (var i = 0; i < 14; i += 0.5) {
+            d1.push([i, Math.sin(i)]);
+        }
+  
+        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+  
+        var d3 = [];
+        for (var i = 0; i < 14; i += 0.5) {
+            d3.push([i, Math.cos(i)]);
+        }
+  
+        var d4 = [];
+        for (var i = 0; i < 14; i += 0.1) {
+            d4.push([i, Math.sqrt(i * 10)]);
+        }
+  
+        var d5 = [];
+        for (var i = 0; i < 14; i += 0.5) {
+            d5.push([i, Math.sqrt(i)]);
+        }
+  
+        var d6 = [];
+        for (var i = 0; i < 14; i += 0.5 + Math.random()) {
+            d6.push([i, Math.sqrt(2*i + Math.sin(i) + 5)]);
+        }
+
+        return [{
+            data: d1,
+            lines: { show: true, fill: true }
+            }, {
+                data: d2,
+                bars: { show: true }
+            }, {
+                data: d3,
+                points: { show: true }
+            }, {
+                data: d4,
+                lines: { show: true }
+            }, {
+                data: d5,
+                lines: { show: true },
+                points: { show: true }
+            }, {
+                data: d6,
+                lines: { show: true, steps: true }
+        }];
     }
 
     return {
