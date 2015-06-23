@@ -11,7 +11,7 @@
     "angular-mocks": "~1.2.13",
     "d3": "3.5.5",
     "jquery": "1.10.2",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
     "chosen": "1.4.2"
   }
 }
