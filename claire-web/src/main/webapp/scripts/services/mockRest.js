@@ -10,7 +10,8 @@ angular.module('claire.mockREST', ['ngMockE2E']).run(function($injector) {
     var crestor =  {
         brandName: "Crestor",
         genericName: "ROSUVASTATIN CALCIUM",
-        details : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae pellentesque sem. Vivamus eu urna nec nibh sodales condimentum a eu lectus. Integer iaculis fermentum metus, eu tincidunt orci congue id. Curabitur varius, diam eu aliquet malesuada, ligula lacus blandit metus, in iaculis orci tellus sit amet felis. Cras sed sapien ac mi mollis sollicitudin. Morbi congue sem ac felis egestas, id ultricies metus tempus. Nulla in eleifend urna. Nam ipsum urna, pharetra varius cursus finibus, maximus a felis."
+        details: "Rosuvastatin (marketed by AstraZeneca as Crestor, In India marketed by (Cipla)as \"rosulip\" is a member of the drug class of statins, used in combination with exercise, diet, and weight-loss to treat high cholesterol and related conditions, and to prevent cardiovascular disease. It was developed by Shionogi. Crestor is the fourth-highest selling drug in the United States, accounting for approx. $5.2 billion in sales in 2013.",
+        additionalDetails: "The primary use of rosuvastatin is for the treatment of dyslipidemia.[3] It is recommended to be used only after other measures such as diet, exercise, and weight reduction have not improved cholesterol levels "
     };
 
     /**

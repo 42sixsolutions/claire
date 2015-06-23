@@ -44,4 +44,8 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "DrugIn
     DrugInfo.getFDAStats().then(function(response) {
         $scope.fdaStats = response.data;
     });
+
+    DrugInfo.getDrug().then(function(response) {
+        $scope.drug = response.data;
+    });
 }]);
