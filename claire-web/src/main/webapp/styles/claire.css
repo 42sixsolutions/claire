@@ -114,6 +114,21 @@ header {
 
 section .information {
   margin-bottom: 40px; }
+  section .information .trends {
+    margin-bottom: 20px;
+    line-height: 15px; }
+    section .information .trends ul li {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 15px;
+      color: #919191;
+      margin-right: 20px; }
+      section .information .trends ul li .graph.trend {
+        margin-right: 3px; }
+        section .information .trends ul li .graph.trend img {
+          height: 12px;
+          margin-bottom: 0; }
 
 aside .element ul {
   border-top: 1px solid #e0e0e0; }
@@ -168,7 +183,7 @@ aside .element ul {
 @media (min-width: 568px) {
   body {
     background: white url(../images/bg.gif) no-repeat 0 0;
-    background-size: 100% 450px; }
+    background-size: 100% 470px; }
 
   aside .group {
     float: left;
@@ -180,7 +195,7 @@ aside .element ul {
       margin-right: 40px; } }
 @media (min-width: 1025px) {
   body {
-    background-size: 100% 350px; }
+    background-size: 100% 400px; }
 
   .container {
     max-width: 1200px; }

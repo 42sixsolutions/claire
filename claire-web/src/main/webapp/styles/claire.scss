@@ -202,6 +202,32 @@ section {
   
   .information {
     margin-bottom: 40px;
+    
+    .trends {
+      margin-bottom: 20px;
+      line-height: 15px;
+      
+      ul {
+        
+        li {
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 15px;
+          color: lighten($textcolor,30%);
+          margin-right: 20px;
+          
+          .graph.trend { 
+            margin-right: 3px;
+            
+            img {
+              height: 12px;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -277,7 +303,7 @@ aside {
   
   body { 
     background: white url(../images/bg.gif) no-repeat 0 0;
-    background-size: 100% 450px; 
+    background-size: 100% 470px; 
   }
 
   aside {
@@ -296,7 +322,7 @@ aside {
 @media (min-width: 1025px) {
 
   body { 
-    background-size: 100% 350px;
+    background-size: 100% 400px;
   }
 
   .container {
