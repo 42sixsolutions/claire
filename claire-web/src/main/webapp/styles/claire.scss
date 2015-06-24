@@ -5,6 +5,8 @@ $textcolor:       #444444;
 $negative:        #e79090;
 $positive:        #bee76f;
 $neutral:         #e0e0e0;
+$recalls:         #e0e0e0;
+$events:          #e0e0e0;
 
 $bordercolor:     #e0e0e0;
 $border-default:  1px solid $bordercolor;
@@ -360,6 +362,10 @@ aside {
   .element {
     @extend %clearfix;
     
+    .graph {
+      position: relative;
+    }
+    
     .total-tweets {
       display: block;
       @include opacity(100);
@@ -447,10 +453,6 @@ aside {
       }
     }
   }
-}
-
-#cumulativeBlue:hover + .total-tweets { 
-  @include opacity(0);
 }
 
 
@@ -559,6 +561,10 @@ aside {
   width: 200px;
   height: 200px;
   margin: 40px auto;
+
+  &:hover + .total-tweets { 
+    @include opacity(0);
+  }
 }
 
 .background {
@@ -791,8 +797,8 @@ aside {
 
       &.negative:after { border-top-color: $negative; }
       &.positive:after { border-top-color: $positive; }
-      &.recalls:after { border-top-color: $textcolor; }
-      &.events:after { border-top-color: $primary; }
+      &.recalls:after { border-top-color: $recalls; }
+      &.events:after { border-top-color: $events; }
     }
   }
 }

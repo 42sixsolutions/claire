@@ -30,6 +30,32 @@ directive('pieChart', ["$window", function($window) {
         }
     };
 }]).
+directive('pieChartSml', ["$window", function($window) {
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs) {
+            scope.$watch("twitterStats", function(newValue, oldValue) {
+                if (newValue && newValue !== oldValue) {
+                  
+                  var tweets = newValue.percentNegative * 100;
+                  console.log(tweets);
+                  
+                    radialProgress(element[0])
+                        .id('negativeTweets')
+                        .diameter('60')
+                        .margin({top:0, right:0, bottom:0, left:0})
+                        .showLegend(false)
+                        
+                        .value(newValue.tweets, 0)
+
+                        .theme('blue')
+                        .style('cumulative')
+                        .render();
+                }
+            });
+        }
+    };
+}]).
 directive('rankingsChart', [function() {
     return {
         restrict: "A",

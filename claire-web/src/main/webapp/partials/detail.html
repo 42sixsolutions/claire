@@ -53,6 +53,9 @@
               <div class="total-tweets"><span>{{twitterStats.totalTweets}}</span> Total Tweets</div>
             </div>
             <ul class="percentages">
+              <li><div id="positiveTweets" pie-chart-sml class="chart"></div></li>
+              <li><div id="neutralTweets" pie-chart-sml class="chart"></div></li>
+              <li><div id="negativeTweets" pie-chart-sml class="chart"></div></li>
               <li class="positive"><span>{{twitterStats.percentPositive}}%</span> Positive</li>
               <li class="neutral"><span>{{twitterStats.percentUnknown}}%</span> Neutral</li>
               <li class="negative"><span>{{twitterStats.percentNegative}}%</span> Negative</li>

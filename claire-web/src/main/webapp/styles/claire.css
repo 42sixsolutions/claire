@@ -258,6 +258,8 @@ section .information {
           margin-bottom: 0; }
 
 /* Aside Styling */
+aside .element .graph {
+  position: relative; }
 aside .element .total-tweets {
   display: block;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
@@ -342,13 +344,6 @@ aside .element ul {
     aside .element ul.percentages li.positive:after {
       border-top-color: #bee76f; }
 
-#cumulativeBlue:hover + .total-tweets {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
-  filter: alpha(opacity=0);
-  -webkit-opacity: 0;
-  -moz-opacity: 0;
-  opacity: 0; }
-
 /* Homepage */
 .home {
   background: whitesmoke url(../images/bg.gif) no-repeat 0 0;
@@ -425,6 +420,12 @@ aside .element ul {
   width: 200px;
   height: 200px;
   margin: 40px auto; }
+  #cumulativeBlue:hover + .total-tweets {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
+    filter: alpha(opacity=0);
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0; }
 
 .background {
   fill: #FFFFFF;
@@ -628,9 +629,9 @@ aside .element ul {
     .graph-legend ul li.positive:after {
       border-top-color: #bee76f; }
     .graph-legend ul li.recalls:after {
-      border-top-color: #444444; }
+      border-top-color: #e0e0e0; }
     .graph-legend ul li.events:after {
-      border-top-color: #ec13da; }
+      border-top-color: #e0e0e0; }
 
 /* Media Queries */
 @media (min-width: 568px) {

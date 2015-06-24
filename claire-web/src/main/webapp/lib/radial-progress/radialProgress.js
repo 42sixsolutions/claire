@@ -94,7 +94,7 @@ function radialProgress(parent) {
         theme = (_style == STYLES.pie) ? 'white' : 'arc' + arcIndex + '-' + _theme
         obj = $('#' + id + ' .labels .label.central')
         obj.attr("class", "label central " + theme)
-        obj.html(_value[arcIndex] + "%")
+        obj.html(_value[arcIndex])
         obj.fadeIn()
 
         if (_style == STYLES.cumulative || _style == STYLES.pie) {
