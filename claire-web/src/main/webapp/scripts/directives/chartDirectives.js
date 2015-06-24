@@ -38,7 +38,6 @@ directive('pieChartSml', ["$window", function($window) {
                 if (newValue && newValue !== oldValue) {
                   
                   var tweets = newValue.percentNegative * 100;
-                  console.log(tweets);
                   
                     radialProgress(element[0])
                         .id('negativeTweets')

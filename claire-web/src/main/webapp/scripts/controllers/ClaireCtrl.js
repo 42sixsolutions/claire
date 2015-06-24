@@ -27,8 +27,6 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     });
     
     if (!isDetailsPage) {
-        $scope.body = { className: "home" };
-
         Trends.getTopPositive(5).then(function(response) {
             $scope.trends.topPositive = response.data;
         });
