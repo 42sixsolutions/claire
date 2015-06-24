@@ -28,7 +28,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-		<dependencies>
 			<dependency>
 				<groupId>org.glassfish.jersey</groupId>
 				<artifactId>jersey-bom</artifactId>
