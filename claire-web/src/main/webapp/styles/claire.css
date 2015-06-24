@@ -438,17 +438,17 @@ aside .element ul {
   height: 100%; }
   .wrapper .bg-gradient {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding: 0;
     margin: 0 auto;
     background-image: url(../images/bg-gradient-fallback.png);
     background-repeat: repeat-y;
-    background: -webkit-gradient(linear, left top, right top, from(#24b8d9), to(#3adcb8));
+    background: -webkit-gradient(linear, left top, right top, from(#3adcb8), to(#24b8d9));
     background: -webkit-linear-gradient(left, #3adcb8, #24b8d9);
     background: -moz-linear-gradient(left, #3adcb8, #24b8d9);
     background: -ms-linear-gradient(left, #3adcb8, #24b8d9);
     background: -o-linear-gradient(left, #3adcb8, #24b8d9); }
-    .wrapper .bg-gradient .holder .brand {
+    .wrapper .bg-gradient .holder.selection .brand {
       position: absolute;
       left: 50%;
       -webkit-transform: translateX(-50%);
@@ -456,94 +456,99 @@ aside .element ul {
       -ms-transform: translateX(-50%);
       -o-transform: translateX(-50%);
       transform: translateX(-50%);
-      width: 250px;
+      width: auto;
       padding: 0 0 20px 0;
       margin: 0 auto; }
-      .wrapper .bg-gradient .holder .brand img {
+      .wrapper .bg-gradient .holder.selection .brand img {
         height: 50px;
         padding: 0;
         margin: 0;
         float: left; }
-      .wrapper .bg-gradient .holder .brand h1 {
+      .wrapper .bg-gradient .holder.selection .brand h1 {
         font-size: 40px;
         font-weight: 100;
         color: #fff;
-        padding: 14px;
+        padding: 14px 0 14px 14px;
         margin: 0;
         float: left; }
-    .wrapper .bg-gradient .holder .info {
+    .wrapper .bg-gradient .holder.selection .info {
       width: 100%;
       padding: 80px 0 20px 0; }
-      .wrapper .bg-gradient .holder .info h2 {
+      .wrapper .bg-gradient .holder.selection .info h2 {
         font-size: 26px;
         font-weight: 200;
         text-transform: capitalize;
         line-height: 36px;
         color: #007286; }
-      .wrapper .bg-gradient .holder .info p {
+      .wrapper .bg-gradient .holder.selection .info p {
         font-size: 16px;
         font-weight: 200;
         line-height: 24px;
         color: #fff; }
-    .wrapper .bg-gradient .holder .selection {
+    .wrapper .bg-gradient .holder.selection .selection {
       background: #fff;
       padding: 20px;
       border: 1px solid #d5d5d5; }
-      .wrapper .bg-gradient .holder .selection .chosen-container .chosen-drop ul li {
+      .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-drop ul li {
         font-weight: 300;
         -moz-border-radius: 0;
         -webkit-border-radius: 0;
         border-radius: 0;
         -khtml-border-radius: 0; }
-        .wrapper .bg-gradient .holder .selection .chosen-container .chosen-drop ul li:hover {
+        .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-drop ul li:hover {
           color: #d54dde; }
-        .wrapper .bg-gradient .holder .selection .chosen-container .chosen-drop ul li:last-child {
+        .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-drop ul li:last-child {
           border-bottom-right-radius: 5px;
           -moz-border-radius-bottomright: 5px;
           -webkit-border-bottom-right-radius: 5px;
           border-bottom-left-radius: 5px;
           -moz-border-radius-bottomleft: 5px;
           -webkit-border-bottom-left-radius: 5px; }
-      .wrapper .bg-gradient .holder .selection .chosen-container .chosen-single {
+      .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-single {
         -moz-border-radius: 3px;
         -webkit-border-radius: 3px;
         border-radius: 3px;
         -khtml-border-radius: 3px; }
-        .wrapper .bg-gradient .holder .selection .chosen-container .chosen-single span {
+        .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-single span {
           width: 100%;
           height: 100%;
           font-weight: 400;
           line-height: 36px;
           color: #858585; }
-      .wrapper .bg-gradient .holder .selection .chosen-container.chosen-container-active .chosen-single span {
+      .wrapper .bg-gradient .holder.selection .selection .chosen-container.chosen-container-active .chosen-single span {
         color: #000; }
-      .wrapper .bg-gradient .holder .selection .controls button {
+      .wrapper .bg-gradient .holder.selection .selection .controls button {
         background: #d54dde;
         border: none;
         outline: none;
         padding: 10px 20px;
         line-height: 10px;
         transition: all .15s linear; }
-        .wrapper .bg-gradient .holder .selection .controls button:hover {
+        .wrapper .bg-gradient .holder.selection .selection .controls button:hover {
           background: #ac28b5;
           cursor: pointer;
           transition: all .15s linear; }
-    .wrapper .bg-gradient .holder .trending {
+    .wrapper .bg-gradient .holder.selection .trending {
+      width: 100%;
       padding: 30px 0 0 0; }
-      .wrapper .bg-gradient .holder .trending h2 {
-        font-size: 12px;
-        font-weight: 500;
-        color: #007286;
-        padding: 0 0 5px 0;
-        margin: 0; }
-      .wrapper .bg-gradient .holder .trending ul li {
-        padding: 0 0 5px 0; }
-        .wrapper .bg-gradient .holder .trending ul li a {
-          font-size: 14px;
-          font-weight: 300;
-          color: #fff; }
-          .wrapper .bg-gradient .holder .trending ul li a:hover {
-            color: #d54dde; }
+      .wrapper .bg-gradient .holder.selection .trending .trend {
+        width: 33.33%;
+        text-align: left;
+        float: left; }
+        .wrapper .bg-gradient .holder.selection .trending .trend h2 {
+          font-size: 12px;
+          font-weight: 500;
+          color: #007286;
+          padding: 0 0 5px 0;
+          margin: 0; }
+        .wrapper .bg-gradient .holder.selection .trending .trend ul li {
+          padding: 0 0 5px 0; }
+          .wrapper .bg-gradient .holder.selection .trending .trend ul li a {
+            font-size: 14px;
+            font-weight: 300;
+            color: #fff; }
+            .wrapper .bg-gradient .holder.selection .trending .trend ul li a:hover {
+              color: #d54dde; }
 
 /* End UI Facelift */
 /* Radius Progress Chart */
@@ -765,7 +770,7 @@ aside .element ul {
       border-top-color: #e0e0e0; }
 
 /* Media Queries */
-@media (min-width: 568px) {
+@media only screen and (min-device-width: 768px) {
   aside .group {
     float: left;
     width: -moz-calc(50% - 22px);
@@ -778,16 +783,32 @@ aside .element ul {
   .wrapper .holder {
     max-width: 600px;
     margin: 0 auto;
-    text-align: left; }
-    .wrapper .holder .trending {
-      width: 100%; }
-      .wrapper .holder .trending .trend {
-        float: left;
-        height: 100%;
-        width: -moz-calc(100% / 3);
-        width: -o-calc(100% / 3);
-        width: -webkit-calc(100% / 3);
-        width: calc(100% / 3); } }
+    text-align: left;
+    			/*
+        	.trending {
+          	width: 100%;
+    
+        		.trend {
+          		float: left;
+          		height: 100%;
+          		@include calc('width','100% / 3');
+        		}
+          }
+          */ }
+    .wrapper .holder.selection {
+      padding: 40px; } }
+@media only screen and (max-width: 560px) {
+  .wrapper .bg-gradient .holder.selection {
+    padding: 20px; }
+    .wrapper .bg-gradient .holder.selection .trending .trend {
+      width: 100%;
+      padding: 0 0 15px 0;
+      text-align: center; }
+      .wrapper .bg-gradient .holder.selection .trending .trend h2 {
+        font-size: 18px;
+        font-weight: 300; }
+      .wrapper .bg-gradient .holder.selection .trending .trend ul li a {
+        font-size: 16px; } }
 @media (min-width: 1025px) {
   .wrapper {
     padding: 0; }

@@ -1,6 +1,21 @@
 'use strict';
 
 angular.module('claire.directives').
+directive('trianglify', [function() {
+    return {
+        restrict: "A",
+        link: function(scope, element, attrs) {
+            if (!scope.isDetailsPage) {
+                var pattern = Trianglify({
+                    height: $(window).height(),
+                    width: $(window).width(),
+                    cell_size: 40});
+
+                $(element[0]).append(pattern.canvas());
+            }
+        }
+    }
+}]).
 directive('pieChart', ["$window", function($window) {
     return {
         restrict: "A",

@@ -3,13 +3,12 @@
     <div class="container">
       <a href="/" class="logo">Claire</a>
       <span class="search">
-        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList"></select>
+        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList | orderBy:brandName"></select>
       </span>
     </div>
   </header>
   
   <div class="container">
-    
     <section>
       
       <div class="information">
@@ -77,7 +76,15 @@
           <h2>Ranking</h2>
           <div class="box">
             <div class="graph ranking">
-              <div rankings-chart style="width: 100%; height: 400px;"></div>
+              <div rankings-chart style="width: 100%; height: 400px;">
+                <ul>
+                  <li>{{drugRankings.positiveTweetsRank}}</li>
+                  <li>{{drugRankings.negativeTweetsRank}}</li>
+                  <li>{{drugRankings.unknownTweetsRank}}</li>
+                  <li>{{drugRankings.adverseEventsRank}}</li>
+                  <li>{{drugRankings.recallsRank}}</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

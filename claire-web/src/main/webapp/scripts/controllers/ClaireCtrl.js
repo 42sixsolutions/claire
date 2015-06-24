@@ -11,7 +11,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     };
 
     var pathParts = $location.path().split("/detail/");
-    var isDetailsPage = pathParts.length > 1;
+    $scope.isDetailsPage = pathParts.length > 1;
 
     $scope.onSearch = function(drug) {
         if (drug) {
@@ -32,7 +32,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         });
     });
     
-    if (!isDetailsPage) {
+    if (!$scope.isDetailsPage) {
         Trends.getTopPositive(5).then(function(response) {
             $scope.trends.topPositive = response.data;
         });
@@ -46,11 +46,11 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         });
     }
 
-    if (isDetailsPage) {
+    if ($scope.isDetailsPage) {
         $scope.drug.selected = pathParts[1];
     }
 
-    if (isDetailsPage) {
+    if ($scope.isDetailsPage) {
         DrugInfo.getTwitterStats($scope.drug.selected).then(function(response) {
             $scope.twitterStats = response.data;
         });
@@ -121,64 +121,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         }
 
         DrugInfo.getRankings($scope.drug.selected).then(function(response) {
-            var rankingsData = [];
-            var columnId = 1;
-            rankingsData.push({
-                data: transformRankingsColumn(response.data.negativeTweets, columnId),
-                points: { show: true }, 
-                lines: { show: true } 
-            });
-            rankingsData.push({ 
-                label: "- Tweets", 
-                data: getSelectedDataPoint(response.data.negativeTweets, columnId), 
-                points: { show: true, symbol: "cross", radius: 10 }
-            } );
-            columnId++;
-            rankingsData.push({
-                data: transformRankingsColumn(response.data.positiveTweets, columnId),
-                points: { show: true }, 
-                lines: { show: true } 
-            });
-            rankingsData.push({ 
-                label: "+ Tweets", 
-                data: getSelectedDataPoint(response.data.positiveTweets, columnId), 
-                points: { show: true, symbol: "cross", radius: 10 }
-            } );
-            columnId++;
-            rankingsData.push({
-                data: transformRankingsColumn(response.data.neutralTweets, columnId),
-                points: { show: true }, 
-                lines: { show: true } 
-            });
-            rankingsData.push({ 
-                label: "~ Tweets", 
-                data: getSelectedDataPoint(response.data.neutralTweets, columnId), 
-                points: { show: true, symbol: "cross", radius: 10 }
-            } );
-            columnId++;
-            rankingsData.push({
-                data: transformRankingsColumn(response.data.adverseEvents, columnId),
-                points: { show: true }, 
-                lines: { show: true } 
-            });
-            rankingsData.push({ 
-                label: "Adverse Events", 
-                data: getSelectedDataPoint(response.data.adverseEvents, columnId), 
-                points: { show: true, symbol: "cross", radius: 10 }
-            } );
-            columnId++;
-            rankingsData.push({
-                data: transformRankingsColumn(response.data.recalls, columnId),
-                points: { show: true }, 
-                lines: { show: true } 
-            });
-            rankingsData.push({ 
-                label: "Recalls", 
-                data: getSelectedDataPoint(response.data.recalls, columnId), 
-                points: { show: true, symbol: "cross", radius: 10 }
-            } );
-
-            $scope.rankings = rankingsData;
+            $scope.drugRankings = response.data;
         });
     }
     
