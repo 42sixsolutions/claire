@@ -71,10 +71,6 @@ directive('lineChart', [function() {
                     clickable: true,
                     hoverable: true,
                     shadowSize: 0,
-                    curvedLines: {  
-                      active: false, 
-                      apply: true,
-                    }
                 },
                 grid: {
                     show: true,
@@ -83,6 +79,15 @@ directive('lineChart', [function() {
                     clickable: true,
                     hoverable: true,
                     autoHighlight: true
+                },
+                tooltip: {
+                    show: true,
+                    content: "<span>%y%</span>",
+                    defaultTheme: false,
+                    shifts: {
+                        x: -30,
+                        y: -38
+                    },
                 },
                 colors: [ 
                     "#e79090",
