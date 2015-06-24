@@ -21,8 +21,9 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
 
     DrugInfo.getDrugList().then(function(response) {
         $scope.drugList = response.data;
+        $('.chosen-select').chosen();
     });
-
+    
     if (!isDetailsPage) {
         Trends.getTopPositive(5).then(function(response) {
             $scope.trends.topPositive = response.data;
@@ -99,4 +100,5 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             $scope.drug = response.data;
         });
     }
+    
 }]);
