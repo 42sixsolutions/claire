@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$location", "DrugInfo", "Trends",
-        function($scope, $location, DrugInfo, Trends) {
+angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$location", "$timeout", "DrugInfo", "Trends",
+        function($scope, $location, $timeout, DrugInfo, Trends) {
 
     $scope.drug = {};
     $scope.trends = {
@@ -21,7 +21,9 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
 
     DrugInfo.getDrugList().then(function(response) {
         $scope.drugList = response.data;
-        $('.chosen-select').chosen();
+        $timeout(function() {
+            $('.chosen-select').chosen();            
+        });
     });
     
     if (!isDetailsPage) {
