@@ -274,10 +274,10 @@ aside .element .total-tweets {
   text-align: center;
   color: #aaaaaa;
   font-weight: 600;
-  width: 140px;
-  height: 140px;
-  margin: -105px 0 0 -70px;
-  padding: 31px 0 0 0;
+  width: 180px;
+  height: 180px;
+  margin: -127px 0 0 -90px;
+  padding: 53px 0 0 0;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   -ms-border-radius: 100px;
@@ -443,17 +443,35 @@ aside .element ul {
 .arc0-blue {
   /* Negative */
   stroke-weight: 0.1;
-  fill: #e79090; }
+  fill: #e79090;
+  -webkit-transition: fill 350ms ease;
+  -moz-transition: fill 350ms ease;
+  -ms-transition: fill 350ms ease;
+  transition: fill 350ms ease; }
+  .arc0-blue:hover {
+    fill: #de6666; }
 
 .arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
-  fill: #e0e0e0; }
+  fill: #e0e0e0;
+  -webkit-transition: fill 350ms ease;
+  -moz-transition: fill 350ms ease;
+  -ms-transition: fill 350ms ease;
+  transition: fill 350ms ease; }
+  .arc1-blue:hover {
+    fill: #c7c7c7; }
 
 .arc2-blue {
   /* Positive */
   stroke-weight: 0.1;
-  fill: #bee76f; }
+  fill: #bee76f;
+  -webkit-transition: fill 350ms ease;
+  -moz-transition: fill 350ms ease;
+  -ms-transition: fill 350ms ease;
+  transition: fill 350ms ease; }
+  .arc2-blue:hover {
+    fill: #aae043; }
 
 .arc3-blue {
   stroke-weight: 0.1;

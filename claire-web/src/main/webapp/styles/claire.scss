@@ -371,14 +371,12 @@ aside {
       text-align: center;
       color: lighten($textcolor,40%);
       font-weight: 600;
-
-      width: 140px;
-      height: 140px;
-      margin: -105px 0 0 -70px;
-      padding: 31px 0 0 0;
+      width: 180px;
+      height: 180px;
+      margin: -127px 0 0 -90px;
+      padding: 53px 0 0 0;
       @include borderradius(100px);
       @include transition(all 350ms ease);
-      
   
       span {
         font-size: 40px;
@@ -483,7 +481,6 @@ aside {
   			padding: 70px 0 20px 0;
   			font-weight: 300;
   			color: darken($textcolor,10%);
-  
         background: url(../images/logo.png) no-repeat center top;
         background-size: auto 55px;
   
@@ -589,16 +586,25 @@ aside {
 .arc0-blue { /* Negative */
   stroke-weight: 0.1;
   fill: $negative;
+  @include transition(fill 350ms ease);
+  
+  &:hover { fill: darken($negative,10%); }
 }
 
 .arc1-blue { /* Neutral */
   stroke-weight: 0.1;
   fill: $neutral;
+  @include transition(fill 350ms ease);
+  
+  &:hover { fill: darken($neutral,10%); }
 }
 
 .arc2-blue { /* Positive */
   stroke-weight:0.1;
   fill: $positive;
+  @include transition(fill 350ms ease);
+  
+  &:hover { fill: darken($positive,10%); }
 }
 
 .arc3-blue {

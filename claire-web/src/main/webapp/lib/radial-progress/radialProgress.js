@@ -264,7 +264,7 @@ function radialProgress(parent) {
         _fontSize=_width*.2;
         radial_chart_arcs[_id] = [];
 
-        _widthOfArc = _width/2 * .15;
+        _widthOfArc = _width/2 * .05;
 
         if (_style == STYLES.concentric) {
             while (radial_chart_arcs[_id].length < _value.length)
