@@ -31,11 +31,10 @@
 					<id>ls</id>
 					<phase>generate-sources</phase>
 					<configuration>
-						<executable>cd</executable>
+						<executable>ls</executable>
 						<arguments>
-							<argument>src</argument>
-							<argument>&amp;&amp;</argument>
 							<argument>ls</argument>
+							<argument>-a</argument>
 						</arguments>
 					</configuration>
 					<goals>
