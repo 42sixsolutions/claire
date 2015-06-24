@@ -33,7 +33,7 @@
 						<configuration>
 							<executable>cd</executable>
 							<arguments>
-								<argument>./src/main/webapp</argument>
+								<argument>src/main/webapp</argument>
 								<argument>&amp;&amp;</argument>
 								<argument>npm</argument>
 								<argument>install</argument>
@@ -49,7 +49,7 @@
 						<configuration>
 							<executable>cd</executable>
 							<arguments>
-								<argument>./src/main/webapp</argument>
+								<argument>src/main/webapp</argument>
 								<argument>&amp;&amp;</argument>
 								<arugment>bower</arugment>
 								<argument>install</argument>
