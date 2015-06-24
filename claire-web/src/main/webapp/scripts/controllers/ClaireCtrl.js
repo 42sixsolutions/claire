@@ -22,7 +22,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     DrugInfo.getDrugList().then(function(response) {
         $scope.drugList = response.data;
         $timeout(function() {
-            $('.chosen-select').chosen();            
+            $('.chosen-select').chosen();
         });
     });
     

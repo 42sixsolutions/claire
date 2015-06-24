@@ -3,9 +3,7 @@
     <div class="container">
       <a href="/claire/" class="logo">Claire</a>
       <span class="search">
-        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected">
-          <option ng-repeat="drug in drugList">{{drug}}</option>
-				</select>
+        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug as drug for drug in drugList"></select>
       </span>
     </div>
   </header>
