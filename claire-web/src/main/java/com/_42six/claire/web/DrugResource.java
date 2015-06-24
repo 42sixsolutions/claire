@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 
 import com._42six.claire.commons.model.ChartDetail;
 import com._42six.claire.commons.model.Drug;
-import com._42six.claire.commons.model.DrugRank;
+import com._42six.claire.commons.model.DrugRankings;
 import com._42six.claire.commons.model.FDAStats;
 import com._42six.claire.commons.model.TwitterStats;
 import jersey.repackaged.com.google.common.collect.Lists;
@@ -51,10 +51,9 @@ public class DrugResource {
     @GET
     @Path("/ranking/{drugName}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<DrugRank> getDrugRanks(@PathParam("drugName") String drugName) {
-        return Lists.newArrayList(
-                new DrugRank().setBrandName("Crestor").setCurrentDrug(drugName.equals("Crestor")).setRanking(1),
-                new DrugRank().setBrandName("Viagra").setCurrentDrug(drugName.equals("Viagra")).setRanking(1));
+    public DrugRankings getDrugRanks(@PathParam("drugName") String drugName) {
+        return new DrugRankings().setPositiveTweetsRank(10).setNegativeTweetsRank(15).setUnknownTweetsRank(20)
+                .setAdverseEventsRank(1).setRecallsRank(1);
     }
 
     @GET
