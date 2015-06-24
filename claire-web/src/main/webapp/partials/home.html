@@ -1,34 +1,42 @@
-<div class="holder">
-	<h1>Claire</h1>
-	<h2 class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-	<p>Curabitur sem nibh, auctor a sagittis nec, elementum ac sapien. Cras tellus ex, rutrum ac lacus vitae, dictum tempor nisi. Morbi ac mauris odio. Nulla cursus maximus nisi sit amet dapibus. Donec consectetur feugiat nisl, tincidunt accumsan leo vulputate semper.</p>
-	
-	<h2>Drug Selection</h2>
-	<div class="selection">
-		<select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList"></select>
-		<div class="controls">
-			<button type="button" name="search" ng-click="onSearch(drug.selected)">Search</button>
+<div class="bg-gradient">
+	<div class="holder">
+		
+		<div class="brand clearfix">
+			<img src="images/logo.png" />
+			<h1>Claire</h1>
 		</div>
-	</div>
-	
-	<div class="trending">
-		<div class="trend">
-			<h2>Positive Trending</h2>
-			<ul>
-                <li ng-repeat="drug in trends.topPositive"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
-			</ul>
+		<div class="info">
+			<h2>Correlating Adverse Drug Interactions Against Social Media Sentiment.</h2>
+			<p>In sodales, elit vitae efficitur suscipit, elit nulla consequat velit, sit amet pulvinar est neque at felis. Morbi a dolor lacinia turpis placerat egestas.</p>
 		</div>
-		<div class="trend">
-			<h2>Negative Trending</h2>
-			<ul>
-                <li ng-repeat="drug in trends.topNegative"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
-			</ul>
+		
+		<div class="selection">
+			<select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList"></select>
+			<div class="controls">
+				<button type="button" name="search" ng-click="onSearch(drug.selected)">Search</button>
+			</div>
 		</div>
-		<div class="trend">
-			<h2>Adverse Event Trending</h2>
-			<ul>
-                <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
-			</ul>
+		
+		<div class="trending clearfix">
+			<div class="trend">
+				<h2>Positive Trending</h2>
+				<ul>
+					<li ng-repeat="drug in trends.topPositive"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
+				</ul>
+			</div>
+			<div class="trend">
+				<h2>Negative Trending</h2>
+				<ul>
+	      	<li ng-repeat="drug in trends.topNegative"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
+				</ul>
+			</div>
+			<div class="trend">
+				<h2>Adverse Event Trending</h2>
+				<ul>
+	        <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
+				</ul>
+			</div>
 		</div>
+		
 	</div>
 </div>
