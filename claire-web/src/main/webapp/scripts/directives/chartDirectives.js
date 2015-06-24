@@ -68,7 +68,6 @@ directive('rankingsChart', [function() {
             };
             scope.$watch("rankings", function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
-                    console.log(newValue);
                     $.plot(element[0], newValue, options);
                 }
             });

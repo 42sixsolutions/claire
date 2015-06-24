@@ -27,6 +27,8 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     });
     
     if (!isDetailsPage) {
+        $scope.body = { className: "home" };
+
         Trends.getTopPositive(5).then(function(response) {
             $scope.trends.topPositive = response.data;
         });
@@ -53,42 +55,42 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     }
 
     if (isDetailsPage) {
-        // Convert the string dates into javascript Dates
-        var transformDates = function(data) {
-            for (var i = 0; i < data.length; i++) {
-                data[i][0] = new Date(data[i][0]);
-            }
-        };
-
         DrugInfo.getTwitterStats($scope.drug.selected).then(function(response) {
             $scope.twitterStats = response.data;
         });
 
+        var convertChartData = function(chartData) {
+            var newData = [];
+            for (var i = 0; i < chartData.length; i++) {
+                var item = [];
+                // Convert the string dates into javascript Dates
+                item[0] = new Date(chartData[i].date);
+                item[1] = chartData[i].percentMax;
+                newData[i] = item;
+            }
+            return newData;
+        };
+
         DrugInfo.getChart($scope.drug.selected).then(function(response) {
             var chartData = [];
-            transformDates(response.data.positiveTweets);
             chartData.push({
-                data: response.data.positiveTweets,
+                data: convertChartData(response.data.positiveTweets),
                 lines: { show: true }
             });
-            transformDates(response.data.negativeTweets);
             chartData.push({
-                data: response.data.negativeTweets,
+                data: convertChartData(response.data.negativeTweets),
                 lines: { show: true }
             });
-            transformDates(response.data.unknownTweets);
             chartData.push({
-                data: response.data.unknownTweets,
+                data: convertChartData(response.data.unknownTweets),
                 lines: { show: true }
             });
-            transformDates(response.data.recalls);
             chartData.push({
-                data: response.data.recalls,
+                data: convertChartData(response.data.recalls),
                 bars: { show: true, barWidth: 1, fill: true, fillColor: "#eee" }
             });
-            transformDates(response.data.adverseEvents);
             chartData.push({
-                data: response.data.adverseEvents,
+                data: convertChartData(response.data.adverseEvents),
                 points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.3)" }
             });
             $scope.mainChartData = chartData;

@@ -16,6 +16,7 @@ import org.apache.http.client.utils.URIBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.client.http.HttpClient;
 import com._42six.claire.client.topsy.model.TopsyResults;
 
@@ -27,12 +28,12 @@ public class TopsyClient extends HttpClient {
 	private static final String HOST = "otter.topsy.com";
 	private static final String PATH = "/search.js";
 	
-	private TopsyResultsReader reader;
+	private ResponseMapper mapper;
 	private final String apiKey;
 
 	public TopsyClient(String apiKey) throws ClientProtocolException, IOException {
 		super();
-		this.reader = new TopsyResultsReader();
+		this.mapper = new ResponseMapper();
 		this.apiKey = apiKey;
 	}
 
@@ -65,7 +66,7 @@ public class TopsyClient extends HttpClient {
 		for (int offset = 0, i = 0; doNext; offset += 100, ++i) {
 			HttpGet httpGet = new HttpGet(buildUri(searchString, offset, pageCount, startDate, endDate));
 			String response = this.execute(httpGet);
-			TopsyResults results = this.reader.unmarshal(response);
+			TopsyResults results = this.mapper.unmarshalString(response, TopsyResults.class);
 			if (results == null || results.response == null || results.response.list == null || results.response.list.length == 0) {
 				doNext = false;
 				logger.info("Completed search term [" + searchString + "]. Wrote [" + i + "] files.");

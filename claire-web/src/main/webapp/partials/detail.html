@@ -3,7 +3,7 @@
     <div class="container">
       <a href="/" class="logo">Claire</a>
       <span class="search">
-        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug as drug for drug in drugList"></select>
+        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList"></select>
       </span>
     </div>
   </header>
@@ -20,8 +20,8 @@
             <li><span class="graph trend"><img src="images/trend-down.png" /></span> Recent Trend</li>
         </div>
         <div class="description">
-          <p>{{drug.details}}</p>
-          <p>{{drug.additionalDetails}}</p>
+          <p>{{drug.description}}</p>
+          <p>{{drug.pharmacodynamics}}</p>
         </div>
         <div class="trend"></div>
       </div>

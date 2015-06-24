@@ -9,11 +9,10 @@ angular.module('claire', [
   'ngRoute',
   'claire.controllers',
   'claire.directives',
-  'claire.services',
-  'claire.mockREST'
+  'claire.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', { templateUrl: 'partials/home.html', controller: 'ClaireCtrl' });
-    $routeProvider.when('/detail/:drug', { templateUrl: 'partials/detail.html', controller: 'ClaireCtrl' });
+    $routeProvider.when('/', { templateUrl: 'partials/home.html', className: 'home' });
+    $routeProvider.when('/detail/:drug', { templateUrl: 'partials/detail.html', className: 'detail' });
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
