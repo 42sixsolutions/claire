@@ -233,6 +233,7 @@ img {
 				background: #fff;
 				border: $border-default;
 				padding: 6px 20px 7px 20px;
+				background: white none !important;
   			@include borderradius(50px);
 			}
 		}

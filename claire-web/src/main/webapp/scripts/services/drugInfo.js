@@ -18,7 +18,7 @@ angular.module('claire.services').factory('DrugInfo', ['$http', function($http) 
     };
 
     var getRankings = function(drugName) {
-        return $http.get('api/drug/ranking', {name: drugName});
+        return $http.get('api/drug/rankings', {name: drugName});
     };
 
     var getChart = function(drugName) {

@@ -171,6 +171,7 @@ img {
         background: #fff;
         border: 1px solid #e0e0e0;
         padding: 6px 20px 7px 20px;
+        background: white none !important;
         -webkit-border-radius: 50px;
         -moz-border-radius: 50px;
         -ms-border-radius: 50px;

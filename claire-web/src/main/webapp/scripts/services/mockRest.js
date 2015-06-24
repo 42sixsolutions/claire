@@ -31,10 +31,28 @@ angular.module('claire.mockREST', ['ngMockE2E']).run(function($injector) {
         totalAdverseEvents: 1500
     } );
 
-    $httpBackend.whenGET(/api\/drug\/ranking/).respond( [
-        {brandName: "Crestor", ranking: 1, currentDrug: true},
-        {brandName: "Viagra", ranking: 2}
-    ] );
+    $httpBackend.whenGET(/api\/drug\/rankings/).respond( {
+        "positiveTweets": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 100 }
+        ],
+        "negativeTweets": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 100 }
+        ], 
+        "neutralTweets": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 100 }
+        ], 
+        "adverseEvents": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 100 }
+        ], 
+        "recalls": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 100 }
+        ]
+    });
 
     $httpBackend.whenGET(/api\/drug\/chart/).respond( {
         "positiveTweets": [['2015-01-01', 25],['2015-01-02', 15],['2015-01-03', 20],['2015-01-04', 15]],
@@ -47,11 +65,6 @@ angular.module('claire.mockREST', ['ngMockE2E']).run(function($injector) {
     $httpBackend.whenGET(/api\/drug\/list/).respond(
         ["enbrel","humira","aspirin","hydrochloride","tysabri","methotrexate","prednisone","metformin","avonex","lipitor","lisinopril","acetaminophen","nexium","omeprazole","avandia","simvastatin","folic","metoprolol","lyrica","mirena","synthroid","hydrochlorothiazide","dianeal","levothyroxine","remicade","lasix","furosemide","crestor","chantix","amlodipine","atenolol","seroquel","plavix","spiriva","revlimid","lantus","advair","dexamethasone","albuterol","ibuprofen","celebrex","coumadin","byetta","warfarin","insulin","prednisolone","diovan","vioxx","tylenol","cymbalta","norvasc","oxycodone","xanax","forteo","premarin","aleve","neurontin","chloride","tramadol","zoloft","fentanyl","hydrocodone","gabapentin","morphine","tartrate","paxil","fosamax","prilosec","allopurinol","cyclophosphamide","niaspan","letairis","wellbutrin","ribavirin","acetylsalicylic","effexor","zocor","lorazepa"]
     );
-
-    /**
-     * Search
-     */
-    $httpBackend.whenGET(/api\/drugs\/test/).respond(['test1', 'test2']);
 
 
     /**
