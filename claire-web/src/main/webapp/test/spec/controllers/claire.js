@@ -1,21 +1,47 @@
 'use strict';
 
 describe('controllers', function() {
-    beforeEach(module('ngRoute'));
-    beforeEach(module('claire.controllers'));
-    beforeEach(module('claire.services'));
-    beforeEach(module('claire.directives'));
+    beforeEach(module('claire'));
 
-    var scope, ctrl;
+    beforeEach(inject(function(DrugInfo, $q) {
+        spyOn(DrugInfo, "getDrugList").and.callFake(function() {
+            var deferred = $q.defer();
+            deferred.resolve({ data: ['aspirin', 'claritin', 'benadryl'] });
+            return deferred.promise;
+        });
+    }));
+
+    var $controller = null;
+    beforeEach(inject(function(_$controller_) {
+        $controller = _$controller_;
+    }));
 
     describe('ClaireController', function() {
-        beforeEach(inject(function($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller("ClaireCtrl", { $scope: scope });
+        var $scope, ctrl;
+        beforeEach(inject(function() {
+            $scope = {};
+            ctrl = $controller("ClaireCtrl", { $scope: $scope });
         }));
 
-        it('gets results', inject(function() {
-            expect(scope.data).not.toBe(undefined);
-        }));
+        it('should exist', function() {
+            expect(!!ctrl).toBe(true);
+        });
+
+        describe('when created', function() {
+            it('should define a drug property', function() {
+                expect($scope.drug instanceof Object).toBe(true);
+            });
+
+            it('should define a trends property', function() {
+                expect($scope.trends instanceof Object).toBe(true);
+                expect($scope.trends.topPositive instanceof Array).toBe(true);
+                expect($scope.trends.topNegative instanceof Array).toBe(true);
+                expect($scope.trends.mostAdverseEvents instanceof Array).toBe(true);
+            });
+
+            it('should define a search method', function() {
+                expect(typeof $scope.onSearch).toBe('function');
+            });
+        });
     });
 });
