@@ -23,6 +23,44 @@
 					<path>/claire</path>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>exec-npm-install</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>cd</executable>
+							<arguments>
+								<argument>./src/main/webapp</argument>
+								<argument>&amp;&amp;</argument>
+								<argument>npm</argument>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>exec-bower-install</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>cd</executable>
+							<arguments>
+								<argument>./src/main/webapp</argument>
+								<argument>&amp;&amp;</argument>
+								<arugment>bower</arugment>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
