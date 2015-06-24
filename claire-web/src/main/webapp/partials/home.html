@@ -18,19 +18,19 @@
 		<div class="trend">
 			<h2>Positive Trending</h2>
 			<ul>
-                <li ng-repeat="drug in trends.topPositive"><a href="#">{{drug.brandName}}</a></li>
+                <li ng-repeat="drug in trends.topPositive"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
 			</ul>
 		</div>
 		<div class="trend">
 			<h2>Negative Trending</h2>
 			<ul>
-                <li ng-repeat="drug in trends.topNegative"><a href="#">{{drug.brandName}}</a></li>
+                <li ng-repeat="drug in trends.topNegative"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
 			</ul>
 		</div>
 		<div class="trend">
 			<h2>Adverse Event Trending</h2>
 			<ul>
-                <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#">{{drug.brandName}}</a></li>
+                <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
 			</ul>
 		</div>
 	</div>
