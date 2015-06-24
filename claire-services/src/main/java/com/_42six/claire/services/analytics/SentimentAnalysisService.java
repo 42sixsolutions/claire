@@ -1,6 +1,5 @@
 package com._42six.claire.services.analytics;
 
-
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -14,14 +13,37 @@ import java.util.Properties;
  */
 public class SentimentAnalysisService {
 
-    public static String getAnalysis(String text) throws Exception {
+    private StanfordCoreNLP pipeline;
+
+    public enum Sentiment {
+        VERY_POSITIVE("Very positive", 2),
+        POSITIVE("Positive", 1),
+        NEUTRAL("Neutral", 0),
+        NEGATIVE("Negative", -1),
+        VERY_NEGATIVE("Very negative", -2);
+
+        private String name;
+        private int value;
+
+        Sentiment(String name, int value) {
+            this.name = name;
+            this.value = value;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    public SentimentAnalysisService() {
+        Properties props = new Properties();
+        props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");
+        pipeline = new StanfordCoreNLP(props);
+    }
+
+    public String getAnalysis(String text) throws Exception {
 
         if (text != null) {
-            // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution
-            Properties props = new Properties();
-            props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");
-            StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
-
             // create an empty Annotation just with the given text
             Annotation document = new Annotation(text);
 
@@ -32,33 +54,31 @@ public class SentimentAnalysisService {
             // a CoreMap is essentially a Map that uses class objects as keys and has values with custom types
             List<CoreMap> sentences = document.get(CoreAnnotations.SentencesAnnotation.class);
 
-            int positiveCount = 0;
-            int negativeCount = 0;
+            int sentimentValue = 0;
 
             String sentiment;
             for (CoreMap sentence : sentences) {
                 sentiment = sentence.get(SentimentCoreAnnotations.ClassName.class);
 
-                if (sentiment.equalsIgnoreCase("very positive")) {
-                    positiveCount += 2;
-                } else if (sentiment.equalsIgnoreCase("positive")) {
-                    positiveCount += 1;
-                } else if (sentiment.equalsIgnoreCase("negative")) {
-                    negativeCount += 1;
-                } else if (sentiment.equalsIgnoreCase("very negative")) {
-                    negativeCount += 2;
+                if (sentiment.equalsIgnoreCase(Sentiment.VERY_POSITIVE.getName())) {
+                    sentimentValue += Sentiment.VERY_POSITIVE.value;
+                } else if (sentiment.equalsIgnoreCase(Sentiment.POSITIVE.getName())) {
+                    sentimentValue += Sentiment.POSITIVE.value;
+                } else if (sentiment.equalsIgnoreCase(Sentiment.NEGATIVE.getName())) {
+                    sentimentValue += Sentiment.NEGATIVE.value;
+                } else if (sentiment.equalsIgnoreCase(Sentiment.VERY_NEGATIVE.getName())) {
+                    sentimentValue += Sentiment.VERY_NEGATIVE.value;
                 }
             }
 
-            int results = positiveCount - negativeCount;
             String finalSentiment = null;
 
-            if (results > 0) {
-                finalSentiment = "Positive";
-            } else if (results == 0) {
-                finalSentiment = "Neutral";
-            } else if (results < 0) {
-                finalSentiment = "Negative";
+            if (sentimentValue > 0) {
+                finalSentiment = Sentiment.POSITIVE.getName();
+            } else if (sentimentValue == 0) {
+                finalSentiment = Sentiment.NEUTRAL.getName();
+            } else if (sentimentValue < 0) {
+                finalSentiment = Sentiment.NEGATIVE.getName();
             }
 
             return finalSentiment;
