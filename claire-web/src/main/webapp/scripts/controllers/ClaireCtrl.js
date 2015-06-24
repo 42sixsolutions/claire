@@ -115,7 +115,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             var selected = [];
             for (var i = 0; i < data.length; i++) {
                 var dataPoint = [columnId, 101 - data[i].ranking];
-                if (data.brandName === $scope.drug.selected) {
+                if (data[i].currentDrug) {
                     selected.push(dataPoint);
                 }
             }
