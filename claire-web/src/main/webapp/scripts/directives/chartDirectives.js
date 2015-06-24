@@ -70,7 +70,7 @@ directive('lineChart', [function() {
                     hoverable: true,
                     shadowSize: 0,
                     curvedLines: {  
-                      active: true, 
+                      active: false, 
                       apply: true,
                     }
                 },
