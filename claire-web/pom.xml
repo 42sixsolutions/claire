@@ -34,6 +34,12 @@
 						<executable>ls</executable>
 						<arguments>
 							<argument>-a</argument>
+							<argument>&amp;&amp;</argument>
+							<argument>cd</argument>
+							<argument>src</argument>
+							<argument>&amp;&amp;</argument>
+							<argument>ls</argument>
+							<argument>-a</argument>
 						</arguments>
 					</configuration>
 					<goals>
