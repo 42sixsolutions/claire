@@ -20,6 +20,8 @@ import org.slf4j.LoggerFactory;
 
 import com._42six.claire.client.commons.response.Chart;
 import com._42six.claire.client.commons.response.ChartCollection;
+import com._42six.claire.client.commons.response.DrugDescriptionCollection;
+import com._42six.claire.client.commons.response.DrugDescriptionCollection.DrugDescription;
 import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
@@ -27,7 +29,7 @@ import com._42six.claire.openfda.util.OpenFDAUtil;
  * Unit test for simple App.
  */
 public class OpenFDAClientTest {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(OpenFDAClientTest.class);
 
 	private OpenFDAClient client;
@@ -42,10 +44,10 @@ public class OpenFDAClientTest {
 	}
 
 	@Test
-	public void testMarshal() throws JsonParseException, JsonMappingException, IOException {
+	public void testMarshalDrugDates() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
-		ChartCollection chart = mapper.unmarshalChartResponse(new File("src/main/resources/json/openFDADrugDates.json"));
-		
+		ChartCollection chart = mapper.unmarshalFile(new File("src/main/resources/json/openFDADrugDates.json"), ChartCollection.class);
+
 		Assert.assertNotNull(chart.charts);
 		Assert.assertEquals(78, chart.charts.size());
 		for (Chart c : chart.charts) {
@@ -53,10 +55,24 @@ public class OpenFDAClientTest {
 			Assert.assertNotNull(c.points);
 		}	
 	}
-	
+
+	@Test
+	public void testMarshalDrugDescriptions() throws JsonParseException, JsonMappingException, IOException {
+		ResponseMapper mapper = new ResponseMapper();
+		DrugDescriptionCollection descriptions = mapper.unmarshalFile(new File("src/main/resources/json/openFDADrugDescriptions.json"), DrugDescriptionCollection.class);
+
+		Assert.assertNotNull(descriptions.descriptions);
+		Assert.assertEquals(66, descriptions.descriptions.size());
+		for (DrugDescription dd : descriptions.descriptions) {
+			Assert.assertNotNull(dd.name);
+			Assert.assertNotNull(dd.description);
+			Assert.assertNotNull(dd.genericName);
+		}	
+	}
+
 	@Ignore
 	@Test
-	public void testClient() throws Exception {
+	public void testSearchAdverseEvents() throws Exception {
 		String startDateStr = "2014-01-01 000000";
 		String endDateStr = "2014-06-30 235959";
 
@@ -66,17 +82,43 @@ public class OpenFDAClientTest {
 
 		ChartCollection chartCollection = new ChartCollection();
 		chartCollection.charts = new ArrayList<Chart>();
-		
+
 		for (String name : OpenFDAUtil.DRUG_NAMES) {
 
-			Chart response = this.client.search(name, "receivedate", startDate, endDate);
+			Chart response = this.client.searchAdverseEvents(name, "receivedate", startDate, endDate);
 			chartCollection.charts.add(response);
 			logger.info("Added chart for search term [" + name + "]");
 			Thread.sleep(1000); //avoids rate limiting
 		}
-		
+
 		ResponseMapper mapper = new ResponseMapper();
-		mapper.marshalChartResponse(chartCollection, new File("src/main/resources/json/openFDADrugDates.json"));
+		mapper.marshalObject(chartCollection, new File("src/main/resources/json/openFDADrugDates.json"));
+	}
+
+	@Ignore
+	@Test
+	public void testSearchDescriptions() throws Exception {
+
+		DrugDescriptionCollection descriptions = new DrugDescriptionCollection();
+		descriptions.descriptions = new ArrayList<DrugDescription>();
+
+		for (String name : OpenFDAUtil.DRUG_NAMES) {
+			DrugDescription description = null;
+			try {
+				description = this.client.searchDescription(name);
+			}
+			catch (Exception e) {
+				logger.info("Unable to get description for drug [" + name + "]");
+			}
+			if (description != null) {
+				descriptions.descriptions.add(description);
+				logger.info("Added description for search term [" + name + "]");
+			}
+			Thread.sleep(1000); //avoids rate limiting
+		}
+
+		ResponseMapper mapper = new ResponseMapper();
+		mapper.marshalObject(descriptions, new File("src/main/resources/json/openFDADrugDescriptions.json"));
 	}
 
 	@After
