@@ -33,10 +33,16 @@ directive('rankingsChart', [function() {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
+            var options = {
+                yaxis: {
+                    min: 0,
+                    max: 100
+                }
+            };
             scope.$watch("rankings", function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
                     console.log(newValue);
-                    $.plot(element[0], newValue);
+                    $.plot(element[0], newValue, options);
                 }
             });
         }

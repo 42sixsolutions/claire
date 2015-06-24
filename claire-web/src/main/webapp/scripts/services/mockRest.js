@@ -34,23 +34,23 @@ angular.module('claire.mockREST', ['ngMockE2E']).run(function($injector) {
     $httpBackend.whenGET(/api\/drug\/rankings/).respond( {
         "positiveTweets": [
             { brandName: "Crestor", ranking: 1, currentDrug: true },
-            { brandName: "Viagra", ranking: 2 }
+            { brandName: "Viagra", ranking: 100 }
         ],
         "negativeTweets": [
             { brandName: "Crestor", ranking: 1, currentDrug: true },
-            { brandName: "Viagra", ranking: 2 }
+            { brandName: "Viagra", ranking: 100 }
         ], 
         "neutralTweets": [
             { brandName: "Crestor", ranking: 1, currentDrug: true },
-            { brandName: "Viagra", ranking: 2 }
+            { brandName: "Viagra", ranking: 100 }
         ], 
         "adverseEvents": [
             { brandName: "Crestor", ranking: 1, currentDrug: true },
-            { brandName: "Viagra", ranking: 2 }
+            { brandName: "Viagra", ranking: 100 }
         ], 
         "recalls": [
             { brandName: "Crestor", ranking: 1, currentDrug: true },
-            { brandName: "Viagra", ranking: 2 }
+            { brandName: "Viagra", ranking: 100 }
         ]
     });
 
