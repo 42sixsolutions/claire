@@ -51,6 +51,7 @@
 	<modules>
 		<module>claire-client</module>
 		<module>claire-web</module>
+		<module>claire-services</module>
 	</modules>
 
 	<dependencies>
