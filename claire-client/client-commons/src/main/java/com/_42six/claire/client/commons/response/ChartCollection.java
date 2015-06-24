@@ -5,8 +5,8 @@ import java.util.Collection;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class ChartArrayResponseCollection {
+public class ChartCollection {
 	
-	public Collection<ChartArrayResponse> charts;
+	public Collection<Chart> charts;
 
 }

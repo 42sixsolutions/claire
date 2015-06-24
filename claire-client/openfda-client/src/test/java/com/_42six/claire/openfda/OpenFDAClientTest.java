@@ -18,8 +18,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com._42six.claire.client.commons.response.ChartArrayResponse;
-import com._42six.claire.client.commons.response.ChartArrayResponseCollection;
+import com._42six.claire.client.commons.response.Chart;
+import com._42six.claire.client.commons.response.ChartCollection;
 import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
@@ -44,13 +44,13 @@ public class OpenFDAClientTest {
 	@Test
 	public void testMarshal() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
-		ChartArrayResponseCollection chart = mapper.unmarshalChartResponse(new File("src/main/resources/json/openFDADrugDates.json"));
+		ChartCollection chart = mapper.unmarshalChartResponse(new File("src/main/resources/json/openFDADrugDates.json"));
 		
 		Assert.assertNotNull(chart.charts);
 		Assert.assertEquals(78, chart.charts.size());
-		for (ChartArrayResponse c : chart.charts) {
+		for (Chart c : chart.charts) {
 			Assert.assertNotNull(c.name);
-			Assert.assertNotNull(c.chartArray);
+			Assert.assertNotNull(c.points);
 		}	
 	}
 	
@@ -64,12 +64,12 @@ public class OpenFDAClientTest {
 		Date startDate = dateFormat.parse(startDateStr);
 		Date endDate = dateFormat.parse(endDateStr);
 
-		ChartArrayResponseCollection chartCollection = new ChartArrayResponseCollection();
-		chartCollection.charts = new ArrayList<ChartArrayResponse>();
+		ChartCollection chartCollection = new ChartCollection();
+		chartCollection.charts = new ArrayList<Chart>();
 		
 		for (String name : OpenFDAUtil.DRUG_NAMES) {
 
-			ChartArrayResponse response = this.client.search(name, "receivedate", startDate, endDate);
+			Chart response = this.client.search(name, "receivedate", startDate, endDate);
 			chartCollection.charts.add(response);
 			logger.info("Added chart for search term [" + name + "]");
 			Thread.sleep(1000); //avoids rate limiting

@@ -5,12 +5,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TreeSet;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
 
-import com._42six.claire.client.commons.response.ChartArrayResponse;
+import com._42six.claire.client.commons.response.Chart;
+import com._42six.claire.client.commons.response.Chart.DataPoint;
 import com._42six.claire.client.http.HttpClient;
 import com._42six.claire.openfda.model.OpenFDACountByDayResponse;
 import com._42six.claire.openfda.model.OpenFDACountByDayResponse.Result;
@@ -52,14 +54,14 @@ public class OpenFDAClient extends HttpClient {
 		return this.reader.unmarshalCountByDay(response);
 	}
 	
-	public ChartArrayResponse search(String drugName, String countField, Date startDate, Date endDate) throws Exception {
+	public Chart search(String drugName, String countField, Date startDate, Date endDate) throws Exception {
 		OpenFDACountByDayResponse response = search(drugName, countField);
-		return toChartArray(drugName, response, startDate, endDate);
+		return toChart(drugName, response, startDate, endDate);
 	}
 	
-	public ChartArrayResponse toChartArray(String name, OpenFDACountByDayResponse countByDay, Date startDate, Date endDate) throws Exception {
-		ChartArrayResponse response = new ChartArrayResponse();
-		response.name = name;
+	public Chart toChart(String name, OpenFDACountByDayResponse countByDay, Date startDate, Date endDate) throws Exception {
+		Chart chart = new Chart();
+		chart.name = name;
 		
 		Calendar startCal = Calendar.getInstance();
 		startCal.setTime(startDate);
@@ -67,32 +69,20 @@ public class OpenFDAClient extends HttpClient {
 		endCal.setTime(endDate);
 		Calendar cal = Calendar.getInstance();
 		
-		StringBuilder builder = new StringBuilder();
-		builder.append("[ ");
-		boolean first = true;
+		chart.points = new TreeSet<DataPoint>();
 		for (Result result : countByDay.results) {
 			Date date = this.dateAdapter.unmarshal(result.time);
 			cal.setTime(date);
 			if (cal.getTimeInMillis() == startCal.getTimeInMillis()
 					|| cal.getTimeInMillis() == endCal.getTimeInMillis() 
 					|| (cal.after(startCal) && cal.before(endCal))) {
-				if (first) {
-					first = false;
-				}
-				else {
-					builder.append(",");
-				}
-				builder.append("[");
-				builder.append(result.time);
-				builder.append(",");
-				builder.append(result.count);
-				builder.append("]");
+
+				DataPoint point = new DataPoint();
+				point.label = result.time;
+				point.count = result.count;
+				chart.points.add(point);
 			}
 		}
-		builder.append("]");
-		
-		response.chartArray = builder.toString();
-		
-		return response;
+		return chart;
 	}
 }
