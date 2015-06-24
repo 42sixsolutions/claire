@@ -79,15 +79,15 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 data: response.data.unknownTweets,
                 lines: { show: true }
             });
-            transformDates(response.data.adverseEvents);
-            chartData.push({
-                data: response.data.adverseEvents,
-                points: { show: true, radius: 7 }
-            });
             transformDates(response.data.recalls);
             chartData.push({
                 data: response.data.recalls,
-                bars: { show: true, barWidth: 3 * 12 * 24 * 60 * 60 }
+                bars: { show: true, barWidth: 1, fill: true, fillColor: "#eee" }
+            });
+            transformDates(response.data.adverseEvents);
+            chartData.push({
+                data: response.data.adverseEvents,
+                points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.3)" }
             });
             $scope.mainChartData = chartData;
         });

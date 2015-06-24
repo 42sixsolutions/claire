@@ -638,7 +638,20 @@ aside {
   margin: 0 auto;
 }
 
+/* Line Chart */
 
+.line-chart {
+  padding: 30px;
+  width: 100%;
+  height: 450px;
+  @extend %clearfix;
+  
+  .flot-base {
+    position: relative ;
+    width: 100% ;
+    height: auto;
+  }
+}
 
 /* Media Queries */
 

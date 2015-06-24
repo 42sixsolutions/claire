@@ -35,53 +35,62 @@ directive('lineChart', [function() {
         link: function(scope, element, attrs) {
             var options = {
                 series: {
-                    lines: { show: true },
-                    bars: { show: false },
-                    points: { show: true },
+                    lines: { 
+                      show: true,
+                      lineWidth: 2,
+                      steps: false
+                    },
+                    points: { 
+                      show: true,
+                      radius: 2,
+                      symbol: "circle",
+                      lineWidth: 2,
+                      fill: true,
+                      fillColor: null
+                    },
                     clickable: true,
-                    hoverable: true
+                    hoverable: true,
+                    shadowSize: 0,
+                    curvedLines: {  
+                      active: true, 
+                      apply: true,
+                    }
                 },
                 grid: {
                     show: true,
+                    color: "#CCC",
                     borderWidth: { top: 0, right: 0, bottom: 0, left: 0 },
-                    borderColor: { top: "#DDD", left: "#FFF" },
                     clickable: true,
                     hoverable: true,
                     autoHighlight: true
                 },
-                colors: [ "#2166ac",
-                          "#4393c3",
-                          "#92c5de",
-                          "#d1e5f0",
-                          "#f7f7f7",
-                          "#fddbc7",
-                          "#f4a582",
-                          "#d6604d",
-                          "#b2182b" ],
-                legend: {
-                    show: true,
-                    noColumns: 1,
-                    position: "ne",
-                    backgroundOpacity: 0
-                },
+                colors: [ 
+                    "#e79090",
+                    "#bee76f",
+                    "#e0e0e0",
+                    "rgba(0,0,0,0.2)",
+                    "rgba(255,0,205,0.3)",
+                ],
                 xaxis: {
+                    font: { 
+                      size: 11,
+                      lineHeight: 16,
+                      weight: "300",
+                      family: "Raleway",
+                      color: "#444"
+                    },
                     mode: "time",
-                    tickLength: 0
+                    tickLength: 0,
+                    reserveSpace: true
                 },
                 yaxis: {
-                    min: 0,
-                    font: { color: '#999' }
-                }
-            }
-
-            options = {
-                xaxis: {
-                    font: { color: '#999' },
-                    mode: "time",
-                    tickLength: 0
-                },
-                yaxis: {
-                    font: { color: '#999' },
+                    font: { 
+                      size: 11,
+                      lineHeight: 16,
+                      weight: "300",
+                      family: "Raleway",
+                      color: "#444"
+                    },
                     min: 0,
                     max: 100
                 }

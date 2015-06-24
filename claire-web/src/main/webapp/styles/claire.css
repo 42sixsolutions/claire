@@ -1,6 +1,6 @@
 /* Variables */
 /* Mixins */
-aside .element:after, .wrapper .holder .trending:after {
+aside .element:after, .wrapper .holder .trending:after, .line-chart:after {
   content: "";
   display: table;
   clear: both; }
@@ -473,6 +473,16 @@ aside .element ul {
 .radial-svg {
   display: block;
   margin: 0 auto; }
+
+/* Line Chart */
+.line-chart {
+  padding: 30px;
+  width: 100%;
+  height: 450px; }
+  .line-chart .flot-base {
+    position: relative;
+    width: 100%;
+    height: auto; }
 
 /* Media Queries */
 @media (min-width: 568px) {
