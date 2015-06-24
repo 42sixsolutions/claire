@@ -28,6 +28,16 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
 					<execution>
+					<id>ls</id>
+					<phase>generate-sources</phase>
+					<configuration>
+						<executable>ls</executable>
+					</configuration>
+					<goals>
+						<goal>exec</goal>
+					</goals>
+				</execution>
+					<execution>
 						<id>exec-npm-install</id>
 						<phase>generate-sources</phase>
 						<configuration>
