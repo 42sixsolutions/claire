@@ -4,10 +4,21 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class TopsyResults {
-
+	
+	public TopsyRequest request;
 	public TopsyResponse response;
 
 	public TopsyResults() {
+	}
+	
+	public static class TopsyRequest {
+		
+		public Parameters parameters;
+		
+		public static class Parameters {
+			
+			public String q;
+		}
 	}
 
 	public static class TopsyResponse {
