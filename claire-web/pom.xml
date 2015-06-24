@@ -27,7 +27,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
-					<execution>
+					<!--execution>
 						<id>exec-npm-install</id>
 						<phase>generate-sources</phase>
 						<configuration>
@@ -68,16 +68,14 @@
 						<goals>
 							<goal>exec</goal>
 						</goals>
-					</execution>
-					<!--execution>
+					</execution-->
+					<execution>
 						<id>exec-npm-install</id>
 						<phase>generate-sources</phase>
 						<configuration>
-							<executable>cd</executable>
+							<workingDirectory>./src/main/webapp</workingDirectory>
+							<executable>npm</executable>
 							<arguments>
-								<argument>src/main/webapp</argument>
-								<argument>&amp;&amp;</argument>
-								<argument>npm</argument>
 								<argument>install</argument>
 							</arguments>
 						</configuration>
@@ -89,18 +87,16 @@
 						<id>exec-bower-install</id>
 						<phase>generate-sources</phase>
 						<configuration>
-							<executable>cd</executable>
+							<workingDirectory>./src/main/webapp</workingDirectory>
+							<executable>bower</executable>
 							<arguments>
-								<argument>src/main/webapp</argument>
-								<argument>&amp;&amp;</argument>
-								<arugment>bower</arugment>
 								<argument>install</argument>
 							</arguments>
 						</configuration>
 						<goals>
 							<goal>exec</goal>
 						</goals>
-					</execution-->
+					</execution>
 				</executions>
 			</plugin>
 		</plugins>
