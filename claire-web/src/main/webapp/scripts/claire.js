@@ -9,8 +9,7 @@ angular.module('claire', [
   'ngRoute',
   'claire.controllers',
   'claire.directives',
-  'claire.services',
-  'claire.mockREST'
+  'claire.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', { templateUrl: 'partials/home.html', controller: 'ClaireCtrl' });

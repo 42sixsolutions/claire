@@ -30,5 +30,10 @@
 			<version>3.4.1</version>
 			<classifier>models</classifier>
 		</dependency>
+		<dependency>
+			<groupId>com._42six.claire</groupId>
+			<artifactId>topsy-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
