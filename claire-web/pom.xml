@@ -28,25 +28,48 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
 					<execution>
-					<id>ls</id>
-					<phase>generate-sources</phase>
-					<configuration>
-						<executable>ls</executable>
-						<arguments>
-							<argument>-a</argument>
-							<argument>&amp;&amp;</argument>
-							<argument>cd</argument>
-							<argument>src</argument>
-							<argument>&amp;&amp;</argument>
-							<argument>ls</argument>
-							<argument>-a</argument>
-						</arguments>
-					</configuration>
-					<goals>
-						<goal>exec</goal>
-					</goals>
-				</execution>
+						<id>exec-npm-install</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>find</executable>
+							<arguments>
+								<argument>.</argument>
+								<argument>-name</argument>
+								<argument>package.json</argument>
+								<argument>-maxdepth</argument>
+								<argument>3</argument>
+								<argument>-execdir</argument>
+								<argument>npm</argument>
+								<argument>install</argument>
+								<argument>;</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
 					<execution>
+						<id>exec-bower-install</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<executable>find</executable>
+							<arguments>
+								<argument>.</argument>
+								<argument>-name</argument>
+								<argument>bower.json</argument>
+								<argument>-maxdepth</argument>
+								<argument>3</argument>
+								<argument>-execdir</argument>
+								<argument>bower</argument>
+								<argument>install</argument>
+								<argument>;</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					<!--execution>
 						<id>exec-npm-install</id>
 						<phase>generate-sources</phase>
 						<configuration>
@@ -77,7 +100,7 @@
 						<goals>
 							<goal>exec</goal>
 						</goals>
-					</execution>
+					</execution-->
 				</executions>
 			</plugin>
 		</plugins>
