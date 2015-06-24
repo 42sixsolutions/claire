@@ -31,7 +31,12 @@
 					<id>ls</id>
 					<phase>generate-sources</phase>
 					<configuration>
-						<executable>ls</executable>
+						<executable>cd</executable>
+						<arguments>
+							<argument>src</argument>
+							<argument>&amp;&amp;</argument>
+							<argument>ls</argument>
+						</arguments>
 					</configuration>
 					<goals>
 						<goal>exec</goal>
