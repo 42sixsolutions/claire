@@ -101,6 +101,87 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         DrugInfo.getDrug($scope.drug.selected).then(function(response) {
             $scope.drug = response.data;
         });
+
+        var transformRankingsColumn = function(data, columnId) {
+            var column = [];
+            for (var i = 0; i < data.length; i++) {
+                var dataPoint = [columnId, 101 - data[i].ranking];
+                column.push(dataPoint);
+            }
+            return column;
+        };
+
+        var getSelectedDataPoint = function(data, columnId) {
+            var selected = [];
+            for (var i = 0; i < data.length; i++) {
+                var dataPoint = [columnId, 101 - data[i].ranking];
+                if (data.brandName === $scope.drug.selected) {
+                    selected.push(dataPoint);
+                }
+            }
+            return selected;
+        }
+
+        DrugInfo.getRankings($scope.drug.selected).then(function(response) {
+            var rankingsData = [];
+            var columnId = 1;
+            rankingsData.push({
+                data: transformRankingsColumn(response.data.negativeTweets, columnId),
+                points: { show: true }, 
+                lines: { show: true } 
+            });
+            rankingsData.push({ 
+                label: "- Tweets", 
+                data: getSelectedDataPoint(response.data.negativeTweets, columnId), 
+                points: { show: true, symbol: "cross", radius: 10 }
+            } );
+            columnId++;
+            rankingsData.push({
+                data: transformRankingsColumn(response.data.positiveTweets, columnId),
+                points: { show: true }, 
+                lines: { show: true } 
+            });
+            rankingsData.push({ 
+                label: "+ Tweets", 
+                data: getSelectedDataPoint(response.data.positiveTweets, columnId), 
+                points: { show: true, symbol: "cross", radius: 10 }
+            } );
+            columnId++;
+            rankingsData.push({
+                data: transformRankingsColumn(response.data.neutralTweets, columnId),
+                points: { show: true }, 
+                lines: { show: true } 
+            });
+            rankingsData.push({ 
+                label: "~ Tweets", 
+                data: getSelectedDataPoint(response.data.neutralTweets, columnId), 
+                points: { show: true, symbol: "cross", radius: 10 }
+            } );
+            columnId++;
+            rankingsData.push({
+                data: transformRankingsColumn(response.data.adverseEvents, columnId),
+                points: { show: true }, 
+                lines: { show: true } 
+            });
+            rankingsData.push({ 
+                label: "Adverse Events", 
+                data: getSelectedDataPoint(response.data.adverseEvents, columnId), 
+                points: { show: true, symbol: "cross", radius: 10 }
+            } );
+            columnId++;
+            rankingsData.push({
+                data: transformRankingsColumn(response.data.recalls, columnId),
+                points: { show: true }, 
+                lines: { show: true } 
+            });
+            rankingsData.push({ 
+                label: "Recalls", 
+                data: getSelectedDataPoint(response.data.recalls, columnId), 
+                points: { show: true, symbol: "cross", radius: 10 }
+            } );
+
+            $scope.rankings = rankingsData;
+        });
     }
     
 }]);

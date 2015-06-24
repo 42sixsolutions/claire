@@ -31,10 +31,28 @@ angular.module('claire.mockREST', ['ngMockE2E']).run(function($injector) {
         totalAdverseEvents: 1500
     } );
 
-    $httpBackend.whenGET(/api\/drug\/ranking/).respond( [
-        {brandName: "Crestor", ranking: 1, currentDrug: true},
-        {brandName: "Viagra", ranking: 2}
-    ] );
+    $httpBackend.whenGET(/api\/drug\/rankings/).respond( {
+        "positiveTweets": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 2 }
+        ],
+        "negativeTweets": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 2 }
+        ], 
+        "neutralTweets": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 2 }
+        ], 
+        "adverseEvents": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 2 }
+        ], 
+        "recalls": [
+            { brandName: "Crestor", ranking: 1, currentDrug: true },
+            { brandName: "Viagra", ranking: 2 }
+        ]
+    });
 
     $httpBackend.whenGET(/api\/drug\/chart/).respond( {
         "positiveTweets": [['2015-01-01', 25],['2015-01-02', 15],['2015-01-03', 20],['2015-01-04', 15]],
