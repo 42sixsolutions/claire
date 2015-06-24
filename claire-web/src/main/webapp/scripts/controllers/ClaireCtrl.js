@@ -19,6 +19,12 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         }
     };
 
+    $scope.$watch("drug.selected", function(newValue, oldValue) {
+        if (newValue && newValue !== oldValue) {
+            $scope.onSearch(newValue);
+        }
+    });
+
     DrugInfo.getDrugList().then(function(response) {
         $scope.drugList = response.data;
         $timeout(function() {
@@ -42,14 +48,6 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
 
     if (isDetailsPage) {
         $scope.drug.selected = pathParts[1];
-    }
-
-    if (isDetailsPage) {
-        $scope.$watch("drug.selected", function(newValue, oldValue) {
-            if (newValue && newValue !== oldValue) {
-                $location.path("/detail/" + newValue);
-            }
-        });
     }
 
     if (isDetailsPage) {
