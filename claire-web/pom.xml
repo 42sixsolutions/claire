@@ -33,7 +33,6 @@
 					<configuration>
 						<executable>ls</executable>
 						<arguments>
-							<argument>ls</argument>
 							<argument>-a</argument>
 						</arguments>
 					</configuration>
