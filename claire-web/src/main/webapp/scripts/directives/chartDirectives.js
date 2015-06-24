@@ -33,19 +33,20 @@ directive('rankingsChart', [function() {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
-            $.plot(element[0], [
-                { data: [[1, 100], [1, 75], [1, 50], [1, 25], [1, 0]],  points: { show: true },  lines: { show: true }   },
-                { label: "- Tweets",     data: [[1, 75]],     points: { show: true, symbol: "cross", radius: 10 }   },
-                { data: [[2, 100], [2, 75], [2, 50], [2, 25], [2, 0]],     points: { show: true },     lines: { show: true }   },
-                { label: "+ Tweets",     data: [[2, 50]],     points: { show: true, symbol: "cross", radius: 10 }   },
-                { data: [[3, 100], [3, 75], [3, 50], [3, 25], [3, 0]],     points: { show: true },     lines: { show: true }   },
-                { label: "~ Tweets",     data: [[3, 100]],     points: { show: true, symbol: "cross", radius: 10 }   },
-                {data: [[4, 100], [4, 75], [4, 50], [4, 25], [4, 0]],     points: { show: true },     lines: { show: true }   },
-                {label: "Adverse Events",     data: [[4, 0]],     points: { show: true, symbol: "cross", radius: 10 }   },
-                {data: [[5, 100], [5, 75], [5, 50], [5, 25], [5, 0]],     points: { show: true },     lines: { show: true }   },
-                {label: "Recalls",     data: [[5, 0]],     points: { show: true, symbol: "cross", radius: 10 }   }]); 
+            var options = {
+                yaxis: {
+                    min: 0,
+                    max: 100
+                }
+            };
+            scope.$watch("rankings", function(newValue, oldValue) {
+                if (newValue && newValue !== oldValue) {
+                    console.log(newValue);
+                    $.plot(element[0], newValue, options);
+                }
+            });
         }
-    }
+    };
 }]).
 directive('lineChart', [function() {
     return {
