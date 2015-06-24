@@ -510,7 +510,7 @@ aside .element ul {
 /* Line Chart */
 .line-chart {
   height: 450px;
-  margin: 40px 10px 30px 30px;
+  margin: 40px 20px 30px 30px;
   width: -moz-calc(100% - 40px);
   width: -o-calc(100% - 40px);
   width: -webkit-calc(100% - 40px);

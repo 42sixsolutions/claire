@@ -653,7 +653,7 @@ aside {
 
 .line-chart {
   height: 450px;
-  margin: 40px 10px 30px 30px;
+  margin: 40px 20px 30px 30px;
   @include calc('width','100% - 40px');
   @extend %clearfix;
   
