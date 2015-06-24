@@ -64,7 +64,7 @@
           <h2>Ranking</h2>
           <div class="box">
             <div class="graph ranking">
-              <img src="http://placehold.it/385x400/FFFFFF.png" width="100%" >
+              <div id="drug-rankings-chart" style="width: 100%; height: 400px;"></div>
             </div>
           </div>
         </div>
@@ -74,6 +74,18 @@
     <footer>
       
     </footer>
-    
+    <script type="text/javascript">
+      $.plot("#drug-rankings-chart", [
+        { data: [[1, 100], [1, 75], [1, 50], [1, 25], [1, 0]],  points: { show: true },  lines: { show: true }   },
+        { label: "- Tweets",     data: [[1, 75]],     points: { show: true, symbol: "cross", radius: 10 }   },
+        { data: [[2, 100], [2, 75], [2, 50], [2, 25], [2, 0]],     points: { show: true },     lines: { show: true }   },
+        { label: "+ Tweets",     data: [[2, 50]],     points: { show: true, symbol: "cross", radius: 10 }   },
+        { data: [[3, 100], [3, 75], [3, 50], [3, 25], [3, 0]],     points: { show: true },     lines: { show: true }   },
+        { label: "~ Tweets",     data: [[3, 100]],     points: { show: true, symbol: "cross", radius: 10 }   },
+        {data: [[4, 100], [4, 75], [4, 50], [4, 25], [4, 0]],     points: { show: true },     lines: { show: true }   },
+        {label: "Adverse Events",     data: [[4, 0]],     points: { show: true, symbol: "cross", radius: 10 }   },
+        {data: [[5, 100], [5, 75], [5, 50], [5, 25], [5, 0]],     points: { show: true },     lines: { show: true }   },
+        {label: "Recalls",     data: [[5, 0]],     points: { show: true, symbol: "cross", radius: 10 }   }]); 
+    </script>
   </div>
 </div>
