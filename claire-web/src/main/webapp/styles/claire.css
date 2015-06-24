@@ -1,6 +1,6 @@
 /* Variables */
 /* Mixins */
-aside .element:after, .wrapper .holder .trending:after, .line-chart:after {
+aside .element:after, .home .wrapper .holder .trending:after, .line-chart:after {
   content: "";
   display: table;
   clear: both; }
@@ -93,7 +93,8 @@ img {
 .box {
   background: white;
   border: 1px solid #e0e0e0;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  position: relative; }
 
 /* Chosen Dropdown Styles */
 .chosen-container,
@@ -257,6 +258,45 @@ section .information {
           margin-bottom: 0; }
 
 /* Aside Styling */
+aside .element .total-tweets {
+  display: block;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
+  filter: alpha(opacity=100);
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  opacity: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #aaaaaa;
+  font-weight: 600;
+  width: 140px;
+  height: 140px;
+  margin: -105px 0 0 -70px;
+  padding: 31px 0 0 0;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  border-radius: 100px;
+  -webkit-transition: all 350ms ease;
+  -moz-transition: all 350ms ease;
+  -ms-transition: all 350ms ease;
+  transition: all 350ms ease; }
+  aside .element .total-tweets span {
+    font-size: 40px;
+    display: block;
+    line-height: 53px;
+    font-weight: 300;
+    color: #444444;
+    margin-bottom: 5px; }
+aside .element #cumulativeBlue {
+  width: 200px;
+  height: 200px;
+  margin: 40px auto; }
 aside .element ul {
   border-top: 1px solid #e0e0e0; }
   aside .element ul li {
@@ -306,61 +346,67 @@ aside .element ul {
     aside .element ul.percentages li.positive:after {
       border-top-color: #bee76f; }
 
+#cumulativeBlue:hover + .total-tweets {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
+  filter: alpha(opacity=0);
+  -webkit-opacity: 0;
+  -moz-opacity: 0;
+  opacity: 0; }
+
 /* Homepage */
 .home {
   background: whitesmoke url(../images/bg.gif) no-repeat 0 0;
   background-size: 100% 100%; }
-
-.wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  padding: 50px 40px; }
-  .wrapper .holder {
+  .home .wrapper {
+    position: relative;
+    height: 100%;
     width: 100%;
-    text-align: center; }
-    .wrapper .holder h1 {
-      font-size: 55px;
-      text-align: center;
-      padding: 70px 0 20px 0;
-      font-weight: 300;
-      color: #2b2b2b;
-      background: url(../images/logo.png) no-repeat center top;
-      background-size: auto 55px; }
-    .wrapper .holder h2 {
-      margin-top: 20px;
-      text-align: left; }
-    .wrapper .holder h2.subtitle {
-      font-size: 16px;
-      color: #777777;
-      padding: 0 0 10px 0;
-      margin-top: 0;
-      font-weight: 500;
-      text-transform: inherit; }
-    .wrapper .holder p {
-      text-align: left; }
-    .wrapper .holder .selection {
-      background: #fff;
-      border: 1px solid #e0e0e0;
-      padding: 20px;
-      margin: 0 0 15px 0;
-      text-align: left; }
-    .wrapper .holder .trending {
-      display: inline-block;
-      width: auto;
-      margin: 0 auto; }
-      .wrapper .holder .trending .trend {
-        float: none;
-        text-align: left;
-        margin: 20px 0;
-        height: auto;
-        width: 100%; }
-        .wrapper .holder .trending .trend h2 {
-          margin-top: 0; }
-        .wrapper .holder .trending .trend a {
-          color: #848484; }
-          .wrapper .holder .trending .trend a:hover {
-            color: #444444; }
+    padding: 50px 40px; }
+    .home .wrapper .holder {
+      width: 100%;
+      text-align: center; }
+      .home .wrapper .holder h1 {
+        font-size: 55px;
+        text-align: center;
+        padding: 70px 0 20px 0;
+        font-weight: 300;
+        color: #2b2b2b;
+        background: url(../images/logo.png) no-repeat center top;
+        background-size: auto 55px; }
+      .home .wrapper .holder h2 {
+        margin-top: 20px;
+        text-align: left; }
+      .home .wrapper .holder h2.subtitle {
+        font-size: 16px;
+        color: #777777;
+        padding: 0 0 10px 0;
+        margin-top: 0;
+        font-weight: 500;
+        text-transform: inherit; }
+      .home .wrapper .holder p {
+        text-align: left; }
+      .home .wrapper .holder .selection {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 0 0 15px 0;
+        text-align: left; }
+      .home .wrapper .holder .trending {
+        display: inline-block;
+        width: auto;
+        margin: 0 auto; }
+        .home .wrapper .holder .trending .trend {
+          float: none;
+          text-align: left;
+          margin: 20px 0;
+          height: auto;
+          width: 100%; }
+          .home .wrapper .holder .trending .trend h2 {
+            margin-top: 0; }
+          .home .wrapper .holder .trending .trend a {
+            color: #848484; }
+            .home .wrapper .holder .trending .trend a:hover {
+              color: #444444; }
 
 .controls {
   width: 100%;
@@ -379,26 +425,9 @@ aside .element ul {
     font-weight: 600; }
 
 /* Radius Progress Chart */
-.radial_chart_legend {
-  display: inline-block;
-  margin-top: 0px;
-  margin-bot: 10px;
-  vertical-align: top;
-  border-style: solid;
-  border-width: 1px;
-  padding: 3px;
-  background-color: white; }
-
-.radial_legend_bullet {
-  text-align: left;
-  font-family: 'Raleway', Helvetica, Arial; }
-  .radial_legend_bullet .svg {
-    border-style: solid;
-    border-width: 1px; }
-
 .background {
   fill: #FFFFFF;
-  fill-opacity: 0.01; }
+  fill-opacity: 1; }
 
 .component {
   fill: #e1e1e1; }
@@ -412,19 +441,19 @@ aside .element ul {
   text-shadow: #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px; }
 
 .arc0-blue {
-  /* Positive */
-  stroke-weight: 0.1;
-  fill: #bee76f; }
-
-.arc1-blue {
   /* Negative */
   stroke-weight: 0.1;
   fill: #e79090; }
 
-.arc2-blue {
+.arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
   fill: #e0e0e0; }
+
+.arc2-blue {
+  /* Positive */
+  stroke-weight: 0.1;
+  fill: #bee76f; }
 
 .arc3-blue {
   stroke-weight: 0.1;
@@ -434,32 +463,16 @@ aside .element ul {
   stroke-weight: 0.1;
   fill: #BFEFFF; }
 
-.arc0-green {
-  stroke-weight: 0.1;
-  fill: #00611C; }
-
-.arc1-green {
-  stroke-weight: 0.1;
-  fill: #329555; }
-
-.arc2-green {
-  stroke-weight: 0.1;
-  fill: #4c9e54; }
-
-.arc3-green {
-  stroke-weight: 0.1;
-  fill: #90d18a; }
-
-.arc4-green {
-  stroke-weight: 0.1;
-  fill: #BDFCC9; }
-
 .white {
   fill: #FFFFFF; }
 
 .label {
   font-family: 'Raleway', Helvetica, Arial;
-  text-anchor: middle; }
+  text-anchor: middle;
+  fill: white;
+  display: block;
+  height: 200px !important;
+  width: 200px !important; }
   .label.central {
     font-size: 40px !important;
     font-weight: 300;

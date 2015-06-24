@@ -10,16 +10,17 @@ directive('pieChart', ["$window", function($window) {
                     radialProgress(element[0])
                         .id('cumulativeBlue')
                         .diameter('200')
+                        .margin({top:0, right:0, bottom:0, left:0})
                         .showLegend(false)
+                        
+                        .value(newValue.percentNegative, 0)
+                        .arcDesc('Negative', 0)
 
-                        .value(newValue.percentPositive, 0)
-                        .arcDesc('Positive', 0)
+                        .value(newValue.percentUnknown, 1)
+                        .arcDesc('Neutral', 1)
 
-                        .value(newValue.percentNegative, 1)
-                        .arcDesc('Negative', 1)
-
-                        .value(newValue.percentUnknown, 2)
-                        .arcDesc('Neutral', 2)
+                        .value(newValue.percentPositive, 2)
+                        .arcDesc('Positive', 2)
 
                         .theme('blue')
                         .style('cumulative')

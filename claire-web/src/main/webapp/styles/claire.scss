@@ -176,6 +176,7 @@ img {
   background: white;
   border: 1px solid $bordercolor;
   margin-bottom: 20px;
+  position: relative;
 }
 
 
@@ -358,6 +359,43 @@ aside {
   .element {
     @extend %clearfix;
     
+    .total-tweets {
+      display: block;
+      @include opacity(100);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 12px;
+      line-height: 12px;
+      text-transform: uppercase;
+      text-align: center;
+      color: lighten($textcolor,40%);
+      font-weight: 600;
+
+      width: 140px;
+      height: 140px;
+      margin: -105px 0 0 -70px;
+      padding: 31px 0 0 0;
+      @include borderradius(100px);
+      @include transition(all 350ms ease);
+      
+  
+      span {
+        font-size: 40px;
+        display: block;
+        line-height: 53px;
+        font-weight: 300;
+        color: lighten($textcolor,0%);
+        margin-bottom: 5px;
+      }
+    }
+    
+    #cumulativeBlue {
+      width: 200px;
+      height: 200px;
+      margin: 40px auto;
+    }
+    
     ul {
       border-top: 1px solid $bordercolor;
       
@@ -418,87 +456,92 @@ aside {
   }
 }
 
+#cumulativeBlue:hover + .total-tweets { 
+  @include opacity(0);
+}
+
+
 /* Homepage */
 
 .home {
   background: #f5f5f5 url(../images/bg.gif) no-repeat 0 0;
   background-size: 100% 100%; 
-}
 
-.wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  padding: 50px 40px;
+  .wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 50px 40px;
+    
+    .holder {
+  		width: 100%;
+  		text-align: center;
   
-  .holder {
-		width: 100%;
-		text-align: center;
-
-		h1 {
-			font-size: 55px;
-			text-align: center;
-			padding: 70px 0 20px 0;
-			font-weight: 300;
-			color: darken($textcolor,10%);
-
-      background: url(../images/logo.png) no-repeat center top;
-      background-size: auto 55px;
-
-		}
-		
-		h2 {
-  		margin-top: 20px;
-      text-align: left;
-		}
-		
-		h2.subtitle {
-			font-size: 16px;
-			color: lighten($textcolor,20%);
-			padding: 0 0 10px 0;
-			margin-top: 0;
-			font-weight: 500;
-			text-transform: inherit;
-		}
-		
-		p {
-      text-align: left;
-    }
-		
-		.selection {
-			background: #fff;
-			border: $border-default;
-			padding: 20px;
-			margin: 0 0 15px 0;
-      text-align: left;
-		}
-		
-		.trending {
-  		display: inline-block;
-  		@extend %clearfix;
-  		width: auto;
-  		margin: 0 auto;
+  		h1 {
+  			font-size: 55px;
+  			text-align: center;
+  			padding: 70px 0 20px 0;
+  			font-weight: 300;
+  			color: darken($textcolor,10%);
+  
+        background: url(../images/logo.png) no-repeat center top;
+        background-size: auto 55px;
+  
+  		}
   		
-  		.trend {
-    		float: none;
-    		text-align: left;
-    		margin: 20px 0;
-    		height: auto;
-    		width: 100%;
+  		h2 {
+    		margin-top: 20px;
+        text-align: left;
+  		}
+  		
+  		h2.subtitle {
+  			font-size: 16px;
+  			color: lighten($textcolor,20%);
+  			padding: 0 0 10px 0;
+  			margin-top: 0;
+  			font-weight: 500;
+  			text-transform: inherit;
+  		}
+  		
+  		p {
+        text-align: left;
+      }
+  		
+  		.selection {
+  			background: #fff;
+  			border: $border-default;
+  			padding: 20px;
+  			margin: 0 0 15px 0;
+        text-align: left;
+  		}
+  		
+  		.trending {
+    		display: inline-block;
+    		@extend %clearfix;
+    		width: auto;
+    		margin: 0 auto;
     		
-    		h2 {
-      		margin-top: 0;
-    		}
-    		
-    		a {
-      		color: lighten($textcolor,25%);
+    		.trend {
+      		float: none;
+      		text-align: left;
+      		margin: 20px 0;
+      		height: auto;
+      		width: 100%;
       		
-      		&:hover {
-        		color: $textcolor;
+      		h2 {
+        		margin-top: 0;
+      		}
+      		
+      		a {
+        		color: lighten($textcolor,25%);
+        		
+        		&:hover {
+          		color: $textcolor;
+        		}
       		}
     		}
   		}
-		}
+    }
   }
 }
 
@@ -520,30 +563,9 @@ aside {
 
 /* Radius Progress Chart */
 
-.radial_chart_legend {
-  display: inline-block;
-  margin-top: 0px;
-  margin-bot: 10px;
-  vertical-align: top;
-  border-style: solid;
-  border-width: 1px;
-  padding: 3px;
-  background-color: white;
-}
-
-.radial_legend_bullet {
-  text-align: left;
-  font-family: 'Raleway', Helvetica, Arial;
-
-  .svg {
-    border-style: solid;
-    border-width: 1px;
-  }
-}
-
 .background {
   fill: #FFFFFF;
-  fill-opacity: 0.01;
+  fill-opacity: 1;
 }
 
 .component {
@@ -563,19 +585,20 @@ aside {
   $bordercolor 0px 0px 1px;
 }
 
-.arc0-blue { /* Positive */
-  stroke-weight:0.1;
-  fill: $positive;
-}
 
-.arc1-blue { /* Negative */
+.arc0-blue { /* Negative */
   stroke-weight: 0.1;
   fill: $negative;
 }
 
-.arc2-blue { /* Neutral */
+.arc1-blue { /* Neutral */
   stroke-weight: 0.1;
   fill: $neutral;
+}
+
+.arc2-blue { /* Positive */
+  stroke-weight:0.1;
+  fill: $positive;
 }
 
 .arc3-blue {
@@ -588,36 +611,15 @@ aside {
   fill: #BFEFFF;
 }
 
-.arc0-green {
-  stroke-weight:0.1;
-  fill: #00611C;
-}
-
-.arc1-green {
-  stroke-weight:0.1;
-  fill: #329555;
-}
-
-.arc2-green {
-  stroke-weight:0.1;
-  fill: #4c9e54;
-}
-
-.arc3-green {
-  stroke-weight:0.1;
-  fill: #90d18a;
-}
-
-.arc4-green {
-  stroke-weight:0.1;
-  fill: #BDFCC9;
-}
-
 .white { fill: #FFFFFF; }
 
 .label {
   font-family: 'Raleway', Helvetica, Arial;
   text-anchor: middle;
+  fill: white;
+  display: block;
+  height: 200px !important;
+  width: 200px !important;
   
   &.central {
     font-size: 40px !important;
