@@ -39,6 +39,7 @@ public class TopsyResultsReaderTest {
 			logger.info("Found [" + results.response.list.length + "] results of [" + results.response.total + "] total");
 			for (TopsyResult result : results.response.list) {
 				Assert.assertNotNull(result.content);
+				Assert.assertTrue(result.firstpost_date > 0);
 			}
 		}
 	}

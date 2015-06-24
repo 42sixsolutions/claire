@@ -21,6 +21,7 @@ public class TopsyResults {
 		public static class TopsyResult {
 
 			public String content;
+			public long firstpost_date;
 			
 			public TopsyResult() {
 			}
