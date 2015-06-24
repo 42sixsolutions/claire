@@ -53,10 +53,6 @@
 		<module>claire-web</module>
 		<module>claire-services</module>
 	</modules>
-
-	<dependencies>
-	</dependencies>
-
      <profiles>
 	<profile>
          <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
