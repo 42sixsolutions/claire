@@ -352,6 +352,7 @@ section {
   }
 }
 
+
 /* Aside Styling */
 
 aside {
@@ -386,12 +387,6 @@ aside {
         color: lighten($textcolor,0%);
         margin-bottom: 5px;
       }
-    }
-    
-    #cumulativeBlue {
-      width: 200px;
-      height: 200px;
-      margin: 40px auto;
     }
     
     ul {
@@ -560,6 +555,12 @@ aside {
 
 /* Radius Progress Chart */
 
+#cumulativeBlue {
+  width: 200px;
+  height: 200px;
+  margin: 40px auto;
+}
+
 .background {
   fill: #FFFFFF;
   fill-opacity: 1;
@@ -647,18 +648,102 @@ aside {
   margin: 0 auto;
 }
 
+
 /* Line Chart */
 
 .line-chart {
-  padding: 30px;
-  width: 100%;
   height: 450px;
+  margin: 30px 10px 30px 30px;
+  @include calc('width','100% - 40px');
   @extend %clearfix;
   
   .flot-base {
     position: relative ;
     width: 100% ;
     height: auto;
+  }
+}
+
+.graph-title {
+  border: 1px solid $bordercolor;
+  display: inline-block;
+  position: relative;
+  padding: 15px 25px;
+  font-size: 11px;
+  line-height: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  color: lighten($textcolor,40%);
+  font-weight: 600;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  
+  span {
+    text-transform: lowercase;
+    color: lighten($textcolor,20%);
+    margin: 0 5px;
+  }
+
+  &:after {
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    border-top: 10px solid $neutral;
+    border-left: 10px solid transparent;
+  }
+}
+
+.graph-legend {
+
+  ul {
+    border-top: 1px solid $bordercolor;
+    
+    li {
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      height: 100%;
+      padding: 15px 5px;
+      font-size: 11px;
+      line-height: 12px;
+      text-transform: uppercase;
+      text-align: center;
+      border-left: 1px solid $bordercolor;
+      color: lighten($textcolor,40%);
+      font-weight: 600;
+
+      @include calc('width','(100% / 5) - 3px');
+      
+      &:first-child { border-left: 0; }
+      
+      span {
+        font-size: 24px;
+        display: block;
+        line-height: 30px;
+        font-weight: 300;
+        color: lighten($textcolor,0%);
+      }
+      
+      &:after {
+        content: '';
+        height: 0;
+        width: 0;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        border-top: 10px solid $neutral;
+        border-left: 10px solid transparent;
+      }
+
+      &.negative:after { border-top-color: $negative; }
+      &.positive:after { border-top-color: $positive; }
+      &.recalls:after { border-top-color: $textcolor; }
+      &.events:after { border-top-color: $primary; }
+    }
   }
 }
 

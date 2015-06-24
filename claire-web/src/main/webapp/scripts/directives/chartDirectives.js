@@ -58,7 +58,7 @@ directive('lineChart', [function() {
                     lines: { 
                       show: true,
                       lineWidth: 2,
-                      steps: false
+                      steps: false,
                     },
                     points: { 
                       show: true,
@@ -100,7 +100,7 @@ directive('lineChart', [function() {
                       color: "#444"
                     },
                     mode: "time",
-                    tickLength: 0,
+                    tickLength: 10,
                     reserveSpace: true
                 },
                 yaxis: {
