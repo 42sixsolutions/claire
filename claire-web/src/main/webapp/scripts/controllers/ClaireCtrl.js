@@ -11,7 +11,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     };
 
     var pathParts = $location.path().split("/detail/");
-    var isDetailsPage = pathParts.length > 1;
+    $scope.isDetailsPage = pathParts.length > 1;
 
     $scope.onSearch = function(drug) {
         if (drug) {
@@ -32,7 +32,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         });
     });
     
-    if (!isDetailsPage) {
+    if (!$scope.isDetailsPage) {
         Trends.getTopPositive(5).then(function(response) {
             $scope.trends.topPositive = response.data;
         });
@@ -46,11 +46,11 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         });
     }
 
-    if (isDetailsPage) {
+    if ($scope.isDetailsPage) {
         $scope.drug.selected = pathParts[1];
     }
 
-    if (isDetailsPage) {
+    if ($scope.isDetailsPage) {
         DrugInfo.getTwitterStats($scope.drug.selected).then(function(response) {
             $scope.twitterStats = response.data;
         });
