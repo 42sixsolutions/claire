@@ -18,12 +18,16 @@ public class ResponseMapper {
 		mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 	
-	public void marshalChartResponse(ChartCollection chart, File file) throws JsonParseException, JsonMappingException, IOException {
-		this.mapper.writeValue(file, chart);
+	public void marshalObject(Object object, File file) throws JsonParseException, JsonMappingException, IOException {
+		this.mapper.writeValue(file, object);
 	}
 	
-	public ChartCollection unmarshalChartResponse(File file) throws JsonParseException, JsonMappingException, IOException {
-		return this.mapper.readValue(file, ChartCollection.class);
+	public <T> T unmarshalFile(File file, Class<T> returnClass) throws JsonParseException, JsonMappingException, IOException {
+		return (T) this.mapper.readValue(file, returnClass);
+	}
+
+	public <T> T unmarshalString(String string, Class<T> returnClass) throws JsonParseException, JsonMappingException, IOException {
+		return (T) this.mapper.readValue(string, returnClass);
 	}
 
 }
