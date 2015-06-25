@@ -108,15 +108,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             var negativeMax = getMax(negative);
             var unknownMax = getMax(unknown);
 
-            var tweetMax = positiveMax;
-            if (negativeMax > tweetMax) {
-                tweetMax = negativeMax;
-            }
-            if (unknownMax > tweetMax) {
-                tweetMax = unknownMax;
-            }
-
-            return tweetMax;
+            return Math.max(positiveMax, negativeMax, unknownMax);
         }
 
         DrugInfo.getChart($scope.drug.selected).then(function(response) {
