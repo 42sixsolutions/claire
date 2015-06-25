@@ -84,6 +84,21 @@
 						</goals>
 					</execution>
 					<execution>
+						<id>exec-karma-tests</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<workingDirectory>./src/main/webapp</workingDirectory>
+							<executable>npm</executable>
+							<arguments>
+								<argument>run</argument>
+								<argument>test-single-run</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					<execution>
 						<id>exec-bower-install</id>
 						<phase>generate-sources</phase>
 						<configuration>
