@@ -181,7 +181,7 @@ directive('lineChart', [function() {
                       family: "Raleway",
                       color: "#444"
                     },
-                    min: 0
+                    min: -10
                 },
                 crosshair: {
                     mode: "x"
