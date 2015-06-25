@@ -3,7 +3,6 @@ package com._42six.claire.web;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.inject.Singleton;
@@ -11,11 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import jersey.repackaged.com.google.common.collect.Lists;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -35,9 +30,11 @@ public class DrugResource {
 	
 	private ResponseTranslator responseTranslator;
 	
-	public DrugResource() throws JsonParseException, JsonMappingException, IOException {
+	public DrugResource() throws JsonParseException, JsonMappingException, IOException, ParseException {
 		InputStream twitterDetailsStream = this.getClass().getClassLoader().getResourceAsStream("/json/twitterDetails.json");
-		this.responseTranslator = new ResponseTranslator(twitterDetailsStream);
+		InputStream openFDADrugDatesStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugDates.json");
+		InputStream openFDADrugDescriptionsStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugDescriptions.json");
+		this.responseTranslator = new ResponseTranslator(twitterDetailsStream, openFDADrugDatesStream, openFDADrugDescriptionsStream);
 	}
 	
     @GET
