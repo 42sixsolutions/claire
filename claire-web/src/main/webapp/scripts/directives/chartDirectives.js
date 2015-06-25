@@ -157,12 +157,15 @@ directive('lineChart', [function() {
                     },
                     min: 0,
                     max: 100
+                },
+                crosshair: {
+                    mode: "x"
                 }
             };
 
             scope.$watch('mainChartData', function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
-                    $.plot(element[0], newValue, options);                    
+                    $.plot(element[0], newValue, options);
                 }
             });
         }
