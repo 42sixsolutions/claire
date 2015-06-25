@@ -1,6 +1,6 @@
 /* Variables */
 /* Mixins */
-aside .element:after, .home .wrapper .holder .trending:after, .line-chart:after {
+aside .element:after, .line-chart:after {
   content: "";
   display: table;
   clear: both; }
@@ -81,13 +81,13 @@ body {
   padding: 0 20px; }
 
 a {
-  color: #ec13da;
+  color: #39dcb9;
   -webkit-transition: all 350ms ease;
   -moz-transition: all 350ms ease;
   -ms-transition: all 350ms ease;
   transition: all 350ms ease; }
   a:hover {
-    color: #a50d99; }
+    color: #1eaa8c; }
 
 h1 {
   font-weight: 500;
@@ -95,7 +95,7 @@ h1 {
   margin-bottom: 0.5em; }
 
 h2 {
-  color: #ec13da;
+  color: #39dcb9;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -207,7 +207,7 @@ img {
         color: #848484; }
       .chosen-container .chosen-drop .chosen-results li:hover,
       .chosen-container-active .chosen-drop .chosen-results li:hover {
-        color: #ec13da; }
+        color: #39dcb9; }
       .chosen-container .chosen-drop .chosen-results li:last-child,
       .chosen-container-active .chosen-drop .chosen-results li:last-child {
         -webkit-border-radius: 0 0 5px 5px;
@@ -221,11 +221,15 @@ img {
 
 /* Header Styling */
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
   background: white;
+  border-top: 5px solid #39dcb9;
   border-bottom: 1px solid #e0e0e0;
   padding: 10px 0;
-  text-align: left;
-  margin: 0 0 40px 0; }
+  text-align: left; }
   header .chosen-container {
     width: 40% !important; }
     header .chosen-container .chosen-single,
@@ -251,11 +255,14 @@ header {
     padding-left: 40px; }
 
 /* Main Section Styling */
+.content {
+  margin-top: 100px; }
+
 section .information {
   margin-bottom: 40px; }
   section .information h1 .name {
     font-size: 16px;
-    color: #ec13da;
+    color: #39dcb9;
     text-transform: uppercase;
     margin-left: 5px; }
   section .information .trends {
@@ -295,7 +302,7 @@ aside .element .total-tweets {
   font-weight: 600;
   width: 180px;
   height: 180px;
-  margin: -127px 0 0 -90px;
+  margin: -90px 0 0 -90px;
   padding: 53px 0 0 0;
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
@@ -334,7 +341,8 @@ aside .element ul {
       display: block;
       line-height: 30px;
       font-weight: 300;
-      color: #444444; }
+      color: #444444;
+      margin-bottom: 2px; }
     aside .element ul li:after {
       content: '';
       height: 0;
@@ -344,77 +352,26 @@ aside .element ul {
       right: 3px;
       border-top: 10px solid #e0e0e0;
       border-left: 10px solid transparent; }
-  aside .element ul.stats {
-    border-top: 0; }
-    aside .element ul.stats li {
-      width: -moz-calc(50% - 2px);
-      width: -o-calc(50% - 2px);
-      width: -webkit-calc(50% - 2px);
-      width: calc(50% - 2px); }
-  aside .element ul.percentages li {
+    aside .element ul li.negative:after {
+      border-top-color: #e79090; }
+    aside .element ul li.positive:after {
+      border-top-color: #bee76f; }
+    aside .element ul li.recalls:after {
+      border-top-color: #d54dde; }
+    aside .element ul li.events:after {
+      border-top-color: #ffc2fa; }
+  aside .element ul.stats li, aside .element ul.ranking-btm li {
+    width: -moz-calc(50% - 2px);
+    width: -o-calc(50% - 2px);
+    width: -webkit-calc(50% - 2px);
+    width: calc(50% - 2px); }
+  aside .element ul.percentages li, aside .element ul.ranking-top li {
     width: -moz-calc((100% / 3) - 3px);
     width: -o-calc((100% / 3) - 3px);
     width: -webkit-calc((100% / 3) - 3px);
     width: calc((100% / 3) - 3px); }
-    aside .element ul.percentages li.negative:after {
-      border-top-color: #e79090; }
-    aside .element ul.percentages li.positive:after {
-      border-top-color: #bee76f; }
-
-/* Homepage */
-.home {
-  background: whitesmoke url(../images/bg.gif) no-repeat 0 0;
-  background-size: 100% 100%; }
-  .home .wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 50px 40px; }
-    .home .wrapper .holder {
-      width: 100%;
-      text-align: center; }
-      .home .wrapper .holder h1 {
-        font-size: 55px;
-        text-align: center;
-        padding: 70px 0 20px 0;
-        font-weight: 300;
-        color: #2b2b2b;
-        background: url(../images/logo.png) no-repeat center top;
-        background-size: auto 55px; }
-      .home .wrapper .holder h2 {
-        margin-top: 20px;
-        text-align: left; }
-      .home .wrapper .holder h2.subtitle {
-        font-size: 16px;
-        color: #777777;
-        padding: 0 0 10px 0;
-        margin-top: 0;
-        font-weight: 500;
-        text-transform: inherit; }
-      .home .wrapper .holder p {
-        text-align: left; }
-      .home .wrapper .holder .selection {
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        padding: 20px;
-        margin: 0 0 15px 0;
-        text-align: left; }
-      .home .wrapper .holder .trending {
-        display: inline-block;
-        width: auto;
-        margin: 0 auto; }
-        .home .wrapper .holder .trending .trend {
-          float: none;
-          text-align: left;
-          margin: 20px 0;
-          height: auto;
-          width: 100%; }
-          .home .wrapper .holder .trending .trend h2 {
-            margin-top: 0; }
-          .home .wrapper .holder .trending .trend a {
-            color: #848484; }
-            .home .wrapper .holder .trending .trend a:hover {
-              color: #444444; }
+  aside .element ul.stats, aside .element ul.ranking-top {
+    border-top: 0; }
 
 .controls {
   width: 100%;
@@ -426,7 +383,7 @@ aside .element ul {
     -moz-border-radius: 3px;
     -ms-border-radius: 3px;
     border-radius: 3px;
-    background: #ec13da;
+    background: #d54dde;
     padding: 8px 20px;
     text-transform: uppercase;
     color: #fff;
@@ -436,18 +393,21 @@ aside .element ul {
 .wrapper {
   width: 100%;
   height: 100%; }
+  .wrapper canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1; }
   .wrapper .bg-gradient {
     width: 100%;
     min-height: 100%;
     padding: 0;
     margin: 0 auto;
-    background-image: url(../images/bg-gradient-fallback.png);
-    background-repeat: repeat-y;
-    background: -webkit-gradient(linear, left top, right top, from(#3adcb8), to(#24b8d9));
-    background: -webkit-linear-gradient(left, #3adcb8, #24b8d9);
-    background: -moz-linear-gradient(left, #3adcb8, #24b8d9);
-    background: -ms-linear-gradient(left, #3adcb8, #24b8d9);
-    background: -o-linear-gradient(left, #3adcb8, #24b8d9); }
+    background: transparent;
+    position: relative;
+    z-index: 999; }
     .wrapper .bg-gradient .holder.selection .brand {
       position: absolute;
       left: 50%;
@@ -486,48 +446,9 @@ aside .element ul {
         line-height: 24px;
         color: #fff; }
     .wrapper .bg-gradient .holder.selection .selection {
-      background: #fff;
+      background: white;
       padding: 20px;
-      border: 1px solid #d5d5d5; }
-      .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-drop ul li {
-        font-weight: 300;
-        -moz-border-radius: 0;
-        -webkit-border-radius: 0;
-        border-radius: 0;
-        -khtml-border-radius: 0; }
-        .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-drop ul li:hover {
-          color: #d54dde; }
-        .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-drop ul li:last-child {
-          border-bottom-right-radius: 5px;
-          -moz-border-radius-bottomright: 5px;
-          -webkit-border-bottom-right-radius: 5px;
-          border-bottom-left-radius: 5px;
-          -moz-border-radius-bottomleft: 5px;
-          -webkit-border-bottom-left-radius: 5px; }
-      .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-single {
-        -moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-        border-radius: 3px;
-        -khtml-border-radius: 3px; }
-        .wrapper .bg-gradient .holder.selection .selection .chosen-container .chosen-single span {
-          width: 100%;
-          height: 100%;
-          font-weight: 400;
-          line-height: 36px;
-          color: #858585; }
-      .wrapper .bg-gradient .holder.selection .selection .chosen-container.chosen-container-active .chosen-single span {
-        color: #000; }
-      .wrapper .bg-gradient .holder.selection .selection .controls button {
-        background: #d54dde;
-        border: none;
-        outline: none;
-        padding: 10px 20px;
-        line-height: 10px;
-        transition: all .15s linear; }
-        .wrapper .bg-gradient .holder.selection .selection .controls button:hover {
-          background: #ac28b5;
-          cursor: pointer;
-          transition: all .15s linear; }
+      border: 1px solid #e0e0e0; }
     .wrapper .bg-gradient .holder.selection .trending {
       width: 100%;
       padding: 30px 0 0 0; }
@@ -550,7 +471,6 @@ aside .element ul {
             .wrapper .bg-gradient .holder.selection .trending .trend ul li a:hover {
               color: #d54dde; }
 
-/* End UI Facelift */
 /* Radius Progress Chart */
 #cumulativeBlue {
   width: 200px;
@@ -562,6 +482,13 @@ aside .element ul {
     -webkit-opacity: 0;
     -moz-opacity: 0;
     opacity: 0; }
+
+#positiveTweets,
+#neutralTweets,
+#negativeTweets {
+  width: 60px;
+  height: 60px;
+  margin: 10px auto; }
 
 .background {
   fill: #FFFFFF;
@@ -611,13 +538,20 @@ aside .element ul {
   .arc2-blue:hover {
     fill: #aae043; }
 
-.arc3-blue {
-  stroke-weight: 0.1;
-  fill: #87CEEB; }
-
-.arc4-blue {
-  stroke-weight: 0.1;
-  fill: #BFEFFF; }
+.percentages .labels {
+  display: none; }
+.percentages .negative .arc0-blue {
+  fill: #e79090; }
+  .percentages .negative .arc0-blue:hover {
+    fill: #de6666; }
+.percentages .neutral .arc0-blue {
+  fill: #bababa; }
+  .percentages .neutral .arc0-blue:hover {
+    fill: #a0a0a0; }
+.percentages .positive .arc0-blue {
+  fill: #bee76f; }
+  .percentages .positive .arc0-blue:hover {
+    fill: #aae043; }
 
 .white {
   fill: #FFFFFF; }
@@ -630,10 +564,20 @@ aside .element ul {
   height: 200px !important;
   width: 200px !important; }
   .label.central {
+    display: none;
     font-size: 40px !important;
     font-weight: 300;
     fill: #444444; }
   .label.description {
+    font-size: 40px !important;
+    font-weight: 300;
+    fill: #444444; }
+  .label.small {
+    content: "Negative";
+    display: block;
+    width: 100%;
+    height: 20px;
+    background: red;
     font-size: 12px !important;
     font-weight: 600;
     fill: #aaaaaa;
@@ -765,9 +709,9 @@ aside .element ul {
     .graph-legend ul li.positive:after {
       border-top-color: #bee76f; }
     .graph-legend ul li.recalls:after {
-      border-top-color: #e0e0e0; }
+      border-top-color: #d54dde; }
     .graph-legend ul li.events:after {
-      border-top-color: #e0e0e0; }
+      border-top-color: #ffc2fa; }
 
 /* Media Queries */
 @media only screen and (min-device-width: 768px) {

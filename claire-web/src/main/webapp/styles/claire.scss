@@ -1,12 +1,15 @@
 /* Variables */
 
-$primary:         #ec13da;
+$primary:         #39dcb9;
+$secondary:       #d54dde;
+$darkh:           #007286;
 $textcolor:       #444444;
+
 $negative:        #e79090;
 $positive:        #bee76f;
 $neutral:         #e0e0e0;
-$recalls:         #e0e0e0;
-$events:          #e0e0e0;
+$recalls:         #d54dde;
+$events:          #ffc2fa;
 
 $bordercolor:     #e0e0e0;
 $border-default:  1px solid $bordercolor;
@@ -291,11 +294,15 @@ img {
 /* Header Styling */
 
 header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
   background: white;
+  border-top: 5px solid $primary;
   border-bottom: 1px solid $bordercolor;
   padding: 10px 0;
   text-align: left;
-  margin: 0 0 40px 0;
 
   .chosen-container {
   	width: 40% !important;
@@ -327,6 +334,10 @@ header {
 }
 
 /* Main Section Styling */
+
+.content {
+  margin-top: 100px;
+}
 
 section {
   
@@ -397,7 +408,7 @@ aside {
       font-weight: 600;
       width: 180px;
       height: 180px;
-      margin: -127px 0 0 -90px;
+      margin: -90px 0 0 -90px;
       padding: 53px 0 0 0;
       @include borderradius(100px);
       @include transition(all 350ms ease);
@@ -437,6 +448,7 @@ aside {
           line-height: 30px;
           font-weight: 300;
           color: lighten($textcolor,0%);
+          margin-bottom: 2px;
         }
         
         &:after {
@@ -449,112 +461,38 @@ aside {
           border-top: 10px solid $neutral;
           border-left: 10px solid transparent;
         }
+
+        &.negative:after { border-top-color: $negative; }
+        &.positive:after { border-top-color: $positive; }
+        &.recalls:after { border-top-color: $recalls; }
+        &.events:after { border-top-color: $events; }
       }
 
-      &.stats {
-        border-top: 0;
+      &.stats,
+      &.ranking-btm {
         
         li { 
           @include calc('width','50% - 2px');
         }
       }
 
-      &.percentages {
+      &.percentages,
+      &.ranking-top {
         
         li { 
           @include calc('width','(100% / 3) - 3px');
           
-          &.negative:after { border-top-color: $negative; }
-          &.positive:after { border-top-color: $positive; }
         }
       }
-    }
-  }
-}
 
-
-/* Homepage */
-
-.home {
-  background: #f5f5f5 url(../images/bg.gif) no-repeat 0 0;
-  background-size: 100% 100%; 
-
-  .wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 50px 40px;
-    
-    .holder {
-  		width: 100%;
-  		text-align: center;
-			
-  		h1 {
-  			font-size: 55px;
-  			text-align: center;
-  			padding: 70px 0 20px 0;
-  			font-weight: 300;
-  			color: darken($textcolor,10%);
-        background: url(../images/logo.png) no-repeat center top;
-        background-size: auto 55px;
-  
-  		}
-  		
-  		h2 {
-    		margin-top: 20px;
-        text-align: left;
-  		}
-  		
-  		h2.subtitle {
-  			font-size: 16px;
-  			color: lighten($textcolor,20%);
-  			padding: 0 0 10px 0;
-  			margin-top: 0;
-  			font-weight: 500;
-  			text-transform: inherit;
-  		}
-  		
-  		p {
-        text-align: left;
+      &.stats,
+      &.ranking-top {
+        border-top: 0;
       }
-  		
-  		.selection {
-  			background: #fff;
-  			border: $border-default;
-  			padding: 20px;
-  			margin: 0 0 15px 0;
-        text-align: left;
-  		}
-  		
-  		.trending {
-    		display: inline-block;
-    		@extend %clearfix;
-    		width: auto;
-    		margin: 0 auto;
-    		
-    		.trend {
-      		float: none;
-      		text-align: left;
-      		margin: 20px 0;
-      		height: auto;
-      		width: 100%;
-      		
-      		h2 {
-        		margin-top: 0;
-      		}
-      		
-      		a {
-        		color: lighten($textcolor,25%);
-        		
-        		&:hover {
-          		color: $textcolor;
-        		}
-      		}
-    		}
-  		}
     }
   }
 }
+
 
 .controls {
 	width: 100%;
@@ -564,7 +502,7 @@ aside {
 	button {
   	border: 0;
   	@include borderradius(3px);
-		background: #ec13da;
+		background: $secondary;
 		padding: 8px 20px;
 		text-transform: uppercase;
 		color: #fff;
@@ -578,18 +516,23 @@ aside {
 	width: 100%;
 	height: 100%;
 
+	canvas {
+		position: fixed;
+		top: 0;
+		left: 0;
+		min-width: 100%;
+		min-height: 100%;
+		z-index: 1;
+	}
+
 	.bg-gradient {
 	  width: 100%;
 	  min-height: 100%;
 	  padding: 0;
 	  margin: 0 auto;
-	  background-image: url(../images/bg-gradient-fallback.png);
-	  background-repeat: repeat-y;
-		background: -webkit-gradient(linear, left top, right top, from(#3adcb8), to(#24b8d9));
-		background: -webkit-linear-gradient(left, #3adcb8, #24b8d9);
-		background: -moz-linear-gradient(left, #3adcb8, #24b8d9);
-		background: -ms-linear-gradient(left, #3adcb8, #24b8d9);
-		background: -o-linear-gradient(left, #3adcb8, #24b8d9);
+	  background: transparent;
+		position: relative;
+		z-index: 999;
 		
 		.holder {
 		
@@ -631,7 +574,7 @@ aside {
 						font-weight: 200;
 						text-transform: capitalize;
 						line-height: 36px;
-						color: #007286;
+						color: $darkh;
 					}
 					p {
 						font-size: 16px;
@@ -641,78 +584,9 @@ aside {
 					}
 				}
 				.selection {
-					background: #fff;
+					background: white;
 					padding: 20px;
-					border: 1px solid #d5d5d5;
-					
-					.chosen-container {
-						
-						.chosen-drop {
-							
-							ul {
-								
-								li {
-									font-weight: 300;
-									-moz-border-radius: 0;
-									-webkit-border-radius: 0;
-									border-radius: 0;
-									-khtml-border-radius: 0;
-									
-									&:hover {
-										color: #d54dde;
-									}
-									&:last-child {
-										border-bottom-right-radius: 5px;
-										-moz-border-radius-bottomright: 5px;
-										-webkit-border-bottom-right-radius: 5px;
-										border-bottom-left-radius: 5px;
-										-moz-border-radius-bottomleft: 5px;
-										-webkit-border-bottom-left-radius: 5px;
-									}
-								}
-							}
-						}
-						.chosen-single {
-							-moz-border-radius: 3px;
-							-webkit-border-radius: 3px;
-							border-radius: 3px;
-							-khtml-border-radius: 3px;
-							
-							span {
-								width: 100%;
-								height: 100%;
-								font-weight: 400;
-								line-height: 36px;
-								color: #858585;
-							}
-						}
-						&.chosen-container-active {
-							
-							.chosen-single {
-								
-								span {
-									color: #000;
-								}
-							}
-						}
-					}
-					.controls {
-						
-						button {
-							background: #d54dde;
-							border: none;
-							outline: none;
-							padding: 10px 20px;
-							line-height:10px;
-							transition: all .15s linear;
-							
-							&:hover {
-								background: #ac28b5;
-								cursor: pointer;
-								transition: all .15s linear;
-							}
-						}
-					}
+					border: 1px solid $bordercolor;
 				}
 				.trending {
 					width: 100%;
@@ -726,7 +600,7 @@ aside {
 						h2 {
 							font-size: 12px;
 							font-weight: 500;
-							color: #007286;
+							color: $darkh;
 							padding: 0 0 5px 0;
 							margin: 0;
 						}
@@ -753,7 +627,6 @@ aside {
 	}
 }
 
-/* End UI Facelift */
 
 /* Radius Progress Chart */
 
@@ -765,6 +638,14 @@ aside {
   &:hover + .total-tweets { 
     @include opacity(0);
   }
+}
+
+#positiveTweets,
+#neutralTweets,
+#negativeTweets {
+  width: 60px;
+  height: 60px;
+  margin: 10px auto;
 }
 
 .background {
@@ -814,14 +695,34 @@ aside {
   &:hover { fill: darken($positive,10%); }
 }
 
-.arc3-blue {
-  stroke-weight: 0.1;
-  fill: #87CEEB;
-}
 
-.arc4-blue {
-  stroke-weight:0.1;
-  fill: #BFEFFF;
+.percentages {
+  
+  .labels { display: none; }
+  
+  .negative {
+    .arc0-blue { 
+      fill: $negative;
+      
+      &:hover { fill: darken($negative,10%); }
+    }
+  }
+
+  .neutral {
+    .arc0-blue { 
+      fill: darken($neutral,15%);
+      
+      &:hover { fill: darken($neutral,25%); }
+    }
+  }
+  
+  .positive {
+    .arc0-blue { 
+      fill: $positive;
+      
+      &:hover { fill: darken($positive,10%); }
+    }
+  } 
 }
 
 .white { fill: #FFFFFF; }
@@ -835,18 +736,30 @@ aside {
   width: 200px !important;
   
   &.central {
+    display: none;
     font-size: 40px !important;
     font-weight: 300;
     fill: $textcolor;
   }
 
   &.description {
-    font-size: 12px !important;
-    font-weight: 600;
-    fill: lighten($textcolor,40%);
-    margin-top: 5px;
-    text-transform: uppercase;
+    font-size: 40px !important;
+    font-weight: 300;
+    fill: $textcolor;
   }
+
+  &.small {
+      content: "Negative";
+      display: block;
+      width: 100%;
+      height: 20px;
+      background: red;
+      font-size: 12px !important;
+      font-weight: 600;
+      fill: lighten($textcolor,40%);
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
 }
 
 .radial-svg {
