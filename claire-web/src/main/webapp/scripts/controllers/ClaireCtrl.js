@@ -67,13 +67,13 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             return newData;
         };
 
-        var convertAdverseData = function(chartData) {
+        var adjustData = function(chartData, y) {
             var newData = [];
             for (var i = 0; i < chartData.length; i++) {
                 for (var j = 0; j < chartData[i][1]; j++) {
                     var item = [];
                     item.push(chartData[i][0]);
-                    item.push(0);
+                    item.push(y);
                     item.push({ data: chartData[i][1] });
                     newData.push(item);
                 }
@@ -81,29 +81,64 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             return newData;
         }
 
+        var adjustRecallData = function(recalls, max) {
+            var newData = [];
+            for (var i = 0; i < recalls.length; i++) {
+                var item = [];
+                item.push(recalls[i][0]);
+                item.push(max);
+                item.push({ data: recalls[i][1] });
+                newData[i] = item;
+            }
+            return newData;
+        }
+
+        var getMaxTweets = function(positive, negative, unknown) {
+            var getMax = function(list) {
+                var max = 0;
+                for (var i = 0; i < list.length; i++) {
+                    if (max < list[i][1]) {
+                        max = list[i][1];
+                    }
+                }
+                return max;
+            }
+
+            var positiveMax = getMax(positive);
+            var negativeMax = getMax(negative);
+            var unknownMax = getMax(unknown);
+
+            return Math.max(positiveMax, negativeMax, unknownMax);
+        }
+
         DrugInfo.getChart($scope.drug.selected).then(function(response) {
             var chartData = [];
+            var positive = convertChartData(response.data.positiveTweets);
+            var negative = convertChartData(response.data.negativeTweets);
+            var unknown = convertChartData(response.data.unknownTweets);
+            var max = getMaxTweets(positive, negative, unknown);
+
             chartData.push({
-                data: convertChartData(response.data.positiveTweets),
+                data: positive,
                 lines: { show: true },
                 curvedLines: { apply: true }
             });
             chartData.push({
-                data: convertChartData(response.data.negativeTweets),
+                data: negative,
                 lines: { show: true },
                 curvedLines: { apply: true }
             });
             chartData.push({
-                data: convertChartData(response.data.unknownTweets),
+                data: unknown,
                 lines: { show: true },
                 curvedLines: { apply: true }
             });
             chartData.push({
-                data: convertChartData(response.data.recalls),
+                data: adjustRecallData(convertChartData(response.data.recalls), max),
                 bars: { show: true, barWidth: 1, fill: true, fillColor: "rgba(0,0,0,0.2)" }
             });
             chartData.push({
-                data: convertAdverseData(convertChartData(response.data.adverseEvents)),
+                data: adjustData(convertChartData(response.data.adverseEvents), 0),
                 points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.01)" },
                 lines: { show: false }
             });
