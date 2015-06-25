@@ -46,7 +46,7 @@ public class OpenFDAClientTest {
 	@Test
 	public void testMarshalDrugDates() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
-		ChartCollection chart = mapper.unmarshalFile(new File("src/main/resources/json/openFDADrugDates.json"), ChartCollection.class);
+		ChartCollection chart = mapper.unmarshalFile(new File("src/test/resources/json/openFDADrugDates.json"), ChartCollection.class);
 
 		Assert.assertNotNull(chart.charts);
 		Assert.assertEquals(66, chart.charts.size());
@@ -59,7 +59,7 @@ public class OpenFDAClientTest {
 	@Test
 	public void testMarshalDrugDescriptions() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
-		DrugDescriptionCollection descriptions = mapper.unmarshalFile(new File("src/main/resources/json/openFDADrugDescriptions.json"), DrugDescriptionCollection.class);
+		DrugDescriptionCollection descriptions = mapper.unmarshalFile(new File("src/test/resources/json/openFDADrugDescriptions.json"), DrugDescriptionCollection.class);
 
 		Assert.assertNotNull(descriptions.descriptions);
 		Assert.assertEquals(66, descriptions.descriptions.size());
@@ -92,7 +92,7 @@ public class OpenFDAClientTest {
 		}
 
 		ResponseMapper mapper = new ResponseMapper();
-		mapper.marshalObject(chartCollection, new File("src/main/resources/json/openFDADrugDates.json"));
+		mapper.marshalObject(chartCollection, new File("src/test/resources/json/openFDADrugDates.json"));
 	}
 
 	@Ignore
@@ -118,7 +118,7 @@ public class OpenFDAClientTest {
 		}
 
 		ResponseMapper mapper = new ResponseMapper();
-		mapper.marshalObject(descriptions, new File("src/main/resources/json/openFDADrugDescriptions.json"));
+		mapper.marshalObject(descriptions, new File("src/test/resources/json/openFDADrugDescriptions.json"));
 	}
 
 	@After
