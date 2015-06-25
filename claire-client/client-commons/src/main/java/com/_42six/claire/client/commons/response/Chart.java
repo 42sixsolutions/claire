@@ -44,18 +44,4 @@ public class Chart {
 		 */
 		return null;
 	}
-	
-	public static class DataPoint implements Comparable<DataPoint> {
-		
-		public String label;
-		public int count;
-		@Override
-		public int compareTo(DataPoint o) {
-			return this.label.compareTo(o.label);
-		}
-		@Override
-		public String toString() {
-			return "DataPoint [label=" + label + ", count=" + count + "]";
-		}
-	}
 }
