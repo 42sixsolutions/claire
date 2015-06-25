@@ -1,19 +1,35 @@
 'use strict';
 
 angular.module('claire.directives').
-directive('trianglify', [function() {
+directive('trianglify', ["$window", function($window) {
+    var getTrianglifyPattern = function() {
+        var pattern = Trianglify({
+            height: $(window).height(),
+            width: $(window).width(),
+            x_colors: ["#f7fcf0", "#e0f3db", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"],
+            cell_size: 40});
+
+        return pattern;
+    };
+
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
+            var pattern;
+
             if (!scope.isDetailsPage) {
-                var pattern = Trianglify({
-                    height: $(window).height(),
-                    width: $(window).width(),
-                    cell_size: 300,
-                    x_colors: "YlGnBu",
-                    y_colors: 'match_x',
-                });
+                pattern = getTrianglifyPattern();
                 $(element[0]).append(pattern.canvas());
+
+                $(window).on("resize.doResize", function() {
+                    element.find("canvas").remove();
+                    pattern = getTrianglifyPattern();
+                    $(element[0]).append(pattern.canvas());
+                });
+
+                scope.$on("$destroy", function() {
+                    $(window).off("resize.doResize");
+                });
             }
         }
     }
@@ -40,7 +56,7 @@ directive('pieChart', ["$window", function($window) {
                         .value(newValue.percentUnknown, 1)
                         .arcDesc('Neutral', 1)
                         .value(newValue.percentPositive, 2)
-                        .arcDesc("Positive', 2)
+                        .arcDesc('Positive', 2)
 
                         .theme('blue')
                         .style('cumulative')
@@ -108,21 +124,16 @@ directive('lineChart', [function() {
             var options = {
                 series: {
                     lines: { 
-                      show: true,
-                      lineWidth: 2,
-                      steps: false,
+                        show: true,
+                        lineWidth: 2,
+                        steps: false,
                     },
-                    points: { 
-                      show: true,
-                      radius: 2,
-                      symbol: "circle",
-                      lineWidth: 2,
-                      fill: true,
-                      fillColor: null
+                    curvedLines: {
+                        active: true
                     },
                     clickable: true,
                     hoverable: true,
-                    shadowSize: 0,
+                    shadowSize: 0
                 },
                 grid: {
                     show: true,
@@ -139,14 +150,14 @@ directive('lineChart', [function() {
                     shifts: {
                         x: -30,
                         y: -38
-                    },
+                    }
                 },
                 colors: [ 
                     "#e79090",
                     "#bee76f",
                     "#e0e0e0",
                     "rgba(0,0,0,0.2)",
-                    "rgba(255,0,205,0.3)",
+                    "rgba(255,0,205,0.3)"
                 ],
                 xaxis: {
                     font: { 
@@ -168,14 +179,16 @@ directive('lineChart', [function() {
                       family: "Raleway",
                       color: "#444"
                     },
-                    min: 0,
-                    max: 100
+                    min: 0
+                },
+                crosshair: {
+                    mode: "x"
                 }
             };
 
             scope.$watch('mainChartData', function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
-                    $.plot(element[0], newValue, options);                    
+                    $.plot(element[0], newValue, options);
                 }
             });
         }
