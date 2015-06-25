@@ -149,10 +149,16 @@ public class ResponseTranslator {
 				negativePoint.setDate(event.getDate());
 				neutralPoint.setDate(event.getDate());
 
+				// use count instead of percent
+				/*
 				int total = event.getNegativeCount() + event.getNeutralCount() + event.getPositiveCount();
 				positivePoint.setPercentMax(total == 0 ? 0 : (100 * event.getPositiveCount()) / total);
 				negativePoint.setPercentMax(total == 0 ? 0 : (100 * event.getNegativeCount()) / total);
 				neutralPoint.setPercentMax(total == 0 ? 0 : (100 * event.getNeutralCount()) / total);
+				*/
+				positivePoint.setPercentMax(event.getPositiveCount());
+				negativePoint.setPercentMax(event.getNegativeCount());
+				neutralPoint.setPercentMax(event.getNeutralCount());
 			}
 		}
 
@@ -174,7 +180,8 @@ public class ResponseTranslator {
 				ChartDetailDataPoint outputPoint = new ChartDetailDataPoint();
 				adverseList.add(outputPoint);
 				outputPoint.setDate(sourcePoint.getDate());
-				outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
+				//outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
+				outputPoint.setPercentMax(0);
 			}
 		}
 
