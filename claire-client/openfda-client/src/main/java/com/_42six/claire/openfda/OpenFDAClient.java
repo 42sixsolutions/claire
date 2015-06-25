@@ -14,7 +14,7 @@ import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
 import com._42six.claire.client.commons.response.Chart;
-import com._42six.claire.client.commons.response.Chart.DataPoint;
+import com._42six.claire.client.commons.response.DataPoint;
 import com._42six.claire.client.commons.response.DrugDescriptionCollection.DrugDescription;
 import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.client.http.HttpClient;

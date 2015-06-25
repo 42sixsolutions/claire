@@ -6,23 +6,23 @@ angular.module('claire.services').factory('DrugInfo', ['$http', function($http) 
     };
 
     var getDrug = function(drugName) {
-        return $http.get('api/drug/detail/:drugName', { data:  {drugName: drugName} });
+        return $http.get('api/drug/detail/' + drugName, { data:  {drugName: drugName} });
     };
 
     var getTwitterStats = function(drugName) {
-        return $http.get('api/drug/tweets/:drugName', { data:  {drugName: drugName} });
+        return $http.get('api/drug/tweets/' + drugName, { data:  {drugName: drugName} });
     };
 
     var getFDAStats = function(drugName) {
-        return $http.get('api/drug/fda/:drugName', { data:  {drugName: drugName} });
+        return $http.get('api/drug/fda/' + drugName, { data:  {drugName: drugName} });
     };
 
     var getRankings = function(drugName) {
-        return $http.get('api/drug/ranking/:drugName', { data:  {drugName: drugName} });
+        return $http.get('api/drug/ranking/' + drugName, { data:  {drugName: drugName} });
     };
 
     var getChart = function(drugName) {
-        return $http.get('api/drug/chart/:drugName', { data:  {drugName: drugName} });
+        return $http.get('api/drug/chart/' + drugName, { data:  {drugName: drugName} });
     };
 
     return {

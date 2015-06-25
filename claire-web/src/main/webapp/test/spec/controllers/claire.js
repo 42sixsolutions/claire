@@ -3,12 +3,41 @@
 describe('controllers', function() {
     beforeEach(module('claire'));
 
-    beforeEach(inject(function(DrugInfo, $q) {
-        spyOn(DrugInfo, "getDrugList").and.callFake(function() {
-            var deferred = $q.defer();
-            deferred.resolve({ data: ['aspirin', 'claritin', 'benadryl'] });
-            return deferred.promise;
-        });
+    var DrugInfo;
+    var mockDrugListData = ['aspirin', 'claritin', 'benadryl'];
+    beforeEach(inject(function(_DrugInfo_, $q) {
+        DrugInfo = _DrugInfo_;
+        var deferred = $q.defer();
+        deferred.resolve({ data: mockDrugListData });
+        spyOn(DrugInfo, "getDrugList").and.returnValue(deferred.promise);
+    }));
+
+    var Trends;
+    var mockTrendsPositive = [{
+        brandName: "Plavix",
+        percentPositive: 99,
+        percentNegative: 0
+    }];
+    var mockTrendsNegative = [{
+        brandName: "Lipitor",
+        percentPositive: 4,
+        percentNegative: 99
+    }];
+    var mockTrendsAdverse = [{
+        brandName: "Amoxil",
+        count: 5676
+    }];
+    beforeEach(inject(function(_Trends_, $q) {
+        Trends = _Trends_;
+        var positive = $q.defer();
+        positive.resolve({ data: mockTrendsPositive });
+        spyOn(Trends, "getTopPositive").and.returnValue(positive.promise);
+        var negative = $q.defer();
+        negative.resolve({ data: mockTrendsNegative });
+        spyOn(Trends, "getTopNegative").and.returnValue(negative.promise);
+        var adverse = $q.defer();
+        adverse.resolve({ data: mockTrendsAdverse });
+        spyOn(Trends, "getMostAdverseEvents").and.returnValue(adverse.promise);
     }));
 
     var $controller = null;
@@ -18,9 +47,9 @@ describe('controllers', function() {
 
     describe('ClaireController', function() {
         var $scope, ctrl;
-        beforeEach(inject(function() {
-            $scope = {};
-            ctrl = $controller("ClaireCtrl", { $scope: $scope });
+        beforeEach(inject(function($rootScope) {
+            $scope = $rootScope.$new();
+            ctrl = $controller("ClaireCtrl", { $scope: $scope, DrugInfo: DrugInfo, Trends: Trends });
         }));
 
         it('should exist', function() {
@@ -41,6 +70,34 @@ describe('controllers', function() {
 
             it('should define a search method', function() {
                 expect(typeof $scope.onSearch).toBe('function');
+            });
+
+            it('should populate the drug list', function() {
+                $scope.$digest();
+
+                expect(DrugInfo.getDrugList).toHaveBeenCalled();
+                expect($scope.drugList).toBe(mockDrugListData);
+            });
+
+            it('should get the positive trend', function() {
+                $scope.$digest();
+
+                expect(Trends.getTopPositive).toHaveBeenCalled();
+                expect($scope.trends.topPositive).toBe(mockTrendsPositive);
+            });
+
+            it('should get the negative trend', function() {
+                $scope.$digest();
+
+                expect(Trends.getTopNegative).toHaveBeenCalled();
+                expect($scope.trends.topNegative).toBe(mockTrendsNegative);
+            });
+
+            it('should get the most adverse trend', function() {
+                $scope.$digest();
+
+                expect(Trends.getMostAdverseEvents).toHaveBeenCalled();
+                expect($scope.trends.mostAdverseEvents).toBe(mockTrendsAdverse);
             });
         });
     });
