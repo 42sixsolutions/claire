@@ -71,15 +71,18 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             var chartData = [];
             chartData.push({
                 data: convertChartData(response.data.positiveTweets),
-                lines: { show: true }
+                lines: { show: true },
+                curvedLines: { apply: true }
             });
             chartData.push({
                 data: convertChartData(response.data.negativeTweets),
-                lines: { show: true }
+                lines: { show: true },
+                curvedLines: { apply: true }
             });
             chartData.push({
                 data: convertChartData(response.data.unknownTweets),
-                lines: { show: true }
+                lines: { show: true },
+                curvedLines: { apply: true }
             });
             chartData.push({
                 data: convertChartData(response.data.recalls),
@@ -87,7 +90,8 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             });
             chartData.push({
                 data: convertChartData(response.data.adverseEvents),
-                points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.3)" }
+                points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.3)" },
+                lines: { show: false }
             });
             $scope.mainChartData = chartData;
         });

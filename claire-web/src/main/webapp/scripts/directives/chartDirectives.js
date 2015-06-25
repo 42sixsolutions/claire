@@ -113,21 +113,16 @@ directive('lineChart', [function() {
             var options = {
                 series: {
                     lines: { 
-                      show: true,
-                      lineWidth: 2,
-                      steps: false,
+                        show: true,
+                        lineWidth: 2,
+                        steps: false,
                     },
-                    points: { 
-                      show: true,
-                      radius: 2,
-                      symbol: "circle",
-                      lineWidth: 2,
-                      fill: true,
-                      fillColor: null
+                    curvedLines: {
+                        active: true
                     },
                     clickable: true,
                     hoverable: true,
-                    shadowSize: 0,
+                    shadowSize: 0
                 },
                 grid: {
                     show: true,
@@ -144,14 +139,14 @@ directive('lineChart', [function() {
                     shifts: {
                         x: -30,
                         y: -38
-                    },
+                    }
                 },
                 colors: [ 
                     "#e79090",
                     "#bee76f",
                     "#e0e0e0",
                     "rgba(0,0,0,0.2)",
-                    "rgba(255,0,205,0.3)",
+                    "rgba(255,0,205,0.3)"
                 ],
                 xaxis: {
                     font: { 
@@ -173,8 +168,7 @@ directive('lineChart', [function() {
                       family: "Raleway",
                       color: "#444"
                     },
-                    min: 0,
-                    max: 100
+                    min: 0
                 },
                 crosshair: {
                     mode: "x"
