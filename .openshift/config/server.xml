@@ -15,7 +15,6 @@
   </GlobalNamingResources>
  
   <Service name="Catalina">
-    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" />
     <Connector address="${OPENSHIFT_JBOSSEWS_IP}"
                port="${OPENSHIFT_JBOSSEWS_HTTP_PORT}"
                protocol="HTTP/1.1"
