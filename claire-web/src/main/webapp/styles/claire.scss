@@ -527,17 +527,27 @@ aside {
     text-transform: lowercase;
 }
 
-.ranking .box li span[data-text="rank-1"]:after {
+.ranking .box li span[data-text*="1-"]:after, 
+.ranking .box li span[data-text^="1-"]:after {
     content: 'st';
 }
 
-.ranking .box li span[data-text="rank-2"]:after {
+.ranking .box li span[data-text*="2-"]:after, 
+.ranking .box li span[data-text^="2-"]:after {
     content: 'nd';
 }
 
-.ranking .box li span[data-text="rank-2"]:after {
+.ranking .box li span[data-text*="3-"]:after, 
+.ranking .box li span[data-text^="3-"]:after {
     content: 'rd';
 }
+
+.ranking .box li span[data-text="11-rank"]:after, 
+.ranking .box li span[data-text="12-rank"]:after, 
+.ranking .box li span[data-text="13-rank"]:after {
+    content: 'th';
+}
+
 
 
 .controls {
