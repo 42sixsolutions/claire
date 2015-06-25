@@ -18,9 +18,11 @@
             <li><span class="graph trend"><img src="images/trend-up.png" /></span> Overall Trend</li>
             <li><span class="graph trend"><img src="images/trend-down.png" /></span> Recent Trend</li>
         </div>
-        <div class="description">
-          <p>{{drug.description}}</p>
-          <p>{{drug.pharmacodynamics}}</p>
+        <div class="overflow">
+          <div class="description">
+            <p>{{drug.description}}</p>
+            <p>{{drug.pharmacodynamics}}</p>
+          </div>
         </div>
         <div class="trend"></div>
       </div>
@@ -49,7 +51,7 @@
           <div class="box">
             <div class="graph donut">
               <div id="cumulativeBlue" pie-chart class="chart"></div>
-              <div class="total-tweets"><span>{{twitterStats.totalTweets}}</span> Total Tweets</div>
+              <div class="total-tweets"><span>{{twitterStats.totalTweets | number}}</span> Total Tweets</div>
             </div>
             <ul class="percentages">
               <li class="positive">
@@ -71,8 +73,8 @@
           <h2>Stats</h2>
           <div class="box">
             <ul class="stats">
-              <li><span>{{fdaStats.totalRecalls}}</span> Total Recalls</li>
-              <li><span>{{fdaStats.totalAdverseEvents}}</span> Total Adverse Effects</li>
+              <li class="events"><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Effects</li>
+              <li class="recalls"><span>{{fdaStats.totalRecalls | number}}</span> Total Recalls</li>
             </ul>
           </div>
         </div>
@@ -82,13 +84,13 @@
           <h2>Ranking</h2>
           <div class="box">
             <ul class="ranking-top">
-              <li class="positive"><span>{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
-              <li class="neutral"><span>{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
-              <li class="negative"><span>{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
+              <li class="positive"><span data-text="rank-{{drugRankings.positiveTweetsRank}}">{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
+              <li class="neutral"><span data-text="rank-{{drugRankings.unknownTweetsRank}}">{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
+              <li class="negative"><span data-text="rank-{{drugRankings.negativeTweetsRank}}">{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
             </ul>
             <ul class="ranking-btm">
-              <li class="events"><span>{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>
-              <li class="recalls"><span>{{drugRankings.recallsRank}}</span> Recalls</li>
+              <li class="events"><span data-text="rank-{{drugRankings.adverseEventsRank}}">{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>
+              <li class="recalls"><span data-text="rank-{{drugRankings.recallsRank}}">{{drugRankings.recallsRank}}</span> Recalls</li>
             </ul>
           </div>
         </div>

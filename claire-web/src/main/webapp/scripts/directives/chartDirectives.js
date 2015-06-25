@@ -6,8 +6,10 @@ directive('trianglify', ["$window", function($window) {
         var pattern = Trianglify({
             height: $(window).height(),
             width: $(window).width(),
-            x_colors: ["#f7fcf0", "#e0f3db", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"],
-            cell_size: 40});
+            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
+            color_space: 'lab',
+            cell_size: 200
+        });
 
         return pattern;
     };
