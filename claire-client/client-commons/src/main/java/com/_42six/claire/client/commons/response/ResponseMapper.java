@@ -2,6 +2,7 @@ package com._42six.claire.client.commons.response;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.DeserializationConfig;
@@ -29,5 +30,10 @@ public class ResponseMapper {
 	public <T> T unmarshalString(String string, Class<T> returnClass) throws JsonParseException, JsonMappingException, IOException {
 		return (T) this.mapper.readValue(string, returnClass);
 	}
+	
+	public <T> T unmarshalStream(InputStream stream, Class<T> returnClass) throws JsonParseException, JsonMappingException, IOException {
+		return (T) this.mapper.readValue(stream, returnClass);
+	}
+
 
 }

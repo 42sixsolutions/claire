@@ -3,6 +3,7 @@ package com._42six.claire.openfda;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TreeSet;
@@ -110,7 +111,7 @@ public class OpenFDAClient extends HttpClient {
 
 	public Chart toChart(String name, OpenFDACountByDayResponse countByDay, Date startDate, Date endDate) throws Exception {
 		Chart chart = new Chart();
-		chart.name = name;
+		chart.setName(name);
 
 		Calendar startCal = Calendar.getInstance();
 		startCal.setTime(startDate);
@@ -118,18 +119,20 @@ public class OpenFDAClient extends HttpClient {
 		endCal.setTime(endDate);
 		Calendar cal = Calendar.getInstance();
 
-		chart.points = new TreeSet<DataPoint>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		
+		TreeSet<DataPoint> set = new TreeSet<DataPoint>();
+		chart.setPoints(set);
 		for (Result result : countByDay.results) {
 			Date date = this.dateAdapter.unmarshal(result.time);
 			cal.setTime(date);
 			if (cal.getTimeInMillis() == startCal.getTimeInMillis()
 					|| cal.getTimeInMillis() == endCal.getTimeInMillis() 
 					|| (cal.after(startCal) && cal.before(endCal))) {
-
 				DataPoint point = new DataPoint();
-				point.label = result.time;
-				point.count = result.count;
-				chart.points.add(point);
+				point.setDate(dateFormat.parse(result.time));
+				point.setCount(result.count);
+				set.add(point);
 			}
 		}
 		return chart;

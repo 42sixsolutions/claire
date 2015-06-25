@@ -171,6 +171,21 @@
             <artifactId>claire-commons</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com._42six.claire</groupId>
+            <artifactId>openfda-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com._42six.claire</groupId>
+            <artifactId>client-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com._42six.claire</groupId>
+            <artifactId>topsy-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 		<!-- JUNIT -->
 		<dependency>
 			<groupId>junit</groupId>
