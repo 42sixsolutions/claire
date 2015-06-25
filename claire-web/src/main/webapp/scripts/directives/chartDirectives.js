@@ -221,6 +221,10 @@ directive('lineChart', [function() {
                 }).appendTo("body").fadeIn();
             });
 
+            element.bind('mouseout', function(event) {
+                $(".flot-tooltip").remove();
+            });
+
             scope.$watch('mainChartData', function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
                     $.plot(element[0], newValue, options);
