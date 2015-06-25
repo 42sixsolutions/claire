@@ -180,8 +180,7 @@ public class ResponseTranslator {
 				ChartDetailDataPoint outputPoint = new ChartDetailDataPoint();
 				adverseList.add(outputPoint);
 				outputPoint.setDate(sourcePoint.getDate());
-				//outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
-				outputPoint.setPercentMax(0);
+				outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
 			}
 		}
 
