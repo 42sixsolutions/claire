@@ -187,8 +187,11 @@ directive('lineChart', [function() {
             };
 
             element.bind('plothover', function(event, pos, item) {
+                var hoverDate = new Date(Math.floor(pos.x1));
+                var tooltip = "<div class='date'>" + (hoverDate.getMonth() + 1) + '/' + hoverDate.getDate() + '/' +  hoverDate.getFullYear() + "</div>";
+                
                 if (item) {
-                    var tooltip;
+                    tooltip += "<div class='value'>";
 
                     // Check if there is additional custom data to disply in the tooltip
                     if (item.series.data[0].length >= 3) {
@@ -200,22 +203,26 @@ directive('lineChart', [function() {
                                 break;
                             }
                         }
-                        tooltip = pointData[2].data;
+                        tooltip += pointData[2].data;
                     } else {
-                        tooltip = Math.round(item.datapoint[1]);
+                        tooltip += Math.round(item.datapoint[1]);
                     }
 
-                    $('.flot-tooltip').remove();
-                    $("<div class='flot-tooltip'>" + tooltip + "</div>").css({
-                        position: 'absolute',
-                        top: pos.pageY,
-                        left: pos.pageX + 15,
-                        "z-index": 100000,
-                        display: "none"
-                    }).appendTo("body").fadeIn();
-                } else {
-                    $('.flot-tooltip').remove();
+                    tooltip += "</div>";
                 }
+
+                $('.flot-tooltip').remove();
+                $("<div class='flot-tooltip'>" + tooltip + "</div>").css({
+                    position: 'absolute',
+                    top: pos.pageY,
+                    left: pos.pageX + 15,
+                    "z-index": 100000,
+                    display: "none"
+                }).appendTo("body").fadeIn();
+            });
+
+            element.bind('mouseout', function(event) {
+                $(".flot-tooltip").remove();
             });
 
             scope.$watch('mainChartData', function(newValue, oldValue) {
