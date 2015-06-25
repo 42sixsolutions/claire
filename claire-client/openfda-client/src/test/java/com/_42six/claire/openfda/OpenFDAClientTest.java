@@ -49,10 +49,10 @@ public class OpenFDAClientTest {
 		ChartCollection chart = mapper.unmarshalFile(new File("src/main/resources/json/openFDADrugDates.json"), ChartCollection.class);
 
 		Assert.assertNotNull(chart.charts);
-		Assert.assertEquals(78, chart.charts.size());
+		Assert.assertEquals(66, chart.charts.size());
 		for (Chart c : chart.charts) {
-			Assert.assertNotNull(c.name);
-			Assert.assertNotNull(c.points);
+			Assert.assertNotNull(c.getName());
+			Assert.assertNotNull(c.getPoints());
 		}	
 	}
 

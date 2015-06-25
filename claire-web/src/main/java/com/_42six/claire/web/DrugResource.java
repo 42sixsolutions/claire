@@ -1,5 +1,12 @@
 package com._42six.claire.web;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -8,22 +15,31 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import jersey.repackaged.com.google.common.collect.Lists;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+
 import com._42six.claire.commons.model.ChartDetail;
 import com._42six.claire.commons.model.Drug;
 import com._42six.claire.commons.model.DrugRankings;
 import com._42six.claire.commons.model.FDAStats;
 import com._42six.claire.commons.model.TwitterStats;
-import jersey.repackaged.com.google.common.collect.Lists;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 /**
  * Class to handle the Drug REST API endpoints
  */
 @Path("drug")
+@Singleton
 public class DrugResource {
+	
+	private ResponseTranslator responseTranslator;
+	
+	public DrugResource() throws JsonParseException, JsonMappingException, IOException {
+		InputStream twitterDetailsStream = this.getClass().getClassLoader().getResourceAsStream("/json/twitterDetails.json");
+		this.responseTranslator = new ResponseTranslator(twitterDetailsStream);
+	}
+	
     @GET
     @Path("/detail/{drugName}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -60,6 +76,8 @@ public class DrugResource {
     @Path("/chart/{drugName}")
     @Produces(MediaType.APPLICATION_JSON)
     public ChartDetail getChart(@PathParam("drugName") String drugName) {
+    	return this.responseTranslator.getChart(drugName);
+    	/*
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             return new ChartDetail()
@@ -89,13 +107,15 @@ public class DrugResource {
             //Get rid of this catch when we stop using dummy data
             throw new WebApplicationException("Couldn't parse date", Response.Status.INTERNAL_SERVER_ERROR);
         }
+        */
     }
 
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Drug> getDrugs() {
-        return Lists.newArrayList(new Drug().setBrandName("enbrel"), new Drug().setBrandName("aspirin"));
+    	return this.responseTranslator.getDrugs();
+        //return Lists.newArrayList(new Drug().setBrandName("enbrel"), new Drug().setBrandName("aspirin"));
     }
 }
 

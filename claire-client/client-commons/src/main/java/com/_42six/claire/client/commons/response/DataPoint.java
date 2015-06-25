@@ -1,23 +1,35 @@
 package com._42six.claire.client.commons.response;
 
+import java.util.Date;
+
 public class DataPoint implements Comparable<DataPoint> {
 	
-	public String label;
-	public int count;
+	private Date date;
+	private int count;
+	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	@Override
 	public int compareTo(DataPoint o) {
-		return this.label.compareTo(o.label);
-	}
-	@Override
-	public String toString() {
-		return "DataPoint [label=" + label + ", count=" + count + "]";
+		return this.date.compareTo(o.date);
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + count;
-		result = prime * result + ((label == null) ? 0 : label.hashCode());
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		return result;
 	}
 	@Override
@@ -31,12 +43,13 @@ public class DataPoint implements Comparable<DataPoint> {
 		DataPoint other = (DataPoint) obj;
 		if (count != other.count)
 			return false;
-		if (label == null) {
-			if (other.label != null)
+		if (date == null) {
+			if (other.date != null)
 				return false;
-		} else if (!label.equals(other.label))
+		} else if (!date.equals(other.date))
 			return false;
 		return true;
 	}
+	
 	
 }
