@@ -34,7 +34,12 @@ public class DrugResource {
 		InputStream twitterDetailsStream = this.getClass().getClassLoader().getResourceAsStream("/json/twitterDetails.json");
 		InputStream openFDADrugDatesStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugDates.json");
 		InputStream openFDADrugDescriptionsStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugDescriptions.json");
-		this.responseTranslator = new ResponseTranslator(twitterDetailsStream, openFDADrugDatesStream, openFDADrugDescriptionsStream);
+		InputStream openFDADrugRecallsStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugRecalls.json");
+		this.responseTranslator = new ResponseTranslator(
+				twitterDetailsStream, 
+				openFDADrugDatesStream, 
+				openFDADrugDescriptionsStream, 
+				openFDADrugRecallsStream);
 	}
 
 	@GET

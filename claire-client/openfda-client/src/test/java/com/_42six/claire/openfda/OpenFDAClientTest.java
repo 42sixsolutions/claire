@@ -69,6 +69,19 @@ public class OpenFDAClientTest {
 			Assert.assertNotNull(dd.genericName);
 		}	
 	}
+	
+	@Test
+	public void testMarshalDrugRecalls() throws JsonParseException, JsonMappingException, IOException {
+		ResponseMapper mapper = new ResponseMapper();
+		ChartCollection chart = mapper.unmarshalFile(new File("src/test/resources/json/openFDADrugRecalls.json"), ChartCollection.class);
+
+		Assert.assertNotNull(chart.charts);
+		Assert.assertEquals(41, chart.charts.size());
+		for (Chart c : chart.charts) {
+			Assert.assertNotNull(c.getName());
+			Assert.assertNotNull(c.getPoints());
+		}	
+	}
 
 	@Ignore
 	@Test
@@ -119,6 +132,35 @@ public class OpenFDAClientTest {
 
 		ResponseMapper mapper = new ResponseMapper();
 		mapper.marshalObject(descriptions, new File("src/test/resources/json/openFDADrugDescriptions.json"));
+	}
+
+	@Ignore
+	@Test
+	public void testSearchRecallEvents() throws Exception {
+		String startDateStr = "2014-01-01 000000";
+		String endDateStr = "2014-06-30 235959";
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HHmmss");
+		Date startDate = dateFormat.parse(startDateStr);
+		Date endDate = dateFormat.parse(endDateStr);
+
+		ChartCollection chartCollection = new ChartCollection();
+		chartCollection.charts = new ArrayList<Chart>();
+
+		for (String name : OpenFDAUtil.DRUG_NAMES) {
+
+			try {
+				Chart response = this.client.searchRecallEvents(name, "report_date", startDate, endDate);
+				chartCollection.charts.add(response);
+				logger.info("Added chart for search term [" + name + "]");
+			} catch (ClientProtocolException e) {
+				logger.info("No recalls found for [" + name + "], message [" + e.getMessage() + "].");
+			}
+			Thread.sleep(1000); //avoids rate limiting
+		}
+
+		ResponseMapper mapper = new ResponseMapper();
+		mapper.marshalObject(chartCollection, new File("src/test/resources/json/openFDADrugRecalls.json"));
 	}
 
 	@After
