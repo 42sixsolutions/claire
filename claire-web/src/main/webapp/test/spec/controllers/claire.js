@@ -3,12 +3,13 @@
 describe('controllers', function() {
     beforeEach(module('claire'));
 
-    beforeEach(inject(function(DrugInfo, $q) {
-        spyOn(DrugInfo, "getDrugList").and.callFake(function() {
-            var deferred = $q.defer();
-            deferred.resolve({ data: ['aspirin', 'claritin', 'benadryl'] });
-            return deferred.promise;
-        });
+    var DrugInfo;
+    var mockDrugListData = ['aspirin', 'claritin', 'benadryl'];
+    beforeEach(inject(function(_DrugInfo_, $q) {
+        DrugInfo = _DrugInfo_;
+        var deferred = $q.defer();
+        deferred.resolve({ data: mockDrugListData });
+        spyOn(DrugInfo, "getDrugList").and.returnValue(deferred.promise);
     }));
 
     var $controller = null;
@@ -18,9 +19,9 @@ describe('controllers', function() {
 
     describe('ClaireController', function() {
         var $scope, ctrl;
-        beforeEach(inject(function() {
-            $scope = {};
-            ctrl = $controller("ClaireCtrl", { $scope: $scope });
+        beforeEach(inject(function($rootScope) {
+            $scope = $rootScope.$new();
+            ctrl = $controller("ClaireCtrl", { $scope: $scope, DrugInfo, DrugInfo });
         }));
 
         it('should exist', function() {
@@ -42,6 +43,16 @@ describe('controllers', function() {
             it('should define a search method', function() {
                 expect(typeof $scope.onSearch).toBe('function');
             });
+
+            it('should populate the drug list', inject(function($httpBackend) {
+                $httpBackend.whenGET(/api\/trends\/positive/).respond(undefined);
+                $httpBackend.whenGET(/api\/trends\/negative/).respond(undefined);
+                $httpBackend.whenGET(/api\/trends\/adverse/).respond(undefined);
+                $scope.$digest();
+
+                expect(DrugInfo.getDrugList).toHaveBeenCalled();
+                expect($scope.drugList).toBe(mockDrugListData);
+            }));
         });
     });
 });
