@@ -1,7 +1,7 @@
 <div>
   <header>
     <div class="container">
-      <a href="/claire" class="logo">Claire</a>
+      <a href="/" class="logo">Claire</a>
       <span class="search">
         <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList | orderBy:brandName"></select>
       </span>
@@ -56,15 +56,15 @@
             <ul class="percentages">
               <li class="positive">
                 <div id="positiveTweets" pie-chart-sml class="chart"></div>
-                <span>{{twitterStats.percentPositive}}%</span> Positive
+                <span>{{twitterStats.percentPositive | number:0}}%</span> Positive
               </li>
               <li class="neutral">
                 <div id="neutralTweets" pie-chart-sml class="chart"></div>
-                <span>{{twitterStats.percentUnknown}}%</span> Neutral
+                <span>{{twitterStats.percentUnknown | number:0}}%</span> Neutral
               </li>
               <li class="negative">
                 <div id="negativeTweets" pie-chart-sml class="chart"></div>
-                <span>{{twitterStats.percentNegative}}%</span> Negative
+                <span>{{twitterStats.percentNegative | number:0}}%</span> Negative
               </li>
             </ul>
           </div>
@@ -75,8 +75,8 @@
           <h2>Stats</h2>
           <div class="box">
             <ul class="stats">
-              <li class="events"><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Effects</li>
-              <li class="recalls"><span>{{fdaStats.totalRecalls | number}}</span> Total Recalls</li>
+              <li><span>{{fdaStats.totalRecalls | number}}</span> Total Recalls</li>
+              <li><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Effects</li>
             </ul>
           </div>
         </div>
