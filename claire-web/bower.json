@@ -1,0 +1,19 @@
+{
+  "name": "claire",
+  "description": "FDA visualization tool",
+  "version": "0.0.1",
+  "homepage": "https://github.com/42sixsolutions/claire",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.2.13",
+    "angular-route": "~1.2.13",
+    "angular-mocks": "~1.2.13",
+    "angular-resource": "~1.2.13",
+    "d3": "3.4.13",
+    "jquery": "1.10.2",
+    "jquery-ui": "~1.11.4",
+    "chosen": "1.4.2",
+    "trianglify": "0.2.1"
+  }
+}
