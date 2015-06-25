@@ -88,6 +88,9 @@
                     </plugin>
                 </plugins>
             </build>
+            <properties>
+                <skip-node>true</skip-node>
+            </properties>
         </profile>
     </profiles>
 </project>
