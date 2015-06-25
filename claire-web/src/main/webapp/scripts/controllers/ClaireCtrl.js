@@ -139,7 +139,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 lines: { show: false }
             });
             chartData.push({
-                data: adjustData(convertChartData(response.data.adverseEvents), 0),
+                data: adjustData(convertChartData(response.data.adverseEvents), -10),
                 points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.01)" },
                 lines: { show: false }
             });
