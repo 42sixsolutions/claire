@@ -3,6 +3,7 @@ package com._42six.claire.openfda;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TreeSet;
@@ -29,6 +30,7 @@ public class OpenFDAClient extends HttpClient {
 	private static final String HOST = "api.fda.gov";
 	private static final String PATH_DRUG_ADVERSE = "/drug/event.json";
 	private static final String PATH_DRUG_LABEL = "/drug/label.json";
+	private static final String PATH_DRUG_RECALL = "/drug/enforcement.json";
 
 	private final String apiKey;
 	private ResponseMapper mapper;
@@ -66,6 +68,18 @@ public class OpenFDAClient extends HttpClient {
 		return uri;
 	}
 
+	private URI buildUriRecallEvents(String drugName, String countField) throws URISyntaxException {
+		URI uri = new URIBuilder()
+		.setScheme(SCHEME)
+		.setHost(HOST)
+		.setPath(PATH_DRUG_RECALL)
+		.setParameter("search", "product_description:" + drugName)
+		.setParameter("count", countField)
+		.setParameter("api_key", this.apiKey)
+		.build();
+
+		return uri;
+	}
 	public DrugDescription searchDescription(String drugName) throws JsonParseException, JsonMappingException, IOException, URISyntaxException {
 		OpenFDALabelResponse label = searchLabels(drugName);
 		return toDrugDescription(drugName, label);
@@ -85,6 +99,17 @@ public class OpenFDAClient extends HttpClient {
 
 	public Chart searchAdverseEvents(String drugName, String countField, Date startDate, Date endDate) throws Exception {
 		OpenFDACountByDayResponse response = searchAdverseEvents(drugName, countField);
+		return toChart(drugName, response, startDate, endDate);
+	}
+	
+	private OpenFDACountByDayResponse searchRecallEvents(String drugName, String countField) throws ClientProtocolException, IOException, URISyntaxException {
+		HttpGet get = new HttpGet(buildUriRecallEvents(drugName, countField));
+		String response = this.execute(get);
+		return this.mapper.unmarshalString(response, OpenFDACountByDayResponse.class);
+	}
+	
+	public Chart searchRecallEvents(String drugName, String countField, Date startDate, Date endDate) throws Exception {
+		OpenFDACountByDayResponse response = searchRecallEvents(drugName, countField);
 		return toChart(drugName, response, startDate, endDate);
 	}
 
@@ -110,7 +135,7 @@ public class OpenFDAClient extends HttpClient {
 
 	public Chart toChart(String name, OpenFDACountByDayResponse countByDay, Date startDate, Date endDate) throws Exception {
 		Chart chart = new Chart();
-		chart.name = name;
+		chart.setName(name);
 
 		Calendar startCal = Calendar.getInstance();
 		startCal.setTime(startDate);
@@ -118,18 +143,20 @@ public class OpenFDAClient extends HttpClient {
 		endCal.setTime(endDate);
 		Calendar cal = Calendar.getInstance();
 
-		chart.points = new TreeSet<DataPoint>();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		
+		TreeSet<DataPoint> set = new TreeSet<DataPoint>();
+		chart.setPoints(set);
 		for (Result result : countByDay.results) {
 			Date date = this.dateAdapter.unmarshal(result.time);
 			cal.setTime(date);
 			if (cal.getTimeInMillis() == startCal.getTimeInMillis()
 					|| cal.getTimeInMillis() == endCal.getTimeInMillis() 
 					|| (cal.after(startCal) && cal.before(endCal))) {
-
 				DataPoint point = new DataPoint();
-				point.label = result.time;
-				point.count = result.count;
-				chart.points.add(point);
+				point.setDate(dateFormat.parse(result.time));
+				point.setCount(result.count);
+				set.add(point);
 			}
 		}
 		return chart;
