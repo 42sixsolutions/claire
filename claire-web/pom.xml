@@ -49,49 +49,10 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<skip>${skip-node}</skip>
+				</configuration>
 				<executions>
-					<!--execution>
-						<id>exec-npm-install</id>
-						<phase>generate-sources</phase>
-						<configuration>
-							<executable>find</executable>
-							<arguments>
-								<argument>.</argument>
-								<argument>-name</argument>
-								<argument>package.json</argument>
-								<argument>-maxdepth</argument>
-								<argument>3</argument>
-								<argument>-execdir</argument>
-								<argument>npm</argument>
-								<argument>install</argument>
-								<argument>;</argument>
-							</arguments>
-						</configuration>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>exec-bower-install</id>
-						<phase>generate-sources</phase>
-						<configuration>
-							<executable>find</executable>
-							<arguments>
-								<argument>.</argument>
-								<argument>-name</argument>
-								<argument>bower.json</argument>
-								<argument>-maxdepth</argument>
-								<argument>3</argument>
-								<argument>-execdir</argument>
-								<argument>bower</argument>
-								<argument>install</argument>
-								<argument>;</argument>
-							</arguments>
-						</configuration>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-					</execution-->
 					<execution>
 						<id>exec-npm-install</id>
 						<phase>generate-sources</phase>
