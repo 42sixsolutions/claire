@@ -274,7 +274,7 @@ img {
 			}
 			
 			li:last-child {
-  			@include borderradius(5px 5px 0 0);
+  			@include borderradius(0 0 5px 5px);
 			}
 		}
 	}
