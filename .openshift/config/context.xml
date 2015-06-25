@@ -34,5 +34,5 @@
 
 
     <Valve className="org.apache.catalina.valves.RemoteIpValve"
-       protocolHeader="x-forwarded-proto"></Valve>
+       protocolHeader="x-forwarded-proto"/>
 </Context>
