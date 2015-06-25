@@ -67,8 +67,7 @@ public class DrugResource {
 	@Path("/ranking/{drugName}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public DrugRankings getDrugRanks(@PathParam("drugName") String drugName) {
-		return new DrugRankings().setPositiveTweetsRank(10).setNegativeTweetsRank(15).setUnknownTweetsRank(20)
-				.setAdverseEventsRank(1).setRecallsRank(1);
+		return this.responseTranslator.getDrugRank(drugName);
 	}
 
 	@GET

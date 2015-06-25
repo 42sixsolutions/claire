@@ -23,6 +23,10 @@ public class ResponseMapper {
 		this.mapper.writeValue(file, object);
 	}
 	
+	public String marshalObject(Object object) throws JsonParseException, JsonMappingException, IOException {
+		return this.mapper.writeValueAsString(object);
+	}
+	
 	public <T> T unmarshalFile(File file, Class<T> returnClass) throws JsonParseException, JsonMappingException, IOException {
 		return (T) this.mapper.readValue(file, returnClass);
 	}
@@ -34,6 +38,4 @@ public class ResponseMapper {
 	public <T> T unmarshalStream(InputStream stream, Class<T> returnClass) throws JsonParseException, JsonMappingException, IOException {
 		return (T) this.mapper.readValue(stream, returnClass);
 	}
-
-
 }

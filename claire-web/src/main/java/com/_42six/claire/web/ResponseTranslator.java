@@ -1,5 +1,8 @@
 package com._42six.claire.web;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -11,6 +14,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -27,9 +32,11 @@ import com._42six.claire.client.commons.response.TwitterDrugDetailCollection;
 import com._42six.claire.commons.model.ChartDetail;
 import com._42six.claire.commons.model.ChartDetail.ChartDetailDataPoint;
 import com._42six.claire.commons.model.Drug;
+import com._42six.claire.commons.model.DrugRankings;
 import com._42six.claire.commons.model.FDAStats;
 import com._42six.claire.commons.model.TwitterStats;
 import com._42six.claire.openfda.util.OpenFDAUtil;
+import com._42six.claire.web.model.SortableDrug;
 
 public class ResponseTranslator {
 
@@ -40,7 +47,23 @@ public class ResponseTranslator {
 	private final Map<String, Chart> openFDADrugDatesMap;
 	private final Map<String, DrugDescription> openFDADrugDescriptionMap;
 	private final Map<String, Chart> openFDADrugRecallsMap;
+	private final Map<String, DrugRankings> drugRankMap;
 
+	
+	public ResponseTranslator(
+			File twitterDetailsFile,
+			File openFDADrugAdverseFile,
+			File openFDADrugDescriptionFile,
+			File openFDADrugRecallsFile
+			) throws JsonParseException, JsonMappingException, FileNotFoundException, IOException, ParseException {
+		this(
+				new FileInputStream(twitterDetailsFile),
+				new FileInputStream(openFDADrugAdverseFile),
+				new FileInputStream(openFDADrugDescriptionFile),
+				new FileInputStream(openFDADrugRecallsFile)
+				);
+	}
+	
 	public ResponseTranslator(
 			InputStream twitterDetailsStream,
 			InputStream openFDADrugAdverseStream,
@@ -66,6 +89,8 @@ public class ResponseTranslator {
 
 		ChartCollection recallCharts = mapper.unmarshalStream(openFDADrugRecallsStream, ChartCollection.class);
 		this.openFDADrugRecallsMap = createOpenFDADatesMap(recallCharts);
+
+		this.drugRankMap = createDrugRankMap();
 
 	}
 
@@ -208,7 +233,7 @@ public class ResponseTranslator {
 					outputPoint.setPercentMax(sourcePoint.getCount());
 				}
 				else {
-					outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
+					outputPoint.setPercentMax(max == 0 ? 0 : (double)(100 * sourcePoint.getCount()) / max);
 				}
 			}
 		}
@@ -263,9 +288,9 @@ public class ResponseTranslator {
 		int total = totalPositive + totalNegative + totalNeutral;
 
 		return new TwitterStats()
-		.setPercentPositive(total == 0 ? 0 : (100 * totalPositive) / total)
-		.setPercentNegative(total == 0 ? 0 : (100 * totalNegative) / total)
-		.setPercentUnknown(total == 0 ? 0 : (100 * totalNeutral) / total)
+		.setPercentPositive(total == 0 ? 0 : (double)(100 * totalPositive) / total)
+		.setPercentNegative(total == 0 ? 0 : (double)(100 * totalNegative) / total)
+		.setPercentUnknown(total == 0 ? 0 : (double)(100 * totalNeutral) / total)
 		.setTotalTweets(total);
 	}
 
@@ -283,4 +308,65 @@ public class ResponseTranslator {
 		.setDescription(description.description)
 		.setPharmacodynamics(description.pharmacodynamics);
 	}
+
+	public DrugRankings getDrugRank(String drugName) {
+		return this.drugRankMap.get(drugName.toLowerCase());
+	}
+
+	private Map<String, DrugRankings> createDrugRankMap() {
+		
+		Map<String, DrugRankings> map = new HashMap<String, DrugRankings>();
+
+		SortedSet<SortableDrug> adverseSet = new TreeSet<SortableDrug>();
+		SortedSet<SortableDrug> negativeSet = new TreeSet<SortableDrug>();
+		SortedSet<SortableDrug> neutralSet = new TreeSet<SortableDrug>();
+		SortedSet<SortableDrug> positiveSet = new TreeSet<SortableDrug>();
+		SortedSet<SortableDrug> recallSet = new TreeSet<SortableDrug>();
+
+
+		for (String drugName : OpenFDAUtil.DRUG_NAMES_SET) {
+			
+			String drugLower = drugName.toLowerCase();
+			map.put(drugLower, new DrugRankings());
+			
+			FDAStats fdaStats = getFDAStats(drugLower);
+			adverseSet.add(new SortableDrug(drugLower, (double)fdaStats.getTotalAdverseEvents()));
+			recallSet.add(new SortableDrug(drugLower, (double)fdaStats.getTotalRecalls()));
+
+			TwitterStats twitterStats = getTwitterStats(drugLower);
+
+			positiveSet.add(new SortableDrug(drugLower, twitterStats.getPercentPositive()));
+			negativeSet.add(new SortableDrug(drugLower, twitterStats.getPercentNegative()));
+			neutralSet.add(new SortableDrug(drugLower, twitterStats.getPercentUnknown()));
+		}
+
+		int i = 0;
+		for (SortableDrug drug : adverseSet) {
+			++i;
+			map.get(drug.getName()).setAdverseEventsRank(i);
+		}
+		i = 0;
+		for (SortableDrug drug : recallSet) {
+			++i;
+			map.get(drug.getName()).setRecallsRank(i);
+		}
+		i = 0;
+		for (SortableDrug drug : positiveSet) {
+			++i;
+			map.get(drug.getName()).setPositiveTweetsRank(i);
+		}
+		i = 0;
+		for (SortableDrug drug : neutralSet) {
+			++i;
+			map.get(drug.getName()).setUnknownTweetsRank(i);
+		}
+		i = 0;
+		for (SortableDrug drug : negativeSet) {
+			++i;
+			map.get(drug.getName()).setNegativeTweetsRank(i);
+		}
+
+		return Collections.unmodifiableMap(map);
+	}
+
 }

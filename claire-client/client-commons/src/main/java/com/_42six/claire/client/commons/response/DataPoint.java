@@ -22,7 +22,8 @@ public class DataPoint implements Comparable<DataPoint> {
 	
 	@Override
 	public int compareTo(DataPoint o) {
-		return this.date.compareTo(o.date);
+		int c = this.date.compareTo(o.date);
+		return c != 0 ? c : new Integer(this.count).compareTo(new Integer(o.count));
 	}
 	@Override
 	public int hashCode() {
@@ -50,6 +51,4 @@ public class DataPoint implements Comparable<DataPoint> {
 			return false;
 		return true;
 	}
-	
-	
 }
