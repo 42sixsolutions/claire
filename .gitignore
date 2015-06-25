@@ -53,5 +53,5 @@ local.properties
 
 # Build
 target/
-bower_components/
+node_modules/
 npm-debug.log
