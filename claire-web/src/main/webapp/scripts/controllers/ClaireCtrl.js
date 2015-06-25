@@ -60,12 +60,26 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             for (var i = 0; i < chartData.length; i++) {
                 var item = [];
                 // Convert the string dates into javascript Dates
-                item[0] = new Date(chartData[i].date);
-                item[1] = chartData[i].percentMax;
+                item.push(new Date(chartData[i].date));
+                item.push(chartData[i].percentMax);
                 newData[i] = item;
             }
             return newData;
         };
+
+        var convertAdverseData = function(chartData) {
+            var newData = [];
+            for (var i = 0; i < chartData.length; i++) {
+                for (var j = 0; j < chartData[i][1]; j++) {
+                    var item = [];
+                    item.push(chartData[i][0]);
+                    item.push(0);
+                    item.push({ data: chartData[i][1] });
+                    newData.push(item);
+                }
+            }
+            return newData;
+        }
 
         DrugInfo.getChart($scope.drug.selected).then(function(response) {
             var chartData = [];
@@ -86,11 +100,11 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             });
             chartData.push({
                 data: convertChartData(response.data.recalls),
-                bars: { show: true, barWidth: 1, fill: true, fillColor: "#eee" }
+                bars: { show: true, barWidth: 1, fill: true, fillColor: "rgba(0,0,0,0.2)" }
             });
             chartData.push({
-                data: convertChartData(response.data.adverseEvents),
-                points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.3)" },
+                data: convertAdverseData(convertChartData(response.data.adverseEvents)),
+                points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.01)" },
                 lines: { show: false }
             });
             $scope.mainChartData = chartData;
