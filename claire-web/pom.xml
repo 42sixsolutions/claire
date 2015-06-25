@@ -24,6 +24,29 @@
 				</configuration>
 			</plugin>
 			<plugin>
+            			<!-- This is a workaround for a bug:
+                		https://github.com/eirslett/frontend-maven-plugin/issues/169
+                		https://github.com/eirslett/frontend-maven-plugin/issues/147
+            			-->
+
+            			<groupId>org.apache.maven.plugins</groupId>
+            			<artifactId>maven-antrun-plugin</artifactId>
+            			<executions>
+                			<execution>
+                    				<id>handle-frontend-maven-plugin-bug</id>
+                    				<phase>generate-sources</phase>
+                    				<goals>
+                        				<goal>run</goal>
+                    				</goals>
+                    				<configuration>
+                        				<tasks>
+                            					<move failonerror="false" verbose="true" file="${basedir}/node/package" tofile="${basedir}/node/npm"/>
+                        				</tasks>
+                    				</configuration>
+                			</execution>
+            			</executions>
+             		</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
