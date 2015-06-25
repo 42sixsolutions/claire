@@ -3,7 +3,7 @@
     <div class="container">
       <a href="/" class="logo">Claire</a>
       <span class="search">
-        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList"></select>
+        <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList | orderBy:brandName"></select>
       </span>
     </div>
   </header>
@@ -18,9 +18,11 @@
             <li><span class="graph trend"><img src="images/trend-up.png" /></span> Overall Trend</li>
             <li><span class="graph trend"><img src="images/trend-down.png" /></span> Recent Trend</li>
         </div>
-        <div class="description">
-          <p>{{drug.description}}</p>
-          <p>{{drug.pharmacodynamics}}</p>
+        <div class="overflow">
+          <div class="description">
+            <p>{{drug.description}}</p>
+            <p>{{drug.pharmacodynamics}}</p>
+          </div>
         </div>
         <div class="trend"></div>
       </div>
@@ -67,28 +69,28 @@
             </ul>
           </div>
         </div>
+      </div>
+      <div class="group">
         <div class="element stats">
           <h2>Stats</h2>
           <div class="box">
             <ul class="stats">
-              <li><span>{{fdaStats.totalRecalls | number}}</span> Total Recalls</li>
-              <li><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Effects</li>
+              <li class="events"><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Effects</li>
+              <li class="recalls"><span>{{fdaStats.totalRecalls | number}}</span> Total Recalls</li>
             </ul>
           </div>
         </div>
-      </div>
-      <div class="group">
         <div class="element ranking">
           <h2>Ranking</h2>
           <div class="box">
             <ul class="ranking-top">
-              <li class="positive"><span>{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
-              <li class="neutral"><span>{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
-              <li class="negative"><span>{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
+              <li class="positive"><span data-text="{{drugRankings.positiveTweetsRank}}-rank">{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
+              <li class="neutral"><span data-text="{{drugRankings.unknownTweetsRank}}-rank">{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
+              <li class="negative"><span data-text="{{drugRankings.negativeTweetsRank}}-rank">{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
             </ul>
             <ul class="ranking-btm">
-              <li class="events"><span>{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>
-              <li class="recalls"><span>{{drugRankings.recallsRank}}</span> Recalls</li>
+              <li class="events"><span data-text="{{drugRankings.adverseEventsRank}}-rank">{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>
+              <li class="recalls"><span data-text="{{drugRankings.recallsRank}}-rank">{{drugRankings.recallsRank}}</span> Recalls</li>
             </ul>
           </div>
         </div>

@@ -262,9 +262,25 @@ section .information {
   margin-bottom: 40px; }
   section .information h1 .name {
     font-size: 16px;
-    color: #39dcb9;
+    color: #d54dde;
     text-transform: uppercase;
     margin-left: 5px; }
+  section .information .overflow {
+    display: block;
+    height: 130px;
+    position: relative; }
+    section .information .overflow:after {
+      content: '';
+      display: block;
+      height: 20px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      background: url(../images/overflow.png) repeat-x bottom left; }
+    section .information .overflow .description {
+      height: 100%;
+      padding-bottom: 20px;
+      overflow: auto; }
   section .information .trends {
     margin-bottom: 20px;
     line-height: 15px; }
@@ -373,6 +389,32 @@ aside .element ul {
   aside .element ul.stats, aside .element ul.ranking-top {
     border-top: 0; }
 
+.ranking .box li span:after {
+  content: 'th';
+  font-size: 12px;
+  margin-left: 2px;
+  position: relative;
+  top: -6px;
+  font-weight: 400;
+  text-transform: lowercase; }
+
+.ranking .box li span[data-text*="1-"]:after,
+.ranking .box li span[data-text^="1-"]:after {
+  content: 'st'; }
+
+.ranking .box li span[data-text*="2-"]:after,
+.ranking .box li span[data-text^="2-"]:after {
+  content: 'nd'; }
+
+.ranking .box li span[data-text*="3-"]:after,
+.ranking .box li span[data-text^="3-"]:after {
+  content: 'rd'; }
+
+.ranking .box li span[data-text="11-rank"]:after,
+.ranking .box li span[data-text="12-rank"]:after,
+.ranking .box li span[data-text="13-rank"]:after {
+  content: 'th'; }
+
 .controls {
   width: 100%;
   padding: 20px 0 0 0;
@@ -389,7 +431,7 @@ aside .element ul {
     color: #fff;
     font-weight: 600; }
 
-/* UI Facelift */
+/* Selection */
 .wrapper {
   width: 100%;
   height: 100%; }
@@ -414,7 +456,6 @@ aside .element ul {
       -webkit-transform: translateX(-50%);
       -moz-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
-      -o-transform: translateX(-50%);
       transform: translateX(-50%);
       width: auto;
       padding: 0 0 20px 0;
@@ -442,9 +483,10 @@ aside .element ul {
         color: #007286; }
       .wrapper .bg-gradient .holder.selection .info p {
         font-size: 16px;
-        font-weight: 200;
+        font-weight: 400;
         line-height: 24px;
-        color: #fff; }
+        color: #fff;
+        text-shadow: 0 1px 2px rgba(52, 157, 180, 0.5); }
     .wrapper .bg-gradient .holder.selection .selection {
       background: white;
       padding: 20px;
@@ -466,8 +508,9 @@ aside .element ul {
           padding: 0 0 5px 0; }
           .wrapper .bg-gradient .holder.selection .trending .trend ul li a {
             font-size: 14px;
-            font-weight: 300;
-            color: #fff; }
+            font-weight: 400;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(52, 157, 180, 0.5); }
             .wrapper .bg-gradient .holder.selection .trending .trend ul li a:hover {
               color: #d54dde; }
 
@@ -475,7 +518,12 @@ aside .element ul {
 #cumulativeBlue {
   width: 200px;
   height: 200px;
-  margin: 40px auto; }
+  margin: 40px auto;
+  overflow: hidden;
+  -webkit-border-radius: 120px;
+  -moz-border-radius: 120px;
+  -ms-border-radius: 120px;
+  border-radius: 120px; }
   #cumulativeBlue:hover + .total-tweets {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
     filter: alpha(opacity=0);

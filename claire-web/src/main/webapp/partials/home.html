@@ -12,7 +12,7 @@
 		</div>
 		
 		<div class="selection">
-			<select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList"></select>
+      <select data-placeholder="Please Select a Drug..." class="chosen-select" ng-model="drug.selected" ng-options="drug.brandName as drug.brandName for drug in drugList | orderBy:brandName"></select>
 			<div class="controls">
 				<button type="button" name="search" ng-click="onSearch(drug.selected)">Search</button>
 			</div>
