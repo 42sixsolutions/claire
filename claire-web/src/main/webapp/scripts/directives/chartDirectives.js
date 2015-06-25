@@ -153,8 +153,8 @@ directive('lineChart', [function() {
                     }
                 },
                 colors: [ 
-                    "#e79090",
                     "#bee76f",
+                    "#e79090",
                     "#e0e0e0",
                     "rgba(0,0,0,0.2)",
                     "rgba(255,0,205,0.3)"
