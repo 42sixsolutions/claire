@@ -8,7 +8,7 @@
     </div>
   </header>
   
-  <div class="container">
+  <div class="container content">
     <section>
       
       <div class="information">
@@ -26,9 +26,9 @@
       </div>
       
       <div class="graph">
+        <h2>Tweets <span>vs.</span> Events &amp; Recalls</h2>
         <div class="box">
           <div line-chart chart-data="data" class="line-chart"></div>
-          <div class="graph-title">Tweets <span>vs.</span> Events &amp; Recalls</div>
           <div class="graph-legend">
             <ul>
               <li class="positive">Positive Tweets</li>
@@ -52,12 +52,18 @@
               <div class="total-tweets"><span>{{twitterStats.totalTweets}}</span> Total Tweets</div>
             </div>
             <ul class="percentages">
-              <li><div id="positiveTweets" pie-chart-sml class="chart"></div></li>
-              <li><div id="neutralTweets" pie-chart-sml class="chart"></div></li>
-              <li><div id="negativeTweets" pie-chart-sml class="chart"></div></li>
-              <li class="positive"><span>{{twitterStats.percentPositive}}%</span> Positive</li>
-              <li class="neutral"><span>{{twitterStats.percentUnknown}}%</span> Neutral</li>
-              <li class="negative"><span>{{twitterStats.percentNegative}}%</span> Negative</li>
+              <li class="positive">
+                <div id="positiveTweets" pie-chart-sml class="chart"></div>
+                <span>{{twitterStats.percentPositive}}%</span> Positive
+              </li>
+              <li class="neutral">
+                <div id="neutralTweets" pie-chart-sml class="chart"></div>
+                <span>{{twitterStats.percentUnknown}}%</span> Neutral
+              </li>
+              <li class="negative">
+                <div id="negativeTweets" pie-chart-sml class="chart"></div>
+                <span>{{twitterStats.percentNegative}}%</span> Negative
+              </li>
             </ul>
           </div>
         </div>
@@ -75,17 +81,15 @@
         <div class="element ranking">
           <h2>Ranking</h2>
           <div class="box">
-            <div class="graph ranking">
-              <div rankings-chart style="width: 100%; height: 400px;">
-                <ul>
-                  <li>{{drugRankings.positiveTweetsRank}}</li>
-                  <li>{{drugRankings.negativeTweetsRank}}</li>
-                  <li>{{drugRankings.unknownTweetsRank}}</li>
-                  <li>{{drugRankings.adverseEventsRank}}</li>
-                  <li>{{drugRankings.recallsRank}}</li>
-                </ul>
-              </div>
-            </div>
+            <ul class="ranking-top">
+              <li class="positive"><span>{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
+              <li class="neutral"><span>{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
+              <li class="negative"><span>{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
+            </ul>
+            <ul class="ranking-btm">
+              <li class="events"><span>{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>
+              <li class="recalls"><span>{{drugRankings.recallsRank}}</span> Recalls</li>
+            </ul>
           </div>
         </div>
       </div>

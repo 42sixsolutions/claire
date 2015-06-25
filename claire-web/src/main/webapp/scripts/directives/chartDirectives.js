@@ -40,6 +40,11 @@ directive('pieChart', ["$window", function($window) {
         link: function(scope, element, attrs) {
             scope.$watch("twitterStats", function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
+                  
+                    var positiveTweets = newValue.percentPositive / newValue.totalTweets;
+                    var neutralTweets = newValue.percentUnknown / newValue.totalTweets;
+                    var negativeTweets = newValue.percentNegative / newValue.totalTweets;
+                  
                     radialProgress(element[0])
                         .id('cumulativeBlue')
                         .diameter('200')
@@ -48,16 +53,15 @@ directive('pieChart', ["$window", function($window) {
                         
                         .value(newValue.percentNegative, 0)
                         .arcDesc('Negative', 0)
-
                         .value(newValue.percentUnknown, 1)
                         .arcDesc('Neutral', 1)
-
                         .value(newValue.percentPositive, 2)
                         .arcDesc('Positive', 2)
 
                         .theme('blue')
                         .style('cumulative')
                         .render();
+                        
                 }
             });
         }
@@ -69,17 +73,24 @@ directive('pieChartSml', ["$window", function($window) {
         link: function(scope, element, attrs) {
             scope.$watch("twitterStats", function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
-                  
-                  var tweets = newValue.percentNegative * 100;
+                    
+                    if ( element[0].id == "positiveTweets") {
+                      var thisid = "positiveTweets"
+                      var tweets = newValue.percentPositive;
+                    } else if ( element[0].id == "neutralTweets") {
+                      var thisid = "negativeTweets"
+                      var tweets = newValue.percentUnknown;
+                    } else if ( element[0].id == "negativeTweets") {
+                      var thisid = "negativeTweets"
+                      var tweets = newValue.percentNegative;
+                    }
                   
                     radialProgress(element[0])
-                        .id('negativeTweets')
+                        .id(thisid)
                         .diameter('60')
                         .margin({top:0, right:0, bottom:0, left:0})
                         .showLegend(false)
-                        
-                        .value(newValue.tweets, 0)
-
+                        .value(tweets, 0)
                         .theme('blue')
                         .style('cumulative')
                         .render();
