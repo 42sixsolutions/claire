@@ -186,6 +186,38 @@ directive('lineChart', [function() {
                 }
             };
 
+            element.bind('plothover', function(event, pos, item) {
+                if (item) {
+                    var tooltip;
+
+                    // Check if there is additional custom data to disply in the tooltip
+                    if (item.series.data[0].length >= 3) {
+                        var pointData;
+                        var length = item.series.data.length;
+                        for (var i = 0; i < length; i++) {
+                            if (item.datapoint[0] === (new Date(item.series.data[i][0])).valueOf()) {
+                                pointData = item.series.data[i];
+                                break;
+                            }
+                        }
+                        tooltip = pointData[2].data;
+                    } else {
+                        tooltip = Math.round(item.datapoint[1]);
+                    }
+
+                    $('.flot-tooltip').remove();
+                    $("<div class='flot-tooltip'>" + tooltip + "</div>").css({
+                        position: 'absolute',
+                        top: pos.pageY,
+                        left: pos.pageX + 15,
+                        "z-index": 100000,
+                        display: "none"
+                    }).appendTo("body").fadeIn();
+                } else {
+                    $('.flot-tooltip').remove();
+                }
+            });
+
             scope.$watch('mainChartData', function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
                     $.plot(element[0], newValue, options);
