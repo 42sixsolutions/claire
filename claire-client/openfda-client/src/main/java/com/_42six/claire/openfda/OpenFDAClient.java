@@ -30,6 +30,7 @@ public class OpenFDAClient extends HttpClient {
 	private static final String HOST = "api.fda.gov";
 	private static final String PATH_DRUG_ADVERSE = "/drug/event.json";
 	private static final String PATH_DRUG_LABEL = "/drug/label.json";
+	private static final String PATH_DRUG_RECALL = "/drug/enforcement.json";
 
 	private final String apiKey;
 	private ResponseMapper mapper;
@@ -67,6 +68,18 @@ public class OpenFDAClient extends HttpClient {
 		return uri;
 	}
 
+	private URI buildUriRecallEvents(String drugName, String countField) throws URISyntaxException {
+		URI uri = new URIBuilder()
+		.setScheme(SCHEME)
+		.setHost(HOST)
+		.setPath(PATH_DRUG_RECALL)
+		.setParameter("search", "product_description:" + drugName)
+		.setParameter("count", countField)
+		.setParameter("api_key", this.apiKey)
+		.build();
+
+		return uri;
+	}
 	public DrugDescription searchDescription(String drugName) throws JsonParseException, JsonMappingException, IOException, URISyntaxException {
 		OpenFDALabelResponse label = searchLabels(drugName);
 		return toDrugDescription(drugName, label);
@@ -86,6 +99,17 @@ public class OpenFDAClient extends HttpClient {
 
 	public Chart searchAdverseEvents(String drugName, String countField, Date startDate, Date endDate) throws Exception {
 		OpenFDACountByDayResponse response = searchAdverseEvents(drugName, countField);
+		return toChart(drugName, response, startDate, endDate);
+	}
+	
+	private OpenFDACountByDayResponse searchRecallEvents(String drugName, String countField) throws ClientProtocolException, IOException, URISyntaxException {
+		HttpGet get = new HttpGet(buildUriRecallEvents(drugName, countField));
+		String response = this.execute(get);
+		return this.mapper.unmarshalString(response, OpenFDACountByDayResponse.class);
+	}
+	
+	public Chart searchRecallEvents(String drugName, String countField, Date startDate, Date endDate) throws Exception {
+		OpenFDACountByDayResponse response = searchRecallEvents(drugName, countField);
 		return toChart(drugName, response, startDate, endDate);
 	}
 

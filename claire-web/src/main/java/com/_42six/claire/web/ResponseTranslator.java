@@ -39,11 +39,13 @@ public class ResponseTranslator {
 	private final Map<String, TwitterDrugDetail> twitterDetailMap;
 	private final Map<String, Chart> openFDADrugDatesMap;
 	private final Map<String, DrugDescription> openFDADrugDescriptionMap;
+	private final Map<String, Chart> openFDADrugRecallsMap;
 
 	public ResponseTranslator(
 			InputStream twitterDetailsStream,
-			InputStream openFDADrugDatesStream,
-			InputStream openFDADrugDescriptionsStream
+			InputStream openFDADrugAdverseStream,
+			InputStream openFDADrugDescriptionsStream,
+			InputStream openFDADrugRecallsStream
 			) throws JsonParseException, JsonMappingException, IOException, ParseException {
 
 		this.minDate = Calendar.getInstance();
@@ -53,8 +55,8 @@ public class ResponseTranslator {
 
 		ResponseMapper mapper =  new ResponseMapper();
 
-		ChartCollection charts = mapper.unmarshalStream(openFDADrugDatesStream, ChartCollection.class);
-		this.openFDADrugDatesMap = createOpenFDADrugDatesMap(charts);
+		ChartCollection adverseCharts = mapper.unmarshalStream(openFDADrugAdverseStream, ChartCollection.class);
+		this.openFDADrugDatesMap = createOpenFDADatesMap(adverseCharts);
 
 		TwitterDrugDetailCollection twitterDrugDetails = mapper.unmarshalStream(twitterDetailsStream, TwitterDrugDetailCollection.class);
 		this.twitterDetailMap = createTwitterDrugDetailsMap(twitterDrugDetails);
@@ -62,9 +64,12 @@ public class ResponseTranslator {
 		DrugDescriptionCollection descriptions = mapper.unmarshalStream(openFDADrugDescriptionsStream, DrugDescriptionCollection.class);
 		this.openFDADrugDescriptionMap = createOpenFDADrugDescriptionMap(descriptions);
 
+		ChartCollection recallCharts = mapper.unmarshalStream(openFDADrugRecallsStream, ChartCollection.class);
+		this.openFDADrugRecallsMap = createOpenFDADatesMap(recallCharts);
+
 	}
 
-	private Map<String, Chart> createOpenFDADrugDatesMap(ChartCollection charts) {
+	private Map<String, Chart> createOpenFDADatesMap(ChartCollection charts) {
 		Map<String, Chart> map = new HashMap<String, Chart>();
 		for (Chart chart : charts.charts) {
 			map.put(chart.getName().toLowerCase(), chart);
@@ -173,57 +178,67 @@ public class ResponseTranslator {
 		}
 
 		/* set adverse event points */
-
-		List<ChartDetailDataPoint> adverseList = new ArrayList<ChartDetailDataPoint>();
+		Chart adverseEvents = this.openFDADrugDatesMap.get(drugName.toLowerCase());
+		List<ChartDetailDataPoint> adverseList = createChartDetail(adverseEvents);
 		responseDetail.setAdverseEvents(adverseList);
 
-		Chart adverseEvents = this.openFDADrugDatesMap.get(drugName.toLowerCase());
+		/* set recall event points */
+		Chart recallEvents = this.openFDADrugRecallsMap.get(drugName.toLowerCase());
+		List<ChartDetailDataPoint> recallList = createChartDetail(recallEvents);
+		responseDetail.setRecalls(recallList);
 
-		if (adverseEvents != null && adverseEvents.getPoints() != null && !adverseEvents.getPoints().isEmpty()) {
+		return responseDetail;
+	}
+	
+	private List<ChartDetailDataPoint> createChartDetail(Chart chart) {
+		List<ChartDetailDataPoint> chartList = new ArrayList<ChartDetailDataPoint>();
+		
+		if (chart != null && chart.getPoints() != null && !chart.getPoints().isEmpty()) {
 			int max = 0;
-			for (DataPoint sourcePoint : adverseEvents.getPoints()) {
+			for (DataPoint sourcePoint : chart.getPoints()) {
 				if (sourcePoint.getCount() > max) {
 					max = sourcePoint.getCount();
 				}
 			}
-			for (DataPoint sourcePoint : adverseEvents.getPoints()) {
+			for (DataPoint sourcePoint : chart.getPoints()) {
 				ChartDetailDataPoint outputPoint = new ChartDetailDataPoint();
-				adverseList.add(outputPoint);
+				chartList.add(outputPoint);
 				outputPoint.setDate(sourcePoint.getDate());
 				outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
 			}
 		}
-
-		/* set recall event points */
-		List<ChartDetailDataPoint> recallList = new ArrayList<ChartDetailDataPoint>();
-		responseDetail.setRecalls(recallList);
-		//TODO: 
-
-		return responseDetail;
+		
+		return chartList;
 	}
 
 	public FDAStats getFDAStats(String drugName) {
 
-		if (drugName == null || !this.openFDADrugDatesMap.containsKey(drugName.toLowerCase())
-				) {
+		if (drugName == null) {
 			return null; //FIXME: throw 404
 		}
 
 		int totalAdverseEvents = 0;
-		Chart chart = this.openFDADrugDatesMap.get(drugName.toLowerCase());
-		for (DataPoint point : chart.getPoints()) {
-			totalAdverseEvents += point.getCount();
+		Chart adverseChart = this.openFDADrugDatesMap.get(drugName.toLowerCase());
+		if (adverseChart != null) {
+			for (DataPoint point : adverseChart.getPoints()) {
+				totalAdverseEvents += point.getCount();
+			}
 		}
-		//TODO: calculate total recalls
+
 		int totalRecalls = 0;
+		Chart recallChart = this.openFDADrugRecallsMap.get(drugName.toLowerCase());
+		if (recallChart != null) {
+			for (DataPoint point : recallChart.getPoints()) {
+				totalRecalls += point.getCount();
+			}
+		}
 
 		return new FDAStats().setTotalAdverseEvents(totalAdverseEvents).setTotalRecalls(totalRecalls);
 	}
 
 	public TwitterStats getTwitterStats(String drugName) {
 
-		if (drugName == null || !this.twitterDetailMap.containsKey(drugName.toLowerCase())
-				) {
+		if (drugName == null) {
 			return null; //FIXME: throw 404
 		}
 
@@ -232,7 +247,7 @@ public class ResponseTranslator {
 		int totalNeutral = 0;
 
 		TwitterDrugDetail detail = this.twitterDetailMap.get(drugName.toLowerCase());
-		if (detail.getEvents() != null) {
+		if (detail != null && detail.getEvents() != null) {
 			for (EventsByDate events : detail.getEvents()) {
 				totalNegative += events.getNegativeCount();
 				totalPositive += events.getPositiveCount();
