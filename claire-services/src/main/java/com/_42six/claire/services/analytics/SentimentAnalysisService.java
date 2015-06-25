@@ -35,6 +35,12 @@ public class SentimentAnalysisService {
             return name;
         }
     }
+    
+    public enum SentimentScore {
+    	POSITIVE,
+    	NEGATIVE,
+    	NEUTRAL
+    };
 
     public SentimentAnalysisService() {
         Properties props = new Properties();
@@ -42,7 +48,7 @@ public class SentimentAnalysisService {
         pipeline = new StanfordCoreNLP(props);
     }
 
-    public String getAnalysis(String text) throws Exception {
+    public SentimentScore getAnalysis(String text) throws Exception {
 
         if (text != null) {
             // create an empty Annotation just with the given text
@@ -72,14 +78,14 @@ public class SentimentAnalysisService {
                 }
             }
 
-            String finalSentiment = null;
+            SentimentScore finalSentiment = null;
 
             if (sentimentValue > 0) {
-                finalSentiment = Sentiment.POSITIVE.getName();
+                finalSentiment = SentimentScore.POSITIVE;
             } else if (sentimentValue == 0) {
-                finalSentiment = Sentiment.NEUTRAL.getName();
+                finalSentiment = SentimentScore.NEUTRAL;
             } else if (sentimentValue < 0) {
-                finalSentiment = Sentiment.NEGATIVE.getName();
+                finalSentiment = SentimentScore.NEGATIVE;
             }
 
             return finalSentiment;
