@@ -179,20 +179,20 @@ public class ResponseTranslator {
 
 		/* set adverse event points */
 		Chart adverseEvents = this.openFDADrugDatesMap.get(drugName.toLowerCase());
-		List<ChartDetailDataPoint> adverseList = createChartDetail(adverseEvents);
+		List<ChartDetailDataPoint> adverseList = createChartDetail(adverseEvents, true);
 		responseDetail.setAdverseEvents(adverseList);
 
 		/* set recall event points */
 		Chart recallEvents = this.openFDADrugRecallsMap.get(drugName.toLowerCase());
-		List<ChartDetailDataPoint> recallList = createChartDetail(recallEvents);
+		List<ChartDetailDataPoint> recallList = createChartDetail(recallEvents, true);
 		responseDetail.setRecalls(recallList);
 
 		return responseDetail;
 	}
-	
-	private List<ChartDetailDataPoint> createChartDetail(Chart chart) {
+
+	private List<ChartDetailDataPoint> createChartDetail(Chart chart, boolean useCount) {
 		List<ChartDetailDataPoint> chartList = new ArrayList<ChartDetailDataPoint>();
-		
+
 		if (chart != null && chart.getPoints() != null && !chart.getPoints().isEmpty()) {
 			int max = 0;
 			for (DataPoint sourcePoint : chart.getPoints()) {
@@ -204,10 +204,15 @@ public class ResponseTranslator {
 				ChartDetailDataPoint outputPoint = new ChartDetailDataPoint();
 				chartList.add(outputPoint);
 				outputPoint.setDate(sourcePoint.getDate());
-				outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
+				if (useCount) {
+					outputPoint.setPercentMax(sourcePoint.getCount());
+				}
+				else {
+					outputPoint.setPercentMax(max == 0 ? 0 : (100 * sourcePoint.getCount()) / max);
+				}
 			}
 		}
-		
+
 		return chartList;
 	}
 
