@@ -1,17 +1,35 @@
 'use strict';
 
 angular.module('claire.directives').
-directive('trianglify', [function() {
+directive('trianglify', ["$window", function($window) {
+    var getTrianglifyPattern = function() {
+        var pattern = Trianglify({
+            height: $(window).height(),
+            width: $(window).width(),
+            x_colors: ["#f7fcf0", "#e0f3db", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#0868ac", "#084081"],
+            cell_size: 40});
+
+        return pattern;
+    };
+
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
-            if (!scope.isDetailsPage) {
-                var pattern = Trianglify({
-                    height: $(window).height(),
-                    width: $(window).width(),
-                    cell_size: 40});
+            var pattern;
 
+            if (!scope.isDetailsPage) {
+                pattern = getTrianglifyPattern();
                 $(element[0]).append(pattern.canvas());
+
+                $(window).on("resize.doResize", function() {
+                    element.find("canvas").remove();
+                    pattern = getTrianglifyPattern();
+                    $(element[0]).append(pattern.canvas());
+                });
+
+                scope.$on("$destroy", function() {
+                    $(window).off("resize.doResize");
+                });
             }
         }
     }
