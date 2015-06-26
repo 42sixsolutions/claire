@@ -1,15 +1,16 @@
 /* Variables */
 
-$primary:         #39dcb9;
+$primary:         #00a0a8;
 $secondary:       #d54dde;
 $darkh:           #007286;
+$teal:            #4ec5c3;
 $textcolor:       #444444;
 
-$negative:        #e79090;
-$positive:        #bee76f;
-$neutral:         #e0e0e0;
-$recalls:         #d54dde;
-$events:          #ffc2fa;
+$negative:        #eb6b42;
+$positive:        #56c54e;
+$neutral:         #ffb22c;
+$recalls:         $teal;
+$events:          $secondary; //#ffc2fa;
 
 $bordercolor:     #e0e0e0;
 $border-default:  1px solid $bordercolor;
@@ -275,7 +276,7 @@ img {
 			}
 			
 			li:hover {
-				color: $primary;
+				color: $secondary;
 			}
 			
 			li:last-child {
@@ -301,7 +302,7 @@ header {
   width: 100%;
   z-index: 999;
   background: white;
-  border-top: 5px solid $primary;
+  border-top: 5px solid $teal;
   border-bottom: 1px solid $bordercolor;
   padding: 10px 0;
   text-align: left;
@@ -358,9 +359,10 @@ section {
     
     .overflow {
       display: block;
-      height: 130px;
+      height: 90px;
       position: relative;
-      
+      @include transition(all 350ms ease);
+
       &:after {
         content: '';
         display: block;
@@ -368,13 +370,39 @@ section {
         width: 100%;
         position: absolute;
         bottom: 0;
-        background: url(../images/overflow.png) repeat-x bottom left;
+      }      
+      
+      .show {
+        cursor: pointer;
+        border-top: 1px solid lighten($bordercolor,5%);
+        color: lighten($textcolor,35%);
+        padding: 5px 0;
+        font-size: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        
+        &:hover {
+          color: lighten($textcolor,15%);
+        }
       }
       
       .description {
         height: 100%;
-        padding-bottom: 20px;
-        overflow: auto;
+        padding: 0 20px 20px 0;
+        overflow: hidden;
+      }
+      
+      &.shown {
+        height: 220px;
+
+        .description {
+          overflow-y: scroll;
+        }
+
+        &:after {
+          background: url(../images/overflow.png) repeat-x bottom left;
+        }
       }
     }
     
@@ -413,6 +441,17 @@ aside {
   
   .element {
     @extend %clearfix;
+    
+    &.ranking h2 {
+      
+      span {
+        color: lighten($textcolor,15%);
+        font-weight: 400;
+        text-transform: none;
+        font-size: 11px;
+        margin-left: 3px;
+      }
+    }
     
     .graph {
       position: relative;
@@ -591,13 +630,12 @@ aside {
 		z-index: 999;
 		
 		.holder {
+  		text-align: center;
 		
 			&.selection {
 				
 				.brand {
-					position: absolute;
-					left: 50%;
-					@include transform(translateX(-50%));
+  				display: inline-block;
 					width: auto;
 					padding: 0 0 20px 0;
 					margin: 0 auto;
@@ -610,7 +648,7 @@ aside {
 					}
 					
 					h1 {
-						font-size: 40px;
+						font-size: 46px;
 						font-weight: 100;
 						color: #fff;
 						padding: 14px 0 14px 14px;
@@ -621,10 +659,10 @@ aside {
 				
 				.info {
 					width: 100%;
-					padding: 80px 0 20px 0;
+					padding: 0 0 20px 0;
 						
 					h2 {
-						font-size: 26px;
+						font-size: 29px;
 						font-weight: 200;
 						text-transform: capitalize;
 						line-height: 36px;
@@ -648,6 +686,38 @@ aside {
 					width: 100%;
 					padding: 30px 0 0 0;
 					
+					h1 {
+  					
+  					span {
+    					position: relative;
+    					display: inline-block;
+    					margin: 0 auto;
+  						font-size: 14px;
+  						letter-spacing: 0.05em;
+  						font-weight: 500;
+  						color: $darkh;
+  						padding: 0 0 5px 0;
+  						margin: 0;
+  						text-transform: uppercase;
+  						
+  						&:before,
+  						&:after {
+  							content: '';
+  							display: block;
+  							width: 80px;
+  							border-top: 1px solid rgba($darkh,0.2);
+  							position: absolute;
+  							left: -95px;
+  							top: 10px;
+  						}
+  						
+  						&:after {
+  							left: auto;
+  							right: -95px;
+  						}
+						}
+					}
+					
 					.trend {
 						width: 33.33%;
 						text-align: left;
@@ -667,12 +737,12 @@ aside {
 								
 								a {
 									font-size: 14px;
-									font-weight: 400;
-									color: #fff;
+									font-weight: 500;
+                  color: rgba(white,0.8);
                   text-shadow: 0 1px 2px $hpdrop;
 									
 									&:hover {
-										color: $secondary;
+										color: rgba(white,1);
 									}
 								}
 							}
@@ -713,7 +783,7 @@ aside {
 }
 
 .component {
-  fill: #e1e1e1;
+  fill: darken($background,7.5%);
 }
 
 .component .label {
@@ -729,6 +799,16 @@ aside {
   $bordercolor 0px 0px 1px;
 }
 
+.pie-center {
+  position: relative;
+  height: 40px;
+  margin-top: -60px;
+  margin-bottom: 22px;
+  color: $textcolor;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 300;
+}
 
 .arc0-blue { /* Negative */
   stroke-weight: 0.1;
@@ -743,7 +823,7 @@ aside {
   fill: $neutral;
   @include transition(fill 350ms ease);
   
-  &:hover { fill: darken($neutral,10%); }
+  &:hover { fill: darken($neutral,0%); }
 }
 
 .arc2-blue { /* Positive */
@@ -757,6 +837,11 @@ aside {
 
 .percentages {
   
+  strong { 
+    font-weight: 700; 
+    color: lighten($textcolor,25%);
+  }
+  
   .labels { display: none; }
   
   .negative {
@@ -769,15 +854,15 @@ aside {
 
   .neutral {
     .arc0-blue { 
-      fill: darken($neutral,15%);
+      fill: $neutral;
       
-      &:hover { fill: darken($neutral,25%); }
+      &:hover { fill: darken($neutral,10%); }
     }
   }
   
   .positive {
     .arc0-blue { 
-      fill: $positive;
+      fill: darken($positive,10%);
       
       &:hover { fill: darken($positive,10%); }
     }
@@ -927,27 +1012,25 @@ aside {
 }
 
 .graph-legend {
+  text-align: center;
+  margin: 0 25px;
+  border-top: 1px solid $bordercolor;
 
   ul {
-    border-top: 1px solid $bordercolor;
+    display: inline-block;
+    margin: 0 auto;
     
     li {
       display: inline-block;
       vertical-align: top;
       position: relative;
       height: 100%;
-      padding: 15px 5px;
+      padding: 15px 5px 15px 30px;
       font-size: 11px;
       line-height: 12px;
-      text-transform: uppercase;
-      text-align: center;
-      border-left: 1px solid $bordercolor;
+      text-align: left;
       color: lighten($textcolor,40%);
       font-weight: 600;
-
-      @include calc('width','(100% / 5) - 3px');
-      
-      &:first-child { border-left: 0; }
       
       span {
         font-size: 24px;
@@ -956,24 +1039,6 @@ aside {
         font-weight: 300;
         color: lighten($textcolor,0%);
       }
-      
-      /*
-      &:after {
-        content: '';
-        height: 0;
-        width: 0;
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        border-top: 10px solid $neutral;
-        border-left: 10px solid transparent;
-      }
-
-      &.negative:after { border-top-color: $negative; }
-      &.positive:after { border-top-color: $positive; }
-      &.recalls:after { border-top-color: $recalls; }
-      &.events:after { border-top-color: $events; }
-      */
       
       &.negative i:before,
       &.positive i:before,
@@ -984,7 +1049,7 @@ aside {
         height: 0;
         display: inline-block;
         position: relative;
-        margin: 0 5px 0 0;
+        margin: 0 5px 0 -20px;
         top: -2px;
       }
 
@@ -993,23 +1058,23 @@ aside {
       
       &.events  i:before { 
         content: '';
-        background: $events;
+        background: rgba($events,0.5);
         width: 10px;
         height: 10px;
         @include borderradius(6px);
         display: inline-block;
         position: relative;
-        margin: 0 5px 0 0;
+        margin: 0 5px 0 -20px;
       }
 
       &.recalls  i:before { 
         content: '';
         border-left: 2px solid $recalls;
-        width: 0;
+        width: 0px;
         height: 12px;
         display: inline-block;
         position: relative;
-        margin: 0 8px 0 0;
+        margin: 0 10px 0 -10px;
         top: -1px;
       }
     }
@@ -1095,6 +1160,18 @@ aside {
 			}
 		}
 	}
+
+  aside {
+    
+    .group {
+      float: none;
+      width: 100%;
+      
+      &:first-child {
+        margin-right: 0;
+      }
+    }
+  }
 	
 }
 

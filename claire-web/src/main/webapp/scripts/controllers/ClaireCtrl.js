@@ -48,6 +48,13 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
 
     if ($scope.isDetailsPage) {
         $scope.drug.selected = pathParts[1];
+        
+        $('.show').on("click", function() {
+          console.log('show');
+          var text = $(this).text();
+          $(this).parent('.overflow').toggleClass('shown');
+          $(this).text(text == "Show More" ? "Show Less" : "Show More");
+        })
     }
 
     if ($scope.isDetailsPage) {

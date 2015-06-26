@@ -7,8 +7,8 @@
 		</div>
 		
 		<div class="info">
-			<h2>Correlating Adverse Drug Interactions Against Social Media Sentiment.</h2>
-			<p>In sodales, elit vitae efficitur suscipit, elit nulla consequat velit, sit amet pulvinar est neque at felis. Morbi a dolor lacinia turpis placerat egestas.</p>
+			<h2>Correlating Adverse Drug Events Against Social Media Sentiment.</h2>
+			<p>Below are the some of the most popular used drugs.  We merge Social data with FDA Adverse Events and Recalls.  Click a drug to become aware of how such events affect social media.</p>
 		</div>
 		
 		<div class="selection">
@@ -19,24 +19,25 @@
 		</div>
 		
 		<div class="trending clearfix">
-			<div class="trend">
-				<h2>Positive Trending</h2>
-				<ul>
-					<li ng-repeat="drug in trends.topPositive"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
-				</ul>
-			</div>
-			<div class="trend">
-				<h2>Negative Trending</h2>
-				<ul>
-	      	<li ng-repeat="drug in trends.topNegative"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
-				</ul>
-			</div>
-			<div class="trend">
-				<h2>Adverse Event Trending</h2>
-				<ul>
-	        <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
-				</ul>
-			</div>
+  		<h1><span>Currently Trending</span></h1>
+  			<div class="trend">
+  				<h2>Positive Social</h2>
+  				<ul>
+  					<li ng-repeat="drug in trends.topPositive"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
+  				</ul>
+  			</div>
+  			<div class="trend">
+  				<h2>Negative Social</h2>
+  				<ul>
+  	      	<li ng-repeat="drug in trends.topNegative"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
+  				</ul>
+  			</div>
+  			<div class="trend">
+  				<h2>FDA Adverse Events</h2>
+  				<ul>
+  	        <li ng-repeat="drug in trends.mostAdverseEvents"><a href="#/detail/{{drug.brandName}}">{{drug.brandName}}</a></li>
+  				</ul>
+  			</div>
 		</div>
 		
 	</div>

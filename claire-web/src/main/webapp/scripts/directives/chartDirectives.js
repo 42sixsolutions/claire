@@ -87,7 +87,7 @@ directive('pieChartSml', ["$window", function($window) {
                       var tweets = newValue.percentNegative;
                     }
                   
-                    radialProgress(element[0])
+                    radialProgressSml(element[0])
                         .id(thisid)
                         .diameter('60')
                         .margin({top:0, right:0, bottom:0, left:0})
@@ -216,10 +216,10 @@ directive('lineChart', ["$window", function($window) {
                             }
                         },
                         colors: [ 
-                            "#bee76f",
-                            "#e79090",
-                            "#e0e0e0",
-                            "#d54dde",
+                            "#56c54e",
+                            "#eb6b42",
+                            "#ffb22c",
+                            "rgba(78,197,195,0.5)",
                             "rgba(255,0,205,0.3)"
                         ],
                         xaxis: {
@@ -246,7 +246,8 @@ directive('lineChart', ["$window", function($window) {
                             max: scope.drugChartOptions.max
                         },
                         crosshair: {
-                            mode: "x"
+                            mode: "x",
+                            color: "rgba(100,100,100,0.4)"
                         }
                     };
                     $.plot(element[0], newValue, options);
