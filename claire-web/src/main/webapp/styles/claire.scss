@@ -1,15 +1,16 @@
 /* Variables */
 
-$primary:         #39dcb9;
+$primary:         #00a0a8;
 $secondary:       #d54dde;
 $darkh:           #007286;
+$teal:            #39dcb9;
 $textcolor:       #444444;
 
-$negative:        #e79090;
-$positive:        #bee76f;
-$neutral:         #c0c0c0;
+$negative:        #e04624;
+$positive:        #6fdd3a;
+$neutral:         #e5e811;
 $recalls:         #39dcb9;
-$events:          #ffc2fa;
+$events:          $secondary; //#ffc2fa;
 
 $bordercolor:     #e0e0e0;
 $border-default:  1px solid $bordercolor;
@@ -301,7 +302,7 @@ header {
   width: 100%;
   z-index: 999;
   background: white;
-  border-top: 5px solid $primary;
+  border-top: 5px solid $teal;
   border-bottom: 1px solid $bordercolor;
   padding: 10px 0;
   text-align: left;
@@ -361,6 +362,15 @@ section {
       height: 100px;
       position: relative;
       @include transition(all 350ms ease);
+      
+      .show {
+        cursor: pointer;
+        background: $bordercolor;
+        color: $textcolor;
+        padding: 2px;
+        font-size: 10px;
+        text-align: center;
+      }
       
       &:after {
         content: '';
@@ -610,13 +620,12 @@ aside {
 		z-index: 999;
 		
 		.holder {
+  		text-align: center;
 		
 			&.selection {
 				
 				.brand {
-					position: absolute;
-					left: 50%;
-					@include transform(translateX(-50%));
+  				display: inline-block;
 					width: auto;
 					padding: 0 0 20px 0;
 					margin: 0 auto;
@@ -629,7 +638,7 @@ aside {
 					}
 					
 					h1 {
-						font-size: 40px;
+						font-size: 46px;
 						font-weight: 100;
 						color: #fff;
 						padding: 14px 0 14px 14px;
@@ -640,10 +649,10 @@ aside {
 				
 				.info {
 					width: 100%;
-					padding: 80px 0 20px 0;
+					padding: 0 0 20px 0;
 						
 					h2 {
-						font-size: 26px;
+						font-size: 29px;
 						font-weight: 200;
 						text-transform: capitalize;
 						line-height: 36px;
@@ -666,6 +675,38 @@ aside {
 				.trending {
 					width: 100%;
 					padding: 30px 0 0 0;
+					
+					h1 {
+  					
+  					span {
+    					position: relative;
+    					display: inline-block;
+    					margin: 0 auto;
+  						font-size: 14px;
+  						letter-spacing: 0.05em;
+  						font-weight: 500;
+  						color: $darkh;
+  						padding: 0 0 5px 0;
+  						margin: 0;
+  						text-transform: uppercase;
+  						
+  						&:before,
+  						&:after {
+  							content: '';
+  							display: block;
+  							width: 80px;
+  							border-top: 1px solid rgba($darkh,0.2);
+  							position: absolute;
+  							left: -95px;
+  							top: 10px;
+  						}
+  						
+  						&:after {
+  							left: auto;
+  							right: -95px;
+  						}
+						}
+					}
 					
 					.trend {
 						width: 33.33%;
@@ -772,7 +813,7 @@ aside {
   fill: $neutral;
   @include transition(fill 350ms ease);
   
-  &:hover { fill: darken($neutral,10%); }
+  &:hover { fill: darken($neutral,0%); }
 }
 
 .arc2-blue { /* Positive */

@@ -81,13 +81,13 @@ body {
   padding: 0 20px; }
 
 a {
-  color: #39dcb9;
+  color: #00a0a8;
   -webkit-transition: all 350ms ease;
   -moz-transition: all 350ms ease;
   -ms-transition: all 350ms ease;
   transition: all 350ms ease; }
   a:hover {
-    color: #1eaa8c; }
+    color: #00575b; }
 
 h1 {
   font-weight: 500;
@@ -95,7 +95,7 @@ h1 {
   margin-bottom: 0.5em; }
 
 h2 {
-  color: #39dcb9;
+  color: #00a0a8;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
@@ -273,6 +273,13 @@ section .information {
     -moz-transition: all 350ms ease;
     -ms-transition: all 350ms ease;
     transition: all 350ms ease; }
+    section .information .overflow .show {
+      cursor: pointer;
+      background: #e0e0e0;
+      color: #444444;
+      padding: 2px;
+      font-size: 10px;
+      text-align: center; }
     section .information .overflow:after {
       content: '';
       display: block;
@@ -374,16 +381,16 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid silver;
+      border-top: 10px solid #e5e811;
       border-left: 10px solid transparent; }
     aside .element ul li.negative:after {
-      border-top-color: #e79090; }
+      border-top-color: #e04624; }
     aside .element ul li.positive:after {
-      border-top-color: #bee76f; }
+      border-top-color: #6fdd3a; }
     aside .element ul li.recalls:after {
       border-top-color: #39dcb9; }
     aside .element ul li.events:after {
-      border-top-color: #ffc2fa; }
+      border-top-color: #d54dde; }
   aside .element ul.stats li, aside .element ul.ranking-btm li {
     width: -moz-calc(50% - 2px);
     width: -o-calc(50% - 2px);
@@ -464,69 +471,88 @@ aside .element ul {
     background: transparent;
     position: relative;
     z-index: 999; }
-    .wrapper .bg-gradient .holder.selection .brand {
-      position: absolute;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      -moz-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-      transform: translateX(-50%);
-      width: auto;
-      padding: 0 0 20px 0;
-      margin: 0 auto; }
-      .wrapper .bg-gradient .holder.selection .brand img {
-        height: 50px;
-        padding: 0;
-        margin: 0;
-        float: left; }
-      .wrapper .bg-gradient .holder.selection .brand h1 {
-        font-size: 40px;
-        font-weight: 100;
-        color: #fff;
-        padding: 14px 0 14px 14px;
-        margin: 0;
-        float: left; }
-    .wrapper .bg-gradient .holder.selection .info {
-      width: 100%;
-      padding: 80px 0 20px 0; }
-      .wrapper .bg-gradient .holder.selection .info h2 {
-        font-size: 26px;
-        font-weight: 200;
-        text-transform: capitalize;
-        line-height: 36px;
-        color: #007286; }
-      .wrapper .bg-gradient .holder.selection .info p {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-        color: #fff;
-        text-shadow: 0 1px 2px rgba(52, 157, 180, 0.5); }
-    .wrapper .bg-gradient .holder.selection .selection {
-      background: white;
-      padding: 20px;
-      border: 1px solid #e0e0e0; }
-    .wrapper .bg-gradient .holder.selection .trending {
-      width: 100%;
-      padding: 30px 0 0 0; }
-      .wrapper .bg-gradient .holder.selection .trending .trend {
-        width: 33.33%;
-        text-align: left;
-        float: left; }
-        .wrapper .bg-gradient .holder.selection .trending .trend h2 {
-          font-size: 12px;
+    .wrapper .bg-gradient .holder {
+      text-align: center; }
+      .wrapper .bg-gradient .holder.selection .brand {
+        display: inline-block;
+        width: auto;
+        padding: 0 0 20px 0;
+        margin: 0 auto; }
+        .wrapper .bg-gradient .holder.selection .brand img {
+          height: 50px;
+          padding: 0;
+          margin: 0;
+          float: left; }
+        .wrapper .bg-gradient .holder.selection .brand h1 {
+          font-size: 46px;
+          font-weight: 100;
+          color: #fff;
+          padding: 14px 0 14px 14px;
+          margin: 0;
+          float: left; }
+      .wrapper .bg-gradient .holder.selection .info {
+        width: 100%;
+        padding: 0 0 20px 0; }
+        .wrapper .bg-gradient .holder.selection .info h2 {
+          font-size: 29px;
+          font-weight: 200;
+          text-transform: capitalize;
+          line-height: 36px;
+          color: #007286; }
+        .wrapper .bg-gradient .holder.selection .info p {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+          color: #fff;
+          text-shadow: 0 1px 2px rgba(52, 157, 180, 0.5); }
+      .wrapper .bg-gradient .holder.selection .selection {
+        background: white;
+        padding: 20px;
+        border: 1px solid #e0e0e0; }
+      .wrapper .bg-gradient .holder.selection .trending {
+        width: 100%;
+        padding: 30px 0 0 0; }
+        .wrapper .bg-gradient .holder.selection .trending h1 span {
+          position: relative;
+          display: inline-block;
+          margin: 0 auto;
+          font-size: 14px;
+          letter-spacing: 0.05em;
           font-weight: 500;
           color: #007286;
           padding: 0 0 5px 0;
-          margin: 0; }
-        .wrapper .bg-gradient .holder.selection .trending .trend ul li {
-          padding: 0 0 5px 0; }
-          .wrapper .bg-gradient .holder.selection .trending .trend ul li a {
-            font-size: 14px;
+          margin: 0;
+          text-transform: uppercase; }
+          .wrapper .bg-gradient .holder.selection .trending h1 span:before, .wrapper .bg-gradient .holder.selection .trending h1 span:after {
+            content: '';
+            display: block;
+            width: 80px;
+            border-top: 1px solid rgba(0, 114, 134, 0.2);
+            position: absolute;
+            left: -95px;
+            top: 10px; }
+          .wrapper .bg-gradient .holder.selection .trending h1 span:after {
+            left: auto;
+            right: -95px; }
+        .wrapper .bg-gradient .holder.selection .trending .trend {
+          width: 33.33%;
+          text-align: left;
+          float: left; }
+          .wrapper .bg-gradient .holder.selection .trending .trend h2 {
+            font-size: 12px;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            text-shadow: 0 1px 2px rgba(52, 157, 180, 0.5); }
-            .wrapper .bg-gradient .holder.selection .trending .trend ul li a:hover {
-              color: white; }
+            color: #007286;
+            padding: 0 0 5px 0;
+            margin: 0; }
+          .wrapper .bg-gradient .holder.selection .trending .trend ul li {
+            padding: 0 0 5px 0; }
+            .wrapper .bg-gradient .holder.selection .trending .trend ul li a {
+              font-size: 14px;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.8);
+              text-shadow: 0 1px 2px rgba(52, 157, 180, 0.5); }
+              .wrapper .bg-gradient .holder.selection .trending .trend ul li a:hover {
+                color: white; }
 
 /* Radius Progress Chart */
 #cumulativeBlue {
@@ -580,35 +606,35 @@ aside .element ul {
 .arc0-blue {
   /* Negative */
   stroke-weight: 0.1;
-  fill: #e79090;
+  fill: #e04624;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc0-blue:hover {
-    fill: #de6666; }
+    fill: #b7361a; }
 
 .arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
-  fill: silver;
+  fill: #e5e811;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc1-blue:hover {
-    fill: #a7a7a7; }
+    fill: #e5e811; }
 
 .arc2-blue {
   /* Positive */
   stroke-weight: 0.1;
-  fill: #bee76f;
+  fill: #6fdd3a;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc2-blue:hover {
-    fill: #aae043; }
+    fill: #56c222; }
 
 .percentages strong {
   font-weight: 700;
@@ -616,17 +642,17 @@ aside .element ul {
 .percentages .labels {
   display: none; }
 .percentages .negative .arc0-blue {
-  fill: #e79090; }
+  fill: #e04624; }
   .percentages .negative .arc0-blue:hover {
-    fill: #de6666; }
+    fill: #b7361a; }
 .percentages .neutral .arc0-blue {
-  fill: #9a9a9a; }
+  fill: #9fa10c; }
   .percentages .neutral .arc0-blue:hover {
-    fill: gray; }
+    fill: #707108; }
 .percentages .positive .arc0-blue {
-  fill: #aae043; }
+  fill: #56c222; }
   .percentages .positive .arc0-blue:hover {
-    fill: #aae043; }
+    fill: #56c222; }
 
 .white {
   fill: #FFFFFF; }
@@ -714,7 +740,7 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid silver;
+      border-top: 10px solid #e5e811;
       border-left: 10px solid transparent; }
 
 .graph-title {
@@ -742,7 +768,7 @@ aside .element ul {
     position: absolute;
     top: 3px;
     right: 3px;
-    border-top: 10px solid silver;
+    border-top: 10px solid #e5e811;
     border-left: 10px solid transparent; }
 
 .graph-legend ul {
@@ -791,7 +817,7 @@ aside .element ul {
       color: #444444; }
     .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
       content: '';
-      border-top: 3px solid silver;
+      border-top: 3px solid #e5e811;
       width: 14px;
       height: 0;
       display: inline-block;
@@ -799,12 +825,12 @@ aside .element ul {
       margin: 0 5px 0 -20px;
       top: -2px; }
     .graph-legend ul li.positive i:before {
-      border-top-color: #bee76f; }
+      border-top-color: #6fdd3a; }
     .graph-legend ul li.negative i:before {
-      border-top-color: #e79090; }
+      border-top-color: #e04624; }
     .graph-legend ul li.events i:before {
       content: '';
-      background: #ffc2fa;
+      background: #d54dde;
       width: 10px;
       height: 10px;
       -webkit-border-radius: 6px;
