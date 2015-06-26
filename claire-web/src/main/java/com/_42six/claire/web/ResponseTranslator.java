@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -179,7 +180,7 @@ public class ResponseTranslator {
 		return drugList;
 	}
 
-	public ChartDetail getChart(String drugName) {
+	public ChartDetail getChart(String drugName, Integer peakPercent) {
 		if (drugName == null ||
 				(!this.twitterDetailMap.containsKey(drugName.toLowerCase()) &&
 						!this.openFDADrugDatesMap.containsKey(drugName.toLowerCase()))
@@ -196,10 +197,15 @@ public class ResponseTranslator {
 		responseDetail.setNegativeTweets(negativeList);
 		List<ChartDetailDataPoint> neutralList = new ArrayList<ChartDetailDataPoint>();
 		responseDetail.setUnknownTweets(neutralList);
+		List<ChartDetailDataPoint> positiveTweetSpikes = new ArrayList<ChartDetailDataPoint>();
+		responseDetail.setPositiveTweetSpikes(positiveTweetSpikes);
+		List<ChartDetailDataPoint> negativeTweetSpikes = new ArrayList<ChartDetailDataPoint>();
+		responseDetail.setNegativeTweetSpikes(negativeTweetSpikes);
 
 		TwitterDrugDetail sourceDetail = this.twitterDetailMap.get(drugName.toLowerCase());
 
 		if (sourceDetail != null) {
+			int totalTweets = 0;
 			for (EventsByDate event : sourceDetail.getEvents()) {
 				ChartDetailDataPoint positivePoint = new ChartDetailDataPoint();
 				ChartDetailDataPoint negativePoint = new ChartDetailDataPoint();
@@ -223,6 +229,26 @@ public class ResponseTranslator {
 				positivePoint.setPercentMax(event.getPositiveCount());
 				negativePoint.setPercentMax(event.getNegativeCount());
 				neutralPoint.setPercentMax(event.getNeutralCount());
+
+				totalTweets += event.getPositiveCount() + event.getNegativeCount() + event.getNeutralCount();
+			}
+
+			if (totalTweets > 0) {
+				
+				double averageTweetsPerDay = (double)totalTweets / sourceDetail.getEvents().size();
+				double threshold = (((double)peakPercent / 100) + 1) * averageTweetsPerDay;
+				for (EventsByDate event : sourceDetail.getEvents()) {
+					
+					ChartDetailDataPoint positivePoint = createPointFromThreshold(event.getDate(), event.getPositiveCount(), threshold);
+					if (positivePoint != null) {
+						positiveTweetSpikes.add(positivePoint);
+					}
+					
+					ChartDetailDataPoint negativePoint = createPointFromThreshold(event.getDate(), event.getNegativeCount(), threshold);
+					if (negativePoint != null) {
+						negativeTweetSpikes.add(negativePoint);
+					}
+				}
 			}
 		}
 
@@ -237,6 +263,16 @@ public class ResponseTranslator {
 		responseDetail.setRecalls(recallList);
 
 		return responseDetail;
+	}
+	
+	private ChartDetailDataPoint createPointFromThreshold(Date date, int count, final double threshold) {
+		if (count > threshold) {
+			ChartDetailDataPoint point = new ChartDetailDataPoint();
+			point.setDate(date);
+			point.setPercentMax(count);
+			return point;
+		}
+		return null;
 	}
 
 	private List<ChartDetailDataPoint> createChartDetail(Chart chart, boolean useCount) {
