@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Used to read properties for the OpenFDA web client
+ */
 public class OpenFDAProperties extends Properties {
 	
 	private static final long serialVersionUID = 3671260118582543074L;

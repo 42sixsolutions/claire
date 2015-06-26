@@ -2,6 +2,9 @@ package com._42six.claire.client.commons.response;
 
 import java.util.Date;
 
+/**
+ * A DataPoint for Chart objects
+ */
 public class DataPoint implements Comparable<DataPoint> {
 	
 	private Date date;

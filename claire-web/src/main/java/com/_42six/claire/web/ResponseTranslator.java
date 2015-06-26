@@ -41,6 +41,10 @@ import com._42six.claire.commons.model.TwitterStats;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 import com._42six.claire.web.model.SortableDrug;
 
+/**
+ * As service to both translate POJOs to response objects, 
+ * and a lookup table for reference data.
+ */
 public class ResponseTranslator {
 
 	private static ResponseTranslator instance;
@@ -74,6 +78,19 @@ public class ResponseTranslator {
 				);
 	}
 
+	/**
+	 * Get a singleton instance
+	 * 
+	 * @param twitterDetailsStream
+	 * @param openFDADrugAdverseStream
+	 * @param openFDADrugDescriptionsStream
+	 * @param openFDADrugRecallsStream
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws ParseException
+	 */
 	public static synchronized ResponseTranslator getInstance(
 			InputStream twitterDetailsStream,
 			InputStream openFDADrugAdverseStream,
@@ -121,6 +138,12 @@ public class ResponseTranslator {
 
 	}
 
+	/**
+	 * Create a chart lookup for drug names.
+	 * 
+	 * @param charts
+	 * @return
+	 */
 	private Map<String, Chart> createOpenFDADatesMap(ChartCollection charts) {
 		Map<String, Chart> map = new HashMap<String, Chart>();
 		for (Chart chart : charts.charts) {
@@ -140,6 +163,12 @@ public class ResponseTranslator {
 		return Collections.unmodifiableMap(map);
 	}
 
+	/**
+	 * Create a drug description lookup map.
+	 * 
+	 * @param descriptions
+	 * @return
+	 */
 	private Map<String, DrugDescription> createOpenFDADrugDescriptionMap(DrugDescriptionCollection descriptions) {
 		Map<String, DrugDescription> map = new HashMap<String, DrugDescription>();
 
@@ -149,6 +178,12 @@ public class ResponseTranslator {
 		return map;
 	}
 
+	/**
+	 * Create a TwitterDrugDetail lookup map for drug names.
+	 * 
+	 * @param twitterDrugDetails
+	 * @return
+	 */
 	private Map<String, TwitterDrugDetail> createTwitterDrugDetailsMap(
 			TwitterDrugDetailCollection twitterDrugDetails
 			) {
@@ -170,6 +205,9 @@ public class ResponseTranslator {
 		return Collections.unmodifiableMap(map);
 	}
 
+	/**
+	 * Get a list of all available drugs.
+	 */
 	public List<Drug> getDrugs() {
 		List<Drug> drugList = new ArrayList<Drug>();
 		for (String drugName : OpenFDAUtil.DRUG_NAMES_SET) {
@@ -182,12 +220,19 @@ public class ResponseTranslator {
 		return drugList;
 	}
 
+	/**
+	 * Get a chart for a given drugName.
+	 * 
+	 * @param drugName
+	 * @param peakPercent - the percent of increase above the average for a day to be used for the "tweet spike"
+	 * @return
+	 */
 	public ChartDetail getChart(String drugName, Integer peakPercent) {
 		if (drugName == null ||
 				(!this.twitterDetailMap.containsKey(drugName.toLowerCase()) &&
 						!this.openFDADrugDatesMap.containsKey(drugName.toLowerCase()))
 				) {
-			return null; //FIXME: throw 404
+			return null;
 		}
 		ChartDetail responseDetail = new ChartDetail();
 
@@ -267,6 +312,14 @@ public class ResponseTranslator {
 		return responseDetail;
 	}
 
+	/**
+	 * Create a point if the count is greater than the threshold
+	 * 
+	 * @param date
+	 * @param count
+	 * @param threshold
+	 * @return
+	 */
 	private ChartDetailDataPoint createPointFromThreshold(Date date, int count, final double threshold) {
 		if (count > threshold) {
 			ChartDetailDataPoint point = new ChartDetailDataPoint();
@@ -277,6 +330,13 @@ public class ResponseTranslator {
 		return null;
 	}
 
+	/**
+	 * Create a list of ChartDetailDataPoints
+	 * 
+	 * @param chart
+	 * @param useCount
+	 * @return
+	 */
 	private List<ChartDetailDataPoint> createChartDetail(Chart chart, boolean useCount) {
 		List<ChartDetailDataPoint> chartList = new ArrayList<ChartDetailDataPoint>();
 
@@ -303,10 +363,16 @@ public class ResponseTranslator {
 		return chartList;
 	}
 
+	/**
+	 * Get FDAStats for a drug name.
+	 * 
+	 * @param drugName
+	 * @return
+	 */
 	public FDAStats getFDAStats(String drugName) {
 
 		if (drugName == null) {
-			return null; //FIXME: throw 404
+			return null;
 		}
 
 		int totalAdverseEvents = 0;
@@ -328,10 +394,16 @@ public class ResponseTranslator {
 		return new FDAStats().setTotalAdverseEvents(totalAdverseEvents).setTotalRecalls(totalRecalls);
 	}
 
+	/**
+	 * Get twitter statistics for a drug name.
+	 * 
+	 * @param drugName
+	 * @return
+	 */
 	public TwitterStats getTwitterStats(String drugName) {
 
 		if (drugName == null) {
-			return null; //FIXME: throw 404
+			return null;
 		}
 
 		int totalPositive = 0;
@@ -356,10 +428,16 @@ public class ResponseTranslator {
 		.setTotalTweets(total);
 	}
 
+	/**
+	 * Get drug details for a drug name
+	 * 
+	 * @param drugName
+	 * @return
+	 */
 	public Drug getDrugDetails(String drugName) {
 		if (drugName == null || drugName.trim().isEmpty() || !this.openFDADrugDescriptionMap.containsKey(drugName.toLowerCase())
 				) {
-			return null; //FIXME: throw 404
+			return null;
 		}
 
 		DrugDescription description = this.openFDADrugDescriptionMap.get(drugName.toLowerCase());
@@ -371,10 +449,21 @@ public class ResponseTranslator {
 		.setPharmacodynamics(description.pharmacodynamics);
 	}
 
+	/**
+	 * Get a drugs rank
+	 * 
+	 * @param drugName
+	 * @return
+	 */
 	public DrugRankings getDrugRank(String drugName) {
-		return this.drugRankMap.get(drugName.toLowerCase());
+		return drugName == null ? null : this.drugRankMap.get(drugName.toLowerCase());
 	}
 
+	/**
+	 * Create a DrugRankings lookup map for drug names
+	 * 
+	 * @return
+	 */
 	private Map<String, DrugRankings> createDrugRankMap() {
 
 		Map<String, DrugRankings> map = new HashMap<String, DrugRankings>();
@@ -431,6 +520,9 @@ public class ResponseTranslator {
 		return Collections.unmodifiableMap(map);
 	}
 
+	/**
+	 * Create the trends lists
+	 */
 	private void createTrends() {
 		this.positiveTrendList = new TreeSet<Trend>();
 		this.adverseEventTrendList = new TreeSet<Trend>();
@@ -489,12 +581,22 @@ public class ResponseTranslator {
 		}
 	}
 
+	/**
+	 * Get the list of twitter positive trending drugs
+	 * 
+	 * @return
+	 */
 	public List<Trend> getPositiveTwitterTrends() {
 		List<Trend> list = new ArrayList<Trend>(this.positiveTrendList);
 		int i = list.size() > 5 ? 5 : list.size();
 		return list.subList(0, i);
 	}
 
+	/**
+	 * Get the list of twitter negative trending drugs
+	 * 
+	 * @return
+	 */
 	public List<Trend> getNegativeTwitterTrends() {
 		List<Trend> list = new ArrayList<Trend>(this.positiveTrendList);
 		Collections.reverse(list);
@@ -502,12 +604,22 @@ public class ResponseTranslator {
 		return list.subList(0, i);
 	}
 
+	/**
+	 * Get the list of adverse event trending drugs
+	 * 
+	 * @return
+	 */
 	public List<Trend> getAdverseEventsTrends() {
 		List<Trend> list = new ArrayList<Trend>(this.adverseEventTrendList);
 		int i = list.size() > 5 ? 5 : list.size();
 		return list.subList(0, i);
 	}
 
+	/**
+	 * Get the trend score for a drug name
+	 * 
+	 * @return
+	 */
 	public Trend getOverallTwitterTrend(String drugName) {
 		if (drugName == null) {
 			return null;
