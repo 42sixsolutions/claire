@@ -744,11 +744,11 @@ aside .element ul {
     vertical-align: top;
     position: relative;
     height: 100%;
-    padding: 15px 5px;
+    padding: 15px 5px 15px 30px;
     font-size: 11px;
     line-height: 12px;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     border-left: 1px solid #e0e0e0;
     color: #aaaaaa;
     font-weight: 600;
@@ -788,7 +788,7 @@ aside .element ul {
       height: 0;
       display: inline-block;
       position: relative;
-      margin: 0 5px 0 0;
+      margin: 0 5px 0 -20px;
       top: -2px; }
     .graph-legend ul li.positive i:before {
       border-top-color: #bee76f; }
@@ -805,15 +805,15 @@ aside .element ul {
       border-radius: 6px;
       display: inline-block;
       position: relative;
-      margin: 0 5px 0 0; }
+      margin: 0 5px 0 -20px; }
     .graph-legend ul li.recalls i:before {
       content: '';
       border-left: 2px solid #39dcb9;
-      width: 0;
+      width: 0px;
       height: 12px;
       display: inline-block;
       position: relative;
-      margin: 0 8px 0 0;
+      margin: 0 10px 0 -10px;
       top: -1px; }
 
 /* Media Queries */

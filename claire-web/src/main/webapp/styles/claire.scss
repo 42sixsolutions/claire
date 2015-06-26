@@ -960,11 +960,11 @@ aside {
       vertical-align: top;
       position: relative;
       height: 100%;
-      padding: 15px 5px;
+      padding: 15px 5px 15px 30px;
       font-size: 11px;
       line-height: 12px;
       text-transform: uppercase;
-      text-align: center;
+      text-align: left;
       border-left: 1px solid $bordercolor;
       color: lighten($textcolor,40%);
       font-weight: 600;
@@ -1008,7 +1008,7 @@ aside {
         height: 0;
         display: inline-block;
         position: relative;
-        margin: 0 5px 0 0;
+        margin: 0 5px 0 -20px;
         top: -2px;
       }
 
@@ -1023,17 +1023,17 @@ aside {
         @include borderradius(6px);
         display: inline-block;
         position: relative;
-        margin: 0 5px 0 0;
+        margin: 0 5px 0 -20px;
       }
 
       &.recalls  i:before { 
         content: '';
         border-left: 2px solid $recalls;
-        width: 0;
+        width: 0px;
         height: 12px;
         display: inline-block;
         position: relative;
-        margin: 0 8px 0 0;
+        margin: 0 10px 0 -10px;
         top: -1px;
       }
     }
