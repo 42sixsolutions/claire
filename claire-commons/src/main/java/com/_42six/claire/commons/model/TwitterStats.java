@@ -1,21 +1,19 @@
 package com._42six.claire.commons.model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 
 /**
  * POJO for twitter stats
  */
 @SuppressWarnings("unused")
-@XmlAccessorType(XmlAccessType.NONE)
 public class TwitterStats {
     private int totalTweets;
     private double percentPositive;
     private double percentNegative;
     private double percentUnknown;
 
-    @XmlElement
     public int getTotalTweets() {
         return totalTweets;
     }
@@ -25,13 +23,8 @@ public class TwitterStats {
         return this;
     }
 
-    @XmlElement
-    public int getPercentPositive() {
-        return (int)percentPositive;
-    }
-    
-    public double getPercentPositiveDbl() {
-        return percentPositive;
+    public double getPercentPositive() {
+        return round(percentPositive, 1);
     }
 
     public TwitterStats setPercentPositive(double percentPositive) {
@@ -39,13 +32,8 @@ public class TwitterStats {
         return this;
     }
 
-    @XmlElement
-    public int getPercentNegative() {
-        return (int)percentNegative;
-    }
-    
-    public double getPercentNegativeDbl() {
-        return percentNegative;
+    public double getPercentNegative() {
+        return round(percentNegative, 1);
     }
 
     public TwitterStats setPercentNegative(double percentNegative) {
@@ -53,17 +41,20 @@ public class TwitterStats {
         return this;
     }
 
-    @XmlElement
-    public int getPercentUnknown() {
-        return (int)percentUnknown;
-    }
-    
-    public double getPercentUnknownDbl() {
-        return percentUnknown;
+    public double getPercentUnknown() {
+        return round(percentUnknown, 1);
     }
 
     public TwitterStats setPercentUnknown(double percentUnknown) {
         this.percentUnknown = percentUnknown;
         return this;
+    }
+    
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

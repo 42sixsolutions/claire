@@ -6,7 +6,7 @@ directive('trianglify', ["$window", function($window) {
         var pattern = Trianglify({
             height: $(window).height(),
             width: $(window).width(),
-            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#42bfc7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
+            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
             color_space: 'lab',
             cell_size: 200
         });
@@ -42,6 +42,10 @@ directive('pieChart', ["$window", function($window) {
         link: function(scope, element, attrs) {
             scope.$watch("twitterStats", function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
+                  
+                    var positiveTweets = newValue.percentPositive / newValue.totalTweets;
+                    var neutralTweets = newValue.percentUnknown / newValue.totalTweets;
+                    var negativeTweets = newValue.percentNegative / newValue.totalTweets;
                   
                     radialProgress(element[0])
                         .id('cumulativeBlue')
@@ -83,7 +87,7 @@ directive('pieChartSml', ["$window", function($window) {
                       var tweets = newValue.percentNegative;
                     }
                   
-                    radialProgressSml(element[0])
+                    radialProgress(element[0])
                         .id(thisid)
                         .diameter('60')
                         .margin({top:0, right:0, bottom:0, left:0})
@@ -92,7 +96,6 @@ directive('pieChartSml', ["$window", function($window) {
                         .theme('blue')
                         .style('cumulative')
                         .render();
-                        
                 }
             });
         }
@@ -120,70 +123,6 @@ directive('lineChart', [function() {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
-            var options = {
-                series: {
-                    lines: { 
-                        show: true,
-                        lineWidth: 2,
-                        steps: false,
-                    },
-                    curvedLines: {
-                        active: true
-                    },
-                    clickable: true,
-                    hoverable: true,
-                    shadowSize: 0
-                },
-                grid: {
-                    show: true,
-                    color: "#CCC",
-                    borderWidth: { top: 0, right: 0, bottom: 0, left: 0 },
-                    clickable: true,
-                    hoverable: true,
-                    autoHighlight: true
-                },
-                tooltip: {
-                    show: true,
-                    content: "<span>%y%</span>",
-                    defaultTheme: false,
-                    shifts: {
-                        x: -30,
-                        y: -38
-                    }
-                },
-                colors: [ 
-                    "#bee76f",
-                    "#e79090",
-                    "#c0c0c0",
-                    "rgba(57,220,185,0.5)",
-                    "rgba(255,0,205,0.3)"
-                ],
-                xaxis: {
-                    font: { 
-                      size: 11,
-                      lineHeight: 16,
-                      weight: "300",
-                      family: "Raleway",
-                      color: "#444"
-                    },
-                    mode: "time",
-                    tickLength: 10,
-                    reserveSpace: true
-                },
-                yaxis: {
-                    font: { 
-                      size: 11,
-                      lineHeight: 16,
-                      weight: "300",
-                      family: "Raleway",
-                      color: "#444"
-                    },
-                    min: -10
-                },
-                crosshair: {
-                    mode: "x"
-                }
-            };
 
             element.bind('plothover', function(event, pos, item) {
                 var hoverDate = new Date(Math.floor(pos.x1));
@@ -226,6 +165,71 @@ directive('lineChart', [function() {
 
             scope.$watch('mainChartData', function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
+                    var options = {
+                        series: {
+                            lines: { 
+                                show: true,
+                                lineWidth: 2,
+                                steps: false,
+                            },
+                            curvedLines: {
+                                active: true
+                            },
+                            clickable: true,
+                            hoverable: true,
+                            shadowSize: 0
+                        },
+                        grid: {
+                            show: true,
+                            color: "#CCC",
+                            borderWidth: { top: 0, right: 0, bottom: 0, left: 0 },
+                            clickable: true,
+                            hoverable: true,
+                            autoHighlight: true
+                        },
+                        tooltip: {
+                            show: true,
+                            content: "<span>%y%</span>",
+                            defaultTheme: false,
+                            shifts: {
+                                x: -30,
+                                y: -38
+                            }
+                        },
+                        colors: [ 
+                            "#bee76f",
+                            "#e79090",
+                            "#e0e0e0",
+                            "#d54dde",
+                            "rgba(255,0,205,0.3)"
+                        ],
+                        xaxis: {
+                            font: { 
+                              size: 11,
+                              lineHeight: 16,
+                              weight: "300",
+                              family: "Raleway",
+                              color: "#444"
+                            },
+                            mode: "time",
+                            tickLength: 10,
+                            reserveSpace: true
+                        },
+                        yaxis: {
+                            font: { 
+                              size: 11,
+                              lineHeight: 16,
+                              weight: "300",
+                              family: "Raleway",
+                              color: "#444"
+                            },
+                            min: scope.drugChartOptions.min,
+                            max: scope.drugChartOptions.max
+                        },
+                        crosshair: {
+                            mode: "x"
+                        }
+                    };
                     $.plot(element[0], newValue, options);
                 }
             });

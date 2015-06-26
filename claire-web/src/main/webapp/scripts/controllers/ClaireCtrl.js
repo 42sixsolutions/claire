@@ -111,12 +111,16 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             return Math.max(positiveMax, negativeMax, unknownMax);
         }
 
+        $scope.drugChartOptions = {};
+
         DrugInfo.getChart($scope.drug.selected).then(function(response) {
             var chartData = [];
             var positive = convertChartData(response.data.positiveTweets);
             var negative = convertChartData(response.data.negativeTweets);
             var unknown = convertChartData(response.data.unknownTweets);
             var max = getMaxTweets(positive, negative, unknown);
+            $scope.drugChartOptions.min = -Math.floor(max / 14);
+            $scope.drugChartOptions.max = max + Math.floor(max / 14);
 
             chartData.push({
                 data: positive,
@@ -134,12 +138,12 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 curvedLines: { apply: true }
             });
             chartData.push({
-                data: adjustRecallData(convertChartData(response.data.recalls), max),
+                data: adjustRecallData(convertChartData(response.data.recalls), $scope.drugChartOptions.max),
                 bars: { show: true, barWidth: 1, fill: true, fillColor: "#d54dde" },
                 lines: { show: false }
             });
             chartData.push({
-                data: adjustData(convertChartData(response.data.adverseEvents), -10),
+                data: adjustData(convertChartData(response.data.adverseEvents), $scope.drugChartOptions.min),
                 points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.01)" },
                 lines: { show: false }
             });

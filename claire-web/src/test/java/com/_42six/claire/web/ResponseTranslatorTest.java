@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import com._42six.claire.commons.model.DrugRankings;
 import com._42six.claire.commons.model.Trend;
+import com._42six.claire.commons.model.TwitterStats;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
 public class ResponseTranslatorTest {
@@ -41,6 +42,12 @@ public class ResponseTranslatorTest {
 			Assert.assertTrue(ranking.getRecallsRank() > 0);
 			Assert.assertTrue(ranking.getUnknownTweetsRank() > 0);
 		}
+	}
+	
+	@Test
+	public void testTwitterStats() {
+		TwitterStats stats = responseTranslator.getTwitterStats("lipitor");
+		Assert.assertTrue(stats.getPercentNegative() > 0);
 	}
 	
 	@Test
