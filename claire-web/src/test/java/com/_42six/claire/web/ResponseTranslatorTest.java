@@ -79,4 +79,9 @@ public class ResponseTranslatorTest {
 		Assert.assertTrue(trendList.size() > 1);
 		Assert.assertTrue(trendList.get(0).getSlope() > trendList.get(trendList.size() - 1).getSlope());
 	}
+	
+	@Test
+	public void testChart() {
+		responseTranslator.getChart("lipitor",100);
+	}
 }
