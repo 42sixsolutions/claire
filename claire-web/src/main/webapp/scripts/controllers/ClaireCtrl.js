@@ -135,7 +135,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             });
             chartData.push({
                 data: adjustRecallData(convertChartData(response.data.recalls), max),
-                bars: { show: true, barWidth: 1, fill: true, fillColor: "rgba(0,0,0,0.2)" },
+                bars: { show: true, barWidth: 1, fill: true, fillColor: "#d54dde" },
                 lines: { show: false }
             });
             chartData.push({

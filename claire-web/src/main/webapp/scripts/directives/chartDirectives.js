@@ -158,7 +158,7 @@ directive('lineChart', [function() {
                     "#bee76f",
                     "#e79090",
                     "#e0e0e0",
-                    "rgba(0,0,0,0.2)",
+                    "#d54dde",
                     "rgba(255,0,205,0.3)"
                 ],
                 xaxis: {
@@ -216,7 +216,7 @@ directive('lineChart', [function() {
                 $('.flot-tooltip').remove();
                 $("<div class='flot-tooltip'>" + tooltip + "</div>").css({
                     position: 'absolute',
-                    top: pos.pageY,
+                    top: pos.pageY - 20,
                     left: pos.pageX + 15,
                     "z-index": 100000,
                     display: "none"
