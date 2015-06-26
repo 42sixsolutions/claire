@@ -13,6 +13,36 @@
 		<finalName>claire</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>keytool-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<id>clean</id>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+					<execution>
+						<phase>generate-resources</phase>
+						<id>genkey</id>
+						<goals>
+							<goal>genkey</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<keystore>${project.build.directory}/tomcat-ssl.keystore</keystore>
+					<dname>cn=localhost</dname>
+					<keypass>tomcat-learn</keypass>
+					<storepass>tomcat-learn</storepass>
+					<alias>tomcat-learn</alias>
+					<keyalg>RSA</keyalg>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
@@ -21,6 +51,10 @@
 					<port>8080</port>
 					<!-- application path always starts with / -->
 					<path>/claire</path>
+					<!-- enable ssl (required since we're enforcing https in our web.xml) -->
+					<httpsPort>8443</httpsPort>
+					<keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile>
+					<keystorePass>tomcat-learn</keystorePass>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -48,6 +82,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
 				<configuration>
 					<skip>${skip-node}</skip>
 				</configuration>
