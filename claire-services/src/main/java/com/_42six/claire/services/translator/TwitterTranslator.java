@@ -19,6 +19,9 @@ import com._42six.claire.openfda.util.OpenFDAUtil;
 import com._42six.claire.services.analytics.SentimentAnalysisService;
 import com._42six.claire.services.analytics.SentimentAnalysisService.SentimentScore;
 
+/**
+ * Service to translate twitter json data into a POJO.
+ */
 public class TwitterTranslator {
 
 	private static final Logger logger = LoggerFactory.getLogger(TwitterTranslator.class);
@@ -31,6 +34,12 @@ public class TwitterTranslator {
 		this.mapper = new ResponseMapper();
 	}
 	
+	/**
+	 * Create a collection of TwitterDrugDetail objects
+	 * 
+	 * @param drugMap
+	 * @return
+	 */
 	public TwitterDrugDetailCollection toCollection(Map<String, Map<Date, EventsByDate>> drugMap) {
 		TwitterDrugDetailCollection collection = new TwitterDrugDetailCollection();
 		
@@ -48,6 +57,13 @@ public class TwitterTranslator {
 		return collection;
 	}
 
+	/**
+	 * Convert a list of twitter json files to a TwitterDrugDetailColleciton
+	 * 
+	 * @param inputFiles
+	 * @return
+	 * @throws Exception
+	 */
 	public TwitterDrugDetailCollection translate(File[] inputFiles) throws Exception {
 
 		Calendar calendar = Calendar.getInstance();

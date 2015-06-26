@@ -20,6 +20,9 @@ import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.client.http.HttpClient;
 import com._42six.claire.client.topsy.model.TopsyResults;
 
+/**
+ * Client to query historical twitter data via Topsy.
+ */
 public class TopsyClient extends HttpClient {
 
 	private static final Logger logger = LoggerFactory.getLogger(TopsyClient.class);
@@ -37,6 +40,17 @@ public class TopsyClient extends HttpClient {
 		this.apiKey = apiKey;
 	}
 
+	/**
+	 * Build a URI to query twets with a search string and start/end date
+	 * 
+	 * @param searchString
+	 * @param offset
+	 * @param perPage
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	private URI buildUri(String searchString, int offset, int perPage, Date startDate, Date endDate) throws URISyntaxException {
 		URI uri = new URIBuilder()
 		.setScheme(SCHEME)
@@ -53,9 +67,22 @@ public class TopsyClient extends HttpClient {
 		.build();
 
 		return uri;
-		//HttpGet httpget = new HttpGet(uri);
 	}
 
+	/**
+	 * Search tweets for a given term and start/end date
+	 * 
+	 * @param searchString
+	 * @param directory Local directory to save output json files
+	 * @param startDate
+	 * @param endDate
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 * @throws JAXBException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 */
 	public void search(String searchString, File directory, Date startDate, Date endDate) throws ClientProtocolException, IOException, URISyntaxException, JAXBException, InstantiationException, IllegalAccessException {
 		boolean doNext = true;
 
@@ -85,5 +112,4 @@ public class TopsyClient extends HttpClient {
 			}
 		}
 	}
-
 }

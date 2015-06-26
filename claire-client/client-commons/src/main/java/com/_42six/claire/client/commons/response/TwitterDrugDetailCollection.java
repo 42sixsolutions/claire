@@ -5,6 +5,9 @@ import java.util.Collection;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * A collection of Twitter drug detail objects
+ */
 @XmlRootElement
 public class TwitterDrugDetailCollection {
 	

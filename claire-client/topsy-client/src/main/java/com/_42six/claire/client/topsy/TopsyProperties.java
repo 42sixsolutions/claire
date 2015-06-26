@@ -5,6 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Properties used by the Topsy client
+ */
 public class TopsyProperties extends Properties {
 	
 	public static final String FIELD_API_KEY = "topsy.api.key";
@@ -15,5 +18,4 @@ public class TopsyProperties extends Properties {
 		FileInputStream input = new FileInputStream(file);
 		this.load(input);
 	}
-
 }

@@ -13,6 +13,9 @@ import org.junit.Test;
 
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
+/**
+ * Integration tests for the Topsy client
+ */
 public class TopsyClientTest {
 
 	private TopsyClient client;
@@ -26,6 +29,11 @@ public class TopsyClientTest {
 		this.client = new TopsyClient(props.getProperty(TopsyProperties.FIELD_API_KEY));
 	}
 
+	/**
+	 * Search all drugs in Topsy and stream tweets to disk.
+	 * 
+	 * @throws Exception
+	 */
 	@Ignore
 	@Test
 	public void testClient() throws Exception {
