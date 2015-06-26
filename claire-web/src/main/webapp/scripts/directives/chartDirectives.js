@@ -6,7 +6,7 @@ directive('trianglify', ["$window", function($window) {
         var pattern = Trianglify({
             height: $(window).height(),
             width: $(window).width(),
-            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
+            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#42bfc7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
             color_space: 'lab',
             cell_size: 200
         });
@@ -42,10 +42,6 @@ directive('pieChart', ["$window", function($window) {
         link: function(scope, element, attrs) {
             scope.$watch("twitterStats", function(newValue, oldValue) {
                 if (newValue && newValue !== oldValue) {
-                  
-                    var positiveTweets = newValue.percentPositive / newValue.totalTweets;
-                    var neutralTweets = newValue.percentUnknown / newValue.totalTweets;
-                    var negativeTweets = newValue.percentNegative / newValue.totalTweets;
                   
                     radialProgress(element[0])
                         .id('cumulativeBlue')
@@ -87,7 +83,7 @@ directive('pieChartSml', ["$window", function($window) {
                       var tweets = newValue.percentNegative;
                     }
                   
-                    radialProgress(element[0])
+                    radialProgressSml(element[0])
                         .id(thisid)
                         .diameter('60')
                         .margin({top:0, right:0, bottom:0, left:0})
@@ -96,6 +92,7 @@ directive('pieChartSml', ["$window", function($window) {
                         .theme('blue')
                         .style('cumulative')
                         .render();
+                        
                 }
             });
         }
@@ -157,8 +154,8 @@ directive('lineChart', [function() {
                 colors: [ 
                     "#bee76f",
                     "#e79090",
-                    "#e0e0e0",
-                    "#d54dde",
+                    "#c0c0c0",
+                    "rgba(57,220,185,0.5)",
                     "rgba(255,0,205,0.3)"
                 ],
                 xaxis: {

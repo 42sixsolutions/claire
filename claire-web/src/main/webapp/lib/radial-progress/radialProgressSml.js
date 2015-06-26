@@ -26,7 +26,7 @@ radial_chart_arcs = {};
 radial_chart_paths = {};
 radial_chart_outerRadiuses = {};
 
-function radialProgress(parent) {
+function radialProgressSml(parent) {
     var STYLES = {concentric: 'concentric', cumulative: 'cumulative', pie: 'pie'}
     var THEMES = {blue: 'blue', green: 'green'}
 
@@ -264,7 +264,7 @@ function radialProgress(parent) {
         _fontSize=_width*.2;
         radial_chart_arcs[_id] = [];
 
-        _widthOfArc = _width/2 * .05;
+        _widthOfArc = _width/2 * .12;
 
         if (_style == STYLES.concentric) {
             while (radial_chart_arcs[_id].length < _value.length)

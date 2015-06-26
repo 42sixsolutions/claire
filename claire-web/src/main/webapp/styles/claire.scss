@@ -7,8 +7,8 @@ $textcolor:       #444444;
 
 $negative:        #e79090;
 $positive:        #bee76f;
-$neutral:         #e0e0e0;
-$recalls:         #d54dde;
+$neutral:         #c0c0c0;
+$recalls:         #39dcb9;
 $events:          #ffc2fa;
 
 $bordercolor:     #e0e0e0;
@@ -513,6 +513,15 @@ aside {
       &.ranking-top {
         border-top: 0;
       }
+      
+      &.ranking-key li {
+        width: 100%;
+        text-align: center;
+        //background: darken($background,2%);
+        padding: 7px 0 5px;
+        
+        &:after { display: none !important; }
+      }
     }
   }
 }
@@ -713,7 +722,7 @@ aside {
 }
 
 .component {
-  fill: #e1e1e1;
+  fill: darken($background,7.5%);
 }
 
 .component .label {
@@ -729,6 +738,16 @@ aside {
   $bordercolor 0px 0px 1px;
 }
 
+.pie-center {
+  position: relative;
+  height: 40px;
+  margin-top: -60px;
+  margin-bottom: 22px;
+  color: $textcolor;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 300;
+}
 
 .arc0-blue { /* Negative */
   stroke-weight: 0.1;
@@ -757,6 +776,11 @@ aside {
 
 .percentages {
   
+  strong { 
+    font-weight: 700; 
+    color: lighten($textcolor,25%);
+  }
+  
   .labels { display: none; }
   
   .negative {
@@ -777,7 +801,7 @@ aside {
   
   .positive {
     .arc0-blue { 
-      fill: $positive;
+      fill: darken($positive,10%);
       
       &:hover { fill: darken($positive,10%); }
     }

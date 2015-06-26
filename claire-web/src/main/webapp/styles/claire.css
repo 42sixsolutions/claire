@@ -366,14 +366,14 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #e0e0e0;
+      border-top: 10px solid silver;
       border-left: 10px solid transparent; }
     aside .element ul li.negative:after {
       border-top-color: #e79090; }
     aside .element ul li.positive:after {
       border-top-color: #bee76f; }
     aside .element ul li.recalls:after {
-      border-top-color: #d54dde; }
+      border-top-color: #39dcb9; }
     aside .element ul li.events:after {
       border-top-color: #ffc2fa; }
   aside .element ul.stats li, aside .element ul.ranking-btm li {
@@ -388,6 +388,12 @@ aside .element ul {
     width: calc((100% / 3) - 3px); }
   aside .element ul.stats, aside .element ul.ranking-top {
     border-top: 0; }
+  aside .element ul.ranking-key li {
+    width: 100%;
+    text-align: center;
+    padding: 7px 0 5px; }
+    aside .element ul.ranking-key li:after {
+      display: none !important; }
 
 .ranking .box li span:after {
   content: 'th';
@@ -543,7 +549,7 @@ aside .element ul {
   fill-opacity: 1; }
 
 .component {
-  fill: #e1e1e1; }
+  fill: #e7e7e7; }
 
 .component .label {
   font-family: 'Raleway', Helvetica, Arial;
@@ -552,6 +558,16 @@ aside .element ul {
 
 .radial_outline {
   text-shadow: #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px, #e0e0e0 0px 0px 1px; }
+
+.pie-center {
+  position: relative;
+  height: 40px;
+  margin-top: -60px;
+  margin-bottom: 22px;
+  color: #444444;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: 300; }
 
 .arc0-blue {
   /* Negative */
@@ -567,13 +583,13 @@ aside .element ul {
 .arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
-  fill: #e0e0e0;
+  fill: silver;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc1-blue:hover {
-    fill: #c7c7c7; }
+    fill: #a7a7a7; }
 
 .arc2-blue {
   /* Positive */
@@ -586,6 +602,9 @@ aside .element ul {
   .arc2-blue:hover {
     fill: #aae043; }
 
+.percentages strong {
+  font-weight: 700;
+  color: #848484; }
 .percentages .labels {
   display: none; }
 .percentages .negative .arc0-blue {
@@ -593,11 +612,11 @@ aside .element ul {
   .percentages .negative .arc0-blue:hover {
     fill: #de6666; }
 .percentages .neutral .arc0-blue {
-  fill: #bababa; }
+  fill: #9a9a9a; }
   .percentages .neutral .arc0-blue:hover {
-    fill: #a0a0a0; }
+    fill: gray; }
 .percentages .positive .arc0-blue {
-  fill: #bee76f; }
+  fill: #aae043; }
   .percentages .positive .arc0-blue:hover {
     fill: #aae043; }
 
@@ -687,7 +706,7 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #e0e0e0;
+      border-top: 10px solid silver;
       border-left: 10px solid transparent; }
 
 .graph-title {
@@ -715,7 +734,7 @@ aside .element ul {
     position: absolute;
     top: 3px;
     right: 3px;
-    border-top: 10px solid #e0e0e0;
+    border-top: 10px solid silver;
     border-left: 10px solid transparent; }
 
 .graph-legend ul {
@@ -764,7 +783,7 @@ aside .element ul {
       color: #444444; }
     .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
       content: '';
-      border-top: 3px solid #e0e0e0;
+      border-top: 3px solid silver;
       width: 14px;
       height: 0;
       display: inline-block;
@@ -789,7 +808,7 @@ aside .element ul {
       margin: 0 5px 0 0; }
     .graph-legend ul li.recalls i:before {
       content: '';
-      border-left: 2px solid #d54dde;
+      border-left: 2px solid #39dcb9;
       width: 0;
       height: 12px;
       display: inline-block;

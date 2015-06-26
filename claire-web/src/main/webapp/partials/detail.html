@@ -56,15 +56,18 @@
             <ul class="percentages">
               <li class="positive">
                 <div id="positiveTweets" pie-chart-sml class="chart"></div>
-                <span>{{twitterStats.percentPositive | number:0}}%</span> Positive
+                <div class="pie-center">{{twitterStats.percentPositive | number:1}}%</div>
+                <strong>{{ (twitterStats.totalTweets * (twitterStats.percentPositive / 100)) | number: 0}}</strong> Positive
               </li>
               <li class="neutral">
                 <div id="neutralTweets" pie-chart-sml class="chart"></div>
-                <span>{{twitterStats.percentUnknown | number:0}}%</span> Neutral
+                <div class="pie-center">{{twitterStats.percentUnknown | number:1}}%</div>
+                <strong>{{ (twitterStats.totalTweets * (twitterStats.percentUnknown / 100)) | number: 0}}</strong> Neutral
               </li>
               <li class="negative">
                 <div id="negativeTweets" pie-chart-sml class="chart"></div>
-                <span>{{twitterStats.percentNegative | number:0}}%</span> Negative
+                <div class="pie-center">{{twitterStats.percentNegative | number:1}}%</div>
+                <strong>{{ (twitterStats.totalTweets * (twitterStats.percentNegative / 100)) | number: 0}}</strong> Negative
               </li>
             </ul>
           </div>
@@ -87,6 +90,9 @@
               <li class="positive"><span data-text="{{drugRankings.positiveTweetsRank}}-rank">{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
               <li class="neutral"><span data-text="{{drugRankings.unknownTweetsRank}}-rank">{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
               <li class="negative"><span data-text="{{drugRankings.negativeTweetsRank}}-rank">{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
+            </ul>
+            <ul class="ranking-key">
+              <li>out of 60</li>
             </ul>
             <ul class="ranking-btm">
               <li class="events"><span data-text="{{drugRankings.adverseEventsRank}}-rank">{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>
