@@ -50,7 +50,7 @@
 					<!-- http port -->
 					<port>8080</port>
 					<!-- application path always starts with / -->
-					<path>/claire</path>
+					<path>/</path>
 					<!-- enable ssl (required since we're enforcing https in our web.xml) -->
 					<httpsPort>8443</httpsPort>
 					<keystoreFile>${project.build.directory}/tomcat-ssl.keystore</keystoreFile>
