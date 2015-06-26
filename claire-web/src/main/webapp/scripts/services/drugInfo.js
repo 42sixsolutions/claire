@@ -21,8 +21,8 @@ angular.module('claire.services').factory('DrugInfo', ['$http', function($http) 
         return $http.get('api/drug/ranking/' + drugName, { data:  {drugName: drugName} });
     };
 
-    var getChart = function(drugName) {
-        return $http.get('api/drug/chart/' + drugName, { data:  {drugName: drugName} });
+    var getChart = function(drugName, maxPercent) {
+        return $http.get('api/drug/chart/' + drugName + '?maxPercent=' + maxPercent, { data:  {drugName: drugName} });
     };
 
     return {
