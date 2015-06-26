@@ -17,8 +17,7 @@
         <h1>{{drug.brandName}} <span class="name">{{drug.genericName}}</span></h1>
         <div class="trends">
           <ul>
-            <li><span class="graph trend"><img src="images/trend-up.png" /></span> Overall Trend</li>
-            <li><span class="graph trend"><img src="images/trend-down.png" /></span> Recent Trend</li>
+            <li><span class="graph trend"><img ng-src="{{trends.image}}" /></span> Social Trend</li>
         </div>
         <div class="overflow">
           <div class="description">
@@ -39,8 +38,9 @@
               <li class="positive"><i></i> Positive Tweets</li>
               <li class="negative"><i></i> Negative Tweets</li>
               <li class="neutral"><i></i> Neutral Tweets</li>
-              <li class="events"><i></i> Adverse Effects</li>
+              <li class="events"><i></i> Adverse Events</li>
               <li class="recalls"><i></i> Recalls</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@
           <h2>Stats</h2>
           <div class="box">
             <ul class="stats">
-              <li class="events"><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Effects</li>
+              <li class="events"><span>{{fdaStats.totalAdverseEvents | number}}</span> Total Adverse Events</li>
               <li class="recalls"><span>{{fdaStats.totalRecalls | number}}</span> Total Recalls</li>
             </ul>
           </div>

@@ -58,6 +58,14 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
     }
 
     if ($scope.isDetailsPage) {
+        Trends.getOverall($scope.drug.selected).then(function(response) {
+            if (response.data.slope > 0) {
+                $scope.trends.image = "images/trend-up.png";
+            } else {
+                $scope.trends.image = "images/trend-down.png";
+            }
+        });
+
         DrugInfo.getTwitterStats($scope.drug.selected).then(function(response) {
             $scope.twitterStats = response.data;
         });
