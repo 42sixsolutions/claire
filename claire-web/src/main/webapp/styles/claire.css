@@ -647,24 +647,27 @@ aside .element ul {
   background: white;
   border: 1px solid #e0e0e0;
   font-family: "Raleway", Helvetica, Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 10px;
   line-height: 1.2em;
   z-index: 999;
   color: #444444;
-  padding: 6px 10px; }
+  padding: 6px 10px;
+  -webkit-box-shadow: 0 1px 3px rgba(224, 224, 224, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(224, 224, 224, 0.5);
+  -ms-box-shadow: 0 1px 3px rgba(224, 224, 224, 0.5);
+  box-shadow: 0 1px 3px rgba(224, 224, 224, 0.5); }
   .flot-tooltip .date {
-    font-weight: 200;
     color: #919191; }
   .flot-tooltip .value {
-    font-size: 14px;
-    font-weight: 600; }
+    font-weight: 700;
+    font-size: 14px; }
   .flot-tooltip:before, .flot-tooltip:after {
     content: '';
     width: 0;
     height: 0;
     position: absolute;
-    top: 8px;
+    top: 13px;
     left: -6px;
     border-right: 6px solid #e0e0e0;
     border-top: 6px solid transparent;
@@ -733,7 +736,24 @@ aside .element ul {
     width: -moz-calc((100% / 5) - 3px);
     width: -o-calc((100% / 5) - 3px);
     width: -webkit-calc((100% / 5) - 3px);
-    width: calc((100% / 5) - 3px); }
+    width: calc((100% / 5) - 3px);
+      /*
+      &:after {
+        content: '';
+        height: 0;
+        width: 0;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        border-top: 10px solid $neutral;
+        border-left: 10px solid transparent;
+      }
+
+      &.negative:after { border-top-color: $negative; }
+      &.positive:after { border-top-color: $positive; }
+      &.recalls:after { border-top-color: $recalls; }
+      &.events:after { border-top-color: $events; }
+      */ }
     .graph-legend ul li:first-child {
       border-left: 0; }
     .graph-legend ul li span {
@@ -742,23 +762,40 @@ aside .element ul {
       line-height: 30px;
       font-weight: 300;
       color: #444444; }
-    .graph-legend ul li:after {
+    .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
       content: '';
+      border-top: 3px solid #e0e0e0;
+      width: 14px;
       height: 0;
-      width: 0;
-      position: absolute;
-      top: 3px;
-      right: 3px;
-      border-top: 10px solid #e0e0e0;
-      border-left: 10px solid transparent; }
-    .graph-legend ul li.negative:after {
-      border-top-color: #e79090; }
-    .graph-legend ul li.positive:after {
+      display: inline-block;
+      position: relative;
+      margin: 0 5px 0 0;
+      top: -2px; }
+    .graph-legend ul li.positive i:before {
       border-top-color: #bee76f; }
-    .graph-legend ul li.recalls:after {
-      border-top-color: #d54dde; }
-    .graph-legend ul li.events:after {
-      border-top-color: #ffc2fa; }
+    .graph-legend ul li.negative i:before {
+      border-top-color: #e79090; }
+    .graph-legend ul li.events i:before {
+      content: '';
+      background: #ffc2fa;
+      width: 10px;
+      height: 10px;
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      -ms-border-radius: 6px;
+      border-radius: 6px;
+      display: inline-block;
+      position: relative;
+      margin: 0 5px 0 0; }
+    .graph-legend ul li.recalls i:before {
+      content: '';
+      border-left: 2px solid #d54dde;
+      width: 0;
+      height: 12px;
+      display: inline-block;
+      position: relative;
+      margin: 0 8px 0 0;
+      top: -1px; }
 
 /* Media Queries */
 @media only screen and (min-device-width: 768px) {

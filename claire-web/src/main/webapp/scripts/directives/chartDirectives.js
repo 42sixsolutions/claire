@@ -216,7 +216,7 @@ directive('lineChart', [function() {
                 $('.flot-tooltip').remove();
                 $("<div class='flot-tooltip'>" + tooltip + "</div>").css({
                     position: 'absolute',
-                    top: pos.pageY - 15,
+                    top: pos.pageY - 20,
                     left: pos.pageX + 15,
                     "z-index": 100000,
                     display: "none"
