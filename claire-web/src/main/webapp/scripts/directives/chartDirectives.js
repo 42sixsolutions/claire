@@ -216,10 +216,10 @@ directive('lineChart', ["$window", function($window) {
                             }
                         },
                         colors: [ 
-                            "#bee76f",
-                            "#e79090",
-                            "#e0e0e0",
-                            "rgba(57,220,185,0.5)",
+                            "#56c54e",
+                            "#eb6b42",
+                            "#ffb22c",
+                            "rgba(78,197,195,0.5)",
                             "rgba(255,0,205,0.3)"
                         ],
                         xaxis: {

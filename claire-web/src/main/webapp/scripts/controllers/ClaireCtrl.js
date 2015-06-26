@@ -53,7 +53,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
           console.log('show');
           var text = $(this).text();
           $(this).parent('.overflow').toggleClass('shown');
-          $(this).text(text == "Show Details" ? "Hide Details" : "Show Details");
+          $(this).text(text == "Show More" ? "Show Less" : "Show More");
         })
     }
 

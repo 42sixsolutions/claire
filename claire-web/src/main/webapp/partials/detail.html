@@ -25,7 +25,7 @@
             <p>{{drug.description}}</p>
             <p>{{drug.pharmacodynamics}}</p>
           </div>
-          <div class="show">Show Details</div>
+          <div class="show">Show More</div>
         </div>
         <div class="trend"></div>
       </div>
@@ -87,15 +87,12 @@
           </div>
         </div>
         <div class="element ranking">
-          <h2>Ranking</h2>
+          <h2>Ranking <span>Out of {{drugList.length}} Drugs</span></h2>
           <div class="box">
             <ul class="ranking-top">
               <li class="positive"><span data-text="{{drugRankings.positiveTweetsRank}}-rank">{{drugRankings.positiveTweetsRank}}</span> Positive Tweets</li>
               <li class="neutral"><span data-text="{{drugRankings.unknownTweetsRank}}-rank">{{drugRankings.unknownTweetsRank}}</span> Neutral Tweets</li>
               <li class="negative"><span data-text="{{drugRankings.negativeTweetsRank}}-rank">{{drugRankings.negativeTweetsRank}}</span> Negative Tweets</li>
-            </ul>
-            <ul class="ranking-key">
-              <li>out of 60</li>
             </ul>
             <ul class="ranking-btm">
               <li class="events"><span data-text="{{drugRankings.adverseEventsRank}}-rank">{{drugRankings.adverseEventsRank}}</span> Adverse Events</li>

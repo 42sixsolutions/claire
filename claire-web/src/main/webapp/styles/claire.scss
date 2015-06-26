@@ -3,13 +3,13 @@
 $primary:         #00a0a8;
 $secondary:       #d54dde;
 $darkh:           #007286;
-$teal:            #39dcb9;
+$teal:            #4ec5c3;
 $textcolor:       #444444;
 
-$negative:        #e04624;
-$positive:        #6fdd3a;
-$neutral:         #e5e811;
-$recalls:         #39dcb9;
+$negative:        #eb6b42;
+$positive:        #56c54e;
+$neutral:         #ffb22c;
+$recalls:         $teal;
 $events:          $secondary; //#ffc2fa;
 
 $bordercolor:     #e0e0e0;
@@ -359,19 +359,10 @@ section {
     
     .overflow {
       display: block;
-      height: 100px;
+      height: 90px;
       position: relative;
       @include transition(all 350ms ease);
-      
-      .show {
-        cursor: pointer;
-        background: $bordercolor;
-        color: $textcolor;
-        padding: 2px;
-        font-size: 10px;
-        text-align: center;
-      }
-      
+
       &:after {
         content: '';
         display: block;
@@ -379,9 +370,23 @@ section {
         width: 100%;
         position: absolute;
         bottom: 0;
-        background: url(../images/overflow.png) repeat-x bottom left;
+      }      
+      
+      .show {
+        cursor: pointer;
+        border-top: 1px solid lighten($bordercolor,5%);
+        color: lighten($textcolor,35%);
+        padding: 5px 0;
+        font-size: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        
+        &:hover {
+          color: lighten($textcolor,15%);
+        }
       }
-
+      
       .description {
         height: 100%;
         padding: 0 20px 20px 0;
@@ -394,8 +399,11 @@ section {
         .description {
           overflow-y: scroll;
         }
+
+        &:after {
+          background: url(../images/overflow.png) repeat-x bottom left;
+        }
       }
-      
     }
     
     .trends {
@@ -433,6 +441,17 @@ aside {
   
   .element {
     @extend %clearfix;
+    
+    &.ranking h2 {
+      
+      span {
+        color: lighten($textcolor,15%);
+        font-weight: 400;
+        text-transform: none;
+        font-size: 11px;
+        margin-left: 3px;
+      }
+    }
     
     .graph {
       position: relative;
@@ -532,15 +551,6 @@ aside {
       &.stats,
       &.ranking-top {
         border-top: 0;
-      }
-      
-      &.ranking-key li {
-        width: 100%;
-        text-align: center;
-        //background: darken($background,2%);
-        padding: 7px 0 5px;
-        
-        &:after { display: none !important; }
       }
     }
   }
@@ -844,9 +854,9 @@ aside {
 
   .neutral {
     .arc0-blue { 
-      fill: darken($neutral,15%);
+      fill: $neutral;
       
-      &:hover { fill: darken($neutral,25%); }
+      &:hover { fill: darken($neutral,10%); }
     }
   }
   
@@ -1002,9 +1012,13 @@ aside {
 }
 
 .graph-legend {
+  text-align: center;
+  margin: 0 25px;
+  border-top: 1px solid $bordercolor;
 
   ul {
-    border-top: 1px solid $bordercolor;
+    display: inline-block;
+    margin: 0 auto;
     
     li {
       display: inline-block;
@@ -1014,15 +1028,9 @@ aside {
       padding: 15px 5px 15px 30px;
       font-size: 11px;
       line-height: 12px;
-      text-transform: uppercase;
       text-align: left;
-      border-left: 1px solid $bordercolor;
       color: lighten($textcolor,40%);
       font-weight: 600;
-
-      @include calc('width','(100% / 5) - 3px');
-      
-      &:first-child { border-left: 0; }
       
       span {
         font-size: 24px;
@@ -1031,24 +1039,6 @@ aside {
         font-weight: 300;
         color: lighten($textcolor,0%);
       }
-      
-      /*
-      &:after {
-        content: '';
-        height: 0;
-        width: 0;
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        border-top: 10px solid $neutral;
-        border-left: 10px solid transparent;
-      }
-
-      &.negative:after { border-top-color: $negative; }
-      &.positive:after { border-top-color: $positive; }
-      &.recalls:after { border-top-color: $recalls; }
-      &.events:after { border-top-color: $events; }
-      */
       
       &.negative i:before,
       &.positive i:before,
@@ -1068,7 +1058,7 @@ aside {
       
       &.events  i:before { 
         content: '';
-        background: $events;
+        background: rgba($events,0.5);
         width: 10px;
         height: 10px;
         @include borderradius(6px);
