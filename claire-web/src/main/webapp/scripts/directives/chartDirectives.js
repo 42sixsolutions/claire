@@ -119,10 +119,29 @@ directive('rankingsChart', [function() {
         }
     };
 }]).
-directive('lineChart', [function() {
+directive('lineChart', ["$window", function($window) {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
+
+            element.bind('plotclick', function(event, pos, item) {
+                if (item) {
+                    var hoverDate = new Date(Math.floor(pos.x1));
+                    var minDate = new Date(hoverDate);
+                    var maxDate = new Date(hoverDate);
+
+                    minDate.setDate(minDate.getDate() - 1);
+                    maxDate.setDate(maxDate.getDate() + 1);
+
+                    minDate.setUTCHours(0, 0, 0, 0);
+                    maxDate.setUTCHours(0, 0, 0, 0);
+
+                    var minTime = Math.floor(minDate.getTime() / 1000);
+                    var maxTime = Math.floor(maxDate.getTime() / 1000);
+
+                    $window.open("http://www.topsy.com/s?q=" + scope.drug.brandName + "&mintime=" + minTime + "&maxtime=" + maxTime + "&language=en");
+                }
+            });
 
             element.bind('plothover', function(event, pos, item) {
                 var hoverDate = new Date(Math.floor(pos.x1));
@@ -132,7 +151,7 @@ directive('lineChart', [function() {
                     tooltip += "<div class='value'>";
 
                     // Check if there is additional custom data to disply in the tooltip
-                    if (item.series.data[0].length >= 3) {
+                    if (item.series.data[0].length >= 3 && item.series.data[0][2].data) {
                         var pointData;
                         var length = item.series.data.length;
                         for (var i = 0; i < length; i++) {
