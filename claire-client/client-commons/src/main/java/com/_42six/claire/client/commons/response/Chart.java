@@ -4,6 +4,9 @@ import java.util.SortedSet;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Chart response object
+ */
 @XmlRootElement
 public class Chart {
 

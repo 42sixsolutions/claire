@@ -26,7 +26,7 @@ import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
 /**
- * Unit test for simple App.
+ * Unit and integration tests for the OpenFDA client
  */
 public class OpenFDAClientTest {
 
@@ -43,6 +43,13 @@ public class OpenFDAClientTest {
 		this.client = new OpenFDAClient(props.getProperty(OpenFDAProperties.FIELD_API_KEY));
 	}
 
+	/**
+	 * Test marshalling a collection of drug counts by date.
+	 * 
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	@Test
 	public void testMarshalDrugDates() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
@@ -56,6 +63,13 @@ public class OpenFDAClientTest {
 		}	
 	}
 
+	/**
+	 * Test unmarshalling drug descriptions
+	 * 
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	@Test
 	public void testMarshalDrugDescriptions() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
@@ -70,6 +84,13 @@ public class OpenFDAClientTest {
 		}	
 	}
 	
+	/**
+	 * Test unmarshalling drug recall data
+	 * 
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 */
 	@Test
 	public void testMarshalDrugRecalls() throws JsonParseException, JsonMappingException, IOException {
 		ResponseMapper mapper = new ResponseMapper();
@@ -83,6 +104,9 @@ public class OpenFDAClientTest {
 		}	
 	}
 
+	/**
+	 * Searches adverse events for drugs and marshals them into a file.
+	 */
 	@Ignore
 	@Test
 	public void testSearchAdverseEvents() throws Exception {
@@ -108,6 +132,10 @@ public class OpenFDAClientTest {
 		mapper.marshalObject(chartCollection, new File("src/test/resources/json/openFDADrugDates.json"));
 	}
 
+	/**
+	 * Searches drug descriptions and marshals them into a file.
+	 * @throws Exception
+	 */
 	@Ignore
 	@Test
 	public void testSearchDescriptions() throws Exception {
@@ -134,6 +162,11 @@ public class OpenFDAClientTest {
 		mapper.marshalObject(descriptions, new File("src/test/resources/json/openFDADrugDescriptions.json"));
 	}
 
+	/**
+	 * Searches drug recalls and marshals them into a file.
+	 * 
+	 * @throws Exception
+	 */
 	@Ignore
 	@Test
 	public void testSearchRecallEvents() throws Exception {

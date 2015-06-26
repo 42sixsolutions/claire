@@ -2,7 +2,9 @@ package com._42six.claire.openfda.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-
+/**
+ * Label response
+ */
 @XmlRootElement
 public class OpenFDALabelResponse {
 	

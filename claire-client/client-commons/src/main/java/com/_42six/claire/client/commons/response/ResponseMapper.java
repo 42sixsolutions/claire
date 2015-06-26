@@ -9,7 +9,9 @@ import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
-
+/**
+ * Marshals and unmarshals objects to/from json
+ */
 public class ResponseMapper {
 
 	private ObjectMapper mapper;

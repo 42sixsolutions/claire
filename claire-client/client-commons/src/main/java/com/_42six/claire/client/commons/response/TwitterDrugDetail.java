@@ -4,6 +4,9 @@ import java.util.Date;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+/**
+ * Twitter details for a drug
+ */
 public class TwitterDrugDetail {
 	
 	private String drugName;

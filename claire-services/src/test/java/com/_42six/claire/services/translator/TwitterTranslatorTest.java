@@ -13,6 +13,9 @@ import org.junit.Test;
 import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.client.commons.response.TwitterDrugDetailCollection;
 
+/**
+ * Test translation of twitter results
+ */
 public class TwitterTranslatorTest {
 	
 	private TwitterTranslator twitterTranslator;

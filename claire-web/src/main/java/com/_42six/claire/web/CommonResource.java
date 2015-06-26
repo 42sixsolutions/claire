@@ -7,7 +7,10 @@ import java.text.ParseException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
-public class CommonResource {
+/**
+ * Common resource to be used for sharing the ResponseTranslator
+ */
+public abstract class CommonResource {
 
 	protected ResponseTranslator responseTranslator;
 	

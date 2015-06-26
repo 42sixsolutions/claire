@@ -2,6 +2,9 @@ package com._42six.claire.openfda.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * Count by day response
+ */
 @XmlRootElement
 public class OpenFDACountByDayResponse {
 
