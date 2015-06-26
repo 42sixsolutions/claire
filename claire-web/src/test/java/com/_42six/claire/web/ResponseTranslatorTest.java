@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -12,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com._42six.claire.commons.model.DrugRankings;
+import com._42six.claire.commons.model.Trend;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
 public class ResponseTranslatorTest {
@@ -40,5 +42,34 @@ public class ResponseTranslatorTest {
 			Assert.assertTrue(ranking.getUnknownTweetsRank() > 0);
 		}
 	}
-
+	
+	@Test
+	public void testPositiveTwitterTrend() {
+		List<Trend> trendList = responseTranslator.getPositiveTwitterTrends();
+		for (Trend trend : trendList) {
+			Assert.assertNotNull(trend.getBrandName());
+		}
+		Assert.assertTrue(trendList.size() > 1);
+		Assert.assertTrue(trendList.get(0).getSlope() > trendList.get(trendList.size() - 1).getSlope());
+	}
+	
+	@Test
+	public void testNegativeTwitterTrend() {
+		List<Trend> trendList = responseTranslator.getNegativeTwitterTrends();
+		for (Trend trend : trendList) {
+			Assert.assertNotNull(trend.getBrandName());
+		}
+		Assert.assertTrue(trendList.size() > 1);
+		Assert.assertTrue(trendList.get(0).getSlope() < trendList.get(trendList.size() - 1).getSlope());
+	}
+	
+	@Test
+	public void testAdverseEventTrend() {
+		List<Trend> trendList = responseTranslator.getAdverseEventsTrends();
+		for (Trend trend : trendList) {
+			Assert.assertNotNull(trend.getBrandName());
+		}
+		Assert.assertTrue(trendList.size() > 1);
+		Assert.assertTrue(trendList.get(0).getSlope() > trendList.get(trendList.size() - 1).getSlope());
+	}
 }

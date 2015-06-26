@@ -7,45 +7,76 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 @SuppressWarnings("unused")
-public class Trend {
-    private String brandName;
-    private double percentPositive;
-    private double percentNegative;
-    private int count;
+public class Trend implements Comparable<Trend>{
 
-    public String getBrandName() {
-        return brandName;
-    }
+	private String brandName;
+	private double slope;
+	
+	public Trend() {
+		
+	}
+	
+	public Trend(String brandName, double slope) {
+		this.brandName = brandName;
+		this.slope = slope;
+	}
 
-    public Trend setBrandName(String brandName) {
-        this.brandName = brandName;
-        return this;
-    }
+	public String getBrandName() {
+		return brandName;
+	}
 
-    public double getPercentPositive() {
-        return percentPositive;
-    }
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
 
-    public Trend setPercentPositive(double percentPositive) {
-        this.percentPositive = percentPositive;
-        return this;
-    }
+	public double getSlope() {
+		return slope;
+	}
 
-    public double getPercentNegative() {
-        return percentNegative;
-    }
+	public void setSlope(double slope) {
+		this.slope = slope;
+	}
 
-    public Trend setPercentNegative(double percentNegative) {
-        this.percentNegative = percentNegative;
-        return this;
-    }
+	@Override
+	public int compareTo(Trend o) {
+		int c = new Double(o.slope).compareTo(new Double(this.slope)); //descending order
+		return c != 0 ? c : this.brandName.compareTo(o.brandName);
+	}
 
-    public int getCount() {
-        return count;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((brandName == null) ? 0 : brandName.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(slope);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
 
-    public Trend setCount(int count) {
-        this.count = count;
-        return this;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Trend other = (Trend) obj;
+		if (brandName == null) {
+			if (other.brandName != null)
+				return false;
+		} else if (!brandName.equals(other.brandName))
+			return false;
+		if (Double.doubleToLongBits(slope) != Double
+				.doubleToLongBits(other.slope))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Trend [brandName=" + brandName + ", slope=" + slope + "]";
+	}
 }
