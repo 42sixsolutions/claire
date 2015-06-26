@@ -11,7 +11,9 @@ describe('directives', function() {
         data: [[0, 12], [1, 52], [2, 99], [3, 7]]
     });
 
-    describe('chartDirectives', function() {
+    var mockTwitterStats = { percentNegative: 88.4, percentPositive: 2.8, percentUnknown: 8.8, totalTweets: 1990 };
+
+    describe('line-chart', function() {
         beforeEach(inject(function($rootScope, $compile) {
             scope = $rootScope.$new();
 
@@ -31,4 +33,55 @@ describe('directives', function() {
             expect(element.find('canvas')).not.toBe(undefined);
         });
     });
+
+    describe('pie-chart', function() {
+        beforeEach(inject(function($rootScope, $compile) {
+            scope = $rootScope.$new();
+
+            element = '<div pie-chart style="width: 100px; height: 100px"></div>';
+            element = $compile(element)(scope);
+
+            scope.$digest();
+        }));
+
+        it('should draw a chart when the twitter stats are set', function() {
+            scope.twitterStats = mockTwitterStats;
+            scope.$digest();
+
+            expect(element.find('canvas')).not.toBe(undefined);
+        });
+    });
+
+    describe('pie-chart-sml', function() {
+        beforeEach(inject(function($rootScope, $compile) {
+            scope = $rootScope.$new();
+
+            element = '<div pie-chart-sml style="width: 100px; height: 100px"></div>';
+            element = $compile(element)(scope);
+
+            scope.$digest();
+        }));
+
+        it('should draw a small pie chart when the twitter stats are set', function() {
+            scope.twitterStats = mockTwitterStats;
+            scope.$digest();
+
+            expect(element.find('canvas')).not.toBe(undefined);
+        });
+    });
+
+    describe('trianglify', function() {
+        beforeEach(inject(function($rootScope, $compile) {
+            scope = $rootScope.$new();
+
+            element = '<div trianglify style="width: 100px; height: 100px"></div>';
+            element = $compile(element)(scope);
+
+            scope.$digest();
+        }));
+
+        it('should draw a trianglify pattern', function() {
+            expect(element.find('canvas')).not.toBe(undefined);
+        });
+    });    
 });

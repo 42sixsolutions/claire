@@ -16,6 +16,7 @@ module.exports = function(config){
       'bower_components/trianglify/dist/trianglify.min.js',
       'bower_components/chosen/chosen.jquery.min.js',
       'lib/radial-progress/radialProgress.js',
+      'lib/radial-progress/radialProgressSml.js',
       'lib/flot/jquery.flot.js',
       'lib/flot/jquery.flot.categories.js',
       'lib/flot/jquery.flot.crosshair.js',
