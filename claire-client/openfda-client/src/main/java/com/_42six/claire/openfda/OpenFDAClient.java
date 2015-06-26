@@ -24,6 +24,9 @@ import com._42six.claire.openfda.model.OpenFDACountByDayResponse.Result;
 import com._42six.claire.openfda.model.OpenFDALabelResponse;
 import com._42six.claire.openfda.util.OpenFDADateAdapter;
 
+/**
+ * A client for interacting with the OpenFDA web api
+ */
 public class OpenFDAClient extends HttpClient {
 
 	private static final String SCHEME = "https";
@@ -43,6 +46,14 @@ public class OpenFDAClient extends HttpClient {
 		this.dateAdapter = new OpenFDADateAdapter();
 	}
 
+	/**
+	 * Build a URI to query adverse events
+	 * 
+	 * @param drugName
+	 * @param countField
+	 * @return 
+	 * @throws URISyntaxException
+	 */
 	private URI buildUriAdverseEvents(String drugName, String countField) throws URISyntaxException {
 		URI uri = new URIBuilder()
 		.setScheme(SCHEME)
@@ -56,6 +67,13 @@ public class OpenFDAClient extends HttpClient {
 		return uri;
 	}
 
+	/**
+	 * Build a URI to query drug labels
+	 * 
+	 * @param drugName
+	 * @return
+	 * @throws URISyntaxException
+	 */
 	private URI buildUriLabel(String drugName) throws URISyntaxException {
 		URI uri = new URIBuilder()
 		.setScheme(SCHEME)
@@ -68,6 +86,14 @@ public class OpenFDAClient extends HttpClient {
 		return uri;
 	}
 
+	/**
+	 * Build a URI to query recall events
+	 * 
+	 * @param drugName
+	 * @param countField
+	 * @return 
+	 * @throws URISyntaxException
+	 */
 	private URI buildUriRecallEvents(String drugName, String countField) throws URISyntaxException {
 		URI uri = new URIBuilder()
 		.setScheme(SCHEME)
@@ -80,6 +106,17 @@ public class OpenFDAClient extends HttpClient {
 
 		return uri;
 	}
+
+	/**
+	 * Search drug descriptions
+	 * 
+	 * @param drugName
+	 * @return
+	 * @throws JsonParseException
+	 * @throws JsonMappingException
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
 	public DrugDescription searchDescription(String drugName) throws JsonParseException, JsonMappingException, IOException, URISyntaxException {
 		OpenFDALabelResponse label = searchLabels(drugName);
 		return toDrugDescription(drugName, label);
@@ -97,23 +134,50 @@ public class OpenFDAClient extends HttpClient {
 		return this.mapper.unmarshalString(response, OpenFDACountByDayResponse.class);
 	}
 
+	/**
+	 * Search adverse events
+	 * 
+	 * @param drugName
+	 * @param countField
+	 * @param startDate
+	 * @param endDate
+	 * @return Object representing number of events per day for a drug
+	 * @throws Exception
+	 */
 	public Chart searchAdverseEvents(String drugName, String countField, Date startDate, Date endDate) throws Exception {
 		OpenFDACountByDayResponse response = searchAdverseEvents(drugName, countField);
 		return toChart(drugName, response, startDate, endDate);
 	}
-	
+
 	private OpenFDACountByDayResponse searchRecallEvents(String drugName, String countField) throws ClientProtocolException, IOException, URISyntaxException {
 		HttpGet get = new HttpGet(buildUriRecallEvents(drugName, countField));
 		String response = this.execute(get);
 		return this.mapper.unmarshalString(response, OpenFDACountByDayResponse.class);
 	}
-	
+
+	/**
+	 * Search recall events
+	 * 
+	 * @param drugName
+	 * @param countField
+	 * @param startDate
+	 * @param endDate
+	 * @return Object representing number of recalls per day for a drug
+	 * @throws Exception
+	 */
 	public Chart searchRecallEvents(String drugName, String countField, Date startDate, Date endDate) throws Exception {
 		OpenFDACountByDayResponse response = searchRecallEvents(drugName, countField);
 		return toChart(drugName, response, startDate, endDate);
 	}
 
-	public DrugDescription toDrugDescription(String drugName, OpenFDALabelResponse label) {
+	/**
+	 * Convert an OpenFDALabelResponse to a DrugDescription
+	 * 
+	 * @param drugName
+	 * @param label
+	 * @return
+	 */
+	private DrugDescription toDrugDescription(String drugName, OpenFDALabelResponse label) {
 		DrugDescription description = new DrugDescription();
 
 		description.name = drugName;
@@ -133,7 +197,17 @@ public class OpenFDAClient extends HttpClient {
 		return description;
 	}
 
-	public Chart toChart(String name, OpenFDACountByDayResponse countByDay, Date startDate, Date endDate) throws Exception {
+	/**
+	 * Convert an OpenFDACountByDayResponse to a Chart object
+	 * 
+	 * @param name
+	 * @param countByDay
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 * @throws Exception
+	 */
+	private Chart toChart(String name, OpenFDACountByDayResponse countByDay, Date startDate, Date endDate) throws Exception {
 		Chart chart = new Chart();
 		chart.setName(name);
 
@@ -144,7 +218,7 @@ public class OpenFDAClient extends HttpClient {
 		Calendar cal = Calendar.getInstance();
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
-		
+
 		TreeSet<DataPoint> set = new TreeSet<DataPoint>();
 		chart.setPoints(set);
 		for (Result result : countByDay.results) {

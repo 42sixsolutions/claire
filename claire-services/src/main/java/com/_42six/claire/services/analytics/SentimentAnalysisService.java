@@ -10,7 +10,7 @@ import edu.stanford.nlp.sentiment.SentimentCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 
 /**
- * Created by jlee on 6/22/15.
+ * Service to score sentences based on sentiment.
  */
 public class SentimentAnalysisService {
 
@@ -45,9 +45,16 @@ public class SentimentAnalysisService {
     public SentimentAnalysisService() {
         Properties props = new Properties();
         props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");
-        pipeline = new StanfordCoreNLP(props);
+        this.pipeline = new StanfordCoreNLP(props);
     }
 
+    /**
+     * Get SentimentScore for a given paragraph or sentence.
+     * 
+     * @param text
+     * @return
+     * @throws Exception
+     */
     public SentimentScore getAnalysis(String text) throws Exception {
 
         if (text != null) {

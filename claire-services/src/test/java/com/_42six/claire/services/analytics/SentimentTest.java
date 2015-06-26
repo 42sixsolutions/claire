@@ -7,7 +7,7 @@ import org.junit.Test;
 import com._42six.claire.services.analytics.SentimentAnalysisService.SentimentScore;
 
 /**
- * Created by jlee on 6/24/15.
+ * Test sentiment analysis scoring
  */
 public class SentimentTest {
 
@@ -41,6 +41,4 @@ public class SentimentTest {
 
         Assert.assertEquals(null, sentiment);
     }
-
-
 }

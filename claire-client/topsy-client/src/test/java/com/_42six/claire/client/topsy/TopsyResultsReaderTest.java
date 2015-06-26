@@ -16,6 +16,9 @@ import com._42six.claire.client.commons.response.ResponseMapper;
 import com._42six.claire.client.topsy.model.TopsyResults;
 import com._42six.claire.client.topsy.model.TopsyResults.TopsyResponse.TopsyResult;
 
+/**
+ * Tests results translation for Topsy results
+ */
 public class TopsyResultsReaderTest {
 	
 	private static final Logger logger = LoggerFactory.getLogger(TopsyResultsReaderTest.class);
@@ -30,6 +33,11 @@ public class TopsyResultsReaderTest {
 		this.mapper = new ResponseMapper();
 	}
 
+	/**
+	 * Test unmarshalling topsy results
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testReader() throws Exception {
 		for (File f : new File("src/test/resources/json").listFiles()) {
@@ -47,5 +55,4 @@ public class TopsyResultsReaderTest {
 	@After
 	public void teardown() throws IOException {
 	}
-
 }

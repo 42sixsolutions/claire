@@ -17,6 +17,9 @@ import com._42six.claire.commons.model.Trend;
 import com._42six.claire.commons.model.TwitterStats;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 
+/**
+ * Tests the ResponseTranslator
+ */
 public class ResponseTranslatorTest {
 
 	private static ResponseTranslator responseTranslator;
