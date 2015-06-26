@@ -359,9 +359,9 @@ public class ResponseTranslator {
 
 			TwitterStats twitterStats = getTwitterStats(drugLower);
 
-			positiveSet.add(new SortableDrug(drugLower, twitterStats.getPercentPositiveDbl()));
-			negativeSet.add(new SortableDrug(drugLower, twitterStats.getPercentNegativeDbl()));
-			neutralSet.add(new SortableDrug(drugLower, twitterStats.getPercentUnknownDbl()));
+			positiveSet.add(new SortableDrug(drugLower, twitterStats.getPercentPositive()));
+			negativeSet.add(new SortableDrug(drugLower, twitterStats.getPercentNegative()));
+			neutralSet.add(new SortableDrug(drugLower, twitterStats.getPercentUnknown()));
 		}
 
 		int i = 0;
