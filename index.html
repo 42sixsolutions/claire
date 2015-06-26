@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
-    <script src="js/trianglify.min.js"></script>
       
       
   </head>
@@ -77,6 +76,31 @@
             } catch(err) {}
           </script>
 
+
   </body>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/trianglify.min.js"></script>
+  <script>
+      var getTrianglifyPattern = function() {
+        var pattern = Trianglify({
+            height: 400,
+            width: window.innerWidth,
+            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
+            color_space: 'lab',
+            cell_size: 200
+        });
+
+      return pattern;
+    };
+
+    $("body").prepend(getTrianglifyPattern().canvas());
+
+    $(window).on('resize', function() {
+      $("canvas").remove();
+      $("body").prepend(getTrianglifyPattern().canvas());
+    });
+
+  </script>
 </html>
 
