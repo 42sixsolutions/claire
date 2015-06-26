@@ -56,7 +56,7 @@ public class ResponseTranslator {
 
 	private SortedSet<Trend> positiveTrendList;
 	private SortedSet<Trend> adverseEventTrendList;
-	
+
 	private Map<String, Trend> twitterTrendMap;
 
 
@@ -236,16 +236,16 @@ public class ResponseTranslator {
 			}
 
 			if (totalTweets > 0) {
-				
+
 				double averageTweetsPerDay = (double)totalTweets / sourceDetail.getEvents().size();
 				double threshold = (((double)peakPercent / 100) + 1) * averageTweetsPerDay;
 				for (EventsByDate event : sourceDetail.getEvents()) {
-					
+
 					ChartDetailDataPoint positivePoint = createPointFromThreshold(event.getDate(), event.getPositiveCount(), threshold);
 					if (positivePoint != null) {
 						positiveTweetSpikes.add(positivePoint);
 					}
-					
+
 					ChartDetailDataPoint negativePoint = createPointFromThreshold(event.getDate(), event.getNegativeCount(), threshold);
 					if (negativePoint != null) {
 						negativeTweetSpikes.add(negativePoint);
@@ -266,7 +266,7 @@ public class ResponseTranslator {
 
 		return responseDetail;
 	}
-	
+
 	private ChartDetailDataPoint createPointFromThreshold(Date date, int count, final double threshold) {
 		if (count > threshold) {
 			ChartDetailDataPoint point = new ChartDetailDataPoint();
@@ -440,10 +440,23 @@ public class ResponseTranslator {
 			//calculate twitter slope
 			SimpleRegression twitterRegression = new SimpleRegression();
 			TwitterDrugDetail detail = this.twitterDetailMap.get(drug);
-			int i = 0;
+			long diff = 0;
+			boolean firstRun = true;
+			Date lastDate = null;
+			Date thisDate = null;
 			for (EventsByDate event : detail.getEvents()) {
-				twitterRegression.addData(i, event.getPositiveCount());
-				++i;
+				thisDate = event.getDate();
+				
+				if (firstRun) {
+					lastDate = event.getDate();
+				}
+				
+				//one unit on the x axis is the number of hours between events
+				diff += (thisDate.getTime() - lastDate.getTime()) / (1000 * 60 * 60);
+				
+				twitterRegression.addData(diff, event.getPositiveCount());
+				lastDate = event.getDate();
+				firstRun = false;
 			}
 			Trend twitterTrend = new Trend(
 					Character.toUpperCase(drug.charAt(0)) + drug.substring(1), 
@@ -454,10 +467,21 @@ public class ResponseTranslator {
 			//calculate adverse event slope
 			SimpleRegression adverseEventRegression = new SimpleRegression();
 			Chart chart = this.openFDADrugDatesMap.get(drug);
-			i = 0;
+			firstRun = true;
+			long l = 0;
 			for (DataPoint point : chart.getPoints()) {
-				adverseEventRegression.addData(i, point.getCount());
-				++i;
+				thisDate = point.getDate();
+				
+				if (firstRun) {
+					lastDate = point.getDate();
+				}
+				
+				//one unit on the x axis is the number of hours between events
+				l += (thisDate.getTime() - lastDate.getTime()) / (1000 * 60 * 60);
+				
+				adverseEventRegression.addData(l, point.getCount());
+				lastDate = point.getDate();
+				firstRun = false;
 			}
 			this.adverseEventTrendList.add(new Trend(
 					Character.toUpperCase(drug.charAt(0)) + drug.substring(1), 
