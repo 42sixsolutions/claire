@@ -1,6 +1,6 @@
 /* Variables */
 /* Mixins */
-aside .element:after, .line-chart:after {
+.container:after, aside .element:after, footer:after, .line-chart:after {
   content: "";
   display: table;
   clear: both; }
@@ -392,7 +392,7 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #ffb22c;
+      border-top: 10px solid #9a9a9a;
       border-left: 10px solid transparent; }
     aside .element ul li.negative:after {
       border-top-color: #eb6b42; }
@@ -456,6 +456,17 @@ aside .element ul {
     text-transform: uppercase;
     color: #fff;
     font-weight: 600; }
+
+/* Footer */
+footer {
+  display: block;
+  margin: 30px 0 10px 0;
+  padding: 15px 0;
+  border-top: 1px solid #e0e0e0;
+  font-size: 12px;
+  color: #777777; }
+  footer a {
+    margin-left: 10px; }
 
 /* Selection */
 .wrapper {
@@ -622,13 +633,13 @@ aside .element ul {
 .arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
-  fill: #ffb22c;
+  fill: #9a9a9a;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc1-blue:hover {
-    fill: #ffb22c; }
+    fill: #9a9a9a; }
 
 .arc2-blue {
   /* Positive */
@@ -651,9 +662,9 @@ aside .element ul {
   .percentages .negative .arc0-blue:hover {
     fill: #e24918; }
 .percentages .neutral .arc0-blue {
-  fill: #ffb22c; }
+  fill: #9a9a9a; }
   .percentages .neutral .arc0-blue:hover {
-    fill: #f89d00; }
+    fill: #818181; }
 .percentages .positive .arc0-blue {
   fill: #3fa937; }
   .percentages .positive .arc0-blue:hover {
@@ -745,7 +756,7 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #ffb22c;
+      border-top: 10px solid #9a9a9a;
       border-left: 10px solid transparent; }
 
 .graph-title {
@@ -773,7 +784,7 @@ aside .element ul {
     position: absolute;
     top: 3px;
     right: 3px;
-    border-top: 10px solid #ffb22c;
+    border-top: 10px solid #9a9a9a;
     border-left: 10px solid transparent; }
 
 .graph-legend {
@@ -802,7 +813,7 @@ aside .element ul {
         color: #444444; }
       .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
         content: '';
-        border-top: 3px solid #ffb22c;
+        border-top: 3px solid #9a9a9a;
         width: 14px;
         height: 0;
         display: inline-block;
