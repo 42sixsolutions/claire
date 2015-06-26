@@ -267,8 +267,12 @@ section .information {
     margin-left: 5px; }
   section .information .overflow {
     display: block;
-    height: 130px;
-    position: relative; }
+    height: 100px;
+    position: relative;
+    -webkit-transition: all 350ms ease;
+    -moz-transition: all 350ms ease;
+    -ms-transition: all 350ms ease;
+    transition: all 350ms ease; }
     section .information .overflow:after {
       content: '';
       display: block;
@@ -279,8 +283,12 @@ section .information {
       background: url(../images/overflow.png) repeat-x bottom left; }
     section .information .overflow .description {
       height: 100%;
-      padding-bottom: 20px;
-      overflow: auto; }
+      padding: 0 20px 20px 0;
+      overflow: hidden; }
+    section .information .overflow.shown {
+      height: 220px; }
+      section .information .overflow.shown .description {
+        overflow-y: scroll; }
   section .information .trends {
     margin-bottom: 20px;
     line-height: 15px; }

@@ -358,8 +358,9 @@ section {
     
     .overflow {
       display: block;
-      height: 130px;
+      height: 100px;
       position: relative;
+      @include transition(all 350ms ease);
       
       &:after {
         content: '';
@@ -370,12 +371,21 @@ section {
         bottom: 0;
         background: url(../images/overflow.png) repeat-x bottom left;
       }
-      
+
       .description {
         height: 100%;
-        padding-bottom: 20px;
-        overflow: auto;
+        padding: 0 20px 20px 0;
+        overflow: hidden;
       }
+      
+      &.shown {
+        height: 220px;
+
+        .description {
+          overflow-y: scroll;
+        }
+      }
+      
     }
     
     .trends {
