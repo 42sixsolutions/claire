@@ -855,7 +855,13 @@ aside .element ul {
         font-size: 18px;
         font-weight: 300; }
       .wrapper .bg-gradient .holder.selection .trending .trend ul li a {
-        font-size: 16px; } }
+        font-size: 16px; }
+
+  aside .group {
+    float: none;
+    width: 100%; }
+    aside .group:first-child {
+      margin-right: 0; } }
 @media (min-width: 1025px) {
   .wrapper {
     padding: 0; }

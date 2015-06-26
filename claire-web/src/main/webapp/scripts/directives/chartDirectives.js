@@ -200,7 +200,7 @@ directive('lineChart', [function() {
                             "#bee76f",
                             "#e79090",
                             "#e0e0e0",
-                            "#d54dde",
+                            "rgba(57,220,185,0.5)",
                             "rgba(255,0,205,0.3)"
                         ],
                         xaxis: {
@@ -227,7 +227,8 @@ directive('lineChart', [function() {
                             max: scope.drugChartOptions.max
                         },
                         crosshair: {
-                            mode: "x"
+                            mode: "x",
+                            color: "rgba(100,100,100,0.4)"
                         }
                     };
                     $.plot(element[0], newValue, options);
