@@ -49,10 +49,9 @@
     </build>
 
     <modules>
+        <module>claire-commons</module>
         <module>claire-client</module>
         <module>claire-web</module>
-        <module>claire-services</module>
-        <module>claire-commons</module>
     </modules>
 
     <dependencyManagement>
@@ -70,6 +69,15 @@
     </dependencies>
 
     <profiles>
+        <profile>
+            <id>local-dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>claire-services</module>
+            </modules>
+        </profile>
         <profile>
             <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
             <!-- Use this profile for any OpenShift specific customization your app will need. -->
