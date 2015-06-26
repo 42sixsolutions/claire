@@ -119,10 +119,8 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             var negative = convertChartData(response.data.negativeTweets);
             var unknown = convertChartData(response.data.unknownTweets);
             var max = getMaxTweets(positive, negative, unknown);
-            console.log(max);
             $scope.drugChartOptions.min = -Math.floor(max / 14);
             $scope.drugChartOptions.max = max + Math.floor(max / 14);
-            console.log($scope.drugChartOptions.min);
 
             chartData.push({
                 data: positive,
