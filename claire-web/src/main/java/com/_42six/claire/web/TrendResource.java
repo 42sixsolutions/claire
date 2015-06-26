@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -45,5 +46,12 @@ public class TrendResource extends CommonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Trend> getAdverseEventTrends() {
     	return responseTranslator.getAdverseEventsTrends();
+    }
+    
+    @GET
+    @Path("/overall/{drugName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Trend getOverallTwitterTrend(@PathParam("drugName") String drugName) {
+    	return responseTranslator.getOverallTwitterTrend(drugName);
     }
 }

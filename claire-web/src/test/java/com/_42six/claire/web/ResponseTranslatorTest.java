@@ -84,4 +84,9 @@ public class ResponseTranslatorTest {
 	public void testChart() {
 		responseTranslator.getChart("lipitor",100);
 	}
+	
+	@Test
+	public void testTwitterTrend() {
+		responseTranslator.getOverallTwitterTrend("lipitor");
+	}
 }
