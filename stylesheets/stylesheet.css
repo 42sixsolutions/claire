@@ -4,10 +4,11 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  color: #606c71; }
+  color: #606c71;
+  background: #fafafa;}
 
 a {
   color: #1e6bb8;
@@ -73,7 +74,15 @@ a {
 
 .project-name {
   margin-top: 0;
-  margin-bottom: 0.1rem; }
+  margin-bottom: 0.1rem;
+  font-weight: 300;
+  background: rgba(0, 0, 0, 0) url('../images/logo.png') no-repeat scroll left center / auto 45px;
+  color: #ffffff;
+  display: inline-block;
+  line-height: 47px;
+  margin-right: 25px;
+  padding-left: 49px;
+}
 
 @media screen and (min-width: 64em) {
   .project-name {
@@ -111,8 +120,9 @@ a {
 .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-weight: normal;
-  color: #159957; }
+  font-weight: 600;
+  color: #2ad1ad;
+  text-transform: uppercase;}
 .main-content p {
   margin-bottom: 1em; }
 .main-content code {
