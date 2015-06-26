@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.apache.commons.math3.stat.regression.SimpleRegression;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 
@@ -34,11 +35,14 @@ import com._42six.claire.commons.model.ChartDetail.ChartDetailDataPoint;
 import com._42six.claire.commons.model.Drug;
 import com._42six.claire.commons.model.DrugRankings;
 import com._42six.claire.commons.model.FDAStats;
+import com._42six.claire.commons.model.Trend;
 import com._42six.claire.commons.model.TwitterStats;
 import com._42six.claire.openfda.util.OpenFDAUtil;
 import com._42six.claire.web.model.SortableDrug;
 
 public class ResponseTranslator {
+
+	private static ResponseTranslator instance;
 
 	private final Calendar minDate ;
 	private final Calendar maxDate;
@@ -49,7 +53,10 @@ public class ResponseTranslator {
 	private final Map<String, Chart> openFDADrugRecallsMap;
 	private final Map<String, DrugRankings> drugRankMap;
 
-	
+	private SortedSet<Trend> positiveTrendList;
+	private SortedSet<Trend> adverseEventTrendList;
+
+
 	public ResponseTranslator(
 			File twitterDetailsFile,
 			File openFDADrugAdverseFile,
@@ -63,7 +70,23 @@ public class ResponseTranslator {
 				new FileInputStream(openFDADrugRecallsFile)
 				);
 	}
-	
+
+	public static synchronized ResponseTranslator getInstance(
+			InputStream twitterDetailsStream,
+			InputStream openFDADrugAdverseStream,
+			InputStream openFDADrugDescriptionsStream,
+			InputStream openFDADrugRecallsStream
+			)  throws JsonParseException, JsonMappingException, IOException, ParseException {
+		if(instance == null) {
+			instance = new ResponseTranslator(
+					twitterDetailsStream, 
+					openFDADrugAdverseStream, 
+					openFDADrugDescriptionsStream, 
+					openFDADrugRecallsStream);
+		}
+		return instance;
+	}
+
 	public ResponseTranslator(
 			InputStream twitterDetailsStream,
 			InputStream openFDADrugAdverseStream,
@@ -91,6 +114,7 @@ public class ResponseTranslator {
 		this.openFDADrugRecallsMap = createOpenFDADatesMap(recallCharts);
 
 		this.drugRankMap = createDrugRankMap();
+		createTrends();
 
 	}
 
@@ -314,7 +338,7 @@ public class ResponseTranslator {
 	}
 
 	private Map<String, DrugRankings> createDrugRankMap() {
-		
+
 		Map<String, DrugRankings> map = new HashMap<String, DrugRankings>();
 
 		SortedSet<SortableDrug> adverseSet = new TreeSet<SortableDrug>();
@@ -325,19 +349,19 @@ public class ResponseTranslator {
 
 
 		for (String drugName : OpenFDAUtil.DRUG_NAMES_SET) {
-			
+
 			String drugLower = drugName.toLowerCase();
 			map.put(drugLower, new DrugRankings());
-			
+
 			FDAStats fdaStats = getFDAStats(drugLower);
 			adverseSet.add(new SortableDrug(drugLower, (double)fdaStats.getTotalAdverseEvents()));
 			recallSet.add(new SortableDrug(drugLower, (double)fdaStats.getTotalRecalls()));
 
 			TwitterStats twitterStats = getTwitterStats(drugLower);
 
-			positiveSet.add(new SortableDrug(drugLower, twitterStats.getPercentPositive()));
-			negativeSet.add(new SortableDrug(drugLower, twitterStats.getPercentNegative()));
-			neutralSet.add(new SortableDrug(drugLower, twitterStats.getPercentUnknown()));
+			positiveSet.add(new SortableDrug(drugLower, twitterStats.getPercentPositiveDbl()));
+			negativeSet.add(new SortableDrug(drugLower, twitterStats.getPercentNegativeDbl()));
+			neutralSet.add(new SortableDrug(drugLower, twitterStats.getPercentUnknownDbl()));
 		}
 
 		int i = 0;
@@ -369,4 +393,53 @@ public class ResponseTranslator {
 		return Collections.unmodifiableMap(map);
 	}
 
+	private void createTrends() {
+		this.positiveTrendList = new TreeSet<Trend>();
+		this.adverseEventTrendList = new TreeSet<Trend>();
+
+		for (String drug : OpenFDAUtil.DRUG_NAMES_SET) {
+			//calculate twitter slope
+			SimpleRegression twitterRegression = new SimpleRegression();
+			TwitterDrugDetail detail = this.twitterDetailMap.get(drug);
+			int i = 0;
+			for (EventsByDate event : detail.getEvents()) {
+				twitterRegression.addData(i, event.getPositiveCount());
+				++i;
+			}
+			this.positiveTrendList.add(new Trend(
+					Character.toUpperCase(drug.charAt(0)) + drug.substring(1), 
+					twitterRegression.getSlope()));
+
+			//calculate adverse event slope
+			SimpleRegression adverseEventRegression = new SimpleRegression();
+			Chart chart = this.openFDADrugDatesMap.get(drug);
+			i = 0;
+			for (DataPoint point : chart.getPoints()) {
+				adverseEventRegression.addData(i, point.getCount());
+				++i;
+			}
+			this.adverseEventTrendList.add(new Trend(
+					Character.toUpperCase(drug.charAt(0)) + drug.substring(1), 
+					adverseEventRegression.getSlope()));
+		}
+	}
+
+	public List<Trend> getPositiveTwitterTrends() {
+		List<Trend> list = new ArrayList<Trend>(this.positiveTrendList);
+		int i = list.size() > 5 ? 5 : list.size();
+		return list.subList(0, i);
+	}
+
+	public List<Trend> getNegativeTwitterTrends() {
+		List<Trend> list = new ArrayList<Trend>(this.positiveTrendList);
+		Collections.reverse(list);
+		int i = list.size() > 5 ? 5 : list.size();
+		return list.subList(0, i);
+	}
+
+	public List<Trend> getAdverseEventsTrends() {
+		List<Trend> list = new ArrayList<Trend>(this.adverseEventTrendList);
+		int i = list.size() > 5 ? 5 : list.size();
+		return list.subList(0, i);
+	}
 }

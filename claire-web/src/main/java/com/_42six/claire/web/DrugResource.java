@@ -1,7 +1,6 @@
 package com._42six.claire.web;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.util.List;
 
@@ -26,20 +25,10 @@ import com._42six.claire.commons.model.TwitterStats;
  */
 @Path("drug")
 @Singleton
-public class DrugResource {
-
-	private ResponseTranslator responseTranslator;
+public class DrugResource extends CommonResource {
 
 	public DrugResource() throws JsonParseException, JsonMappingException, IOException, ParseException {
-		InputStream twitterDetailsStream = this.getClass().getClassLoader().getResourceAsStream("/json/twitterDetails.json");
-		InputStream openFDADrugDatesStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugDates.json");
-		InputStream openFDADrugDescriptionsStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugDescriptions.json");
-		InputStream openFDADrugRecallsStream = this.getClass().getClassLoader().getResourceAsStream("/json/openFDADrugRecalls.json");
-		this.responseTranslator = new ResponseTranslator(
-				twitterDetailsStream, 
-				openFDADrugDatesStream, 
-				openFDADrugDescriptionsStream, 
-				openFDADrugRecallsStream);
+		super();
 	}
 
 	@GET

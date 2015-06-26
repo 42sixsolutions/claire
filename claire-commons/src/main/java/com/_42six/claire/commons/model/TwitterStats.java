@@ -1,15 +1,21 @@
 package com._42six.claire.commons.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
 /**
  * POJO for twitter stats
  */
 @SuppressWarnings("unused")
+@XmlAccessorType(XmlAccessType.NONE)
 public class TwitterStats {
     private int totalTweets;
     private double percentPositive;
     private double percentNegative;
     private double percentUnknown;
 
+    @XmlElement
     public int getTotalTweets() {
         return totalTweets;
     }
@@ -19,7 +25,12 @@ public class TwitterStats {
         return this;
     }
 
-    public double getPercentPositive() {
+    @XmlElement
+    public int getPercentPositive() {
+        return (int)percentPositive;
+    }
+    
+    public double getPercentPositiveDbl() {
         return percentPositive;
     }
 
@@ -28,7 +39,12 @@ public class TwitterStats {
         return this;
     }
 
-    public double getPercentNegative() {
+    @XmlElement
+    public int getPercentNegative() {
+        return (int)percentNegative;
+    }
+    
+    public double getPercentNegativeDbl() {
         return percentNegative;
     }
 
@@ -37,7 +53,12 @@ public class TwitterStats {
         return this;
     }
 
-    public double getPercentUnknown() {
+    @XmlElement
+    public int getPercentUnknown() {
+        return (int)percentUnknown;
+    }
+    
+    public double getPercentUnknownDbl() {
         return percentUnknown;
     }
 
