@@ -129,7 +129,7 @@ img {
   .chosen-container-active .chosen-single:visited {
     width: 100%;
     height: 40px;
-    background: whitesmoke !important;
+    background: whitesmoke url(../images/bg-select.png) no-repeat right center !important;
     border: 1px solid #e0e0e0 !important;
     padding: 0;
     margin: 0;
@@ -189,7 +189,7 @@ img {
         background: #fff;
         border: 1px solid #e0e0e0;
         padding: 6px 20px 7px 20px;
-        background: white none !important;
+        background: white url(../images/bg-search.png) no-repeat right center !important;
         -webkit-border-radius: 50px;
         -moz-border-radius: 50px;
         -ms-border-radius: 50px;
