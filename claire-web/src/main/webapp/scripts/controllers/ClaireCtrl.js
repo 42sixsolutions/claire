@@ -79,7 +79,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 }
             }
             return newData;
-        }
+        };
 
         var adjustRecallData = function(recalls, max) {
             var newData = [];
@@ -91,7 +91,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 newData[i] = item;
             }
             return newData;
-        }
+        };
 
         var getMaxTweets = function(positive, negative, unknown) {
             var getMax = function(list) {
@@ -109,18 +109,20 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             var unknownMax = getMax(unknown);
 
             return Math.max(positiveMax, negativeMax, unknownMax);
-        }
+        };
 
         $scope.drugChartOptions = {};
 
-        DrugInfo.getChart($scope.drug.selected).then(function(response) {
+        DrugInfo.getChart($scope.drug.selected, 200).then(function(response) {
             var chartData = [];
             var positive = convertChartData(response.data.positiveTweets);
             var negative = convertChartData(response.data.negativeTweets);
             var unknown = convertChartData(response.data.unknownTweets);
+            var peaks = convertChartData(response.data.negativeTweetSpikes.concat(response.data.positiveTweetSpikes));
             var max = getMaxTweets(positive, negative, unknown);
             $scope.drugChartOptions.min = -Math.floor(max / 14);
             $scope.drugChartOptions.max = max + Math.floor(max / 14);
+
 
             chartData.push({
                 data: positive,
@@ -146,6 +148,16 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 data: adjustData(convertChartData(response.data.adverseEvents), $scope.drugChartOptions.min),
                 points: { show: true, radius: 6, lineWidth: 0, fill: true, fillColor: "rgba(255,0,205,0.01)" },
                 lines: { show: false }
+            });
+            chartData.push({
+                data: peaks,
+                points: { show: true, radius: 6, lineWidth: 0, symbol: function(ctx, x, y, r, shadow) {
+                    var image = new Image();
+                    image.src = "../images/logo-small.png";
+                    ctx.drawImage(image, x - r, y - r, 16, 16);
+                } },
+                lines: { show: false },
+                hoverable: false
             });
             $scope.mainChartData = chartData;
         });
@@ -176,7 +188,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 }
             }
             return selected;
-        }
+        };
 
         DrugInfo.getRankings($scope.drug.selected).then(function(response) {
             $scope.drugRankings = response.data;
