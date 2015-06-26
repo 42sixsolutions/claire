@@ -56,6 +56,8 @@ public class ResponseTranslator {
 
 	private SortedSet<Trend> positiveTrendList;
 	private SortedSet<Trend> adverseEventTrendList;
+	
+	private Map<String, Trend> twitterTrendMap;
 
 
 	public ResponseTranslator(
@@ -432,6 +434,7 @@ public class ResponseTranslator {
 	private void createTrends() {
 		this.positiveTrendList = new TreeSet<Trend>();
 		this.adverseEventTrendList = new TreeSet<Trend>();
+		this.twitterTrendMap = new HashMap<String, Trend>();
 
 		for (String drug : OpenFDAUtil.DRUG_NAMES_SET) {
 			//calculate twitter slope
@@ -442,9 +445,11 @@ public class ResponseTranslator {
 				twitterRegression.addData(i, event.getPositiveCount());
 				++i;
 			}
-			this.positiveTrendList.add(new Trend(
+			Trend twitterTrend = new Trend(
 					Character.toUpperCase(drug.charAt(0)) + drug.substring(1), 
-					twitterRegression.getSlope()));
+					twitterRegression.getSlope());
+			this.positiveTrendList.add(twitterTrend);
+			this.twitterTrendMap.put(drug.toLowerCase(), twitterTrend);
 
 			//calculate adverse event slope
 			SimpleRegression adverseEventRegression = new SimpleRegression();
@@ -477,5 +482,12 @@ public class ResponseTranslator {
 		List<Trend> list = new ArrayList<Trend>(this.adverseEventTrendList);
 		int i = list.size() > 5 ? 5 : list.size();
 		return list.subList(0, i);
+	}
+
+	public Trend getOverallTwitterTrend(String drugName) {
+		if (drugName == null) {
+			return null;
+		}
+		return this.twitterTrendMap.get(drugName.toLowerCase());
 	}
 }
