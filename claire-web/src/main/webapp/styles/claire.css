@@ -108,7 +108,8 @@ h2 {
     margin-left: 10px; }
     h2 span i {
       position: relative;
-      top: -3px; }
+      top: -2px;
+      margin: 0 0 -4px 0; }
 
 p {
   margin-bottom: 0.5em; }

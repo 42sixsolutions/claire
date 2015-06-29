@@ -166,10 +166,10 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
             });
             chartData.push({
                 data: peaks,
-                points: { show: true, radius: 6, lineWidth: 0, symbol: function(ctx, x, y, r, shadow) {
+                points: { show: true, radius: 11, lineWidth: 0, symbol: function(ctx, x, y, r, shadow) {
                     var image = new Image();
-                    image.src = "../images/peak.png";
-                    ctx.drawImage(image, x - r, y - r, 16, 16);
+                    image.src = "../images/peak.svg";
+                    ctx.drawImage(image, x - r, y - r - 12, 22, 22);
                 } },
                 lines: { show: false },
                 hoverable: false
