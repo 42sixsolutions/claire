@@ -168,7 +168,7 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 data: peaks,
                 points: { show: true, radius: 6, lineWidth: 0, symbol: function(ctx, x, y, r, shadow) {
                     var image = new Image();
-                    image.src = "../images/logo-small.png";
+                    image.src = "../images/peak.png";
                     ctx.drawImage(image, x - r, y - r, 16, 16);
                 } },
                 lines: { show: false },

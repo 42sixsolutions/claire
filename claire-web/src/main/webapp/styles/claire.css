@@ -100,6 +100,15 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px; }
+  h2 span {
+    color: #6a6a6a;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 11px;
+    margin-left: 10px; }
+    h2 span i {
+      position: relative;
+      top: -3px; }
 
 p {
   margin-bottom: 0.5em; }
@@ -318,12 +327,6 @@ section .information {
           margin-bottom: 0; }
 
 /* Aside Styling */
-aside .element.ranking h2 span {
-  color: #6a6a6a;
-  font-weight: 400;
-  text-transform: none;
-  font-size: 11px;
-  margin-left: 3px; }
 aside .element .graph {
   position: relative; }
 aside .element .total-tweets {
@@ -804,10 +807,33 @@ footer {
     border-top: 10px solid #b9cace;
     border-left: 10px solid transparent; }
 
+.info-legend {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 10px 8px 30px;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: left;
+  color: #aaaaaa;
+  font-weight: 600; }
+  .info-legend i {
+    width: 14px;
+    height: 0;
+    display: inline-block;
+    position: relative;
+    margin: 0 5px 0 -20px;
+    top: -2px; }
+
 .graph-legend {
   text-align: center;
   margin: 0 25px;
-  border-top: 1px solid #e0e0e0; }
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 0 15px; }
   .graph-legend ul {
     display: inline-block;
     margin: 0 auto; }
@@ -816,7 +842,7 @@ footer {
       vertical-align: top;
       position: relative;
       height: 100%;
-      padding: 15px 5px 15px 30px;
+      padding: 5px 5px 0px 30px;
       font-size: 11px;
       line-height: 12px;
       text-align: left;
@@ -828,6 +854,13 @@ footer {
         line-height: 30px;
         font-weight: 300;
         color: #444444; }
+      .graph-legend ul li.info i {
+        width: 14px;
+        height: 0;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        top: -2px; }
       .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
         content: '';
         border-top: 3px solid #b9cace;

@@ -188,6 +188,19 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px;
+
+  span {
+    color: lighten($textcolor,15%);
+    font-weight: 400;
+    text-transform: none;
+    font-size: 11px;
+    margin-left: 10px;
+    
+    i {
+      position: relative;
+      top: -3px;
+    }
+  }
 }
 
 p {
@@ -442,17 +455,6 @@ aside {
   
   .element {
     @extend %clearfix;
-    
-    &.ranking h2 {
-      
-      span {
-        color: lighten($textcolor,15%);
-        font-weight: 400;
-        text-transform: none;
-        font-size: 11px;
-        margin-left: 3px;
-      }
-    }
     
     .graph {
       position: relative;
@@ -1032,11 +1034,38 @@ footer {
   }
 }
 
+.info-legend {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid $bordercolor;
+  border-bottom: 1px solid $bordercolor;
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 10px 8px 30px;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: left;
+  color: lighten($textcolor,40%);
+  font-weight: 600;
+
+      i {
+        width: 14px;
+        height: 0;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        top: -2px;
+      }
+
+}
+
 .graph-legend {
   text-align: center;
   margin: 0 25px;
   border-top: 1px solid $bordercolor;
-
+  padding: 10px 0 15px;
+  
   ul {
     display: inline-block;
     margin: 0 auto;
@@ -1046,7 +1075,7 @@ footer {
       vertical-align: top;
       position: relative;
       height: 100%;
-      padding: 15px 5px 15px 30px;
+      padding: 5px 5px 0px 30px;
       font-size: 11px;
       line-height: 12px;
       text-align: left;
@@ -1061,6 +1090,15 @@ footer {
         color: lighten($textcolor,0%);
       }
       
+      &.info i {
+        width: 14px;
+        height: 0;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        top: -2px;
+      }
+
       &.negative i:before,
       &.positive i:before,
       &.neutral  i:before { 
