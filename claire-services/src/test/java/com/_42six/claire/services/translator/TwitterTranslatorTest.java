@@ -27,6 +27,14 @@ public class TwitterTranslatorTest {
 		this.mapper = new ResponseMapper();
 	}
 	
+	/**
+	 * After generating tweets with the Topsy client, this method can be used to 
+	 * translate and score those tweets, marshaling the results to disk. The 
+	 * resulting json file can then be placed in the claire-web app so the UI
+	 * can serve up this data.
+	 * 
+	 * @throws Exception
+	 */
 	@Ignore
 	@Test
 	public void executeTwitterTranslator() throws Exception {

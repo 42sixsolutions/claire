@@ -106,10 +106,12 @@ public class OpenFDAClientTest {
 
 	/**
 	 * Searches adverse events for drugs and marshals them into a file.
+	 * The resulting json file can then be placed in the claire-web app 
+	 * so the UI can serve up this data.
 	 */
 	@Ignore
 	@Test
-	public void testSearchAdverseEvents() throws Exception {
+	public void executeSearchAdverseEvents() throws Exception {
 		String startDateStr = "2014-01-01 000000";
 		String endDateStr = "2014-06-30 235959";
 
@@ -134,11 +136,14 @@ public class OpenFDAClientTest {
 
 	/**
 	 * Searches drug descriptions and marshals them into a file.
+	 * The resulting json file can then be placed in the claire-web app 
+	 * so the UI can serve up this data.
+	 * 
 	 * @throws Exception
 	 */
 	@Ignore
 	@Test
-	public void testSearchDescriptions() throws Exception {
+	public void executeSearchDescriptions() throws Exception {
 
 		DrugDescriptionCollection descriptions = new DrugDescriptionCollection();
 		descriptions.descriptions = new ArrayList<DrugDescription>();
@@ -164,12 +169,14 @@ public class OpenFDAClientTest {
 
 	/**
 	 * Searches drug recalls and marshals them into a file.
+	 * The resulting json file can then be placed in the claire-web app 
+	 * so the UI can serve up this data.
 	 * 
 	 * @throws Exception
 	 */
 	@Ignore
 	@Test
-	public void testSearchRecallEvents() throws Exception {
+	public void executeSearchRecallEvents() throws Exception {
 		String startDateStr = "2014-01-01 000000";
 		String endDateStr = "2014-06-30 235959";
 

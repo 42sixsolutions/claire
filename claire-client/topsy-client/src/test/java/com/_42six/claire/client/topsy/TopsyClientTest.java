@@ -30,13 +30,16 @@ public class TopsyClientTest {
 	}
 
 	/**
-	 * Search all drugs in Topsy and stream tweets to disk.
+	 * Search all drugs in Topsy for a specified date range and stream tweets to a
+	 * directory on disk.
+	 * The resulting tweets can then be used to score via sentiment analysis.
+	 * This is ignored at build time.
 	 * 
 	 * @throws Exception
 	 */
 	@Ignore
 	@Test
-	public void testClient() throws Exception {
+	public void executeClient() throws Exception {
 		String startDateStr = "2014-06-01 000000";
 		String endDateStr = "2014-06-30 235959";
 
