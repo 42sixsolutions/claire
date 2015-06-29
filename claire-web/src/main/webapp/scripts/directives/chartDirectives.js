@@ -218,7 +218,7 @@ directive('lineChart', ["$window", function($window) {
                         colors: [ 
                             "#56c54e",
                             "#eb6b42",
-                            "#ffb22c",
+                            "#b9cace",
                             "rgba(78,197,195,0.5)",
                             "rgba(255,0,205,0.3)"
                         ],

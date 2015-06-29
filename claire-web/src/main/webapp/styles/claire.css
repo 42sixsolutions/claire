@@ -1,6 +1,6 @@
 /* Variables */
 /* Mixins */
-aside .element:after, .line-chart:after {
+.container:after, aside .element:after, footer:after, .line-chart:after {
   content: "";
   display: table;
   clear: both; }
@@ -100,6 +100,16 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px; }
+  h2 span {
+    color: #6a6a6a;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 11px;
+    margin-left: 10px; }
+    h2 span i {
+      position: relative;
+      top: -2px;
+      margin: 0 0 -4px 0; }
 
 p {
   margin-bottom: 0.5em; }
@@ -318,12 +328,6 @@ section .information {
           margin-bottom: 0; }
 
 /* Aside Styling */
-aside .element.ranking h2 span {
-  color: #6a6a6a;
-  font-weight: 400;
-  text-transform: none;
-  font-size: 11px;
-  margin-left: 3px; }
 aside .element .graph {
   position: relative; }
 aside .element .total-tweets {
@@ -392,14 +396,26 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #ffb22c;
+      border-top: 10px solid #b9cace;
       border-left: 10px solid transparent; }
+    aside .element ul li.negative span {
+      color: #eb6b42; }
     aside .element ul li.negative:after {
       border-top-color: #eb6b42; }
+    aside .element ul li.neutral span {
+      color: #7d9da4; }
+    aside .element ul li.neutral:after {
+      border-top-color: #b9cace; }
+    aside .element ul li.positive span {
+      color: #56c54e; }
     aside .element ul li.positive:after {
       border-top-color: #56c54e; }
+    aside .element ul li.recalls span {
+      color: #4ec5c3; }
     aside .element ul li.recalls:after {
       border-top-color: #4ec5c3; }
+    aside .element ul li.events span {
+      color: #d54dde; }
     aside .element ul li.events:after {
       border-top-color: #d54dde; }
   aside .element ul.stats li, aside .element ul.ranking-btm li {
@@ -457,6 +473,18 @@ aside .element ul {
     color: #fff;
     font-weight: 600; }
 
+/* Footer */
+footer {
+  display: block;
+  margin: 30px 0 10px 0;
+  padding: 15px 0;
+  border-top: 1px solid #e0e0e0;
+  font-size: 12px;
+  color: #777777;
+  text-align: center; }
+  footer a {
+    margin-left: 10px; }
+
 /* Selection */
 .wrapper {
   width: 100%;
@@ -478,6 +506,13 @@ aside .element ul {
     z-index: 999; }
     .wrapper .bg-gradient .holder {
       text-align: center; }
+      .wrapper .bg-gradient .holder footer {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 0.6); }
+        .wrapper .bg-gradient .holder footer a {
+          color: rgba(255, 255, 255, 0.7); }
+          .wrapper .bg-gradient .holder footer a:hover {
+            color: white; }
       .wrapper .bg-gradient .holder.selection .brand {
         display: inline-block;
         width: auto;
@@ -603,7 +638,6 @@ aside .element ul {
   height: 40px;
   margin-top: -60px;
   margin-bottom: 22px;
-  color: #444444;
   font-size: 14px;
   line-height: 40px;
   font-weight: 300; }
@@ -622,13 +656,13 @@ aside .element ul {
 .arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
-  fill: #ffb22c;
+  fill: #b9cace;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc1-blue:hover {
-    fill: #ffb22c; }
+    fill: #b9cace; }
 
 .arc2-blue {
   /* Positive */
@@ -650,14 +684,20 @@ aside .element ul {
   fill: #eb6b42; }
   .percentages .negative .arc0-blue:hover {
     fill: #e24918; }
+.percentages .negative .pie-center {
+  color: #eb6b42; }
 .percentages .neutral .arc0-blue {
-  fill: #ffb22c; }
+  fill: #b9cace; }
   .percentages .neutral .arc0-blue:hover {
-    fill: #f89d00; }
+    fill: #9bb3b9; }
+.percentages .neutral .pie-center {
+  color: #7d9da4; }
 .percentages .positive .arc0-blue {
   fill: #3fa937; }
   .percentages .positive .arc0-blue:hover {
     fill: #3fa937; }
+.percentages .positive .pie-center {
+  color: #56c54e; }
 
 .white {
   fill: #FFFFFF; }
@@ -745,7 +785,7 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #ffb22c;
+      border-top: 10px solid #b9cace;
       border-left: 10px solid transparent; }
 
 .graph-title {
@@ -773,13 +813,36 @@ aside .element ul {
     position: absolute;
     top: 3px;
     right: 3px;
-    border-top: 10px solid #ffb22c;
+    border-top: 10px solid #b9cace;
     border-left: 10px solid transparent; }
+
+.info-legend {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 10px 8px 30px;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: left;
+  color: #aaaaaa;
+  font-weight: 600; }
+  .info-legend i {
+    width: 14px;
+    height: 0;
+    display: inline-block;
+    position: relative;
+    margin: 0 5px 0 -20px;
+    top: -2px; }
 
 .graph-legend {
   text-align: center;
   margin: 0 25px;
-  border-top: 1px solid #e0e0e0; }
+  border-top: 1px solid #e0e0e0;
+  padding: 10px 0 15px; }
   .graph-legend ul {
     display: inline-block;
     margin: 0 auto; }
@@ -788,7 +851,7 @@ aside .element ul {
       vertical-align: top;
       position: relative;
       height: 100%;
-      padding: 15px 5px 15px 30px;
+      padding: 5px 5px 0px 30px;
       font-size: 11px;
       line-height: 12px;
       text-align: left;
@@ -800,9 +863,16 @@ aside .element ul {
         line-height: 30px;
         font-weight: 300;
         color: #444444; }
+      .graph-legend ul li.info i {
+        width: 14px;
+        height: 0;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        top: -2px; }
       .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
         content: '';
-        border-top: 3px solid #ffb22c;
+        border-top: 3px solid #b9cace;
         width: 14px;
         height: 0;
         display: inline-block;

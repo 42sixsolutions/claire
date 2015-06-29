@@ -8,9 +8,9 @@ $textcolor:       #444444;
 
 $negative:        #eb6b42;
 $positive:        #56c54e;
-$neutral:         #ffb22c;
+$neutral:         #b9cace; //#ffb22c;
 $recalls:         $teal;
-$events:          $secondary; //#ffc2fa;
+$events:          $secondary;
 
 $bordercolor:     #e0e0e0;
 $border-default:  1px solid $bordercolor;
@@ -164,6 +164,7 @@ body {
   margin: 0 auto;
   text-align: left;
   padding: 0 20px;
+  @extend %clearfix;
 }
 
 a {
@@ -187,6 +188,20 @@ h2 {
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 12px;
+
+  span {
+    color: lighten($textcolor,15%);
+    font-weight: 400;
+    text-transform: none;
+    font-size: 11px;
+    margin-left: 10px;
+    
+    i {
+      position: relative;
+      top: -2px;
+      margin: 0 0 -4px 0;
+    }
+  }
 }
 
 p {
@@ -442,17 +457,6 @@ aside {
   .element {
     @extend %clearfix;
     
-    &.ranking h2 {
-      
-      span {
-        color: lighten($textcolor,15%);
-        font-weight: 400;
-        text-transform: none;
-        font-size: 11px;
-        margin-left: 3px;
-      }
-    }
-    
     .graph {
       position: relative;
     }
@@ -525,10 +529,11 @@ aside {
           border-left: 10px solid transparent;
         }
 
-        &.negative:after { border-top-color: $negative; }
-        &.positive:after { border-top-color: $positive; }
-        &.recalls:after { border-top-color: $recalls; }
-        &.events:after { border-top-color: $events; }
+        &.negative { span { color: $negative; } &:after { border-top-color: $negative; }}
+        &.neutral  { span { color: darken($neutral,20%);  } &:after { border-top-color: $neutral; }}
+        &.positive { span { color: $positive; } &:after { border-top-color: $positive; }}
+        &.recalls  { span { color: $recalls;  } &:after { border-top-color: $recalls; }}
+        &.events   { span { color: $events;   } &:after { border-top-color: $events; }}
       }
 
       &.stats,
@@ -605,6 +610,24 @@ aside {
 	}
 }
 
+
+/* Footer */
+
+footer {
+  display: block;
+  @extend %clearfix;
+  margin: 30px 0 10px 0;
+  padding: 15px 0;
+  border-top: 1px solid $bordercolor;
+  font-size: 12px;
+  color: lighten($textcolor,20%);
+  text-align: center;
+  
+  a {
+    margin-left: 10px;
+  }
+}
+
 /* Selection */
 
 .wrapper {
@@ -631,6 +654,19 @@ aside {
 		
 		.holder {
   		text-align: center;
+  		
+  		footer {
+    		border-top: 1px solid rgba(white,0.3);
+    		color: rgba(white,0.6);
+    		
+    		a {
+    		  color: rgba(white,0.7);
+    		  
+    		  &:hover {
+    		    color: rgba(white,1);
+    		  }
+    		}
+  		}
 		
 			&.selection {
 				
@@ -804,7 +840,6 @@ aside {
   height: 40px;
   margin-top: -60px;
   margin-bottom: 22px;
-  color: $textcolor;
   font-size: 14px;
   line-height: 40px;
   font-weight: 300;
@@ -850,6 +885,7 @@ aside {
       
       &:hover { fill: darken($negative,10%); }
     }
+    .pie-center { color: $negative; }
   }
 
   .neutral {
@@ -858,6 +894,7 @@ aside {
       
       &:hover { fill: darken($neutral,10%); }
     }
+    .pie-center { color: darken($neutral,20%); }
   }
   
   .positive {
@@ -866,6 +903,7 @@ aside {
       
       &:hover { fill: darken($positive,10%); }
     }
+    .pie-center { color: $positive; }
   } 
 }
 
@@ -1011,11 +1049,38 @@ aside {
   }
 }
 
+.info-legend {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 1px solid $bordercolor;
+  border-bottom: 1px solid $bordercolor;
+  display: inline-block;
+  vertical-align: top;
+  padding: 8px 10px 8px 30px;
+  font-size: 11px;
+  line-height: 12px;
+  text-align: left;
+  color: lighten($textcolor,40%);
+  font-weight: 600;
+
+      i {
+        width: 14px;
+        height: 0;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        top: -2px;
+      }
+
+}
+
 .graph-legend {
   text-align: center;
   margin: 0 25px;
   border-top: 1px solid $bordercolor;
-
+  padding: 10px 0 15px;
+  
   ul {
     display: inline-block;
     margin: 0 auto;
@@ -1025,7 +1090,7 @@ aside {
       vertical-align: top;
       position: relative;
       height: 100%;
-      padding: 15px 5px 15px 30px;
+      padding: 5px 5px 0px 30px;
       font-size: 11px;
       line-height: 12px;
       text-align: left;
@@ -1040,6 +1105,15 @@ aside {
         color: lighten($textcolor,0%);
       }
       
+      &.info i {
+        width: 14px;
+        height: 0;
+        display: inline-block;
+        position: relative;
+        margin: 0 5px 0 -20px;
+        top: -2px;
+      }
+
       &.negative i:before,
       &.positive i:before,
       &.neutral  i:before { 
