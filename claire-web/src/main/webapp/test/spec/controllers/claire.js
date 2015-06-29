@@ -1,5 +1,23 @@
 'use strict';
 
+describe('routes', function() {
+    beforeEach(module('claire'));
+
+    it('should map routes to controllers', function() {
+        inject(function($route) {
+
+            expect($route.routes['/'].controller).toBe('ClaireCtrl');
+            expect($route.routes['/'].templateUrl).toBe('partials/home.html');
+
+            expect($route.routes['/detail/:drug'].controller).toBe('ClaireCtrl');
+            expect($route.routes['/detail/:drug'].templateUrl).toBe('partials/detail.html');
+
+            // otherwise redirect to
+            expect($route.routes[null].redirectTo).toBe('/')
+        });
+    });    
+});
+
 describe('controllers', function() {
     beforeEach(module('claire'));
 
