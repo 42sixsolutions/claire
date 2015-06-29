@@ -10,6 +10,7 @@ Prototype on ARC: https://dashboard-claire.arcwrx.com/
   * [Dependencies](#dependencies)
   * [Local Tomcat7](#local-tomcat7)
   * [Hosted](#hosted)
+* [About Claire](#about-claire)
 * [750 Word Project Description](#750-word-project-description)
 
 ## Installation
@@ -64,4 +65,11 @@ On Openshift (the PaaS for both IaaS options):
 		pick a region
 	create application
 ```
+
+## About Claire
+
+Please see our [About Page.](http://42sixsolutions.github.io/claire/)
+
+You can also view our [design assets](claire-ui/mockups), [style guide](claire-ui/styleguide), and [scrum artifacts](claire-agile/) in the Claire repository.
+
 ## 750 Word Project Description
