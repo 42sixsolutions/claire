@@ -48,7 +48,9 @@ describe('directives', function() {
             scope.twitterStats = mockTwitterStats;
             scope.$digest();
 
-            expect(element.find('canvas')).not.toBe(undefined);
+            expect(element.find('svg')).not.toBe(undefined);
+            expect(element.find('svg').children()).not.toBe(undefined);
+            expect(element.find('svg').children().length > 0).toBe(true);
         });
     });
 
@@ -66,7 +68,9 @@ describe('directives', function() {
             scope.twitterStats = mockTwitterStats;
             scope.$digest();
 
-            expect(element.find('canvas')).not.toBe(undefined);
+            expect(element.find('svg')).not.toBe(undefined);
+            expect(element.find('svg').children()).not.toBe(undefined);
+            expect(element.find('svg').children().length > 0).toBe(true);
         });
     });
 
