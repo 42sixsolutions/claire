@@ -8,7 +8,7 @@ $textcolor:       #444444;
 
 $negative:        #eb6b42;
 $positive:        #56c54e;
-$neutral:         #9a9a9a; //#ffb22c;
+$neutral:         #b9cace; //#ffb22c;
 $recalls:         $teal;
 $events:          $secondary;
 
@@ -526,10 +526,11 @@ aside {
           border-left: 10px solid transparent;
         }
 
-        &.negative:after { border-top-color: $negative; }
-        &.positive:after { border-top-color: $positive; }
-        &.recalls:after { border-top-color: $recalls; }
-        &.events:after { border-top-color: $events; }
+        &.negative { span { color: $negative; } &:after { border-top-color: $negative; }}
+        &.neutral  { span { color: darken($neutral,20%);  } &:after { border-top-color: $neutral; }}
+        &.positive { span { color: $positive; } &:after { border-top-color: $positive; }}
+        &.recalls  { span { color: $recalls;  } &:after { border-top-color: $recalls; }}
+        &.events   { span { color: $events;   } &:after { border-top-color: $events; }}
       }
 
       &.stats,
@@ -822,7 +823,6 @@ footer {
   height: 40px;
   margin-top: -60px;
   margin-bottom: 22px;
-  color: $textcolor;
   font-size: 14px;
   line-height: 40px;
   font-weight: 300;
@@ -868,6 +868,7 @@ footer {
       
       &:hover { fill: darken($negative,10%); }
     }
+    .pie-center { color: $negative; }
   }
 
   .neutral {
@@ -876,6 +877,7 @@ footer {
       
       &:hover { fill: darken($neutral,10%); }
     }
+    .pie-center { color: darken($neutral,20%); }
   }
   
   .positive {
@@ -884,6 +886,7 @@ footer {
       
       &:hover { fill: darken($positive,10%); }
     }
+    .pie-center { color: $positive; }
   } 
 }
 

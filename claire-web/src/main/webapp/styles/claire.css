@@ -392,14 +392,26 @@ aside .element ul {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #9a9a9a;
+      border-top: 10px solid #b9cace;
       border-left: 10px solid transparent; }
+    aside .element ul li.negative span {
+      color: #eb6b42; }
     aside .element ul li.negative:after {
       border-top-color: #eb6b42; }
+    aside .element ul li.neutral span {
+      color: #7d9da4; }
+    aside .element ul li.neutral:after {
+      border-top-color: #b9cace; }
+    aside .element ul li.positive span {
+      color: #56c54e; }
     aside .element ul li.positive:after {
       border-top-color: #56c54e; }
+    aside .element ul li.recalls span {
+      color: #4ec5c3; }
     aside .element ul li.recalls:after {
       border-top-color: #4ec5c3; }
+    aside .element ul li.events span {
+      color: #d54dde; }
     aside .element ul li.events:after {
       border-top-color: #d54dde; }
   aside .element ul.stats li, aside .element ul.ranking-btm li {
@@ -614,7 +626,6 @@ footer {
   height: 40px;
   margin-top: -60px;
   margin-bottom: 22px;
-  color: #444444;
   font-size: 14px;
   line-height: 40px;
   font-weight: 300; }
@@ -633,13 +644,13 @@ footer {
 .arc1-blue {
   /* Neutral */
   stroke-weight: 0.1;
-  fill: #9a9a9a;
+  fill: #b9cace;
   -webkit-transition: fill 350ms ease;
   -moz-transition: fill 350ms ease;
   -ms-transition: fill 350ms ease;
   transition: fill 350ms ease; }
   .arc1-blue:hover {
-    fill: #9a9a9a; }
+    fill: #b9cace; }
 
 .arc2-blue {
   /* Positive */
@@ -661,14 +672,20 @@ footer {
   fill: #eb6b42; }
   .percentages .negative .arc0-blue:hover {
     fill: #e24918; }
+.percentages .negative .pie-center {
+  color: #eb6b42; }
 .percentages .neutral .arc0-blue {
-  fill: #9a9a9a; }
+  fill: #b9cace; }
   .percentages .neutral .arc0-blue:hover {
-    fill: #818181; }
+    fill: #9bb3b9; }
+.percentages .neutral .pie-center {
+  color: #7d9da4; }
 .percentages .positive .arc0-blue {
   fill: #3fa937; }
   .percentages .positive .arc0-blue:hover {
     fill: #3fa937; }
+.percentages .positive .pie-center {
+  color: #56c54e; }
 
 .white {
   fill: #FFFFFF; }
@@ -756,7 +773,7 @@ footer {
       position: absolute;
       top: 3px;
       right: 3px;
-      border-top: 10px solid #9a9a9a;
+      border-top: 10px solid #b9cace;
       border-left: 10px solid transparent; }
 
 .graph-title {
@@ -784,7 +801,7 @@ footer {
     position: absolute;
     top: 3px;
     right: 3px;
-    border-top: 10px solid #9a9a9a;
+    border-top: 10px solid #b9cace;
     border-left: 10px solid transparent; }
 
 .graph-legend {
@@ -813,7 +830,7 @@ footer {
         color: #444444; }
       .graph-legend ul li.negative i:before, .graph-legend ul li.positive i:before, .graph-legend ul li.neutral i:before {
         content: '';
-        border-top: 3px solid #9a9a9a;
+        border-top: 3px solid #b9cace;
         width: 14px;
         height: 0;
         display: inline-block;
