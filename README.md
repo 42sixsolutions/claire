@@ -1,4 +1,5 @@
 Prototype on OpenShift: https://claire-42six.rhcloud.com/
+
 Prototype on ARC: https://dashboard-claire.arcwrx.com/
 
 # Claire Readme
