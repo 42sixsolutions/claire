@@ -101,24 +101,6 @@ directive('pieChartSml', ["$window", function($window) {
         }
     };
 }]).
-directive('rankingsChart', [function() {
-    return {
-        restrict: "A",
-        link: function(scope, element, attrs) {
-            var options = {
-                yaxis: {
-                    min: 0,
-                    max: 100
-                }
-            };
-            scope.$watch("rankings", function(newValue, oldValue) {
-                if (newValue && newValue !== oldValue) {
-                    $.plot(element[0], newValue, options);
-                }
-            });
-        }
-    };
-}]).
 directive('lineChart', ["$window", function($window) {
     return {
         restrict: "A",
