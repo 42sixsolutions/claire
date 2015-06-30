@@ -484,7 +484,8 @@ footer {
   color: #777777;
   text-align: center; }
   footer a {
-    margin-left: 10px; }
+    margin-left: 10px;
+    white-space: nowrap; }
 
 /* Selection */
 .wrapper {
