@@ -1,21 +1,28 @@
-# Installation Guide
+## Quick Links
+
+* [Installation](#installation)
+  * [Dependencies](#dependencies)
+  * [Local Tomcat7](#local-tomcat7)
+  * [Hosted](#hosted)
+* [About Claire](#about-claire)
+
+## Installation
 
 This Installation Guide is intended for *nix machines.
 
 Github repo: https://github.com/42sixsolutions/claire
 
-## Dependencies
+### Dependencies
 
 * [Java 7](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)
 * [Maven](https://maven.apache.org/download.cgi)
 * [NodeJs](https://nodejs.org/download/)
 * [FireFox](https://www.mozilla.org/en-US/firefox/new/)
 
-## Claire web app installation guide
-
 Claire can be installed on either a local machine or in a hosted environment. Instructions for both methods are included below.
 
-### Local Tomcat7 (only works on https)
+### Local Tomcat7
+The local Tomcat7 installation only works with HTTPS.
 Type the following in a terminal window.
 ```
 git clone https://github.com/42sixsolutions/claire
@@ -51,3 +58,9 @@ On Openshift (the PaaS for both IaaS options):
 		pick a region
 	create application
 ```
+
+## About Claire
+
+Please see our [About Page.](http://42sixsolutions.github.io/claire/)
+
+You can also view our [design assets](claire-ui/mockups), [style guide](claire-ui/styleguide), and [scrum artifacts](claire-agile/) in the Claire repository.
