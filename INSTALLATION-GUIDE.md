@@ -1,10 +1,14 @@
-## Quick Links
+# Quick Links
 
+* [Demo](#demo)
 * [Installation](#installation)
   * [Dependencies](#dependencies)
   * [Local Tomcat7](#local-tomcat7)
   * [Hosted](#hosted)
 * [About Claire](#about-claire)
+
+## Demo
+Want to see some interesting relationships between adverse events or recalls and Twitter? Check out the correlation between negative tweets and a recall with Amlodipine or between a cluster of adverse events and negative tweets with Wellbutin.
 
 ## Installation
 
@@ -63,4 +67,4 @@ On Openshift (the PaaS for both IaaS options):
 
 Please see our [About Page.](http://42sixsolutions.github.io/claire/)
 
-You can also view our [design assets](claire-ui/mockups), [style guide](claire-ui/styleguide), and [scrum artifacts](claire-agile/) in the Claire repository.
+You can also view our [architecture diagram](claire_diagram.jpg), [design assets](claire-ui/mockups), [style guide](claire-ui/styleguide), and [scrum artifacts](claire-agile/) in the Claire repository.
