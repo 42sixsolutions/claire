@@ -50,7 +50,6 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
         $scope.drug.selected = pathParts[1];
         
         $('.show').on("click", function() {
-          console.log('show');
           var text = $(this).text();
           $(this).parent('.overflow').toggleClass('shown');
           $(this).text(text == "Show More" ? "Show Less" : "Show More");
@@ -168,11 +167,14 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
                 data: peaks,
                 points: { show: true, radius: 11, lineWidth: 0, symbol: function(ctx, x, y, r, shadow) {
                     var image = new Image();
-                    image.src = "../images/peak.svg";
-                    ctx.drawImage(image, x - r, y - r - 12, 22, 22);
+                    image.src = "../images/peak.png";
+                    image.height = 50;
+                    image.width = 44;
+                    ctx.drawImage(image, x - r, y - r, 22, 22);
                 } },
                 lines: { show: false },
-                hoverable: false
+                hoverable: false,
+                clickable: false
             });
             $scope.mainChartData = chartData;
         });
