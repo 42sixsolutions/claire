@@ -1,6 +1,8 @@
 Prototype on OpenShift: https://claire-42six.rhcloud.com/
+OpenShift Backup: https://clairedemo-42six.rhcloud.com/
 
 Prototype on ARC: https://dashboard-claire.arcwrx.com/
+ARC Backup: https://demo-claire.arcwrx.com/
 
 Website: http://42sixsolutions.github.io/claire/
 
