@@ -268,6 +268,9 @@ header {
 .content {
   margin-top: 100px; }
 
+.graph {
+  position: relative; }
+
 section .information {
   margin-bottom: 40px; }
   section .information h1 .name {
@@ -328,8 +331,6 @@ section .information {
           margin-bottom: 0; }
 
 /* Aside Styling */
-aside .element .graph {
-  position: relative; }
 aside .element .total-tweets {
   display: block;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=$opacity)";
@@ -904,6 +905,28 @@ footer {
         position: relative;
         margin: 0 10px 0 -10px;
         top: -1px; }
+
+/* Tour the Graph */
+.tour {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1;
+  margin: 0; }
+  .tour .content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #00a0a8;
+    color: white;
+    padding: 10px;
+    width: 40%;
+    margin: 0; }
+    .tour .content h2 {
+      color: #fff; }
 
 /* Media Queries */
 @media only screen and (min-device-width: 768px) {
