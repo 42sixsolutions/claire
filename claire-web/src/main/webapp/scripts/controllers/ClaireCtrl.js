@@ -54,6 +54,14 @@ angular.module('claire.controllers').controller('ClaireCtrl', ["$scope", "$locat
           $(this).parent('.overflow').toggleClass('shown');
           $(this).text(text == "Show More" ? "Show Less" : "Show More");
         })
+
+        $('.graph-info').on("click", function() {
+          $('.modal').addClass('on');
+        })
+
+        $('.modal-overlay,.modal-close').on("click", function() {
+          $('.modal').removeClass('on');
+        })
     }
 
     if ($scope.isDetailsPage) {

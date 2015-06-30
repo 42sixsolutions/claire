@@ -24,7 +24,7 @@
 
   </script>
 </head>
-<body id="ng-app" ng-app="claire">
+<body id="ng-app" ng-app="claire" class="tour-on">
   <div trianglify class="wrapper" ng-view></div>
 
   <script src="bower_components/jquery/jquery.js"></script>
@@ -52,5 +52,20 @@
   <script src="scripts/services/drugInfo.js"></script>
   <script src="scripts/services/trends.js"></script>
   <script src="scripts/services/mockRest.js"></script>
+
+  <div class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <img src="../images/info-modal.png" alt="info-modal" />
+      <div class="text">
+        <h3>Ways to use this graph</h3>
+        <p><strong>1.</strong>Identify a recall via the teal vertical line</p>
+        <p><strong>2.</strong>Correlate the amount of Adverse Events reported around the same time as the recall, via the violet circles displayed horizontally across the bottom.</p>
+        <p><strong>3.</strong>Correlate the spike in negative social sentiment. Click on the icon to view relevant news articles from that date range.</p>
+      </div>
+      <span class="modal-close">&times;</span>
+    </div>
+  </div>
+
 </body>
 </html>

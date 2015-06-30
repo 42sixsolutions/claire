@@ -29,8 +29,8 @@
         <div class="trend"></div>
       </div>
       
-      <div class="graph">
-        <h2>Tweets vs. Events &amp; Recalls <span><i><img src="../images/peak.svg" alt="peak" width="20" height="20" /></i> Click for additional data about this peak</span></h2>
+      <div class="graph tweet-graph">
+        <h2>Tweets vs. Events &amp; Recalls <span class="graph-info"><i></i> <span class="hide">Ways to use this graph</span></span></h2>
         <div class="box">
           <div line-chart chart-data="data" class="line-chart"></div>
           <div class="graph-legend">
@@ -42,9 +42,11 @@
               <li class="recalls"><i></i> Recalls</li>
             </ul>
           </div>
+          <div class="graph-legend">
+            <p><i><img src="../images/peak.png" alt="peak" width="16" height="16" /></i> Click for additional data about this peak</p>
+          </div>
         </div>
       </div>
-      
     </section>
 
     <aside>
@@ -105,7 +107,6 @@
   </div>
   <div class="container footer">
     <footer>
-      <div style="display: none;"><!-- a silly hack to get canvas images to work in firefox --><img src="images/peak.png" /></div>
       <p>Produced by 42six a CSC Company. <a href="https://github.com/42sixsolutions/claire" target="_blank">Claire on Github</a></p>
     </footer>
   </div>

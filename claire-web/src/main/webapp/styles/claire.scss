@@ -354,7 +354,11 @@ header {
 /* Main Section Styling */
 
 .content {
-  margin-top: 100px;
+  padding-top: 100px;
+}
+
+.graph {
+  position: relative;
 }
 
 section {
@@ -456,10 +460,6 @@ aside {
   
   .element {
     @extend %clearfix;
-    
-    .graph {
-      position: relative;
-    }
     
     .total-tweets {
       display: block;
@@ -625,6 +625,7 @@ footer {
   
   a {
     margin-left: 10px;
+    white-space: nowrap;  
   }
 }
 
@@ -943,7 +944,7 @@ footer {
 
 .line-chart {
   height: 450px;
-  margin: 40px 20px 30px 30px;
+  margin: 20px 20px 30px 30px;
   @include calc('width','100% - 40px');
   @extend %clearfix;
   
@@ -1079,7 +1080,7 @@ footer {
   text-align: center;
   margin: 0 25px;
   border-top: 1px solid $bordercolor;
-  padding: 10px 0 15px;
+  padding: 10px 0 10px;
   
   ul {
     display: inline-block;
@@ -1153,11 +1154,161 @@ footer {
       }
     }
   }
+
+  p {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    height: 100%;
+    padding: 5px 5px 10px 30px;
+    font-size: 11px;
+    line-height: 12px;
+    text-align: left;
+    color: lighten($textcolor,40%);
+    font-weight: 600;
+    
+    i {
+      display: inline-block;
+      position: relative;
+      margin: 0 5px 0 -20px;
+      top: -3px;
+    }
+  }
+
 }
+
+/* Tour the Graph */
+
+.graph-info {
+  float: right;
+  height: 22px;
+  line-height: 22px;  
+  cursor: pointer;
+  top: -6px;
+  position: relative;
+  
+  &:hover {
+    color: $textcolor;
+  }
+  
+  i {
+    top: 6px;
+    
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 22px;
+      width: 22px;
+      background: url(../images/info.svg) no-repeat center center;
+      background-size: 16px 16px;
+    }
+  }
+}
+
+
+/* Tour the Graph */
+
+.modal {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  @include opacity(0);
+  visibility: hidden;
+  @include transition(opacity 350ms ease);
+  
+  &.on {
+    @include opacity(100);
+    visibility: visible;
+    @include transition(opacity 350ms ease);
+  }
+  
+  .modal-overlay {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba($textcolor,0.7);
+  }
+  
+  .modal-content {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 95%;
+    max-width: 775px;
+    @include transform(translate(-50%, -50%));
+    background: $primary;
+    color: white;
+    
+    .modal-close {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      height: 30px;
+      width: 30px;
+      background: darken($bordercolor,20%);
+      color: white;
+      font-size: 22px;
+      line-height: 26px;
+      font-weight: 600;
+      cursor: pointer;
+      @include borderradius(15px);
+      @include transition(all 350ms ease);
+      
+      &:hover {
+        background: $primary;
+      }
+      
+    }
+    
+    img {
+      width: 100%;
+      max-width: 775px;
+    }
+    
+    .text {
+      padding: 15px 20px;
+      text-align: left;
+      
+      h3 {
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0 0 10px 0;
+      }
+      
+      p {
+        margin: 0 0 5px 0;
+        padding: 0 0 0 20px;
+        line-height: 1.4em;
+        
+        strong {
+          position: relative;
+          margin-left: -20px;
+          width: 20px;
+          display: inline-block;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+.hide {
+  margin: 0; 
+  display: none;
+}
+
 
 /* Media Queries */
 
 @media only screen and (min-device-width : 768px) {
+
+  .hide { display: inline-block; }
   
   aside {
     
@@ -1198,7 +1349,9 @@ footer {
 }
 
 @media only screen and (max-width : 560px) {
-	
+
+  .hide { display: none; }
+
 	.wrapper {
 		
 		.bg-gradient {
@@ -1246,7 +1399,6 @@ footer {
       }
     }
   }
-	
 }
 
 @media (min-width: 1025px) {
