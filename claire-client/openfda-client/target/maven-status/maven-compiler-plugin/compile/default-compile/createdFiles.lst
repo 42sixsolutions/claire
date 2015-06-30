@@ -1,0 +1,10 @@
+com/_42six/claire/openfda/model/OpenFDACountByDayResponse.class
+com/_42six/claire/openfda/util/OpenFDAUtil.class
+com/_42six/claire/openfda/model/OpenFDACountByDayResponse$Result.class
+com/_42six/claire/openfda/model/OpenFDALabelResponse$Result.class
+com/_42six/claire/openfda/model/OpenFDALabelResponse.class
+com/_42six/claire/openfda/OpenFDAClient.class
+com/_42six/claire/openfda/model/OpenFDALabelResponse$Result$OpenFDA.class
+com/_42six/claire/openfda/util/OpenFDAUtil$1.class
+com/_42six/claire/openfda/OpenFDAProperties.class
+com/_42six/claire/openfda/util/OpenFDADateAdapter.class
