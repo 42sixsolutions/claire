@@ -1,126 +1,125 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Claire by 42sixsolutions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
-      
-      
-  </head>
-  <body>
-    <section class="page-header bg-gradient">
-      <h1 class="project-name">Claire</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/42sixsolutions/claire" class="btn">View on GitHub</a>
-      <a href="https://github.com/42sixsolutions/claire/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/42sixsolutions/claire/tarball/master" class="btn">Download .tar.gz</a>
-      <a href="https://CLAIRE-42six.rhcloud.com" class="btn">View the Demo</a>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Claire | Correlating Adverse Drug Events Against Social Media Sentiment.</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+<link href='https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'>
+<script src="js/jquery.min.js"></script>
+<script src="js/d3.min.js"></script>
+<script src="js/trianglify.min.js"></script>
+<script>
+	$(document).ready(function () {
+		
+    var getTrianglifyPattern = function() {
+      var pattern = Trianglify({
+          width: window.innerWidth,
+          x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
+          color_space: 'lab',
+          cell_size: 200
+      });
+	    return pattern;
+	  };
+	
+	  $("header").append(getTrianglifyPattern().canvas());
+	
+	  $(window).on('resize', function() {
+	    $("canvas").remove();
+	    $("header").append(getTrianglifyPattern().canvas());
+	  });
+  
+  });
+
+</script>
+
+</head>
+<body>
+	  
+    <header class="clearfix">
+      <div class="content">
+	      <h1 class="project-name">Claire</h1>
+	      <h2 class="project-tagline">Correlating Adverse Drug Events Against Social Media Sentiment.</h2>
+	      <a href="https://github.com/42sixsolutions/claire" class="btn">View on GitHub</a>
+	      <a href="https://github.com/42sixsolutions/claire/zipball/master" class="btn">Download .zip</a>
+	      <a href="https://github.com/42sixsolutions/claire/tarball/master" class="btn">Download .tar.gz</a>
+	      <a href="https://CLAIRE-42six.rhcloud.com" class="btn">View the Demo</a>
+      </div>
+    </header>
+
+    <section class="about">
+			<h1>About Claire</h1>
+			<p>Claire is a product for Drug Manufacturing Marketers in addition to the general public. It is designed for web and mobile interfaces. The system correlates Adverse Events for Drugs, consumed from FDA data sources, to positive and negative sentiments expressed on Twitter for that Drug. The results are aggregated by Drug and Manufacturer, and displayed in user-friendly  graphs. Claire may be used as an early warning system to:</p>
+			<ul>
+		    <li>Alert manufacturers to negative feedback about their Drug that may lead to reductions in sales</li>
+		    <li>Inform the general public on drugs to avoid based on recalls and adverse events</li>
+		    <li>Educate the general public on whether they should consider using a specific drug based on what other users are saying</li>
+			</ul>
     </section>
-
-    <section class="main-content">
-      <h3>
-<a id="about-claire" class="anchor" href="#about-claire" aria-hidden="true"><span class="octicon octicon-link"></span></a>About Claire</h3>
-
-<p>Claire is a product for Drug Manufacturing Marketers in addition to the general public. It is designed for web and mobile interfaces. The system correlates Adverse Events for Drugs, consumed from FDA data sources, to positive and negative sentiments expressed on Twitter for that Drug. The results are aggregated by Drug and Manufacturer, and displayed in user-friendly  graphs. Claire may be used as an early warning system to:</p>
-<ul>
-    <li>Alert manufacturers to negative feedback about their Drug that may lead to reductions in sales</li>
-    <li>Inform the general public on drugs to avoid based on recalls and adverse events</li>
-    <li>Educate the general public on whether they should consider using a specific drug based on what other users are saying</li>
-</ul>
-        
-<h3>
-<a id="future-of-claire" class="anchor" href="#future-of-claire" aria-hidden="true"><span class="octicon octicon-link"></span></a>Future of Claire</h3>
-<p>We have many more ideas to incorporate into Claire given more time. They include the following:</p>
-<ul>
-    <li><b>Ingestion Framework</b> - Most likely we would choose something similar to Twitter Storm as our ingestion framework.  This would allow us to stream source data, then run custom business logic against it such as normalization and enrichment.</li>
-    <li><b>More data</b> - We would increase the amount of drugs and the timeframe of the data.</li>
-    <li><b>Ingest News</b> - Instead of just linking out to news articles, we would ingest them and run analysis against them.</li>
-    <li><b>ElasticSearch</b> - We would use a ElasticSearch as our data store.  That would allow the user to perform simple or advanced full text search against the OpenFDA data as well as Tweets and News articles.</li>
-    <li><b>Drill Down</b> - We would allow users to perform more drill down functionality within the drug screen. This would include changing the timeframe as well as viewing the individual events, tweets, and news articles.</li>
-    <li><b>Rankings Screen</b> - We would include a screen that focuses on each ranking and the drugs within. This would allow users to highlight and compare many drugs.</li>
-</ul>
-<p>Check out our <a href="https://github.com/42sixsolutions/claire/issues?q=is%3Aopen+is%3Aissue+milestone%3ABacklog">backlog</a> and please contribute.</p>
-
-
-<h3>
-<a id="our-process" class="anchor" href="#our-process" aria-hidden="true"><span class="octicon octicon-link"></span></a>Our Process</h3>
-<p>We built this application in 3 two-day sprints, and a 15 minute scrum each morning. Considering the rapid turnaround for this project we relied heavily on our scrum board.</p>
-
-<p><img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/Scrum_Board_Day_4_Sprint_1.JPG"></p>
-
-<p>We chose to camp out in one of our war rooms for the week. Following our roots in agile, we strive on working close together being abele to collaborate real-time.</p>
-            
-<p><img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/War_Room_1.JPG" style="float:left; width:49%; margin-right:8px;">
-    <img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/War_Room_2.JPG" style="float:left; width:49%;"><div style="clear:both"></div></p> 
-
-<h4>UI/UX</h4>
-    <p>We started prototypoing via whiteboard sketches then moved rapidly into wireframes. We then created our hi-fidelity mockups and was able to iterate on those also. After finalizing our design we then defined our <a href="https://github.com/42sixsolutions/claire/raw/master/claire-ui/styleguide/StyleGuide%20-%20Claire%20-%20062615.pdf">styleguide</a> which will assist with future development of this application.</p>
-
-<p><img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s1/1-a-selection%202.jpg" style="float:left; width:49%; margin-right:8px;">
-    <img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s2/2-a-selection.jpg" style="float:left; width:49%;"><div style="clear:both"></div></p>  
-
-<p><img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s1/1-b-details.jpg" style="float:left; width:49%; margin-right:8px;">
-    <img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s2/2-b-details-full.jpg" style="float:left; width:49%;"><div style="clear:both"></div></p>  
-
-<h3>Technology Stack &amp; Architecture</h3>
-<p>Following our Interface Driven Development process we were able to rapidly decide on our stack and archietcture after visualizing our requirements.</p>
-
-<p><img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/Scrum_Board_Day_4_Sprint_1.JPG"></p>
     
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Questions or comments about Claire feel free to contact us at <a href="mailto:claire@42six.com">claire@42six.com</a>.
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/42sixsolutions/claire">Claire</a> is maintained by <a href="https://github.com/42sixsolutions">42sixsolutions</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
+    <section class="future">
+			<h1>Future of Claire</h1>
+			<p>We have many more ideas to incorporate into Claire given more time. They include the following:</p>
+			<ul>
+		    <li><b>Ingestion Framework</b> - Most likely we would choose something similar to Twitter Storm as our ingestion framework.  This would allow us to stream source data, then run custom business logic against it such as normalization and enrichment.</li>
+		    <li><b>More data</b> - We would increase the amount of drugs and the timeframe of the data.</li>
+		    <li><b>Ingest News</b> - Instead of just linking out to news articles, we would ingest them and run analysis against them.</li>
+		    <li><b>ElasticSearch</b> - We would use a ElasticSearch as our data store.  That would allow the user to perform simple or advanced full text search against the OpenFDA data as well as Tweets and News articles.</li>
+		    <li><b>Drill Down</b> - We would allow users to perform more drill down functionality within the drug screen. This would include changing the timeframe as well as viewing the individual events, tweets, and news articles.</li>
+		    <li><b>Rankings Screen</b> - We would include a screen that focuses on each ranking and the drugs within. This would allow users to highlight and compare many drugs.</li>
+			</ul>
+			<p>Check out our <a href="https://github.com/42sixsolutions/claire/issues?q=is%3Aopen+is%3Aissue+milestone%3ABacklog">backlog</a> and please contribute.</p>
     </section>
+    
+    <section class="process">
+			<h1>Our Process</h1>
+			<p>We built this application in 3 two-day sprints, and a 15 minute scrum each morning. Considering the rapid turnaround for this project we relied heavily on our scrum board.</p>
+			<p>We chose to camp out in one of our war rooms for the week. Following our roots in agile, we strive on working close together being able to collaborate real-time.</p>
+			<div class="gallery full">
+				<img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/Scrum_Board_Day_4_Sprint_1.JPG">
+			</div>
+			<div class="gallery half clearfix">
+				<img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/War_Room_1.JPG" />
+				<img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/War_Room_2.JPG" />
+			</div>
+			<h2>UI/UX</h2>
+			<p>We started prototypoing via whiteboard sketches then moved rapidly into wireframes. We then created our hi-fidelity mockups and was able to iterate on those also. After finalizing our design we then defined our <a href="https://github.com/42sixsolutions/claire/raw/master/claire-ui/styleguide/StyleGuide%20-%20Claire%20-%20062615.pdf">styleguide</a> which will assist with future development of this application.</p>
+    	<div class="gallery half clearfix">
+				<img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s1/1-a-selection%202.jpg" />
+	    	<img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s2/2-a-selection.jpg" />
+				<img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s1/1-b-details.jpg" />
+	    	<img src="https://github.com/42sixsolutions/claire/raw/master/claire-ui/mockups/s2/2-b-details-full.jpg" />
+    	</div>
+			<h2>Technology Stack &amp; Architecture</h2>
+			<p>Following our Interface Driven Development process we were able to rapidly decide on our stack and archietcture after visualizing our requirements.</p>
+			<div class="gallery full">
+				<img src="https://raw.githubusercontent.com/42sixsolutions/claire/master/claire-agile/Scrum_Board_Day_4_Sprint_1.JPG">
+			</div>
+			<h2>Support or Contact</h2>
+			<p>Questions or comments about Claire feel free to contact us at <a href="mailto:claire@42six.com">claire@42six.com</a>.
+		</section>
+		
+		<footer class="site-footer">
+		  <span class="site-footer-owner"><a href="https://github.com/42sixsolutions/claire">Claire</a> is maintained by <a href="https://github.com/42sixsolutions">42sixsolutions</a>.</span>
+		  <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+		</footer>
+		
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+			  var pageTracker = _gat._getTracker("UA-22893153-9");
+				pageTracker._trackPageview();
+			}
+			catch(err) {}
+		</script>
 
-            <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-22893153-9");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
-
-  </body>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/d3.min.js"></script>
-  <!--<script src="js/trianglify.min.js"></script>
-  <script>
-      var getTrianglifyPattern = function() {
-        var pattern = Trianglify({
-            height: 400,
-            width: window.innerWidth,
-            x_colors: ["#9aeedb","#8aead7","#74e3d2","#63ddd0","#5ed9d2","#52cfd7","#4dcbd9","#59cdde","#6ed1e4","#7bd4e8"],
-            color_space: 'lab',
-            cell_size: 200
-        });
-
-      return pattern;
-    };
-
-    $("body").prepend(getTrianglifyPattern().canvas());
-
-    $(window).on('resize', function() {
-      $("canvas").remove();
-      $("body").prepend(getTrianglifyPattern().canvas());
-    });
-
-  </script>-->
+</body>
 </html>
 
