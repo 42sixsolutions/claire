@@ -105,7 +105,7 @@ Travis CI was used for continuous integration and deployment on OpenShift while 
 [Architecture of Prototype, including CI and CD](claire_diagram.jpg)
 
 ## Set Up or Used Configuration Management
-We used GitHub to manage configuration items.
+We used GitHub for configuration management. All configuration items are stored in the repository.
 
 ## Set Up or Used Continuous Monitoring
 The Claire teams utilized NewRelic within OpenShift to perform advanced continuous monitoring. New Relic is set up to monitor both development servers and both demo servers.
