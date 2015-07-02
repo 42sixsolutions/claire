@@ -91,7 +91,7 @@ We used the following modern and open source technologies (versions included):
 1. Travis CI
 1. Jenkins 1.599
  
-[Licenses](licenses.md)
+[Licenses](LICENSES.md)
 
 ## Deployed Prototype on an IaaS or PaaS
 We deployed Claire on OpenShift and on our Autonomic Resources FedRAMP-certified Cloud (ARC). On each PaaS, deployed a development version, which is directly connected to the continuous deployment tools, and a demonstration version, which is snapshot of the prototype. The URLS are at the top of the README.
@@ -123,7 +123,7 @@ Claire is deployed on Tomcat 7 on OpenShift via JBoss EWS cartridges. OpenShift 
 ## Openly Licensed and Free of Charge
 All components of the prototype and underlying platforms are openly licensed and free of charge.
  
-The licenses for component and part of the platform are available in the [licenses](licenses.md) file.
+The licenses for component and part of the platform are available in the [licenses](LICENSES.md) file.
 
 ## What Makes us Different?
 Claire demonstrates the capabilities of one of our many agile teams. CSC understands that not all projects can be confined to a single team or contractor. We are very successful at scaling agile across multiple teams with large government programs such as USCIS, EPA, and many of the intelligence agencies while utilizing the Scaled Agile Framework. In most cases, there are multiple organizations, contractors, and stakeholders for each project. Our agile culture is “badgeless,” viewing all stakeholders as valued team members striving toward the same goal; creating value for the end user through lean and efficient value streams.  Another discriminator CSC possesses is having its own FedRAMP-certified cloud called ARC.  When required by our customers, ARC can provide flexibility that goes beyond public and private PaaS.
