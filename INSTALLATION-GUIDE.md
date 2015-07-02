@@ -65,6 +65,4 @@ On Openshift (the PaaS for both IaaS options):
 
 ## About Claire
 
-Please see our [About Page.](http://42sixsolutions.github.io/claire/)
-
-You can also view our [architecture diagram](claire_diagram.jpg), [design assets](claire-ui/mockups), [style guide](claire-ui/styleguide), and [scrum artifacts](claire-agile/) in the Claire repository.
+You can view our [architecture diagram](claire_diagram.jpg), [design assets](claire-ui/mockups), [style guide](claire-ui/styleguide), and [scrum artifacts](claire-agile/) in the Claire repository.
