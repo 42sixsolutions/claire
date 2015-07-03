@@ -48,14 +48,14 @@ We’ve utilized our own home-brewed responsive HTML & CSS library. We’ve also
 [Style Guide](claire-ui/styleguide)
 
 ## Performed Usability Tests with People
-In addition to testing the app with people outside of the development team, we held two demos with stakeholders and other users. We tested the application in an iterative manner, via paper prototyping in addition to testing it during stakeholder and sprint demos.
+In addition to testing the app with people outside of the development team, we held two demos with stakeholders and other users. We tested the application in an iterative manner, via paper prototyping, in addition to testing it during stakeholder and sprint demos.
  
-[War room after Demo](claire-agile)
+[War room after Demo](claire-agile/War_Room_2.JPG)
 
 [Design evolution, based on user feedback](claire-ui/mockups)
 
 ## Used an Iterative Approach
-For Claire, the team used the Scrum process. The team held three two-day sprints, and met for 15-minute daily scrums. The team also held a sprint planning meeting at the beginning of each sprint and a combined sprint review and retrospective at the end of each sprint. This iterative approach helped us prioritize features (seeing the tweets associated with a sentiment spike) and improve the usability of the interface (modifying the chart colors). The product and sprint backlogs were managed using a combination of a physical scrum board for the product backlog and sprint progress and the GitHub issue tracker for technical tasks. The product owner and tech lead continuously groomed the product backlog. The team conducted many informal demonstrations and two formal review demonstrations to garner feedback from the stakeholder community.  
+For Claire, the team used the Scrum process. The team held three two-day sprints, and met for 15-minute daily scrums. The team also held a sprint planning meeting at the beginning of each sprint and a combined sprint review and retrospective at the end of each sprint. This iterative approach helped us prioritize features (e.g., seeing the tweets associated with a sentiment spike) and improve the usability of the interface (e.g., modifying the chart colors). The product and sprint backlogs were managed using a combination of a physical scrum board for the product backlog and sprint progress and the GitHub issue tracker for technical tasks. The product owner and tech lead continuously groomed the product backlog. The team conducted many informal demonstrations and two formal review demonstrations to garner feedback from the stakeholder community.  
  
 [War room and scrum board pictures](claire-agile)
 
@@ -100,7 +100,7 @@ Dev on ARC: https://dashboard-claire.arcwrx.com/
 Unit and regression tests were automated using JUnit, Karma, and Jasmine. The tests are located in throughout the repository (e.g., [openFDAClientTest](claire-client/openfda-client/src/test/java/com/_42six/claire/openfda/OpenFDAClientTest.java) and [ResponseTranslatorTest](claire-web/src/test/java/com/_42six/claire/web/ResponseTranslatorTest.java)).
 
 ## Set Up or Used Continuous Integration and Continuous Deployment
-Travis CI was used for continuous integration and deployment on OpenShift while Jenkins was used for continuous integration and deployment on ARC. Travis CI outside of OpenShift while Jenkins is set up as an OpenShift gear.
+Travis CI was used for continuous integration and deployment on OpenShift while Jenkins was used for continuous integration and deployment on ARC. Travis CI resides outside of OpenShift while Jenkins is set up as an OpenShift gear.
  
 [Architecture of Prototype, including CI and CD](claire_diagram.jpg)
 
@@ -110,7 +110,7 @@ We used GitHub for configuration management. All configuration items are stored 
 ## Set Up or Used Continuous Monitoring
 The Claire teams utilized NewRelic within OpenShift to perform advanced continuous monitoring. New Relic is set up to monitor both development servers and both demo servers.
  
-We also used Google Analytics to collect metrics on page hits and unique visitors, so that the application owner analyze user types and behavior.
+We also used Google Analytics to collect metrics on page hits and unique visitors, so that the application owner may analyze user types and user behavior.
 
 [Architecture of Prototype, New Relic and Google Analytics](claire_diagram.jpg)
 
@@ -123,7 +123,7 @@ Claire is deployed on Tomcat 7 on OpenShift via JBoss EWS cartridges. OpenShift 
 ## Openly Licensed and Free of Charge
 All components of the prototype and underlying platforms are openly licensed and free of charge.
  
-The licenses for component and part of the platform are available in the [licenses](LICENSES.md) file.
+[Licenses](LICENSES.md)
 
 ## What Makes us Different?
 Claire demonstrates the capabilities of one of our many agile teams. CSC understands that not all projects can be confined to a single team or contractor. We are very successful at scaling agile across multiple teams with large government programs such as USCIS, EPA, and many of the intelligence agencies while utilizing the Scaled Agile Framework. In most cases, there are multiple organizations, contractors, and stakeholders for each project. Our agile culture is “badgeless,” viewing all stakeholders as valued team members striving toward the same goal; creating value for the end user through lean and efficient value streams.  Another discriminator CSC possesses is having its own FedRAMP-certified cloud called ARC.  When required by our customers, ARC can provide flexibility that goes beyond public and private PaaS.
