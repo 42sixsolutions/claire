@@ -1,11 +1,7 @@
 # URLs to Prototpye
 Demo on OpenShift: https://clairedemo-42six.rhcloud.com/
 
-Dev on OpenShift: https://claire-42six.rhcloud.com/
-
 Demo on ARC: https://demo-claire.arcwrx.com/
-
-Dev on ARC: https://dashboard-claire.arcwrx.com/
 
 # Overview
 Claire is a product for drug manufacturing marketers, drug researchers, and the general public. It is designed for web and mobile interfaces. The system correlates adverse events for drugs, consumed from FDA data sources, to positive and negative sentiments expressed on Twitter for that drug. The results are aggregated by drug and displayed in user-friendly graphs. Claire may be used to 
@@ -94,7 +90,11 @@ We used the following modern and open source technologies (versions included):
 [Licenses](LICENSES.md)
 
 ## Deployed Prototype on an IaaS or PaaS
-We deployed Claire on OpenShift and on our Autonomic Resources FedRAMP-certified Cloud (ARC). On each PaaS, deployed a development version, which is directly connected to the continuous deployment tools, and a demonstration version, which is snapshot of the prototype. The URLS are at the top of the README.
+We deployed Claire on OpenShift and on our Autonomic Resources FedRAMP-certified Cloud (ARC). On each PaaS, we deployed a development version, which is directly connected to the continuous deployment tools, and a demonstration version, which is snapshot of the prototype. The demo URLS are at the top of the README.
+
+Dev on OpenShift: https://claire-42six.rhcloud.com/
+
+Dev on ARC: https://dashboard-claire.arcwrx.com/
 
 ## Wrote Unit Tests
 Unit and regression tests were automated using JUnit, Karma, and Jasmine. The tests are located in throughout the repository (e.g., [openFDAClientTest](claire-client/openfda-client/src/test/java/com/_42six/claire/openfda/OpenFDAClientTest.java) and [ResponseTranslatorTest](claire-web/src/test/java/com/_42six/claire/web/ResponseTranslatorTest.java)).
