@@ -19,10 +19,10 @@ Claire can be hosted on both Autonomic Resources FedRAMP-certified Cloud (ARC) o
 Our agile processes used in the development of Claire are aligned with U.S. Digital Services Playbook’s 13 “Plays” as documented in the repository and aligned with evidence criteria. The evidence criteria are in the sections below.
 
 ## Assigned One Leader 
-CSC management assigned Brian Murphy as the product owner for this project.
+CSC management assigned Brian Murphy as the product owner for this project.   Brian currently manages five agile projects and is ultimately responsible for delivery, ongoing success,  continuous improvement, and quality of these projects, including this GSA Agile Delivery prototype.  Accountability is maintained through updates to senior leadership after each sprint cycle.
 
 ##Assembled a Multidisciplinary and Collaborative Team
-The Claire agile team utilized eight BPA labor categories: product manager, technical architect, back end developer, front end developer, visual designer, interaction designer, writer, and business analyst. The team also used an FDA subject matter expert that provided valuable end-user insight to drive the requirements, conducted usability testing and provided valuable feedback.
+The Claire agile team utilized eight BPA labor categories: product manager, technical architect, back end developer, front end developer, visual designer, interaction designer, writer, and business analyst. The team also used an FDA subject matter expert that provided valuable end-user insight to drive the requirements, conducted usability testing and provided valuable feedback. The team met in a conference room that was converted into a "war room" for the duration of the project.
 
 ## Understand What People Need
 We included industry experts in our process and engaged them in our Discovery Workshop by collaborating real-time via sketching and wireframing. We also included them in usability testing via paper prototyping and demonstrations. We incorporated feedback from the experts into the initial version of the prototype, and we incorporated additional feedback after our demonstrations.
