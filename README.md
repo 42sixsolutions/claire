@@ -1,4 +1,4 @@
-https://travis-ci.org/42sixsolutions/claire.svg?branch=master
+[![Build Status](https://travis-ci.org/42sixsolutions/claire.svg?branch=master)](https://travis-ci.org/42sixsolutions/claire)
 
 # URLs to Prototpye
 Demo on OpenShift: https://clairedemo-42six.rhcloud.com/
