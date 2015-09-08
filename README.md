@@ -1,3 +1,5 @@
+https://travis-ci.org/42sixsolutions/claire.svg?branch=master
+
 # URLs to Prototpye
 Demo on OpenShift: https://clairedemo-42six.rhcloud.com/
 
