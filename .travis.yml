@@ -1,15 +1,13 @@
 language: java
-
 deploy:
   provider: openshift
-  user: jpercivall@42six.com
+  user: hochardga@gmail.com
   password:
-    secure: nnz1LcKeth/DhyafAvJlMHuNGqZ9ljpP7hx+ZNSdGjsDKTa0ItCYrNQhLgw5ao3jpbgkgLP/wPOcOp0c5zcAZh4+9jGS8406GR0rbesWdzTpl14QQPXcvs1WYLAfJW3sRUuCz6DkY4bLirDTX+0oV6rWGtmA4JBvOSawThgVlGr0QvR44O22REYE0pNU1cz5qqI5upIpuM24KxztoJ8vQnlnsGfCDl1cN+5z8VkFm1mf/z86JVb9KUeVcPVPhoZKP/Gix/inaC1O3W6ULaVMu3mbLq6vpiobL3uEM0+rfDKfvGTkzndwn1KrLoEXgCz3GvnhfFm6IA6U+zpoR16tM1UwcXlA8IabCqeMQP8VQMXhH+fRrMmo8YaEGzF4qa1RU+xpHVjRh3Q0jQg9RHFSXqHj7IY7jvL4/M4KnpPHJ+SlLteHGFew81hn2TVoec67sx/JNYms9zvMjxOfEHTlQgOQaQOsT4llWpke+2IPhJh7lHuSqvxT8YXHD83JVrQrNjKs11TKw9gwfRJuLwaGMN8cBCaEJghkjMHHPU61OA6iqS+wHE5oBTuUIBnUIBytFYbZLcVCBNOx2BKnHmR/18hzQq9/KIlmFkTObSkodQAjGUMCC+k8BJ0qT6S7PFtD+Gsgf66rRaZ14VuJEwK+fisZji+69CAX4cnjwJQ05TI=
+    secure: rRLD2EoD2gkQCgS4Jm7+YIrK1V0P4AxZJcBB98FpoPIBDZHuXzt7kEWwITG6eqqjzH6xSqo5hVQrndjtoNmx3JMpKBgyfFJ3XsMWxvwPEqN8LVMj3AB3LfWAIS4Pc/Zx4gll4sgCvU9gBxOg2O6sN0sYq1c8W3XXxc/FyqNMJXikSr2KvWbwt5tGcQ1EWMWPdt/gHWoGMWr57I9UikppvM2XwgVQyn4nBb6Od5AAJOM1IQNWjb+9bV4PUmMDGCZBsA4Kd1UuDfFG0KyHtMGfAvDG5hV3znyKIhK7+w5ZUodbUW3hOdHASFGLM5LL9qO4FY5cVsf79ppOZiqNWNEUGnXbptmHcaa/JEQ964OFo0JlYcx+WVGse8iq0QCNARQsFrvkzlCLmNab6a4YvN8Vo3Os8m6V6mtpqP/CsccFlWEwx/RO5v7Jq1mljcrlwu49qPDZtINtaom++6yGLe5gcy9FJyfrsVijOCCmVT8Nfk8ljudqf8cwXWKFS/SBeYweM5a2yIi3fppnEuxTBNCp7yaOKuAGvSEOkjzVh41q/g1rNoCnf4gTdVCaMwPQkO+dLdcV9RuuLfIgGj+pu5a4IoB2FrjtNMKjS++jtqvPuEWe7GFwtW/410FmEmWbb8cgvhZoMjTqf7qCAT8EKVKDq2iXpV3YYCyPi2UZaQUeXwk=
   app: claire
   domain: 42six
   on:
     repo: 42sixsolutions/claire
-
 before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+- "export DISPLAY=:99.0"
+- "sh -e /etc/init.d/xvfb start"
