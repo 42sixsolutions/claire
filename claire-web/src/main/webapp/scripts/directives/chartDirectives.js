@@ -101,7 +101,7 @@ directive('pieChartSml', ["$window", function($window) {
         }
     };
 }]).
-directive('lineChart', ["$window", function($window) {
+directive('lineChart', ["$window", "$analytics", function($window, $analytics) {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
@@ -121,6 +121,9 @@ directive('lineChart', ["$window", function($window) {
                     var minTime = Math.floor(minDate.getTime() / 1000);
                     var maxTime = Math.floor(maxDate.getTime() / 1000);
 
+                    $analytics.eventTrack('PeakClick', {
+                        category: 'Enrichment',
+                        label: scope.drug.brandName + ":" + minTime + "-" + maxTime });
                     $window.open("http://www.topsy.com/s?q=" + scope.drug.brandName + "&mintime=" + minTime + "&maxtime=" + maxTime + "&language=en");
                 }
             });
